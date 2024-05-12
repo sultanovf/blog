@@ -1,0 +1,561 @@
+---
+title: |
+  R & Python: Types of Data\
+  {{< fa language >}} in German
+
+description: | 
+  \"Daten sind wie Müll. Man sollte besser wissen, was man mit ihnen machen will, bevor man sie sammelt.\" <br> ~ Mark Twain.
+
+author: "Fazliddin Sultonov"
+date: "2022-12-12"
+title-block-banner: true
+highlight-style: pygments
+categories: [R, Python, Data Types, German]
+
+# Code execute options
+execute: 
+  echo: true
+  eval: true   # Include cell source code in rendered output
+
+# Output
+format: 
+  html:
+    # Links
+    link-external-icon: false
+    link-external-newwindow: true
+    #code-tools:
+    #  toggle: true
+    # Sections
+    toc: true
+    #toc-expand: true
+    toc-location: left
+    toc-title: "Table of Contents"
+    toc_float: true
+    theme: spacelab
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+    class-output: "code-output"
+    # class-source: "code-output"
+  opts_knit: 
+    warning: false
+    error: false
+# bibliography
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+![](datatype_de.jpg)
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue"         # String
+  )     
+#
+
+
+```
+
+> Wer immer tut, was er schon kann, bleibt immer das, was er schon ist.
+>
+> --- Henry Ford
+
+Zuerst kurze Darstellung, wie das Ganze hier aufgebaut ist, wie der Input(Codeblock), Output(Ergebnis), Hinweis, … aussehen, also die
+
+## Struktur
+
+Der Input und Output für R und Python können nebeneinander oder in Tabsets, wobei [R-Sourse in hellcyan]{style="background-color: lightcyan"} und [Python-Sourse in gelb]{style="background-color: yellow"} dargestellt werden. Zeilenanfang im Output ist mit `#>` belegt.
+
+::: panel-tabset
+# `r fa(name = "r-project",  height = "1em", width = "1em", fill = "steelblue")`
+
+::: code-r
+```{r}
+#| collapse: true
+
+cat("Hallo R Lover!")
+```
+:::
+
+# `r fa(name = "python",  height = "1em", width = "1em",fill = "steelblue")`
+
+::: code-py
+```{python}
+#| collapse: true
+
+print("Hallo Python Lover!")
+```
+:::
+:::
+
+Wo ich was Wichtiges zusagen habe, habe ich dementsprechend gefärbt und markiert:
+
+::: {.callout-caution icon="false" collapse="true"}
+## Expand for more
+
+Wenn die Sachen in R und Python nicht in den Vergleich gezogen werden und z.B. wenn ich nur eine Variable erzeuge oder Berechnungen ausführe, werden die Code-Blocks nicht gefärbt dargestellt.
+
+```{python}
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Den Variablen a und b die Werte 42, 13 zuweisen und sie zusammen addieren
+a = 42
+b = 13
+a + b
+```
+
+Das Paket `reticulate` hilft die in Python erzeugten Variablen weiterhin in R zu benutzen z.B. Berechnungen durchzuführen.
+
+```{r}
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Die Variablen a und b miteinander multiplizieren
+py$a * py$b
+```
+:::
+
+Wenn ich was lerne, schreibe ich mir auf oder mache ich mir Notizen, ist nicht jedermanns Sache;). Hier gebe ich nur das wieder, was ich bei meinem Lernen verstanden habe und hoffe, dass das ein oder anderem, der R oder Python lernen möchte, von Interesse/Nutzen sein könnte. Die grammatische und/oder orthographischen Fehler im Text bitte ich vorab zu entschuldigen;). In diesem Sinne stelle ich zunächst vor,
+
+## Worum es geht
+
+In diesem Stück geht es darum, was die Typen von Daten sind, warum sie unterschieden werden. Mehr werde ich versuchen, zu zeigen wie R und Python mit Datentypen umgehen. Ich habe mich auf Wichtige aus Richtigen konzentriert und habe versucht, die Datentypen mir aufzunehmen, mit denen man auch meistens zu tun haben könnte. Auf solche Datentypen, über die ich erstmal gelesen habe, wahrscheinlich auch zukunftig nicht brauchen werde wie komplexe Datentypen oder solche Raw Typen in R oder byts in Python, habe keine Beachtung geschenkt. Wie gesagt, habe ich mein Lernfokus auf die Datentypen, die ich für gebräuchlch halte, gelegt.\n\n
+
+So möchte ich aber zuerst kurz erklären,
+
+## Was die Datentypen sind
+
+Es geht darum, welche Unterscheidungsmöglichkeiten es zwischen verschiedenen Arten von Daten gibt und warum die Datentypen überhaupt unterschieden werden. Ich denke gleich an der Unterscheidung zwischen Zahlen und Zeichenketten, mit denen man im Alltag am meisten zu tun hat, wenn man mit Daten arbeitet. Die Unterscheidung ist auch insofern von Bedeutung, wenn wir mit den Daten weiter arbeiten, Berechnungen durchführen wollen. Dabei werden die Daten in Variablen gespeichert, damit das Programm diese Daten anprechen kann. Also der Komputer muss verstehen ob es sich z.B. um die Zahlen oder Text handelt, wenn er was damit anstellen muss. Diese Variable können wir in R oder Python **`Objekte`** nennen. Der Typ dieser Objekte bestimmt, auf welche Art und Weise die Daten gespeichert und dargestellt werden. So ermöglicht beispielweise der Typ *Integer* eine ganze Zahl 42 als z.B *var* zu speichern und diese Zahl wird durch das Objekt *var* repräsentiert. Im Gegensatz zu vielen Programmiersprachen muss man bei Python und R den Typ nicht angeben oder deklarieren. Sie emitteln automatisch, um welchen Typ es sich handelt, wenn man ein Objekt erstellt. Daher fallen sie unter **OOP**(*Object Oriented Programming*)-Programmiersprachen.\n
+
+Jetzt weiß ich mehr oder weniger, was Data Type ist `r fa(name = "face-smile-wink", fill = "indianred")`. Im Folgenden handelt es sich um
+
+## Häufig verwendete Basic Data Types in Python und R
+
+Wie ich oben gesagt habe, werden Daten sowohl in R als auch in Python als Objekte gespeichert. Jedes Objekt bekommt einen Namen durch Zuweisung eines Werts diesem Namen. So kann ich z.B. die Zahl 42 mit dem Namen *val*, oder das Wort "world" mit dem Namen *txt* speichern. R oder Python erkennt beispielweise, dass 42 eine Zahl ist, also numerisch. Diese Zahl kann als *Integer* dargestellt werden. Aber beim Speichern dieser numerischen Zahl verhalten sich Python und R anders, R speichert sie als *numeric*, was Gleitkommazahl oder Float ist. Wenn ich die Zahl als Integer haben will, muss ich R dazu zwingen. Python macht umgekehrt, speichert diese Zahl als *int*, wenn ich als Float haben will, muss ich den Typ angeben bzw umwandeln.\
+Hier ist ein Überblick über die gängigen Basic Data Types in Python und R [In Anlehnung an @WouterCo]:
+
+| `r fa(name = "r-project",  height = "2em", width = "2em", fill = "steelblue")` | Example                            | `r fa(name = "python",  height = "2em", width = "2em",fill = "steelblue")` | Example                            |                Description |
+|:--------------|:--------------|:--------------|:--------------|--------------:|
+| [integer]{style="color: blue;"}                                                | [42L]{style="color: red;"}         | [int]{style="color: blue;"}                                                | [42]{style="color: red;"}          |               ganze Zahlen |
+| [double]{style="color: blue;"}                                                | [42.33]{style="color: red;"}       | [float]{style="color: blue;"}                                              | [42.33]{style="color: red;"}       | reelle Zahlen, Kommazahlen |
+| [character]{style="color: blue;"}                                              | ["Text"]{style="color: red;"}      | [str]{style="color: blue;"}                                                | ["Text"]{style="color: red;"}      |       Zeichenketten, Texte |
+| [logical]{style="color: blue;"}                                                | [TRUE, FALSE]{style="color: red;"} | [bool]{style="color: blue;"}                                               | [True, False]{style="color: red;"} |               die Wahrheitswerte |
+
+: {tbl-colwidths="\[14,18,12,17,39\]"}
+
+*Integer* und *Double* werden in R als **numeric** zusammengefasst bzw. dargestellt. Aus der Tabelle kann ich sagen, dass ich mit drei grundlegenden gängigen Datentypen in Python und R am meisten zu tun habe. Das sind: **numerische** - zusammengesetzt aus *Integer* und *Float*, **logische** und **textuelle** Datentypen.\n
+
+Jetzt gehen wir einzelne Typen durch.
+
+### integer/int
+
+Integer stellt eine ganze Zahl dar, z.B. 7, -7. In R wird die ganze Zahl mit einem `L` hinter der Zahl gekennzeichnet. Warum L dahinter stehen soll, weiß auch nicht;). R soll ja bekanntlich auf Programmiersprache C aufgebaut sein und da soll L für *long integer* stehen. In Python werden die ganze Zahlen normal als integer gespeichert.
+
+::: {layout="[[50,50], [100]]"}
+::: code-r
+***R***
+
+```{r}
+#| collapse: true
+
+ri1 <- 11L
+ri2 <- -12L
+ri3 <- 13.0
+ri4 <- "123"
+print(class(ri1))
+print(class(ri2))
+print(class(ri3))
+print(class(ri4))
+```
+:::
+
+::: code-py
+***Python***
+
+```{python}
+#| collapse: true
+
+pi1 = 11
+pi2 = -12
+pi3 = 13.0
+pi4 = "123"
+print(type(pi1))
+print(type(pi2))
+print(type(pi3))
+print(type(pi4))
+```
+:::
+:::
+
+Um herauszufinden oder anzeigen zu lassen, welchen Typ ein Objekt hat, gibt es Funktion ***`class()`*** in R und ***`type()`*** in Python. In R werden Objekte mit **`<-`** und in Python mit **`=`** zugewiesen. Generell geht eas auch in R mit `=`, aber mit Pfeil ist üblich
+
+::: {.callout-note collapse="true"}
+## More about assignment in R: `<-` or `=` ?
+
+In R ist üblich, Objekte mit `<-` zuzuweisen, während man in Python mit `=` zuweist. Generell geht auch in R mit Gleichheitszeichen. Aber man bevorzugt Zuweisungspfeil. Gleichheitszeichen wird zur Zuweisung eher innerhalb einer Funktion benutzt. Hier eine kleine Demonstration:\
+Den Vektor von 1 bis 15 weise ich *vec* zu und rechne ich Summe:
+
+```{r}
+sum(vec = 1:9)
+```
+
+Wenn ich das Objekt *vec* abfrage, kommt Fehlermeldung, weil dieses Objekt nur in der Funktion existiert:
+
+```{r}
+#| error: true
+
+print(vec)
+```
+
+Das Gleiche mache ich mit `<-`
+
+```{r}
+#| collapse: true
+
+sum(vec <- 1:9)
+print(vec)
+```
+
+Der Zuweisungspfeil wird aber meistens empfohlen und verwendet. Hier zum Nachlesen: [Style guide von Hadley Wickham](http://adv-r.had.co.nz/Style.html) und hier: [Google’s R Style Guide](https://google.github.io/styleguide/Rguide.html)
+:::
+
+**`r fa(name = "r-project",  height = "2em", width = "2em", fill = "steelblue")` $~~$ -- $~~$ Prüfen, ob der Typ des Objekts integer ist**\
+In R kann man den Typ des Objekts durch die Funktion ***`is.integer()`*** oder ***`inherits(object, "type")`*** prüfen.
+
+::: code-r
+***R***
+
+```{r}
+#| collapse: true
+
+# Check in R if a number is integer
+is.integer(ri1)            # Is 11L integer?
+inherits(ri2, "integer")   # Is -12 integer?
+is.integer(ri3)            # Is 13.0 integer?
+is.integer(ri4)            # Is "123" integer?
+inherits(ri4, "character") # Is "123"character?
+```
+:::
+
+**-- in integer umwandeln**\
+Wie gesagt, ohne L speichert R die Zahl als numeric, also als Kommazahl bzw. Float *(Sieh Objekt ri3 im BSP oben)*. Ich muss R dazu bringen, dass er die Zahl als Integer behandelt. Dafür kann ich die Funktion ***`as.integer()`*** benutzen.
+
+::: code-r
+***R***
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Making R treat the object as an integer
+print(class(ri3))              # Type of 13.0
+print(class(ri4))              # Type of "123"
+print(class(as.integer(ri3)))  # Forsing 13.0 to integer
+print(class(as.integer(ri3)))  # Forsing "123" to integer
+print(class(FALSE))            # Type of FALSE
+print(class(TRUE))             # Type of True
+print(as.integer(FALSE))       # FALSE as Integer
+print(as.integer(TRUE))        # TRUE as Integer
+```
+:::
+
+**`r fa(name = "python",  height = "2em", width = "2em", fill = "steelblue")` $~~$ -- $~~$ Prüfen, ob der Typ des Objekts int ist**
+Um zu prüfen gibt es in Python auch mehrere Wege: durch die Funktion ***`isinstance(object, type)`*** (wie `inherits(object, ""type")` bei R) oder kann mann auch prüfen, indem man den Objekttyp dem Datentyp gleichsetzt z.B. ***`type(objekt) ==/is int()`***. Es gibt auch die Funktion ***`is_integer()`***. Diese Funktion ist zum Checken, ob Float vom Typ Integer ist, bei anderer Typen funktioniert nicht, zumindest tat bei mir nicht. Außerdem braucht man dafür Modul sumpy, denkeich, worauf ich hier verzichtet habe. Daher habe ich nicht tief gesucht, denn ich kenne ja schon einen Weg, der nach Rom führt. `r fa(name = "face-smile-wink", fill = "indianred")`
+
+::: code-py
+***Python***
+
+```{python}
+#| collapse: true
+
+# Check in Python if a number is integer
+isinstance(pi1, int) # Is 11 integer?
+type(pi2) == int     # Is -12 integer?
+isinstance(pi3, int) # Is 13.0 integer?
+type(pi4) is int     # Is '123' integer?
+```
+:::
+
+**-- in int umwandeln**\
+Python speichrt die Zahlen als Integer. Wenn ich sie als Float will, muss ich den Typ umwandeln in Float. Wenn ich Daten von Typ z.B. Text, Float oder Logical habe, kann ich ihn umwandeln in Integer in Python, indem ich Objekt in die Funktion ***`int()`*** übergebe.
+
+::: code-py
+***Python***
+
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Making Python treat the object as an integer
+print(type(pi3))        # Type of 13.0
+print(type(pi4))        # Type of "123"
+print(type(int(pi3)))   # Forsing 13.0 to integer
+print(type(int(pi3)))   # Forsing "123" to integer
+print(type(False))      # Type of FALSE
+print(type(True))       # Type of True
+print(int(False))       # FALSE as Integer
+print(int(True))        # TRUE as Integer
+```
+:::
+
+### numeric/float
+
+Die Kommazahlen mit Nachkommastellen sind die Floats. R speichert die Zahlen normalerweise als Float (ohne diese L nach der Zahl). Generell werden Zahlen in R als `numeric` dargestellt. Sie können auch Integer oder Float sein. Beispielweise speichert R die Zahl 10 als Float, mit der Funktion `class()` stellt er den Typ als *`numeric`* dar. Es gibt auch noch eine Funktion in R, mit der man den Typ prüfen kann: ***`typeof()`***. Diese gibt den Typ von 10 als `double` an, vermutlich kommt das auch von der C Sprache. Ich denke, durchs folgende Beispiel wird deutlicher, was ich meine;).
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-fold: true
+#| code-summary: "show the code"
+
+# class() und typeof()
+class(10)    # numeric
+typeof(10)   # double
+class(10L)   # integer
+typeof(10L)  # integer
+class(10.0)  # numeric
+typeof(10.0) # double
+```
+
+**-- Prüfen, ob der Typ des Objekts numeric/float ist**\
+Wie beim Integer, kann man hier auch ähnliche Funktionen benutzen ***`is.numeric()`*** oder ***`is.double()`*** oder auch `inherits(obj, "type")` für R, und gleiche wie oben für Python.
+
+::: {layout="[[50,50], [100]]"}
+::: code-r
+***R***
+
+```{r}
+#| collapse: true
+
+rf1 <- 3.14
+rf2 <- 17
+rf3 <- 20L
+print(class(rf2))  # class()-Type of 17
+print(class(rf3))  # class()-Type of 20L
+print(typeof(rf2)) # typeof()-Type of 17
+print(typeof(rf3)) # typeof()-Type of 20L
+is.numeric(rf1)    # Is 3.14 numeric?
+is.double(rf2)     # Is 17 double?
+is.numeric(rf3)    # Is 20L numeric?
+is.integer(rf3)    # Is 20L integer?
+```
+:::
+
+::: code-py
+***Python***
+
+```{python}
+#| collapse: true
+
+pf1 = 3.14
+pf2 = 17
+pf3 = 20
+print(type(pf1))      # Type of 3.14
+print(type(pf2))      # Type of 17
+print(type(pf3))      # Type of 20
+isinstance(pf1, float)# Is 3.14 float?
+isinstance(pf1, int)  # Is 3.14 int?
+type(pf2) is float    # Is 17 float?
+type(pf3) == float    # Is 20 float?
+isinstance(pf2, float)# Is 17 float?
+```
+:::
+:::
+
+**-- in numeric/float umwandeln**\
+Das Gleiche gilt auch hier, wenn ich den Datentyp in numeric oder float haben will.\
+In R benutze ich dafur die Funktion ***`as.numeric()`*** oder ***`as.double`***.
+
+::: code-r
+***R***
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Making R treat the object as an integer
+print(class(rf2))              # Type of 17
+print(class(rf3))              # Type of 20L
+print(class(as.numeric(rf2)))  # Forsing 17 to nomeric
+print(class(as.double(rf3)))   # Forsing 20L to nomeric
+print(as.numeric(FALSE))       # FALSE as numeric
+print(as.double(TRUE))         # TRUE as numeric
+```
+:::
+
+In Python kann ich dies mit der Funktion ***`float()`*** anstellen.
+
+::: code-py
+***Python***
+
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-fold: true
+#| code-summary: "show the code"
+
+# Making Python treat the object as an integer
+print(type(pf2))        # Type of 17
+print(type(pf3))        # Type of 20
+print(type(float(pf2))) # Forsing 17 to float
+print(type(float(pf3))) # Forsing 20 to float
+print(float(False))     # FALSE as float
+print(float(True))      # TRUE as float
+```
+:::
+
+### character/str
+
+Wie der Name schon sagt, solche Daten sind Strings, die Zeichen, Buchstaben enthalten. In R werden sie als `character` und in Python als `str` charakteresiert. Mit Strings hat man in der Praxis auch wie mit numerischen Daten häufig zu tun. Beispielweise können im zu analysierenden Datensatz auch kategoriale Variablen: "männlich", "weiblich" vorhanden sein usw.\
+Strings können im doppelten Apostroph `'text'` oder in Anführungszeichen oder Gänsefüßchen `"text"` angegeben werden/sein in R auch in Python. Die Funktion für die Länge des Strings ist für R: ***`nchar()`*** und für Python ***`len()`***.
+
+::: panel-tabset
+# `r fa(name = "r-project",  height = "1em", width = "1em", fill = "steelblue")`
+
+::: code-r
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| error: true
+
+# Examples for Characters
+rt1 <- "123"
+rt2 <- "Hello" 
+rt3 <- "World"
+glue::glue("Class of rt1: {class(rt1)}")
+# Adding Strings 
+glue::glue("Mit der Funktion glue(): {rt2} {rt3}")
+paste("Mit der Funktion paste():", rt2, rt3, sep = " ")
+# Compare Strings
+rt2 == "Hello"
+rt2 == "HELLO"
+rt1 == 123
+# Length of String
+glue("Länge von \"123\": {nchar(rt1)}")
+glue("Länge von \"Hello\": {nchar(rt2)}")
+```
+:::
+
+R hat es schwer mit Zusammenaddieren von Strings und multiplizieren von Strings mit einer Zahl.
+
+::: {.callout-note collapse="true"}
+## More about string operations in R
+
+Wenn man in R zwei Strings zusammen addieren will oder String mit einer Zahl multiplizieren will, gibt R Error zurück, also kann es nicht. Vielleich gibt es irgendein Paket, das dies ermöglichen, müsste man mal schauen. Also einfach Addieren von zwei Strings wie in Python geht in R nicht. Mit der Funktion ***`glue()`*** aus dem Paket `glue` oder mit der Funktion `paste` konnte ich zwei Strings zusammen addierend anzeigen lassen. Diese Funktion gibt es auch im Paket `stringr` kann so angewendet werden: `stringr::str_glue()`. Die Funktion `glue("The value of text is {text})` ist wie f-String in Python `print(f"The value of text is {text}")`.
+
+```{r}
+#| collapse: true
+#| error: true
+
+rt1 + rt2
+rt3 * 3
+```
+:::
+
+# `r fa(name = "python",  height = "1em", width = "1em",fill = "steelblue")`
+
+::: code-py
+```{python}
+#| code-line-numbers: true
+#| results: hold
+
+# Examples for Characters
+pt1 = "123"
+pt2 = "Hello" 
+pt3 = "world"
+print(f"Type of pt1: {type(pt1)}")
+# Adding Strings
+print(pt2 + " " + pt3) # or
+print(f"{pt2} {pt3}")
+# Multiply a string by 3
+pt3*3
+# Compare
+pt2 == "Hello"
+pt2 == "HELLO"
+pt1 == 123
+# Length of String
+print(f"Länge von \"123\": {len(pt1)}")
+print(f"Länge von \"Hallo\": {len(pt2)}")
+```
+:::
+:::
+
+Strings sing ein umfangreiches Thema. Hier waren nur Sachen bezogen auf Datentyp. Vielleicht wird es zudem ein separates Notizbuch geben `r fa(name = "face-smile-wink", fill = "indianred")`.
+
+### logical/bool
+
+Die Objekt vom logischen Typ können die Werte WAHR/FALSCH oder 1/0 annehmen. Diese werden in R als `logical` und in Python als `bool` gespeichert. Schreibweisen unterscheiden sich auch, geschrieben bzw. dargestellt werden sie in R mit Großbuchstaben: [TRUE/FALSE]{style="color: red;"} und in Python klein geschrieben mit Großbuchstaben am Anfang: [True/False]{style="color: red;"}.
+
+::: {layout="[[50,50], [100]]"}
+::: code-r
+***R***
+
+```{r}
+#| collapse: true
+
+rt <- TRUE
+rf <- FALSE
+class(rt)        # Type of TRUE
+class(rf)        # Type of FALSE
+is.logical(rt)   # Is TRUE logical
+as.character(rt) # TRUE as character
+as.character(rf) # FALSE as character
+as.integer(rt)   # TRUE as integer
+as.integer(rf)   # FALSE as integer
+rt & rf          # rt AND rf
+rt | rf          # rt OR rf
+!rt              # Is not TRUE
+```
+:::
+
+::: code-py
+***Python***
+
+```{python}
+#| collapse: true
+
+pt = True
+pf = False
+type(pt)  # Type of True
+type(pf)  # Type of False
+type(pt) is bool # Is bool
+str(pt)   # True as String
+str(pf)   # False as String
+int(pt)   # True as Integer
+int(pf)   # False as Integer
+pt and pf # pt AND pf
+pt or pf  # pt OR pf
+not pt    # Is not True
+```
+:::
+:::
+
+Hoffentlich ist mir gelungen, meine Notizen einigermaßen verständänlich und anständig darzustellen `r fa(name = "face-smile-wink", fill = "indianred")`. Next Topic will be about data structures.
+
+## References

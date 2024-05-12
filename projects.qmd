@@ -1,0 +1,16 @@
+---
+title: "Best training - doing yourself"
+title-block-banner: "images/projects.png"
+page-layout: full
+link-external-newwindow: true
+listing:
+  contents: projects
+  sort: "date desc"
+  type: default # grid
+  feed: true
+  categories: cloud
+  sort-ui: [title, date]
+  filter-ui: true
+  date-format: "MMMM, YYYY"
+
+---

@@ -1,0 +1,22 @@
+
+
+/*-- scss:defaults --*/
+/*-- scss:defaults --*/
+// Base document colors #383A3D
+$body-bg: #315068;
+$body-color: white;
+$link-color: #75AADB;
+
+// Code blocks
+$code-block-bg-alpha: -.8;
+
+$font-family-sans-serif: "Atkinson Huperlegible";
+
+// backroundcolors in Navbar
+$navbar-bg: #0E668D;
+$navbar-hl: #93E9B9;
+$navbar-fg: #93E9B9;
+.navbar {
+  navbar-active-color: #93E9B9;
+  navbar-disabled-color: #93E9B9;
+}

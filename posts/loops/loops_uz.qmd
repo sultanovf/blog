@@ -1,0 +1,60 @@
+---
+title: |
+  R & Python: Control flows and loops\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"If you always do what you can already do, you will always remain what you already are.\"  <br> ~ Henry Ford.
+author: "Fazliddin Sultonov"
+date: "2024-05-09"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [R, Python, Uzbek, Loop, Control flow]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+
+# Output
+format: 
+  html:
+    theme: cosmo
+---
+
+
+![](pictures/decide.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  "data.table"
+  )     
+#
+```
+
+Bu galgi mavzuda shartlar va sikllar haqida gap boradi
+
+![Tez kunda...](pictures/soon.png){fig-alt="Click for zooming"}

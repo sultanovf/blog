@@ -1,0 +1,55 @@
+---
+layout: page
+title: CV - Fazliddin Sultonov
+#excerpt: My current CV
+execute:
+  freeze: true  # never re-render during project render
+#page-layout: full
+
+format: 
+  html:
+    # grid:
+    #   sidebar-width: 600px
+    theme: Darkly
+    # fontcolor: blue
+    # backgroundcolor: "#bdd7e7"
+    #monobackgroundcolor: red
+    #monofont: yellow
+    include-in-header:
+      - text: |
+          <style>
+          .panel-tabset > .nav-tabs,
+          .panel-tabset > .tab-content {
+            border: none;
+            font-size: 20px;
+            color: blue;
+          }
+          </style>
+---
+
+::: {.panel-tabset}
+
+<!-- # Show the resume here {{< fa brands firefox-browser >}} -->
+# {{< fa user-tie >}}
+```{=html}
+
+<iframe
+  width="850"
+  height="800"
+  src="./cv/cv.html">
+</iframe>
+```
+
+# {{< fa file-pdf >}}
+```{=html}
+
+<iframe
+  width="850"
+  height="800"
+  src="./cv/cv.pdf">
+</iframe>
+```
+:::
+
+
+
