@@ -1,0 +1,94 @@
+project:
+  type: website
+
+
+website:
+  title: "Fazliddin Sultanov"
+  site-url: https://sultanov.quarto.pub/blog
+  description: "A sample newbie's blog"
+  favicon: images/profil.jpg
+  twitter-card: true
+  margin-header: subcribe.html
+
+
+# Navbar - Manuleiste der Seite ================================================
+  navbar:
+    logo: images/log.png
+    background: "#0E668D" # darkcyan #266BAB  #004E4F 166589 
+    pinned: true
+    # search: true
+    left:
+      - icon: person-bounding-box
+        text: me
+      # - text: "{{< fa id-badge >}} about" #"{{< fa a >}}bout" user-gear
+        href: about.qmd
+      - text: "{{< fa blog >}} blog" #"{{< fa b >}}log"
+        href: index.qmd
+      - text: "{{< fa chart-simple >}} gallery" #"{{< fa g >}}allery"
+        href: gallery.qmd
+      - text: "{{< fa code >}} practice" #"{{< fa p >}}ractice"
+        href: projects.qmd
+      - text: "{{< fa user-tie >}} CV" #CV
+        href: https://sultanov.quarto.pub/cv/
+        #href: resume.qmd
+        target: _blank
+      
+    right:
+      - text: "{{< fa square-share-nodes >}}" #"{{< fa bell >}}"
+        #icon: send-fill # chat-left-dots, chat-square-dots
+        menu: 
+        - text: "{{< fa envelope size=lg >}} $~$ Email" #
+          href: mailto:fazliddin@sultonov.ru
+        - text: "{{< fa brands telegram size=lg >}} $~$ Telegram" # 
+          href: https://t.me/R4Pythonistas
+          target: _blank
+        - text: "{{< fa brands square-instagram size=lg >}} $~$ Instagram" #
+          href: https://www.instagram.com/sultanof.uzb/
+          target: _blank
+        - text: "{{< fa brands youtube size=lg >}} $~$ YouTube" #
+          href: https://www.youtube.com/@hw_sultanov
+          target: _blank
+        - text: "{{< fa brands linkedin size=lg >}} $~$ Linkedin" #
+          href: https://www.linkedin.com/in/fazliddinsultonov/
+          target: _blank
+        - text: "{{< fa brands square-xing size=lg >}} $~$ Xing" #
+          href: https://xing.com/profile/Fazliddin_Sultonov3
+          target: _blank
+      - icon: github
+        href: https://github.com/sultanovf
+        target: _blank
+      - icon: rss
+        href: index.xml
+    
+    
+# Suchfunktion im Navbar =======================================================
+  search:
+    location: navbar
+    type: overlay
+    collapse-after: 3
+
+  page-footer:
+    background: "#004E4F" # darkcyan
+    center: "{{< fa regular copyright >}} 2024, Made with {{< fa heart >}} in\ 
+    [Quarto](https://quarto.org/) by Fazliddin Sultanov"
+  # cookie-consent:
+  #   type: express
+  #   style: simple
+  #   palette: dark
+  back-to-top-navigation: true
+
+
+# Format Output ================================================================
+format:
+  html: 
+    fontsize: 1.2em
+    theme:
+      light: darkcyan
+      dark: [darkcyan, customs/custom.scss] 
+      #flatly #blue #cerulean #darkcyan 
+    css: customs/styles.css
+
+# Custom Format mit .scss:
+# https://quarto.org/docs/output-formats/html-themes.html
+execute:
+  freeze: auto

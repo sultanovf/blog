@@ -1,0 +1,424 @@
+---
+title: |
+  Estimates of Location\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"Я немного скептически отношусь к статистике. По статистике, и миллионер, и бедняк имеют по полмиллиона каждый.\"  <br> ~ Франклин Рузвельт.
+author: "Fazliddin Sultonov"
+date: "2024-06-09"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [Statistics, Uzbek, R, Python, Mean, Median, Modal, Quartil, Box-Plot]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-title: "Table of Contents"
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+# bibliography
+bibliography: reference.bib
+nocite: |
+  @*
+---
+
+
+![](pictures/average.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+*Tavsiflovchi statistika (descriptive statistics)* yordamida ma'lumotlar *umumlashtirilgan* tarzda taqdim etiladi va tavsiflanadi, ya'ni Tavsiflovchi statistika ko'plab daraxtlar (berilgan ko'p ma'lumotlar) o'rniga o'rmonni (masalan o'rta qiymat) ko'rsatadi [@r_ModernDA]. Demak bunda ma'lumotlar ular haqida birinchi taassurotni olish uchun *explorativ* tavsiflanadi. Bu narsa Machine Learning sohasida *Feature Engineering* deb ham ataladi [@dsPraxis]. Tavsiflovchi statistikada yoki ma'lumotlarni tavsifiy tahlil qilishda maqsadi, *ko'rsatgich raqamlar (key figures)*, *jadvallar* va *grafiklar* yordamida *ma'lumotlarni taqsimlashning umumiy ko'rinishda* tasvirlab berishga qaratiladi. Tavsiflovchi statistikada asosiy o'lchovlar ma'Lumotlar to'plamini ikki holatda tasvirlaydi: ma'lumotlarni *joylashuvi* va *tarqalishi*.
+
+Ko'p hollarda ma’lumotlar bir markaziy nuqta atrofida to'planadi. Bunda har qanday ma’lumotni tavsiflash uchun ma’lum bir *odatiy quymat*ni ko'rsatish yetarli bo'ladi. *Markaziy tendensiyasi* (engl. Estimates of Location) ma'lumotlarni ana shu *odatiy quymat*ga yaqinlashuvini ifodalaydi, boshqacha aytganda qaysi qiymat ma'lumotlar to'plami taqsimotining markazini eng yaxschi ifodalay oladi. Bularga arifmetik *o'rtacha arifmetik qiymat*, *mediana* (engl median) va *mode* lar kiradi,
+
+:::{layout-ncol=2}
+```{mermaid}
+%%| fig-cap: "Markaziy tendensiya"
+%%| echo: false 
+
+flowchart LR
+  A("Estimates of Location\n(Markaziy tendensiya)")
+  B[["- Mean\n- Median\n- Modus\n- Quantil"]]
+  A --> B
+  style A text-align:center;
+```
+
+```{mermaid}
+%%| fig-cap: "Variatsiya/Tarqalish"
+%%| echo: false 
+
+flowchart LR
+  A("Estimates of Variability\n(Variatsiya/tarqalish)")
+  B[["- Standard deviation (standart og'ish)\n- Variance (Dispersiya)\n- Range (Tafovut)\n- Interquartile range, IQR (Kvartillararo tafovut)"]]
+  A:::myClass --> B
+  classDef myClass style: text-align:center
+```
+:::
+
+## Mean
+
+O'rtacha arifmetik qiymat, (engl. mean) analitik o'rta qiymatlar ichida eng ko'p tarqalgan turi hisoblanadi. Arifmetik o'rta qiymat barcha qiymatlarni $(x_1, x_2, ..., x_n)$ qo'shish va yig'indini qiymatlar soniga (n) bo'lish yo'li bilan hisoblanadi:
+$$
+\bar{x} = \frac{x_1+x_2+x_3+...+x_n}{n}  = \frac{1}{n}\sum_{i = 1}^{n}{x_i}
+$$
+Aytaylik, biz ko'chada so'rov o'tkazdik va odamlardan ularning kasbi, yoshi, bo'yi va daromadi haqida so'radik.
+
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+
+interview <- list(
+  profession = c("Doctor", "Teacher", "Doctor", "Pensioner", "Professor", "Pensioner", "Student", "Student", "Pensioner"),
+  age = c(47, 39, 55, 68, 51, 71, 21, 25, 82),
+  tall = c(1.75, 1.72, 1.73, 1.68, 1.75, 1.70, 1.78, 1.77, 1.73),
+  income = c(3500,  2200, 3400, 2050, 2600, 1400, 1050, 950, 1100)
+)
+df <- data.frame(interview)
+as_tibble(df)
+```
+
+Arifmetik o'rta qiymatni (yozishga qulay bo'lishi uchun bundan keyin mean deb ketiladi) hisoblash uchun R va Python da `mean()` funksiyasi bor. Mean hisoblashda etibor berish kerak bolgan narsa, ma'lumotlar *metrik* bo'lishi kerak. Misoldagi yosh va daromad xarakteristikalari (variable) uchun mean R va Pythonda quyidagicha hisoblanadi:
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| code-fold: false
+#| collapse: true
+#| classes: code-input
+
+m_age <- mean(df$age); m_inc <- mean(df$income)
+glue::glue("mean of age: {m_age}\nmean of income: {round(m_inc, 2)}")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| code-fold: false
+#| collapse: true
+#| classes: code-output
+
+age_m = r.df.age.mean(); inc_m = r.df["income"].mean()
+print(f"mean of age: {age_m}\nmean of income: {round(inc_m, 2)}")
+```
+:::
+
+:::{.callout-note}
+### Interpretatsiya
+
+To'qqiz respondentning (ya'ni biz so'ragan insonlar) yoshi bo'yicha o'rtacha arifmetik ko'rsatkich: 51 va daromad uchun: 2161. Demak biz, respondentlar haqidagi ma'lumotlarni bitta odatiy qiymat (bu yerda o'rta qiymat) bilan tasvirlashimisi mumkin, yani ularni *o‘rtacha* 51 yoshda va oyiga *o‘rtacha* 2027,78 (evro, dollar, so'm, nima bo'sayam) maosh oladi, deb umumlashtirib aytishimiz mumkin.
+:::
+
+## Median
+
+Mediana - tartiblangan qiymatlar o'rtasida joylashgan qiymat hisoblanadi. U taqsimotni ikkita teng yarimga ajratadi va taqsimotning birinchi yarmi undan kichikroq (agar taqsimotda takrorlanuvchi sonlar bo'lmasa) va ikkinchi yarmi undan kattaroq bo'ladi.
+
+Mediana hisoblash uchun R va Pythonda `median()` funksiyasi mavjud. Mediana *metrik va ordinal(tartibli)* qiymatlarni talab qiladi. Quyida misoldagi respondentlarning bo'yi va daromadi uchun median hisoblangan.
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| code-fold: false
+#| collapse: true
+#| classes: code-input
+
+med_tall <- median(df$tall); med_inc <- median(df$income)
+glue::glue("median of tall: {med_tall}\nmedian of income: {med_inc}")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| code-fold: false
+#| collapse: true
+#| classes: code-output
+
+import pandas as pd
+tall_med = r.df.tall.median(); inc_med = r.df["income"].median()
+print(f"median of tall: {tall_med}\nmean of income: {inc_med}")
+```
+:::
+
+:::{.callout-note}
+### Interpretatsiya
+
+To'qqiz respondentning bo'yi bo'yicha o'rtacha ko'rsatkich: 1,73 va daromad uchun: 2050. Korsatgichlardan xulosa qilib shunday deyish mumkin: respondentlarning yarmini (50%) bo'yi  1,73 metrdan pastroq va oyiga 2050 dan kam (evro, dollar, nima bo'sayam) maosh oladi. Yoki aksincha, so'ralganlarning yarmini (50%) bo'yi 1,73 metrdan baland va oyiga 2050 dan ortiq daromad topadi.
+:::
+
+## Modus
+
+ma'lumotlar to'plamida eng ko'p uchraydigan qiymat - mode yoki modal qiymat deyiladi. Mode uchun qiymatni *metrik, tartibli va nominal (kategorik)* ma'lumotlar uchun hisoblanishi mumkin. Nominal ma'lumotlar uchun modal o'rtacha qiymatni aniqlash uchun yagona usuldir. R da mode uchun bevosita funksiya yo'q, modal qiymatni ko'rsatish uchun `table` funksiyasidan foydalanish mumkin- Bu funksiya qaysi qiymat nechi marta uchragani qaytaradi. Uchragan sonlari bo'yicha eng kattasi mode hisoblanadi.
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+cat("Frequence table for variable profession:")
+table(df$profession)      # Häufigkeitstablle
+# Modus-Maximaler Wert von der Freq.Table
+cat("Mode for variable profession - Max value of FreqTable: ", max(table(df$profession)))
+cat("\n\nFrequence table for variable tall:")
+table(df$tall)            # Häufigkeitstablle
+cat("Mode for variable tall - Max value of FreqTable: ", max(table(df$tall)))
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+#from statistics import mode
+# tall_med = r.df.tall.median(); inc_med = r.df["income"].median()
+# print(f"median of tall: {tall_med}\nmean of income: {inc_med}")
+freq_prof = r.df["profession"].value_counts()       # FreqTable for var profession
+modi_prof = r.df["profession"].value_counts().max() # Modi for var profession
+freq_tall = r.df["tall"].value_counts()             # FreqTable for var tall
+modi_tall = r.df["tall"].value_counts().max()       # Modi for var tall
+print("Frequence table for variable profession:")
+print(freq_prof)
+print(f">> Mode for variable profession - Max value of FreqTable:  {modi_prof}")
+print("\nFrequence table for variable tall:")
+print(freq_tall)
+print(f">> Mode for variable tall - Max value of FreqTable:  {modi_tall}\n")
+```
+:::
+
+:::{.callout-note}
+### Interpretatsiya
+
+Modani izohlab beradigan aytarli ko'p narsa yo'q. Misoldagi ksb va bo'y uchun hisoblangan modal qiymatlardan xulosa qilib aytish bo'lgan narsa shuki, respondentlarning aksariyati nafaqaxo'rlar yoki ko'pchilikning bo'yi 1,73 metr.
+:::
+
+## Outliers: Mean vs Median
+
+Ko'p holatlar mavjud bo'lib, bunda mediana o'rtacha arifmetik qiymatdan yaxshiroq o'lchov birligi sifatida o'zini ko'rsata oladi, masalan, ma'lumotlar to'plamida ekstremal qiymatlar (engl. outliers) bo'lsa. Haddan tashqari holatlarda, medianaga natijani buzishi mumkin bo'lgan ekstremallar ta'sir qilmaydi. Misol tariqasida, biz yuqoridagi misolini ekstremal qiymatni qo'shish orqali kengaytiramiz. Tasavvur qilamiz, 9 ta odamdan keyin yana bitta oxirgi odamdan ma'lumotlarini oldik, aytaylik u tiktoker yoki blogger bo'lsin, ya'ni yosh (19), baland bo'yli (1,84) va boshqa respondentlarga qaraganda ancha ko'proq daromad topadi(5600). Bizning malumotlar to'plamida bu ekstremal holatni ifodalaydi. Endi bizning asl o'rtachaa arifmetik qiymatimiz o'zgaradi va yuqoriroq bo'ladi (chunki yana bir respondent qo'shildi).
+
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+
+v <- data.frame("Bloger", 19, 1.84, 5600); names(v) <- names(df)
+extrem <- rbind(df,v)
+cat("New df with outlier:\n")
+tail(extrem, n = 3)
+# Means
+cat("\nWithout outlier:\n")
+glue::glue("income: mean - {round(mean(df$income),2)}, median - {median(df$income)}\nage: mean - {mean(df$age)}, median - {median(df$age)}")
+#glue::glue("Median income: {median(df$income)}\nMedian age: {median(df$age)}")
+cat("\nWith outlier:\n")
+glue::glue("income: mean - {mean(extrem$income)}, median - {median(extrem$income)}\nage:mean - {mean(extrem$age)}, median - {median(extrem$age)}")
+#glue::glue("Median income: {median(extrem$income)}\nMedian age: {median(extrem$age)}")
+
+```
+
+Yuqorida korinib turganidek, ekstremal holatda o'rtacha arifmetik qiymat daromad uchun 2.027,78 dan 2.385 gacha o'zgardi (o'sdi). A medianada esa o'zgarish uncha katta emas, 2.050 dan 2.125 ga o'zgardi xolos. Bunday holatda arifmetik qiymat hisoblanib, o'rtacha daromad 2.385 deb xulosa qilinsa, ma'lumotlar xato tahlil qilingan bo'ladi. Ushani uchun, *agar malumotlar to'plamida ekstremal qiymatlar bo'lsa*, o'rtacha qiymatni hisoblash uchun* o'rtacha arifmetik emas medianani ishlatgan afzalroq* bo'ladi.
+
+## Usage
+
+O'rtacha qiymat, biz ko'rganimizdek, turli yo'llar bilan aniqlanadi. Shuning uchun vaziyatga qarab (masalan, ma'lumotlarning qaysi turga ega ekanligi) qaysi o'lchovi birligi qaysi vaziyatga (ma'lumotlarga) eng mos kelishini oldindan ko'rib chiqish maqasadga muvofiq bo'ladi. Bunga mani qisqacha xulosam:
+
+  - **nominal** yoki kategorik ma'lumotlar uchun **mode** ishlatiladi, chunki boshqa markaziy tendensiya o'lchovlari bunqa ma'lumot turlariga mos kelmaydi. 
+  
+  - **Mediana** dan foydalanish qachonki *oqilona* bo'ladi, agar
+    - ma'lumotlar **ordinal** yoki tartibli bo'lsa.
+    - taqsimotda **extremal** holatlar borligini bilsak.
+      
+  - Agar ma'lumotlar va nosimmetrik taqsimot mavjud bo'lsa, unda arifmetik o'rtacha eng mos keladi **miqdoriy** (количественный) bo'lsa va taqsimot **symmetrik** bo'lsa, unda **o'rtacha arifmetik qiymat** dan foydalanish eng tO'g'ri yo'l hosoblanadi.
+
+## Quantile & Quartile
+
+Ma'lumotni ikkita teng o'lchamga ajratadigan medianadan farqli o'laroq, kvanti **tariblangan** ma'lumotlarni turli o'lchamdagi bo'limlarga ajratadi, ya'ni *$x_p$ kavntil* yoki *x% (px100) kvantillar*ga bo'ladi. Kvantlarni bo'laklarga ajratilgan bo'limlardeyish mumkin. Misol uchun, 10% kvantil yoki 0,1 kvantil taqsimotdagi ma'lumotlarning 10% bu kvantil ostida, qolganlari esa (1-p, ya'ni 90%) uning ustida joylashganligini aytadi. Agar ma'lumotlarni **to'rtta teng qismga** ajratilsa, bular *maxsus kvantillar*, ya'ni **kvartillar** hisoblanadi.
+
+  - **0,25/25%-kvantil = quyi/birinchi kvartil = Q1** - n ma'lumotlarning kamida 25% $x_{0,25}$ dan kichik yoki teng ekanligini bildiradi.
+  
+  - **0,50/50%-kvantil = o'rta/ikkinchi kvartil = Q2** - medianaga teng, n ma'lumotlarning kamida 50% $x_{0,50}$ dan kichik yoki katta.
+  
+  - **0,75/75%-kvantil = yuqori/uchinchi kvartil = Q3** - n ma'lumotlarning kamida 75% $x_{0,75}$ dan kichik yoki teng ekanligini bildiradi.
+  
+Misol tariqasida, tasavvur qilaylik, biz kichik so'rov o'tkazamiz va 10 kishidan kuniga nechi soat vaqtini uyali telefonda o'tkazishini so'raymiz. Aytaylik, javob quyidagicha (raqamlar o'ylab topilgan):
+
+```{r}
+#| code-fold: false
+#| collapse: true
+
+time <- c(2.3, 1.7, 3, 2, 2.5, 3.2, 3.4, 1.5, 4, 1)
+sort(time)
+median(time)
+```
+
+Kvartillarni hisoblash uchun avval ma'lumotlar to'plamlari soni (n) ni  p ga (0,25, 0,50, 0,75) ko'paytirish $n*p$ kerak. Natija *butun son* yoki *butun son emas*ligiga qarab, keyingi hisoblash uchun ushbu formuladan foydalaniladi:
+$$x_p = \begin{cases}
+\frac{1}{n}(x_{(np)} + x_{(np+1)}) & if (p\cdot n) &\text{wholenumbered}\\
+x_{(|np|+1)} & if (p\cdot n)&\text{not wholenumbered}\end{cases}$$
+
+Quyida kvartillarni hisoblashni grafik tarzda tasvirlangani:
+
+![Quartile (25%, 50%, 75%)](pictures/quartil.png){fig-alt="Click for zooming"}
+Yaxshiyamki, hamma narsani qo'lda hisoblash shart emas. Buning uchun R da `quantile()` funksiyasi mavjud. Bundan tashqari, `summary()` *(Pythondagi `describe()` funksiyasi kabi)* funktsiyasi o'rtacha arifmetik qiymat, mediana, Q1, Q2 = mediana, Q3, min va max kabi markaziy tendensiya o'lchovlari ko'rsatish orqali ma'lumotlarning birinchi taassurotini beradi.
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+cat("Vector time: Qauartile: 25%-, 50%-, 75%- Quantile\n")
+quantile(time)        # Qauartile: 25%-, 50%-, 75%- Quantile
+cat("\nVector time: 0,6- Quantil:\n")
+quantile(time, 0.60)  # 60%- Quantil
+cat("\nVector time: Summary\n")
+summary(time)         # Summary for variable income
+cat("\nDescriptive measures with summary() for df:\n")
+summary(df)
+# summary(df$age)     # Summary for selected variable (age)
+```
+
+Pythonda ham `quantile()` funksiyasi mavjud bo'lib, kerakli kvantil(lar)ni ro'yxat formatida qavs ichiga kiritilishi kerak. Funktsiya Pandas yoki NumPy modullari orqali ishlatiladi.
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+print("Quartile for one variable (age):")
+r.df["age"].quantile([0.25,0.5,0.75])
+print("\nQuantile for more variables:")
+r.df[["age", "income", "tall"]].quantile([.1, .25, .5, .75], axis = 0)
+# with describe()
+print("\nDescriptive measures with discribe() for df:")
+# r.df[["age", "tall"]].describe() # for selected variables
+r.df.describe()
+```
+:::
+
+:::{.callout-note}
+### Interpretatsiya
+
+Kvantillar yoki kvartillar ma'lumotlarni taqsimlashni tasvirlaydi. Bu umumiy taqsimotning ma'lum bir qismi ma'lum bir kvantil/kvartil ostida yoki undan yuqorida joylashgan degan bayonotni berishga imkon beradi.
+Bular Quartile oder Quartile gibt einen der ersten Überblick von der Datenverteilung. Dadurch kann man die Aussage treffen, dass eine bestimme Teil der gesamten Verteulung liegt unter oder über ein Quantil/Quartil. Nehmen wir das Beispiel von oben mit dem Handy. Uyali telefon haqidagi yuqoridagi misolni olaylik.
+
+```{r}
+#| code-fold: false
+#| collapse: true
+
+# How many time spent you for handy in a day?
+handy <- c(2.3, 1.7, 3, 2, 2.5, 3.2, 3.4, 1.5, 4, 1)
+# Quartile
+quantile(handy)
+# 0.6 Quantil
+quantile(handy, 0.6)
+```
+
+Bundan ko'rinib turibdiki, 10 respondentning to'rtdan uch qismi (75%) vaqtini 3 soatgacha uyali telefonda o'tkazadi yoki kvartil 0,6 - respondentlarning 60 foizi kuniga 2,7 soatgacha vaqtini uyali telefonda  yo'qotadi.
+
+## Box-Plot
+
+Tavsiflash tahlilini amalga oshirishda, ma'lumotlarning harakatlari haqida birinchi taassurot olish uchun, ayniqsa ma'lumotlar to'plami katta bo'lsa, ko'pincha grafik usullardan ham foydalananiladi. Eng kop qo'llanaliganlaridan bu box-plot dir. U ma'lumotlarni asosan 5 ta asosiy o'lchamga ($x_{min}$, $x_{0,25}$, $x_{0,50}$, $x_{0,75}$, $x_{max}$) jamlaydi va ularni grafik tarzda aks ettiradi. Quyida box-ploti tasvirlangan grafik keltirilgan.
+
+![Box-Plot](pictures/boxplot.png)
+
+R da box plot uchun basis funktsiyalar ichida `boxplot()` funksiyasi ham mavjud. Box-plotni `ggplot2` paketi orqali ham R da yaratish mumkin. Pythonda ham bu funksiya `matplotlib` yoki `seaborn` modullarida mavjud.
+
+:::: {.panel-tabset}
+## `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+boxplot(extrem$age,
+  ylab = "age",
+  main = "A sample Box-Plot",
+  col= "azure")
+abline(h=mean(extrem$age), col="tomato1", lwd=1, lty = 2)
+```
+:::
+
+## `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+import matplotlib.pyplot as plt
+
+# Create a boxplot for the desired column
+plt.boxplot(r.extrem["age"], showmeans = True, meanline = True, showfliers = False)
+# Add labels and title
+plt.xlabel("")
+plt.ylabel("age")
+plt.title("A sample Box-Plot")
+# Show the plot
+plt.show()
+```
+:::
+::::
+
+Yuqoridagi box-plot misoldagi dataframening age(yosh) ustuni(variable) uchun yaratilgan. Grafikda ko'rinib turganidek, ma'lumotlarning yarmi (50%) quti (IQR) ichida joylashgan, 25% quti yuqorisida va 25% quti ostida (grafikdagi quti tashqarisidagi nuqta-nuqta chiziqlar) joylashgan. Biz buni shunday talqin qilishimiz mumkin: respondentlarning/odamlarning 50 foizi 25 yoshdan 68 yoshgacha. O'rtadagi tekis chiziq mediana = 51, kesilgan chiziq esa o'rtacha arifmetik qiymat = taxminan 49 (o'rtacha arifmetik qiymatni grafikga qo'shish mumkin, lekin box-plotning tarkibiy/asosiy tasvirlaydigan o'lchamlariga kirmaydi), bundan kelib chiqib, so'rovda qatnashganlarning o'rtacha yoshi 50 yoshni tashkil qiladi degan xulosaga kelish mumkin. Respondentlarning 25 foizi 25 yoshgacha, 25 foizi 68 yoshdan yuqori, va qayd etilganidek, 50 foizi 25-68 yosh orasida.
+
+
+## References
+
+
+

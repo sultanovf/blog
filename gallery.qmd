@@ -1,0 +1,18 @@
+---
+title: "A picture paints a thousand words"
+title-block-banner: "images/gallery.png"
+page-layout: full
+#link-external-newwindow: true
+listing:
+  contents: gallery
+  page-size: 9
+  sort: "date desc"
+  type: grid
+  grid-item-border: true
+  grid-item-align: left
+  feed: true
+  categories: cloud
+  sort-ui: [title, date]
+  filter-ui: true
+  date-format: "MMMM, YYYY"
+---

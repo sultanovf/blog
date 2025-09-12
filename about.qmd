@@ -1,0 +1,55 @@
+---
+title: "Fazliddin Sultonov"
+image: images/profile.png
+page-layout: full
+about:
+  template: jolla # trestles solana marquee broadside
+  image-width: 15em
+  image-shape: round
+  links:
+    - text: LinkedIn
+      icon: linkedin
+      href: https://www.linkedin.com/in/fazliddinsultonov/
+    - text: "{{< fa brands square-xing >}} Xing"
+      href: https://xing.com/profile/Fazliddin_Sultonov3
+    - icon: youtube
+      text: YouTube
+      href: https://www.youtube.com/@hw_sultanov
+    - text: "{{< fa brands square-instagram size=sm >}} Instagram"
+      # text: Instagram
+      href: https://www.instagram.com/sultanof.uzb/
+    - icon: telegram
+      text: Telegram
+      href: https://t.me/R4Pythonistas
+    - icon: github
+      text: Github
+      href: https://github.com/sultanovf
+    - icon: envelope-fill
+      text: Email
+      href: mailto:fazliddin@sultonov.ru
+
+link-external-icon: false
+link-external-newwindow: true
+---
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+library(fontawesome)
+
+```
+
+ Educated is who knows where to find what he does not know.
+
+ --- Georg Simmel
+
+---
+
+::: {#hero-heading}
+Assalomu alaykum! Kamina Fazliddin Sultonov, I am interested in data analysis, data science and visualization. As tools for this I am passionate about learning `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")` and `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`. While learning I take notes diligently `r fa(name = "face-grin-wink", fill = "indianred")`. The notes to myself I will publish in this little blog. And I hope that might be of interest/use to some newbies like me, who want to learn in R or Python. Suggestions, feedbacks, critiques and compliments I always welcome, so feel free to [contact me](mailto: fazliddin@sultonov.ru). Thanks! 
+<!-- and enjoy reading! `r fa(name = "readme",  height = "1.5em", width = "1.5em",fill = "darkslategrey")` -->
+:::
+
+

@@ -1,0 +1,1407 @@
+---
+title: | 
+  R & Python: Data Structures\
+  {{< fa language >}} in German
+description: | 
+  \"Bad programmers worry about the code. Good programmers worry about data structures and their relationships.\"      <br> ~ Linus Torvalds.
+
+author: "Fazliddin Sultonov"
+date: "2024-03-01"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [R, Python, Data Structure, German]
+
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+
+# Output
+format: 
+  html:
+    theme: cosmo
+    # code
+    # code-line-numbers: true
+    code-fold: true
+    # code-summary: "show the code"
+    code-block-border-left: true
+    # Links
+    link-external-icon: false
+    link-external-newwindow: true
+    # Sections
+    toc: true
+    toc-location: left
+    toc-title: "Table of Contents"
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+    #class-output: "code-output"
+    #class-source: "code-input"
+
+  opts_knit: 
+    warning: false
+    error: false
+# bibliography
+bibliography: ref.bib
+nocite: |
+  @*
+---
+
+![](pics/datastructure_de.png){.nolightbox}
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  "data.table"
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312") # für Python
+```
+
+
+# Set Up
+Der Codeblock bzw. Input wird in [*R hellcyan*]{style="background-color: lightcyan"} und in [*Python gelb*]{style="background-color: yellow"} dargestellt. Zeilenanfang im Output ist mit `#>` belegt.
+
+::::{layout-ncol=2}
+::: {.code-r}
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| collapse: true
+
+cat("Hallo R Lover!")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| collapse: true
+
+print("Hallo Python Lover!")
+```
+:::
+::::
+
+Eine Zusatzinfo ist im Boxe wie unten geschrieben kann duerch ausklappen angezeigt werden: [Hinweise oder kleine Infos werden auf der Seite dargestellt]{.aside}
+
+::: {.callout-caution icon="false" collapse="true"}
+## Expand for more
+
+More Info here!
+:::
+
+# Data Structures
+Es gibt einmal die Basic Data Types, die bei der Zuweisung eines Werts oder bei der Erzeugung einer Variable bzw. eines Objekts festlegen, welche **Werte** dieses Objekt/Variable annehmen kann und welche **Operationen** auf diese Objekte anzuwenden sind. Z.B. eine Zahl 42 der Variable namens beispielsweise *var_zahl* zugewiesen und mit dem Typ *Integer* gespeichert werden. Dann kan weitere Berechnugen mit dieser Variable wie Multioplikation, Addition usw. durchgeführt werden. So können Daten als *systematisch kodierte Informationen über die reale Welt definiert [@r_DMforSocial]* werden. [Mehr zu Basic Data Types in [R & Python: Types of Data](/posts/DataTypes/datatypes_de.qmd){target="_blank"}).]{.aside} 
+Daten sind für uns dann vom Nutzen, wenn sie in einer Format sind, so dass sie gespeichert, geteilt, analisiert und auf sie irgendwelche Operationen und Fubktionen angewendet werden können. Das bestimmt die ***Data Dstructure***, also *Oraganisation* und *Speicherung* von Daten. Was gemeint ist, möchte ich durch ein Beispiel in Anlehnung an [@r_DMforSocial] zeigen.
+
+```{r}
+#| code-fold: false
+  
+raw_data <- 
+  "Deutschland ist ein Land mit 83,3 Mln. Einwohnern und sein Hauptstadt
+  ist Berlin; Russland hat 144,1 Mln. Einwohner, Hauptstadt ist Moskau;
+  Weiteres Land ist Usbekistan mit 35,5 Mln. Einwohnern, sein Hauptstadt
+  ist Taschkent. Letztes Land sind USA mit 341,2 Mln. Einwohnern, die
+  Hauptstadt ist Washington, D.C."
+```
+
+[Im Beispiel sind Populationen in Deutschland, Usbekistan. Russland und den USA in 2023 von [@worldpop].]{.aside}
+
+Man kann das Object *raw_data* im Grunde als eine Datenbank sehen, welche die Informationen über vier Länder, ihre Hauptstädte und ihre Bevölkerungszahl enthält. Für Menschen ist einfach, aus diesem Text die Informationen zu extrahieren, wie z.B. welches Land hat größere Population, welche Population ist die größte oder kleinste usw. Aber für Komputer ist nicht verständlich, sie rechnerisch zu verarbeiten, weil die Daten keine Struktur haben. Wir könnten aber diese Daten mit dem gleichen Inhalt anders speichern, also mit einer bestimmten Struktur z. B. als *datafarame*. Somit sind Daten dem Komputer verständlich, so dass er rechnerisch verarbeiten kann.
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+df_r <- data.frame(
+  country = c("Germany", "Uzbekistan", "Russia", "USA"),
+  population = c(83.3, 35.5, 144.1, 341.2),
+  capital = c("Berlin", "Tashkent", "Moscow", "Washington")
+)
+df_r
+```
+
+Um die Daten zu speichern, wurde im zweiten Beispiel `data.frame` von R verwendet, eine Data Structure von R für Tabellen, wie es in Python dafür `pandas` gibt. Jedes Land hat verschieden Typen von Informationen (county ist character also string, population ist double also float). Im Verglich zu den im ersten Beispiel als normaler Text (raw_data) gespeicherten Daten sind als dataframe bzw Tabelle gespeicherte (df_r) Daten leichter zu verstehen und zu verarbeiten.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# Sum of population
+glue("Sum of population: {sum(df_r$population)}")
+# Max of Population
+glue("Max of Population: {max(df_r$population)}")
+cat("\n")
+# Summary of Data
+glue("Summary of data:")
+summary(df_r)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import pandas as pd
+df_py = pd.DataFrame(r.df_r)
+# Sum of population
+print(f"Sum of population: {df_py["population"].sum()}")
+# Sum of population
+print(f"Sum of population: {df_py["population"].max()}\n")
+# Summary of Data
+print("Summary of data:")
+df_py.describe()
+```
+:::
+::::
+
+# How is the data are structured in R and Python
+
+Egal, ob wir die Daten in R oder in Python bearbeiten, in beiden Sprachen werden sie als ***Object*** gespeichert. Objekte können erstellt werden, indem man z.B einer Variable (Name des Objekts) den Wert (Objekt) zuweist. Sagen wir, wir erzeugen ein Objekt namens *age* und weiesen ihm den Wert *35* (Alter): `age <- 35` (in R) und `age = 35` (in Python). Aber meistens will man nicht manulell Tausende von Objekten (age1, age2, age3, ...) erstellen, sondern eine Liste namens *ages* haben, die alle Alter (Objekte) enthält. Daraus wird eine *gruppierte Datenstruktur*, aslo ein Object, das aus mehreren Einzelobjecten zusammengesetzt sind. Davon gibt es unterschiedliche, wie ***Lists***, ***Vectors***, ***Arrays***, ***Series***, ***Dictionaries*** etc. Sie unterscheiden sich durch ihre Format, Struktur, Methoden usw., aber Kernpunkt ist gleich: Es werden mehrere Objekte in ein gruppiertes bzw kombiniertes Objekt (in einer von dieser Datenstruktur) gespeichert. 
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+
+ages_r <- c(35, 24, 42, 24, 52, 35, 37)
+names_r <- c("Ali", "Temur", "Ben", "Brandon", "John", "Doe", "Dirk")
+ages_r
+class(ages_r)   # Type of ages_r
+names_r
+class(names_r)  # Type of names_r
+```
+:::
+
+::: {.callout-note collapse="true"}
+## More about `c()` in R
+
+In R werden Sequenzen oder Reihen mit `c()` *(c wie combine)* erzeugt, das ist wie man in Python die Objekte bzw. Daten in Form `[]` eingibt.
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+ages_py = [35, 24, 42, 24, 52, 35, 37]
+names_py = ["Ali", "Temur", "Ben", "Brandon", "John", "Doe", "Dirk"]
+print(ages_py)
+type(ages_py)    # Type of ages_py
+print(names_py)
+type(names_py)   # Type of names_py
+```
+:::
+::::
+
+Sie sind in Python und R ähnlich, nur Obekt in R heiß **Vektor** und in Python heiß **Liste**. Es gibt auch andere Datenstrukturen in Python und R, die nach Eigenschaften identisch sind oder sich unterscheiden. Beim Vergleich die Datenstrukturen in R und Python, denke ich, [ist es aber wichtig, dass die Objekte *homogen* oder *heterogen*]{style="color:red;"} sind. [**homogen** -- Objekte sind vom gleichen Typ (Alle Obkete sind nur Zahlen oder Texte), z.B Vektoren in R oder NumPy-Arrays oder Liste *mit gleichen Datentypen* in Python\n
+**heterogen** -- Objekte können unterschiedlich sein wie Liste in R oder Liste oder Dictionaries in Python]{.aside}
+
+## Data Structures in R
+
+Wichtige Datenstrukturen in R könen dadurch, wie viele **Dimensionen** ein Objekt hat - ein demensional (Vektor), zwei demensional (Matrix) und mehr (Arrays) und dadurch, ob die Elemente eines Objekts **homogen** - alle Elemente von gleicher Art z.B. nur Text, Zahlen sind, oder ob die Elemente **heterogen** - alle Elemente unterschiedlich sind, gekenzeichnet werden. Anhand dieser Merkmalen kann man die zentralen Objektarten wie folgt zusammenfassen [@r_ModernDA]:
+
+| Dimension | Homogen | Heterogen |
+|:---|:---|:---|
+| 1d | Vector | List |
+| 2d | Matrix | Dataframe |
+| nd | Array |  |
+
+Vektoren sind eine der wichtigsten Datensrtukturen in R und stellen ein zentrales Elemnt in R-Objekten dar. Es gibt vier Arten von Atomar- bzw. Reinvektoren: `Logical`, `Integer`, `Double` und `Character` (welche stings entält), wobei *Integer* und *Double* sich zum Datentyp `Numeric` zusammenfassen lassen. Hier eine Übersicht von atomaren Vektoren nach [@r_AdvancedR].
+
+![Atomar Vectors](pics/ds_r.png){fig-alt="Click for zooming"}
+
+
+## Data Structute in Python
+
+Datenstrukturen können also als „Container“ betrachtet werden, die Daten nach Typ organisieren und gruppieren. Die sogenannten wichtigen Built-in Data Structures in Python sind Liste (`list`), Menge (`set`), Dictionaries (`dict`) und Tupel (`tuple`). Jeder Datentypen haben eigene Struktur und Eigenschaften
+
+  <br> - `lists`
+  <br> - `ditionaries`
+  <br> - `tuples`
+  <br> - `sets`
+  
+<br>Darüber hinaus gibt Arrays und Dataframes(Tabellen):\n
+  <br> - `arrays` von NumPy (Numerical Python)
+  <br> - `DataFrame` von Pandas
+  
+
+Im Folgenden sind die Data Structures in R und Python grafisch dargestellt.
+
+:::: {.column-screen-inset}
+:::{layout-ncol=2}
+Quelle: [Internet](https://r.qcbs.ca/workshop01/pres-en/workshop01-pres-en.html#100){target="_blank"}
+![](pics/r_ds.png){fig-alt="Click for zooming"}
+
+
+Quelle: [Internet](https://www.linkedin.com/posts/venkateshpappakrishnan_data-structures-in-python-python-for-aspiring-activity-6447685118260756480-rU36/?trk=public_profile_like_view){target="_blank"}
+![](pics/py_ds.png){fig-alt="Click for zooming"}
+:::
+::::
+
+# Homogeneous data structure
+Wie oben schon erwähnt, homogene Datenstrukturen enthalten die Daten (Objekte oder Elemente) desselben Typs. Meistents werden die Daten auf dieser Art gespeichert. Dazu gehören in R Vektoren (1d-NumPy-Arrays in Python), Matizien (2d-NumPy-Arrays in Python) und Arrays (nd-NumPy-Arrays in Python).
+
+
+## `vector` in R and `arrays` & `Series` in Python
+Vektoren in R sind eindimensional und homogen. Mit dieser Eigenschaft haben sie Gemeinsamkeit mit 1d-NumPy-Arrays und Pandas Series in Python. Vektoren in R sind auch ähnlich wie die Liste in Python, aber *nur dann, wenn die Daten in der Liste von Python den gleichen Typ haben*.
+
+<!-- [Achrung!]{style="color:red;"} --  -->
+
+### Creating
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+-- with `c()` (like `[]` in Python)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+v1 <- c(1, 7, 2, 4, 5, 8, 2, 9); v1
+class(v1)
+v2 <- c("a", "b", "c", "z", "f"); v2
+class(v2)
+v3 <- vector("logical", 5); v3
+class(v3)
+v4 <- numeric(7); v4
+class(v4)
+```
+:::
+
+-- with `seq(from, to, by)` (like `range(from, to, by)` in Python or `arange()` from NumPy)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+seq1 <- 2:9; seq1                            # from 2 to 9
+seq2 <- (1:5); seq2                          # from 1 to 5
+seq3 <- seq(from = 3, to = 10, by = 3); seq3 # step = 3
+seq4 <- seq(3, 10, length.out = 5); seq4     # count = 5
+seq5 <- seq(11, 17, along.with = seq4); seq5 # seq of same length with seq4
+
+```
+:::
+
+-- with `rep()` (like `np.repeat()` from NumPy or `pd.rep()` from Pandas)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+rep1 <- rep(1:3, times = 3); rep1 # repeating seq 3 times
+rep2 <- rep(1:3, each = 3); rep2  # repeating each obj 3 times
+```
+:::
+
+
+-- with `sample()` or `runif()` (like `random.choice()` from NumPy) 
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+smp1 <- sample(seq(10), size = 5, replace = FALSE); smp1
+vec <- c("negative","neutral", "positive")
+smp2 <- sample(vec, size = 5, replace = TRUE); smp2
+# vector with 5 elements:
+run1 <- runif(5); run1
+run2 <- runif(3, min = 1, max = 10); run2
+run3 <- floor(runif(15, min=1, max=100)); run3
+# normal distribution
+rn <- rnorm(5); rn
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+-- with `[]` like `c()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import numpy as np
+
+v1_p = [1, 7, 2, 4, 5, 8, 2, 9]; print(v1_p)
+type(v1_p)
+v2_p = np.full((5), False); print(v2_p)
+type(v2_p)
+v3_p = np.zeros((7), int); print(v3_p)
+type(v3_p)
+v4_p = np.ones((7), int); print(v4_p) # rep(1,7) in R
+type(v4_p)
+```
+:::
+
+-- with `arange()` like `seq()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+ar1 = [x for x in range(5)]; ar1                # pythonlist
+ar2 = [x for x in range(2,10)]; ar2             # python list
+ar3 = np.arange(2,10); ar3                      # NumPy 1d array
+ar4 = np.arange(3, 10, 3); ar4                  # step = 3 
+ar5 = np.linspace(3, 10, 5, retstep = True);ar5 # count = 5, with step = 1.75    
+```
+:::
+
+-- with `np.repeat()` or `pd.Series.repeat()` like `rep()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import pandas as pd
+
+rep1 =  list(range(1,4))*3; rep1             # Python
+rep2 = np.tile(np.arange(1,4), 3); rep2      # NumPy: repeating seq 3 times
+rep3 = np.repeat(np.arange(1,4), 3); rep3    # NumPy: repeating each obj 3 times
+rep4 = pd.Series(range(1,4)).repeat(2); rep4 # Pandas Series: repeating each obj 2 times
+```
+:::
+
+-- with `random()`  like `sample()` or `runif()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+from numpy import random
+lis = ["negative","neutral", "positive"]
+rd1 = random.choice(lis, size=5, replace = True); print(rd1)
+rd2 = random.rand(5); rd2                 # 5 random numbers
+rd3 = random.randint(100, size=(5)); rd3  # integer random numbers from 0 to 100
+rd4 = random.randn(4); rd4                # standard normal distribution
+```
+:::
+::::
+
+### Slicing
+
+Eine der wichtigsten nützlichsten Operationen, die man auf Vektoren, Listen und eindimensionale Arrays anwenden kann, ist *Indexierung*. Dabei kann man einzelnes Element oder Teilmenge von Elementen durch ihre Position *(Index)* auswählen.
+
+::: {layout-ncol=2}
+[Index vom ersten Element ist in R -- `1` und in Python beginnt mit `0`.]{style="background-color:yellow;"} Die Länge eines Vektors, einer Liste oder eines 1d-Arrays kann in R mit der Funktion `length(Obj)` und in Python mit `len(Obj)` ermittelt werden.
+
+![Indexes in R and Python](pics/index.png){fig-alt="Click for zooming"}
+:::
+
+::: {layout-ncol=2}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| results: hold
+
+# In Python
+lst = [1,3,5,7]
+lst[0]     # first element
+lst[1]     # second element
+lst[-1]    # last element
+lst[::-1]  # backward
+```
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| results: hold
+
+# In R
+# Used Variable lst created in Python Chunk
+py$lst[1]                # first element
+py$lst[2]                # second element
+py$lst[[length(py$lst)]] # last element
+rev(py$lst)              # backward
+```
+:::
+
+Hier noch weitere Beispiele für Teilmengen und logisches Indexieren. Bei der logischen Indexierung werden die Elemente zurückgegeben, deren logischer Wert gleich `TRUE` ist.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+age <- c(18, 26, 32, 41, 55, 22, 35, 37, 20, 25)
+age[1:5]             # from first until fifth element
+age[3:7]             # from third until seventh element
+age[5:length(age)]   # from fifth until last element
+age[c(2,5,7)]        # second, fifth and seventh element
+age < 30             # logic 
+age[age < 30]        # age under 30
+age[which(age < 30)] # with which()
+```
+:::
+
+Elemente können auch beim Namen angesprochen werden, aber nur dann, wenn sie benannt sind. Das könnte mann auch in Series von Pandas machen, in dem man Element durch den Indexnamen auswählt:
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+note <- c("best" = 5, "medium" = 4, "good"= 3, "bad" = 2); note
+note["medium"]         # by indexname
+note[c("good", "bad")] # by indexname multiple elements
+note[3]                # by index
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+age = np.array(r.age)    # create array from r vector age
+age[:5]                  # from first until fifth element
+age[2:7]                 # from third until seventh element
+age[4:]                  # from fifth until last element
+[age[2], age[5], age[7]] # second, fifth and seventh elem
+age < 30                 # logic 
+age[age < 30]            # age under 30
+age[np.where(age<30)]    # with np.where()
+```
+:::
+
+Auch bei Series kann man Element oder Elemente durch ihre Indexen oder Indexnamen ansprechen, das geht wie bei *named vectors* in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+note = pd.Series(range(2,6), index = ["bad", "good", "medium", "best"]); note
+note["good"]  # by indexname
+note[["best", "bad"]] # by indexname multiple elements
+note.iloc[2]          # by index
+note.iloc[[1,2,3]]    # by index multiple elements
+```
+:::
+::::
+
+## `matrix` in R and `2d-Array` in Python
+
+Matrizen in R sind zweidimensionale Vektoren, deren Elemente numerisch sind, also *homogen*. Sie werden durch die Funktion `matrix(data, nrow, ncol)` erstellt. In Python gibt es keine Funktion explizit für die Erstellung von Matrizen. Matrizen in Python sind im Prinzip *2d-NumPy-Arrays*. Für die Slicing kommen hier auch gleiche Methoden wie bei Vektoren oder 1d-NumPy-Arrys *(vorheriges Kapitel)* zur Anwenung, eben werden neben Rowindex auch Columnindex in rechteckigen Klammern `[]` eingegeben.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+matrix_c <- matrix(seq(12), nrow = 3, ncol = 4, byrow = FALSE )
+cat("3x4-Matix filling by columns (matrix_c):\n");print(matrix_c)
+# Dimension of matrix_c
+glue("Dimension of matrix_c: {dim(matrix_c)}")
+# Counts of rows & Cols from matrix_c
+glue("Shape of matrix_c: ({nrow(matrix_c)}, {ncol(matrix_c)})")
+matrix_r <- matrix(seq(12), nrow = 4, ncol = 3, byrow = TRUE )
+cat("\n4x3-Matix filling by rows (matrix_r):\n");print(matrix_r)
+# Dimension of matrix_r
+glue("Dimension of matrix_r: {dim(matrix_r)}")
+# Counts of rows & Cols from matrix_r
+glue("Shape of matrix_r: ({nrow(matrix_r)}, {ncol(matrix_r)})")
+#
+cat("\nSlicing:\n")
+matrix_c[2,3]        # row 2, col 3
+matrix_c[,4]         # column 4
+matrix_c[, c(2, 4)]  # columns 2 and 4
+matrix_r[2,]         # row 2
+# Name cols & rows
+cat('\nname the columns and rows of matrix "matrix_r":\n')
+colnames(matrix_r) <- c("col1", "col2", "col3")
+rownames(matrix_r) <- c("row1", "row2", "row3", "row4")
+matrix_r
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+matriks_c = np.arange(1,13).reshape(3,4, order = "F")
+print(f"3x4-Matix filling by columns (matriks_c):\n{matriks_c}")
+# Dimension of matrix matriks_c
+print(f"Dimension of matrix matriks_c: {matriks_c.ndim}")
+# Counts of rows & Cols from matriks_c
+print(f"Shape of matriks_c: {matriks_c.shape}")
+# np.shape(matriks_c)[0]; np.shape(matriks_c)[1]
+matriks_r = np.arange(1,13).reshape(4,3, order = "C")
+print(f"\n4x3-Matix filling by rows (matriks_r):\n{matriks_r}")
+# Dimension of matrix matriks_r
+print(f"Dimension of matrix matriks_r: {matriks_r.ndim}")
+# Counts of rows & Cols from matriks_r
+print(f"Shape of matriks_r: {matriks_r.shape}")
+# np.shape(matriks_r)[0]; np.shape(matriks_r)[1]
+#
+print("\nSlicing:")
+matriks_c[1,2]      # row 2, col 3
+matriks_c[:, 3]     # column 4
+matriks_c[:, [1,3]] # columns 2 and 4
+matriks_r[1, :]     # row 2
+# Name cols & rows
+print('\nname the columns and rows of matrix "matriks_r":')
+colnames = ["col1", "col2", "col3"]
+rownames = ["row1", "row2", "row3", "row4"]
+pd.DataFrame(matriks_r, columns = colnames, index = rownames)
+```
+:::
+::::
+
+## Mehrdiminsionale Arrays
+
+(Mehrdimensionale)Arrays in R werden mit der Funktion `array(vector, dim = c(nrow, ncol, nmat))` erstellt. Dabei ist *vector* Datenreihe vom gleichen Typ, *nrow* und *ncol* sind Zeilen- und Spaltennummer, *nmat* gibt die Dimension an, also die Zahl von `nrow*ncol` Matrizen im Array.
+
+Für die Erstellung  von Arrays in Python gibt es mehrere Funktionen wie `numpy.arange()`, `numpy.zeros()`, `numpy.ones()`. Im Folgenden wird ein 3d-Array in R und Python sowie Slicing und Summenberechnung dargestellt.
+
+Im Folgenden wird ein Beispiel für 3d-Array visuell und Slicing und Summenberechnung bei diesem Array praktisch dargestellt. 
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+
+
+![3d Array with twice 3x4 2d-Arrays](pics/arr_r.png){fig-alt="Click for zooming"}
+
+**Slicing** <br>
+Wie bei Vektoren, oder 1d- oder 2d-Arrays kann auch bei 3d-Arrays ein Element oder eine Teilmenge aus dem Array abgeschnitten werden. Dabei werden Index von dem Element oder Indizies von der Teilmenge in bekannten rechteckigen Klammern `[]` eingegeben. Im Beispiel hat der Array shape = (3, 4, 2). Das gibt die Funktion in R `dim(array)` und in Python `array.shape` zurück. im Beispiel gibt 3 - Zeilen, 4 - Spalten und 2 - Dimension an. D.h., der Array hat 2 Matrizen jeweils mit 3 Zeilen und 4 Spalten. Beim Indexieren muss man dementsprechen in richtige Position eingeben. Z.B. `arr_r[, , 2]` gibt den zweiten Matrix mit allen Zeilen und Spalten zurück.
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# Create 3d-array
+arr_r <- array(c(0:23), dim = c(4,3,2))
+arr_r <- aperm(arr_r, perm = c(2,1,3)); arr_r
+cat("Shape: ",dim(arr_r), "\n")
+cat("\n1st matrix/2d-Array of the 3d-Array (arr_r):\n")
+arr_r[, , 1]
+cat("\nElement in 2nd row and 1st col of the 2nd matrix from 3d-Array (arr_r):\n")
+arr_r[2, 1, 2]
+cat("\n3rd column elements of the 2nd matrix from 3d-Array (arr_r):\n")
+arr_r[, c(3), 2]
+cat("\n2nd row elements of the 1st matrix from 3d-Array (arr_r):\n")
+arr_r[c(2), , 1]
+cat("\nCheck if elemnt (9) exist in the array:\n")
+9 %in% arr_r
+
+```
+:::
+
+**Operationen** <br>
+Um die Summe bei Arrays in R zu berechnen, kann man die Funktion `rowSums()`- Summe von Zeilen, `colSums()`- Summe von Spalten benutzen, es gibt auch in R die Funktion `sum()` wie in Python, diese kann man hier mit der Funktion `apply` benutzen.
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+arr_r
+cat("Sum by row-wise with rowSums:\n")
+rowSums(arr_r)
+cat("\nSum by row-wise with apply, same like rowSums:\n")
+apply(arr_r, c(1), sum)
+cat("\nSum by column-wise with colSums:\n")
+colSums(arr_r)
+cat("\nSum by column-wise with apply\n")
+apply(arr_r, c(2), sum)
+```
+:::
+
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+
+
+![3d Array with twice 3x4 2d-Arrays](pics/arr3d.png){fig-alt="Click for zooming"}
+
+**Slicing** <br>
+Die Funktion `array.shape` geibt shape = (2, 3, 4) von dem Array im Beispiel oben im Bild zurück. D.h., als erstes die Dimension - 2, als zweites Zeilen - 3 und als viertes Spalten - 4 zurückgegeben. D.h., der Array hat 2 Matrizen jeweils mit 3 Zeilen und 4 Spalten. Man möge sich einen Zauberwürfel vorstellen. Wenn man diesen in der Mitte in Scheiben schneidet und in zwei teilt, wäre jeder Teil ein Matrix oder 2d-Array. Man könnte auch diese Teile als Schicht (layer/sheet) vorstellen. Beim Indexieren muss man dementsprechen in richtige Position eingeben. Z.B. `arr_r[1, :, :]` gibt den zweiten Matrix mit allen Zeilen und Spalten zurück.
+
+::: {.callout-warning collapse="true"}
+## Shape is displayed differently in R and Python
+
+In R wird die Reihenfolge in Shape anders dargestellt als in Python für gleichen Array, shape in R = (3, 4, 2), shape in Python = (2, 3, 4). In R werden erst Zeilen, dann Spalten und als letztes Dimension) dargestellt. In Python kommt erst Dimension, dann Zeilen und Spalten.
+:::
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# create 3d-Array
+arr3d = np.arange(24).reshape(2,3,4);arr3d
+print(f"\nShape: {arr3d.shape}")
+print(f"\n1st 2d-Array (sheet,matrix, layer) of the 3d-Array (arr3d):")
+arr3d[0, :, :] # or arrd[0]
+print(f"\n3rd column elements of the 2nd sheet from 3d-Array (arr3d):")
+arr3d[1, :, 2]
+print(f"\n2nd row elements of the 1st sheet from 3d-Array (arr3d):")
+arr3d[0, 1, :]
+print(f"\nElement (20) in 3rd row and 1st col of the 2nd sheet from 3d-Array (arr3d):")
+arr3d[1, 2, 0]
+print(f"\nElements (22, 23) from 3rd row and columns 3 and 4 in the 2nd sheet:")
+arr3d[0, 2, 2:]
+print(f"\nElement (9) in 3rd row and 2nd col of the 1st sheet from 3d-Array (arr3d):")
+arr3d[0, 2, 1]
+print(f"\nElement (11) in 3rd row and last col of the 1st sheet from 3d-Array (arr3d):")
+arr3d[0, 2, 3]
+
+```
+:::
+
+**Operationen** <br>
+Um die Summe bei Arrays in Paython zu berechnen, muss `axis` eingegeben werden, je nachdem, auf welche Weise man die Summe berechnen will. Gibt man 0 ein, wird die Summe über n-Matrizen gebildet. Bei 1 wird die Summe über spaltenweise und bei 2 zeilenweise berechnet.
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+print("a 3d-array - arr3d:")
+arr3d
+print("\nShape:")
+arr3d.shape
+print(f"\nSum by sheets (axis =0):")
+np.sum(arr3d, axis = 0) # or arr3d.sum(axis=0)
+print(f"\nSum by column-wise (axis = 1):")
+arr3d.sum(axis=1)
+print(f"\nSum by row-wise (axis = 2):")
+np.sum(arr3d, axis = 2)
+
+```
+:::
+::::
+
+# Heterogeneous data structure
+
+Bei heterogenen Daten handelt sich um die Datenstrukturen bzw. Objekten, deren Elemente unterschiedlich sind. Z.B. in eine Liste können Objekte mit unterschiedlichen Datentypen gespeichert werden.
+
+## `list`s in R and `list`s & `dict`s in Python
+
+### `list`s in R
+
+Unterschied zwischen der Liste und dem Vektor in R besteht darin, dass sie *nicht homogen* sein müssen und die Länge der Elemente unterschiedlich sein können. Zur Erstellung gibt es Funktion `list()` in R. Beim Indexieren werden die doppelte rechteckige Klammer `[[]]` benutzt (im Vergleich zum Vektor `[]`).
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create a list
+lst_r <- list(1, c(2, 3), 
+               c(TRUE, FALSE), 
+               c("I", "love", "R"), "Hello R")
+#
+lst_r
+cat("Type: ", class(lst_r), "\n")
+# Atribute of the list:
+str(lst_r)
+#
+# Check element (Hello R) is in the list
+"Hello R" %in% lst_r
+#
+# Change the 1st element (1) to 42
+lst_r[[1]] <- 42
+lst_r[[1]]
+#
+# Remove the last element (Hello R) of the list
+lst_r[[length(lst_r)]] <- NULL
+lst_r
+#
+# Check element (Hello R) is in the list
+"Hello R" %in% lst_r
+#
+# Remove the 1st (42) and 2nd elements ([2, 3]) 
+(lst_r[-c(1,2)]) # Outer bracket for execute code direct
+
+```
+
+Die Elemente von der Liste in R können auch benannt sein (wie in dictionaries in Python). Dabei kann man auf die Elemente durch `[[]]` oder durch den Operator `$` (Dollar-Zeichen) zugreifen. In R kann man die Liste ändern oder entfernen, indem man dem Index von dem zu updatenden Element zu ändernde Wert zuweist.
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+lst_named <- list(
+  "age" = 19,
+  "sex" = "m",
+  "it_skills" = c("R", "Python", "Java")
+)
+#
+# 1st element
+lst_named[[1]]
+#
+# 3rd element
+lst_named[[3]]
+#
+# 2nd element of the 3rd element
+lst_named[[3]][2]
+#
+# 2nd element by name
+lst_named[["sex"]]       
+#
+# 3rd element via $
+lst_named$it_skills
+#
+# 2nd element from 3rd element from the list
+lst_named$it_skills[2]
+#
+# Names of the list
+names(lst_named)
+```
+
+Man kann in die Liste in R neues Element durch `append()` - Funktion hinzufügen oder sie in eine andere Datenstruktur wie Vektor oder Data Fareme (wenn sie ein *named list* ist) umwandeln.
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Add an element(\"Python\" and \"C++\") into the list(lst_r):
+append(lst_r, c("Python", "C++"))
+#
+# Convert to vector
+unlist(lst_r)
+#
+# Create alist
+emp_list <- list(
+  emp_name = c("Max", "Ali", "Vali"),
+  emp_age = c(45, 34, 27),
+  emp_salary = c(5.300, 3.700, 3.300)
+)
+# 
+# Type of emp_list:
+class(emp_list)
+#
+# Convert to data frame
+emp_df <- data.frame(emp_list); emp_df
+#
+# Type of emp_df
+class(emp_df)
+```
+
+
+### `list`s in Python
+
+Wie in R können auch die Elemente/Objekte in einer Liste in Python unterschiedliche Länge und Typen haben. Wenn alle Element der Liste in Python den gleichen Type haben, das ist diese vergleichbar mit dem Vektor in R.
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Create a list
+lst_py = [1, [1, 2], True, ["I", "love", "Python"], "Hello Python"]
+print(lst_py)
+print("\nType: ", type(lst_py))
+#
+# Check element (Hello Python) is in the list
+"Hello Python" in lst_py
+#
+# Change the 1st element (1) to 42
+lst_py[0] = 42; lst_py
+#
+# Remove the last element (Hello Python) from the list
+lst_py.pop(); lst_py  # pop() removes the last element in the list!!
+#
+# Remove the 2nd element ([1, 2]) with pop()
+lst_py.pop(1); lst_py
+#
+# Remove the 1st element (42) with del
+del lst_py[-0]
+#
+# Remove by name
+lst_py.remove(True)
+lst_py
+```
+
+Neues Element in die Liste in Python kann durch `append()`- Funktion (wie in R) hinzugefügt werden. Die Listen kann man auch in Python wie in R in andere Datenstruktur umwandeln, in NumPy-Array, Pndas-Series oder Pandas-DataFrame.
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Create a list
+ls1 = ["Ali", "Vali", "Gani"]; ls1
+#
+# Add a new element (Max) into the list
+# append() adds the new item to the end of the list
+ls1.append("Max"); ls1
+#
+# insert() adds an element to the list at the specified index
+ls1.insert(1, "Ivan") # inserted at index 1 (2nd position)
+#
+# Conver to a Pandas Series
+ls_pd = pd.Series(ls1); ls_pd
+type(ls_pd)
+#
+# Conver to a A Numpy 1d-Ayrray
+ls_np = np.array(ls1); ls_np
+type(ls_np)
+#
+# Convert to a Pandas DataFrame
+ls2 = [3, 4, 5, 8, 2]
+ls_df = pd.DataFrame(list(zip(ls1,ls2)), columns = ["ls1", "ls2"])
+ls_df
+```
+
+### `dict`s in Python and `list`s in R
+
+Wie oben bereits erwähnt, in R müssen die Elemente einer Liste nicht vom gleichen Typ im Vergleich zu den Vektoren sein. Die Elemente in einer Liste in R können aber auch benannt sein, das nennt man dann *named list*. In Python dagegen können die Elemente nicht benannt sein, dafür aber gibt es in Python *dictionanries*, die gleiche Struktur wie named list in R haben. Dictionary in Python besteht aus `d = {key : value}` Struktur. Der Key bzw Schlüssel ist *unique* und *immutable*. Meistens werden für den Schlüssel strings benutzt. Die gleiche Struktur hat man in R, wenn man die Elemente in der Liste benennt: `d = list(name = value)`.  Zugriff auf einzelnes Element erfolgt durch `d["key"]` in Python und durch `d["name"]` oder `d$name` in R. 
+
+::: {.callout-caution icon="false" collapse="true"}
+## named list vs vector in R
+
+In R können sowohl lists (`l <- list("a" = 1, "b" = b, "c" = c("a", "b", "c"))`) als auch vectors (`v <- c("a" = 1, "b" = 2, "c" = 3)`) benannt werden. Der Unterscheid ist, dass die Values in Vektor den gleichen Typ haben muss und in der Liste unterschieliche Typen haben kann.
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+cat("Named vector with values of the same type:\n")
+v <- c("a" = 1, "b" = 2, "c" = 3); v
+cat("Type: ", class(v))
+cat("\n\nNamed list with values of different types:\n")
+l <- list("a" = 1, "b" = "b", "c" = c("a", "b", "c")); l
+cat("Type: ", class(l))
+```
+
+Wenn ich in den Vektor "v" von oben die Werte mit unterschiedlichen Typen (bsp. 1, b, 3) eingebe, dann speichert bzw. gibt R alle Values als character bzw string zurück, also die 1 und 3 in character umgewandelt
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+v1 <- c("a" = 1, "b" = "b", "c" = 3); v1
+class(v1)
+```
+
+Aus Interesse habe ich den Namen die Werte wie folgt zugewiesen: a = 1, b = b und c = c(1, 2, 3). Also hier haben wir drei Namen und 5 Werte. Erstaunlicherweise hat R den Namen c automatisch erweitert wie c1, c2, c3, bis alle Werte bannt sind. Dafür mag ich ja auch den R ;).
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+v2 <- c("a" = 1, "b" = "b", "c" = c(1, 2, 3)); v2
+```
+:::
+
+Folgendes Beispiel mit den Aktienkursen (Stand: 27.04.2024, von OnVista) möge es besser zum Ausdruck bringen.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+:::{.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+share_name <- c("AMZN", "AAPL", "MBG", "TSLA", "BYD", "BABA", "SAP")
+share_value <- c(179.62, 169.30, 74.36, 168.29, 25.36, 75.55, 174.00)
+#
+cat("Create a named list from vectors:\n")
+dic_r <- setNames(as.list(share_value), share_name); dic_r
+cat("\nshare price from BYD. slice with [[]]:\n")
+dic_r[["BYD"]]
+cat("\nshare price from Tesla. slice with $\n")
+dic_r$TSLA
+cat("\nTyp from dic_r: ", class(dic_r))
+cat("\nAdd an element (BMW3) to the list(dic_r[['BMW3']] <- 99.15):\n")
+dic_r[["BMW3"]] <- 99.15
+cat("Is BMW3 there?\n")
+dic_r["BMW3"] %in% dic_r
+dic_r[["BMW3"]]
+#
+cat("\nRemove an element (MBG) from the list (dic_r$MBG <- NULL):\n")
+dic_r$MBG <- NULL
+cat("Is MBG there?\n")
+dic_r["MBG"] %in% dic_r
+# convert to python
+cat("\nConvert the list (dic_r) to Python object (dic_py)\n")
+dic_py <- r_to_py(dic_r)
+dic_py
+cat("\nType from dic_py:\n")
+class(dic_py)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+
+print("share price at 27.04.2024:")
+for k,v in r.dic_py.items():
+  print(f"{k} : {v}")
+print("\nKeys:", r.dic_py.keys())
+print("Values:", r.dic_py.values())
+print(f"\nShare of Tesla: {r.dic_py["TSLA"]}")
+print("\nAdd MBG to the dictionary(r.dic_py['MBG'] = 74.36):")
+r.dic_py["MBG"] = 74.36
+print("\nIs MBG in the dictionary?")
+"MBG" in r.dic_py
+print("\nDelete BYD from dictionary(del r.dic_py['BYD']):")
+del r.dic_py["BYD"]
+print("\nIs BYD in the dictionary?")
+"BYD" in r.dic_py
+```
+:::
+::::
+
+
+Zum Zugrif auf Elemente in einem Dictionary in Python gibt es neben dem Method `dict["key"]`noch das Method `dict.get("key", "default")`. Die beiden Methode liefern das gleiche Ergebnis. Unterschied besteht darin, ob der gesuchte Key in diectionary vorhanden ist oder nicht. Wenn Key nicht vorhanden ist, erhält man beim ersten Method den *KeyError*, das wird mit get() umgegangen. Standardmäsig wird *None* zurückgegeben, das kann man aber feststellen.
+
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+bsp_dic = {
+  "Ali" : 25,
+  "Max" : 44,
+  "Vali": 33
+}; bsp_dic
+print("With []:")
+print(f"Alini yoshi: {bsp_dic["Ali"]}")
+print("\nWith get():")
+print(f"Alini yoshi: {bsp_dic.get("Ali")}")
+lstName = ["Ali", "Gani", "Max", "Vali", "Brandon"]; lstName
+print("\nIterate with devault value, if key not exis")
+for n in lstName:
+  # for k, v in bsp_dic.items():
+  print(f"{n} - {bsp_dic.get(n, 'Mavjud emas!')}" )
+```
+
+## `set`s and `tuple`s in Python
+
+In Python gibt es weitere Strukturen von Daten, `set{}` und `tuple()`.
+
+### `set{}` in Python
+
+Die gruppierten Elemente lassen sich in Python unter anderem auch durch *set* darstellen: die Elemente im geschweiften Klammern `set{}` eingeben oder in `set()`- Funktion übergeben. Besonderheit in diesem Konzept ist, dass die Elemente *unique* sind, d.h. ein Objekt kommt in Mengen nur einmal vor. In R gibt es die Funktion `unique()`, die doppelt vorkommende Elemente in einem Vektor entfernt. Desweiteren sind sie ungeordnet und besitzen keine Indizes, über die man auf Elemente zugreifen kann. Die Menge mit *set* - *mutable*, also veränderlich und mit *frozenset*  -*immutable*, aslo nicht veränderbar.
+
+Die Methoden in von *sets* in Python wie `union`, `intersection` oder `difference` gibt es auch in R, die man bei Vektoren anwenden kann.
+
+:::: {.panel-tabset}
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# set() - returns the vector without duplicate values
+my_lst = [2, 3, 1, 5, 3, 9, 3, 2, 7]; my_lst
+my_set = set(my_lst); my_set
+#
+# Create a set
+x = {1, 2, 3, 4, 5, 6}; x
+y = set([4, 5, 6, 7, 8, 9]); y
+print(type(x), type(y))
+#
+# union() - combine x and y without duplicates
+x.union(y)
+#
+# intersection() - which obj in both sets
+x.intersection(y)
+#
+# difference() - objects in x, but not in y
+x.difference(y)
+#
+# difference() - objects in y, but not in x
+y.difference(x)
+```
+:::
+
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+:::{.code-r}
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Typ of python sets
+class(py$x)
+class(py$y)
+#
+# unique() - returns the vector without duplicate values
+my_vec <- c(2, 3, 1, 5, 3, 9, 3, 2, 7); my_vec
+uniq_vec <- unique(my_vec); uniq_vec
+#
+# create vectros
+x_r <- c(1, 2, 3, 4, 5, 6); x_r
+y_r <- c(4, 5, 6, 7, 8, 9); y_r
+#
+# union() - combine x_r and y_r without duplicates
+union(x_r, y_r)
+#
+# intersection() - which obj in both vectors
+intersect(x_r, y_r)
+#
+# setdiff() - objects in x_r, but not in y_r
+setdiff(x_r, y_r)
+#
+# setdiff() - objects in y_r, but not in x_r
+setdiff(y_r, x_r)
+
+
+```
+:::
+::::
+
+### `tuple()` in Python
+
+Ein Tupel fasst mehrere (mit unterschiedlichen Typen) Elemente zu einem Objekt. Sie werden mit Komma getrennten Elementen in Klammern `t = (obj1, obj2, ...)`, auch ohne Klammenr `t = obj1, obj2, ...` oder mit der Funktion `tuple(obj)` erzeugt. Im Vergleich zu den Listen sind Teuples **immutable**, man sagt auch unveränderbare Liste. Wenn man sie einmal erstellt, lassen sie sich nicht ändern, wenn das Ändern notwendig ist, kann man sie in die Liste umwandeln und nach der Änderung wieder zurück in den Tupel. Sie können auch in/mit Dictionaries verwendet werden.
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create a tuple
+t1 = 1, 5, 6, 6, 3; print("t1: ", t1)
+t2 = (2, 4, 2, 5, 6); print("t2: ", t2)
+t3 = tuple([3, 4, 5, 6, 1]); print("t3: ", t3)
+#
+# tuples in dict keys
+koordinat = {
+  (0,0) : 100,
+  (1,1) : 200,
+  (0,1) : 75
+}; koordinat
+# add istem
+koordinat[(1,0)] = 125; koordinat
+#
+# tuples in dict values
+greats = {
+  "Navoi" : ("Hirot", 1441),
+  "Bobur" : ("Andijon",1483),
+  "Temur" : ("Shahrisabz", 1336)
+}; greats
+#
+# iterate dict
+for great, (place, year) in greats.items():
+  print(f"{great} - was born in {place} in {year}.")
+```
+
+
+
+## `data.frame`s in R and `pandas.DataFrame` in Python
+
+Dataframes sind möchlicherweise die häufigste Art, die Daten in R und Python zu speichern, zu bearbeiten und zu analyisieren. Als DF (DataFrame) kann man sich eine Tabelle mit vier Ecken (Zeilen und Spalten) vorstellen, die gängigsten sind Excel Sheets. Die Zeilen stellen die Fälle oder Beobachtungen (*engl. observations*) und Spalten die Variable oder auch in der Statistik Merkmale (*engl. futures*) dar. Rechts ist Data Frame durch eine kleine Tabelle dargestellt. Die Tabelle hat 10 Zeilen (Beobachtungen = Namen) und 3 Spalten (Variable = Name, Geburtsjahr und Geburtsort).
+
+
+```{r}
+#| echo: false          # R-Input NICHT anzeigen      
+#| output: true         # R-Output anzeigen 
+#| eval: true           # Code ausführen
+#| column: margin       # Tabelle in aside
+
+names <- c("Navoi", "Bobur", "Temur", "Cholpon", "Qodiriy", 
+           "Ulugbek", "Xorazmi", "Beruniy", "Termiziy", "Buxoriy")
+byear <- c(1441, 1483, 1336, 1898, 1894, 1394, 783, 1048, 824, 810) 
+bplace <- c("Hirot", "Andijon", "Shahrisabz", "Andijon", "Toshkent",
+            "Samarqand", "Xiva", "Xorazm", "Termiz", "Buxoro")
+
+df <- data.frame(names, byear, bplace)
+kable(df)
+```
+
+Data Frames sind in R praktisch eine benannte Liste von Vektoren (in Python wären pandas.Series) gleicher Länge, wobei jeder Vektor (Series) eine Spalte darstellt. Dataframes in R und Python besitzen einige Gemeinsamkeiten [@rp_DA], die dataframes voraussetzen.
+
+  - jede Spalte muss gleiche Länge haben
+  - alle Elemente in der Spalte müssen gleichen Typ haben
+  - Elemente in der Zeile können unterschiedlichen Type haben
+  - Zeilen und Spalten können unterschiedlich benannt werden
+  
+Sie werden in R mit `data.frame()` und in Python mit pandas `pandas.DataFrame()` erzeugt. 
+
+### Create a DF
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}  
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+names <- c("Navoi", "Bobur", "Temur", "Cholpon", "Qodiriy", 
+           "Ulugbek", "Xorazmi", "Beruniy", "Termiziy", "Buxoriy")
+byear <- c(1441, 1483, 1336, 1898, 1894, 1394, 783, 1048, 824, 810) 
+bplace <- c("Hirot", "Andijon", "Shahrisabz", "Andijon", "Toshkent",
+            "Samarqand", "Xiva", "Xorazm", "Termiz", "Buxoro")
+# Create a DataFrame -----------------------------------------
+df <- data.frame(names, byear, bplace)
+# Type -------------------------------------------------------
+class(df)
+# nums of rows and cols --------------------------------------
+dim(df)  # like shape in pandas
+# num of rows ------------------------------------------------
+nrow(df)
+# num of columns ---------------------------------------------
+ncol(df)
+# structur of DataFrame --------------------------------------
+# str(df) or
+pillar::glimpse(df) # like pandas.DataFrame.info()
+# First n lines, default = 6 ---------------------------------
+head(df, n = 3)
+# Last n lines -----------------------------------------------
+tail(df, n=2)
+# colnames ---------------------------------------------------
+colnames(df)
+# rows -------------------------------------------------------
+rownames(df)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create pandas DataFrame from created df in r -------
+df_pd = pd.DataFrame(r.df)
+df_pd["byear"] = df_pd["byear"].astype(int)
+# Type -----------------------------------------------
+type(df_pd)
+# nums of rows and cols ------------------------------
+df_pd.shape   # like dim() in r
+# num of rows ----------------------------------------
+len(df_pd)
+# num of columns -------------------------------------
+len(df_pd.columns)
+# structur of DataFrame ------------------------------
+df_pd.info()   # like str() in r
+# First n lines, default = 5 -------------------------
+df_pd.head(n = 3)
+# Last n lines ---------------------------------------
+df_pd.tail(n = 2)
+# colnames -------------------------------------------
+df_pd.columns
+# rows -----------------------------------------------
+df_pd.index
+```
+:::
+::::
+
+### Access a (the) element(s)
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}  
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# 1st row, 1st col -------------------------------
+df[1,1]
+# 1-3 rows, all cols -----------------------------
+df[1:3, ]
+# all rows, 1-2 cols -----------------------------
+df[, 1:2]
+# 3 rows, col bplace -----------------------------
+df[1:3, 3]
+# rows where col bplace = "Andijon" --------------
+df[df$bplace == "Andijon", ]
+# rows where col byear < 1000 -------------------
+df[df$byear < 1000, ]
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# 1st row, 1st col -------------------------------------
+df_pd.iloc[0,0]         # iloc by postion(s)
+# 1-3 rows, all cols -----------------------------------
+df_pd.iloc[:3, ]
+# all rows, 1-2 cols -----------------------------------
+df_pd.iloc[:, :2]
+# 3 rows, col bplace -----------------------------------
+df_pd.loc[:3, "bplace"]  # loc by labels(s)
+# 1-2 rows, cols names and bplace ----------------------
+df_pd.loc[:2, ["names","byear"]] # or df_pd.bplace
+# rows where col bplace = "Andijon" --------------------
+df_pd.loc[df_pd["bplace"] == "Andijon"]
+# rows where col byear < 1000 --------------------------
+df_pd.loc[df_pd.byear < 1000]
+# ------------------------------------------------------
+
+```
+:::
+::::
+
+### Change Row- and Colnames
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+cat("Rownames:\n", rownames(df))  # rownames 
+cat("\nColnames:", colnames(df)) # colnames
+#
+new_rname <- paste("person",1:10, sep="_", collapse= ",")
+new_rname <- unlist(strsplit(new_rname, ","))
+cat("\n\nNew Rowsname:\n", new_rname)
+
+cat("\nDF with modified rownames:\n")
+# change the rownames
+rownames(df) <- (new_rname)
+head(df, n = 2)
+# change the colnames
+# Method1: colnames(c(names of new columns))
+# Method2: setNames(df, c(names of new columns)) 
+# Here will be used Method2
+# change colname
+df <- setNames(df, c("Ism", "Tug\'ilgan yil", "Tug\'ilgan joy"))
+cat("\n\nDF with modified colnames:\n")
+head(df, n = 2)
+#
+cat("\n\nSet key in DF with data.table:\n")
+dt <- data.table(df)
+setkey(dt, Ism)      # Like Index in pandas
+#call("Key: ", key(dt))
+head(dt, n = 2)
+```
+:::
+
+
+::: {.callout-caution icon="false" collapse="true"}
+## data.frame() vs data.table()
+
+Es gibt unterschiedliche Funktionen in R für Data Frames. Im Grunde genommen, sind `data.frame()` und `data.table` sind gleiche. Mann kann sich *data.table* als *data.frame* mit *erweiterte Funktionen* vorstellen. Die Funktion data.frame ist in R-base, dh. wenn mann R installiert, ist diese mit Basisfunktionen mitdabei. Dagegegn muss data.table als Package installiert und eingelesen werden, wie man pandas in Python erst importieren muss. Es gibt aber auch weiter Packages in R, die mehr Kompfort und Funktionalitäte bei der Bearbeitung der Tabellen bietet wie *tibble*, *tidyverse*, *dplyr* ect. 
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+print(f"Rownames(index):\n{list(df_pd.index)}")
+print(f"\nColnames: {list(df_pd.columns)}")
+#
+new_pname = ["user_" + str(idx) for idx in list(df_pd.index)]
+print(f"\nNew Rowsname:\n{new_pname}")
+print("\nDF with modified rownames:")
+df_pd.index = new_pname
+df_pd.head(n = 2)
+print("\nDF with modified colnames:")
+df_pd.columns = ["Ism", "Tug\'ilgan yil", "Tug\'ilgan joy"]
+df_pd.head(n = 2)
+print("\n\nSet a column as index:")
+# like key in data.table in r
+df_pd.set_index("Ism", inplace = True, append = True)
+df_pd.head(n = 2)
+```
+:::
+::::
+
+Data Frames, wie schon erwähnt, wahrscheinlich die meist benutzten Datenstrukturen sowohl in R als auch in Python. Daher wurde das Thema hier kurz dargestellt und Fokus nur auf Basisfunktionen gelegt. Dazu wird es ein eigenes Thema geben.  
+
+# References
+
+
+

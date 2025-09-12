@@ -1,0 +1,16 @@
+{
+  "hash": "8de016d5dad503e11c8fb7e7f7faecb7",
+  "result": {
+    "markdown": "---\ntitle: \"plotting image data via ggimg\"\ndescription: \"`ggimg` displays images associated with each row of a dataset on the plot.\"\nauthor: \"Fazliddin Sultonov\"\ndate: \"2024-10-20\"\ndate-format: \"MMM D, YYYY\"\n\nfilters:\n  - lightbox\nlightbox: \n  match: auto\n  effect: none\n  desc-position: top\n\npage-layout: full\nreference-location: margin\ncategories: [ggimg, R, ggplot2, ggimage]\n# Code execute options\nexecute: \n  echo: true    # Input anzeigen\n  eval: true    # Code ausführen\n  freeze: true  # never re-render during project render\n# Output\nformat: \n  html:\n    theme: cosmo\n    link-external-newwindow: true\n  # codeb block\n    code-fold: true\n    code-line-numbers: true\n    code-block-border-left: true\n  # engine\n    engine: knitr\n    css: /customs/style.css\n\n# Chunk Options\nknitr:\n  opts_chunk:\n    comment: \"#>\" \n\n  opts_knit: \n    warning: false\n    error: false\n    \n---\n\n\n![](gallery_img/gg_img.png)\n\n\n::: {.cell}\n\n:::\n\n\n\nData Source: [Daryo.uz](https://daryo.uz/2024/02/01/botir-qodirov-sardor-mamadaliyev-yoki-shohjahon-jorayev-qaysi-xonanda-toshkentdagi-toyga-5-ming-dollar-evaziga-keladi)\n\n\n::: {.cell}\n\n:::\n\n\n## \n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nggplot(stars) +\n  geom_point_img(aes(\n    x = artists,\n    y = price,\n    img = img_path\n  ), size = 1.3) -> p\n#\np +\n  geom_text(data = stars, aes(\n    x = artists, \n    y = price, \n    label = paste(price, \"$\")), \n    size = 4, \n    vjust = -3.0) +\n  scale_y_continuous(limits = c(0,5500), breaks = seq(0, 5500, by = 500),\n                     labels = function(x) paste0(x, \"$\")) +\n  labs(title = \"Xonandlarning birrovga borish narxi ©СФ\",\n       subtitle = \"Malumotlar \\\"Daryo.uz\\\" ga asoslangan\",\n       x = \"Sanatkorlar\",\n       y = \"\\\"Birrov\\\" narxi\") +\n  theme_minimal()+\n  theme(plot.title = element_text(color = \"dodgerblue4\", size = 14, face = \"bold\", hjust = 0.5),\n        plot.subtitle = element_text(color = \"dodgerblue\", size = 13, face = \"bold.italic\", hjust = 0.5),\n        axis.title.x = element_text(color=\"indianred4\", size = 12, face=\"bold\", vjust = 0.1),\n        axis.title.y = element_text(color=\"indianred4\", size = 12, face=\"bold\", vjust = 1.9),\n        axis.text.x = element_text(colour = \"slateblue\", size = 10, face = \"bold.italic\", vjust = 0.5),\n        axis.text.y = element_text(colour = \"darkblue\", size = 10, face = \"plain\", vjust = 0.5)\n        ) -> pp\npp\n```\n\n::: {.cell-output-display}\n![](ggimg_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n## \n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nimgg <- \"gallery_img/stars/imgsb.png\"\np1 <- ggbackground(pp, imgg)\np1\n```\n\n::: {.cell-output-display}\n![](ggimg_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "ggimg_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,306 @@
+---
+title: "lineplot via gganimate"
+description: "`gganimate` extends the grammar of graphics as implemented by ggplot2 to animate of plots."
+author: "Fazliddin Sultonov"
+date: "2024-10-18"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [gganimate, R, ggplot2, lineplot]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+    link-external-newwindow: true
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+![](gallery_img/gg_line.png)
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter, tables
+  "reticulate",  # python
+  "fontawesome", # icons
+  "gganimate",   # animated plot
+  "ggtext"
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312") # für Python
+
+```
+
+Data Source: [United Nations, Department of Economic and Social Affairs, Population Division (2018). World Urbanization Prospects: The 2018](https://population.un.org/wup/Download/)
+
+## Load data from GitHub
+
+```{r}
+#| echo: true            # R-Input anzeigen      
+#| output: true         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen 
+
+df <- read.csv2("https://raw.githubusercontent.com/sultanovf/my_datasets/main/urban_population_19502025.csv")
+years <- paste(1950:2025) #, sep=",", collapse= ","
+years <- unlist(strsplit(years, ","))
+new_cnames <- c("country",  years)
+colnames(df) <- new_cnames
+# Country names to plotting
+countries <- c("Afghanistan", "Uzbekistan", "Kazakhstan", "Kyrgyzstan", "Tajikistan", "Turkmenistan","Russian Federation")
+
+```
+
+#### Data for Urban Population
+
+```{r}
+#| echo: true      # R-Input anzeigen      
+#| output: true    # R-Output NICHT anzeigen 
+#| eval: true      # Code ausführen 
+
+df_urban <- df
+df_urban |> 
+  sample_n(3, replace = FALSE) |> 
+  kable() 
+```
+
+#### Data for Rural Population
+
+```{r}
+#| echo: true      # R-Input anzeigen      
+#| output: true    # R-Output NICHT anzeigen 
+#| eval: true      # Code ausführen 
+
+# new daf for rural, values = 100 - values
+df_rural <- df # df rural
+
+df_rural <-
+  df_rural|> 
+  mutate_if(is.numeric, fun <- function(x) 100-x)
+# show
+df_rural |> 
+  sample_n(3, replace = FALSE) |> 
+  kable()
+```
+
+
+## Pivot table
+
+```{r}
+#| results: hold
+
+# Pivot tables
+pv_urban <- 
+  df_urban |> 
+  pivot_longer(
+    cols = !country,
+    names_to = "year",
+    values_to = "urban"
+  )
+
+pv_rural <- 
+  df_rural |> 
+  pivot_longer(
+    cols = !country,
+    names_to = "year",
+    values_to = "rural"
+  )
+
+df_merge <- left_join(pv_urban, pv_rural, by = c("country" ,"year"))
+df_merge |> sample_n(6)
+# show
+# df_merge |> 
+#   sample_n(size = 7, replace = FALSE) |> 
+#   kable()
+```
+
+## Prepare DataFrame for plot
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+df_p <- df_merge |> 
+  filter(
+    country %in% countries
+  ) |> 
+  pivot_longer(
+  cols = c(urban, rural),
+  names_to = "pop",
+  values_to = "pct"
+  ) |> 
+  mutate(year = as.integer(year)) # year must be integer for animated plotting(gganimate)
+  # arrange(desc(year))
+
+df_p |> sample_n(6)
+```
+
+## Lineplot facetted by countries
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# Create plot facetted by countries
+df_p |> 
+  filter(country != "Russian Federation") |> 
+  ggplot(aes(x = year, y = pct, color = pop)) +
+  geom_line() +
+  geom_point() + 
+  transition_reveal(year) +
+  scale_y_continuous(limits = c(0,100),breaks = seq(0, 100, 20),
+                     labels = function(x) paste0(x, "%"),
+                     ) +
+  scale_x_continuous(limits = c(1950, 2025), breaks = seq(1950, 2025, 15)) +
+  facet_wrap(~country) -> p_facetcountry
+# facet_wrap(~country, labeller = labeller(country = new_labels)) -> p_facetcountry
+
+# format plot
+p_facetcountry <- p_facetcountry +
+  labs(title = "Percentage of rural and urban population by selected countries",
+       caption = "Source: United Nations, Department of Economic and Social Affairs",
+       x = "Years, 1950 - 2025",
+       y = "Percentage of Population") +
+  theme(plot.title = element_text(color = "dodgerblue4", size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(color = "dodgerblue", size = 8, face = "italic"),
+        plot.background = element_rect(fill = "aliceblue"), 
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.position = "top")
+
+p_facetcountry
+
+# to save
+#gganimate::animate(p_facetcountry, renderer = gifski_renderer(), height=500, width=700)
+```
+
+## Lineplot facetted by Population (urban & rural)
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# Create plot facetted by population
+df_p |> 
+  ggplot(aes(x = year, y = pct, color = country)) +
+  geom_line() +
+  geom_point() + 
+  geom_text(aes(x = 2023, y = 96,
+                label = "Made with \U1F49F by ФС"),
+            stat = "unique",
+            size = 2, color = "red") +
+  # annotate("text", x=8, y=6, label= "Made by ©СФ") +
+  transition_reveal(year) +
+  scale_y_continuous(limits = c(0,100),breaks = seq(0, 100, 20),
+                     labels = function(x) paste0(x, "%"),
+  ) +
+  scale_x_continuous(limits = c(1950, 2025), breaks = seq(1950, 2025, 5)) +
+  facet_wrap(~pop, ncol = 1) -> p_facetpop
+
+# format plot
+p_facetpop +
+  labs(title = "Urban countries bei Percentage of Population (urban & rural)",
+       caption = "Source: United Nations, Department of Economic and Social Affairs",
+       x = "Years, 1950 - 2025",
+       y = "Percentage of Population") +
+  theme(plot.title = element_text(color = "dodgerblue4", size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(color = "dodgerblue", size = 8, face = "bold.italic"),
+        plot.background = element_rect(fill = "aliceblue"), 
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.position = "bottom")
+
+# To save
+# animate(p_facetpop, renderer = gifski_renderer(), height=500, width=700)
+# anim_save("C:/Users/sultanov/Documents/temp/gifs/p_facetpop.gif")
+```
+
+## Lineplot for individual country (Uzbekistan)
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# Uzbekistan
+df_p |> 
+  filter(country == "Uzbekistan") |> 
+  ggplot(aes(x = year, y = pct, color = pop)) +
+  geom_line() +
+  geom_point() + 
+  geom_text(aes(x = 2022, y = 98,
+                label = "Made with \U1F49F by ФС"),
+            stat = "unique",
+            size = 2.5, color = "red") +
+  transition_reveal(year) +
+  scale_y_continuous(limits = c(0,100),breaks = seq(0, 100, 10),
+                     labels = function(x) paste0(x, "%"),
+  ) +
+  # scale_x_continuous(limits = c(1950, 2025), breaks = seq(1950, 2025, 10),
+  #                    expand = expansion(c(0.02, 0.02))) +
+  scale_x_continuous(limits = c(1950, 2025), 
+                     breaks = seq(1950, 2025, 5)) -> p_uz
+ 
+# format plot
+p_uz <- p_uz +
+  labs(title = "Percentage of rural and urband Population in Uzbekistan, 1950-2025",
+       caption = "Source: United Nations, Department of Economic and Social Affairs",
+       x = "Years, 1950 - 2025",
+       y = "Percentage of Population") +
+  # annotate("text", x=2024, y=95, label= "Made by ©СФ") +   # adds text to the plot
+  theme(plot.title = element_text(color = "dodgerblue4", size = 10, face = "bold", hjust = 0.5),
+        plot.caption = element_text(color = "dodgerblue", size = 8, face = "bold.italic"),
+        plot.background = element_rect(fill = "aliceblue"), 
+        panel.background = element_rect(fill = "ghostwhite"),
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.position = "top")
+
+p_uz
+# To save
+# animate(p_uz, renderer = gifski_renderer(), height=400, width=600)
+# anim_save("C:/Users/sultanov/Documents/temp/gifs/p_uz.gif")
+```
+

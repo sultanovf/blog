@@ -1,0 +1,152 @@
+---
+title: "boxplot"
+description: "`boxplot` is the most  used chart type to compare distribution of several groups"
+author: "Fazliddin Sultonov"
+date: "2024-06-09"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [boxblot, R, Python]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/boxplot.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+
+::: {.code-r} 
+#### `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+# ==============================================================================
+## Create Box-Plot in R
+### Library Package
+# library("ggplot2")
+
+### Create Data
+groups <- sample(c("GrupA", "GrupB"), size = 100, replace = TRUE)
+values <- sample(9:31, 100, replace = TRUE)
+df <- data.frame(groups, values)
+
+### Create Plots
+ggplot(df, aes(x = groups, y = values, fill=groups)) +
+  stat_boxplot(geom = "errorbar", width = 0.25) + 
+  geom_boxplot() +
+  stat_summary(
+    fun = "mean", geom = "point", shape = 18, size = 4, color = "tomato1"
+    ) +
+  scale_fill_manual(values=c("peachpuff", "mistyrose")) +
+  labs(title = "Sample Box-Plot in R (red point = mean) \u00A9ф",
+       x = "Gruppalar",
+       y = "Qiymatlar") +
+  theme_light()+
+  #theme_minimal() +
+  theme(legend.position = "none",
+    plot.title = element_text(color="steelblue4", size=14, face="bold.italic"),
+    axis.title.x = element_text(color="cadetblue4", size=12, face="bold"),
+    axis.title.y = element_text(color="tomato4", size=12, face="bold")) 
+```
+:::
+
+```{r}
+#| code-summary: "R base boxplot function"
+#| eval: false
+
+# With R base boxplot function
+boxplot(
+  values ~ groups, d,
+  xlab = "Gruppalar",
+  ylab = "Qiymatlar",
+  main = "A sample Box-Plot",
+  col= "azure" )
+abline(h=means$values, text = "mean", col="tomato1", lwd=1, lty = 2)
+```
+
+
+::: {.code-py}
+#### `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+## ============================================================================
+## Create Box-Plot in Python
+#### Import module
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+### Create DataF
+groups = np.random.choice(["GrupA", "GrupB"], size = 100, replace = True)
+values = list(np.random.randint(9, 31, size = 100))
+
+### Create Plots
+df = pd.DataFrame(list(zip(groups, values)), columns = ["groups", "values"])
+sns.boxplot(x="groups", y="values", data = df)
+plt.xlabel("Gruppalar")
+plt.ylabel("Qiymatlar")
+plt.title("Sample Box-Plot in Python \u00A9ф")
+plt.show()
+```
+:::
+

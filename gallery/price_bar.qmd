@@ -1,0 +1,427 @@
+---
+title: "animated barplot"
+description: "#part_2: an *animated barplot* for the development of food price of some products in Uzbekistan over the years and months using `ggplot2` and `gganimate`"
+author: "Fazliddin Sultonov"
+date: "2025-02-08"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [barplot, R, ggplot2, gganimate, geom_image]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+    #embed-resources: true
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/bar_prod.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # dataclean, ggplot
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "showtext",    # show icons
+    #> Loading required package: sysfonts
+    #> Loading required package: showtextdb
+  "ggpubr",      # add backgrounf image to ggplot
+  "ggtext",      # texte ins plot
+  "glue",        # für md texte
+  "png",         # read png
+  "ggimage",     # pictures to the plot
+  "gganimate",   # animate plot
+  "av"           # render/animate plot
+  )     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+#use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Variable =====================================================================
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+yt_icon <- "&#xf431" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+yt_username <- "@hw_sultanov"
+ins_username <- "@sultanof.uzb"
+tg_username <- "@R4Pythonistas"
+
+# Caption for the plot
+social_caption_map <- glue::glue(
+  "Plot_by:<span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username} |</span>|<span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span><span style='color: #e1306c'>{ins_username} |</span>|<span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span><span style='color: #24A1DE'>{tg_username} |</span>|")
+
+# social_caption_map <- glue::glue(
+#   "<span style = 'color:skyblue3;'><i><strong>DataSource: ©Агентство статистики при Президенте Республики Узбекистан<br></strong></i></span>  Plot by:
+#   <span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+#   <span style='color: #C4302B'>{yt_username}</span>|
+#   <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+#   <span style='color: #e1306c'>{ins_username}</span>|
+#   <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+#   <span style='color: #24A1DE'>{tg_username}</span>|"
+# )
+
+
+# variable ---------------------------
+runame <- c("Рис",	"Ячмень",	"Пшеница",	"Кукуруза",	"Отруби",	"Шрот",	"Шелуха",	"Комбикорм",	"Мука(высшего)",
+           "Мука(первого сорта)",	"Хлеб",	"Говядина",	"Баранина",	"Курица",	"Рыбавсякая",	"Молоко",	
+           "Яйца(10 штук)",	"Масло(хлопковое)",	"Масло(подсолнечное)",	"Масло сливочное",	"Лимоны",	"Яблоки",
+           "Груши",	"Виноград",	"Арбуз",	"Дыня",	"Кишмиш",	"Капуста",	"Огурцы",	"Помидоры",	"Баклажаны",
+           "Перец болгарский",	"Тыква",	"Морковь",	"Чеснок",	"Лук",	"Картофель",	"Фасоль",	
+           "Горох",	"Маш",	"Сахар")
+gosht <- c("Qoy goshti", "Tovuq goshti", "Mol goshti")    # Мясо
+sabzavot <- c("Kartoshka", "Sabzi", "Sarimsoq", "Piyoz")  # Овощи
+oziqovqat <- c("Guruch", "Shakar", "Bugdoy", "Non")       # Питание
+yog <- c("Yog(kungaboqar)", "Yog(paxta)", "Sariyog")      # Mасло
+filtermap <- c("Qoy goshti", "Tovuq goshti", "Mol goshti", "Kartoshka", "Sabzi", "Sarimsoq", "Piyoz",
+               "Guruch", "Shakar", "Bugdoy", "Non", "Yog(kungaboqar)", "Yog(paxta)", "Sariyog")
+filtermap1 <- c("Пшеница", "Рис", "Хлеб", "Масло(хлопковое)",  "Масло(подсолнечное)",  "Масло сливочное", "Морковь",
+           "Чеснок", "Лук", "Картофель", "Сахар")
+
+img_path <- "gallery_img/products/"
+
+
+```
+
+
+:::: {.column-screen}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+Datasource: [Statistics Agency under the President of the Republic of Uzbekistan](https://stat.uz/en/) |
+Datastorage: [{{< fa brands square-github >}}GitHub](https://github.com/sultanovf/my_datasets/blob/main/priceuz_202101-202411.csv)
+
+
+## Data
+
+```{r}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+data_raw <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/priceuz_202101-202411.csv")
+
+  
+price_uz <-
+  data_raw |> 
+  select(-runame) |> 
+  add_column(runame, .after = "enname" )
+
+datseq <- as.character(seq(as.Date("2021-01-01"),as.Date("2024-11-01"), by = "month"))
+new_colnames <- c("uzname", "enname", "runame", unlist(strsplit(datseq, ",")))
+colnames(price_uz) <- new_colnames
+
+
+rmarkdown::paged_table(sample_n(price_uz, 10)) # show sample 10 rows
+# oder {r, df_print = "paged"}
+# sample_n(data_raw, 10
+
+```
+
+
+
+## dataclean
+
+```{r}
+#| results: hold
+#| warning: false
+
+# add column catecory
+df_data <- price_uz |> 
+  select(-enname) |> 
+  filter(uzname %in% filtermap) |> 
+  mutate(
+    category = case_when(
+      uzname %in% gosht ~ "Мясо",
+      uzname %in% sabzavot ~ "Овощи",
+      uzname %in% oziqovqat ~ "Питание",
+      uzname %in% yog ~ "Mасло",
+      TRUE ~ "Другой"
+    )
+  )
+
+# pivot data
+df_piv <-
+  df_data |> 
+  pivot_longer(
+    cols = !c(uzname, runame, category),
+    names_to = "date",
+    values_to = "price"
+  ) |> 
+  mutate(
+    date = as.Date(date)
+  ) 
+
+df_piv |> 
+  sample_n(7)
+```
+
+
+## Prepare Data for Plot
+
+```{r}
+#| results: hold
+#| warning: false
+
+df2 <- 
+  df_piv |>
+  filter(
+    !(runame %in% c("Баранина", "Говядина", "Масло сливочное", "Курица"))
+  ) |> 
+  arrange(date,price) |>
+  group_by(date) |>
+  # mutate(date = format(date, "%Y %b")) |>
+  mutate(
+    images = case_when(
+      runame == "Пшеница" ~ paste0(img_path,uzname,".png"),
+      runame == "Рис" ~ paste0(img_path,uzname,".png"),
+      runame == "Хлеб" ~ paste0(img_path,uzname,".png"),
+      runame == "Масло(хлопковое)" ~ paste0(img_path,uzname,".png"),
+      runame == "Масло(подсолнечное)" ~ paste0(img_path,uzname,".png"),
+      runame == "Морковь" ~ paste0(img_path,uzname,".png"),
+      runame == "Чеснок" ~ paste0(img_path,uzname,".png"),
+      runame == "Лук" ~ paste0(img_path,uzname,".png"),
+      runame == "Картофель" ~ paste0(img_path,uzname,".png"),
+      runame == "Сахар" ~ paste0(img_path,uzname,".png"),
+      TRUE ~ uzname
+      
+    ),
+    frame = row_number(),
+    rank = 1:n(),
+    #ord_runame = (fct_reorder(runame, price))
+  ) |>  ungroup()
+
+head(df2)
+
+
+
+
+```
+
+
+## Plot animatet #1
+
+```{r}
+#| results: hold
+#| warning: false
+
+# Title/subtitle/legendtitle
+t2 <- paste("Цены на продукты питания")
+p2 <- paste("категории: ") 
+
+
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))
+
+showtext::showtext_auto()
+
+p_df2 <-
+  df2 |> 
+  ggplot(aes(
+    x= rank,
+    y = price,
+    fill = category))+ #    color = runame
+  geom_col()+
+  geom_text(aes(label = as.character(price)), hjust = 0, size = 4) +
+  geom_image(aes(x = rank,  image = images),y = 0,   size = 0.1)+ 
+  
+  
+  scale_y_continuous(
+    limits = c(0,40000),breaks = seq(0, 40000, 5000),
+    labels = function(x) paste0(x/1000, "k"),
+    expand = expansion(c(0.09, 0.02))) +
+  #expand_limits(y = 0)+
+  #scale_y_continuous(labels = scales::comma) + # Format y-axis values
+  #scale_x_reverse() +   # put rank 1 at the top/ Highest values on top
+  #guides(color = FALSE, fill = FALSE)+
+  
+  coord_flip(clip = "off", expand = FALSE) +
+  geom_label(aes(label = paste("Time:",format(date, "%Y %b"))),
+             x = 1.6, y = 32000, size = 7, fill = "floralwhite", col = "gray")+
+  labs(title = t2,
+       subtitle = "DataSource: ©Агентство статистики при Президенте Республики Узбекистан",
+       caption = social_caption_map, 
+       x = "продукты", 
+       y = "цены в тысячах(k = 1000)",
+       fill = p2) +
+
+  theme_minimal()+
+  theme(plot.title = element_text(size = 16, hjust = 0.5 ),
+        plot.subtitle = element_text(size = 14, color = "steelblue4", hjust = 0.5),
+        plot.caption = ggtext::element_markdown(size = 12, hjust = 0.5),
+        legend.position = "top",
+        axis.text.y = element_blank(),
+        axis.title.y = element_text(vjust = 11, size = 9),
+        axis.title.x = element_text(size = 10),
+        legend.box.background =element_rect("floralwhite")) +
+  
+  transition_states(date)+
+  ease_aes("cubic-in-out") + #bounce-in cubic-in-out
+  enter_fade() +
+  exit_fade()
+
+p_df2
+
+# anim_1 <- p_df2 |>
+#   animate(
+#     duration = 20,
+#     fps = 10,
+#     start_pause = 5,
+#     end_pause = 5,
+#     #height = 530,
+#     #width = 832,
+#     #rewind = TRUE,
+#     renderer = av_renderer()
+#   )
+# anim_1
+
+```
+
+## Plot animated #2
+
+```{r}
+#| results: hold
+#| warning: false
+
+p1_df2<- df2 |> 
+  ggplot(aes(
+    xmin= 0,
+    xmax = price,
+    y = rank,
+    ymin = rank - 0.45,
+    ymax = rank + 0.45,
+    group = runame,
+    fill = category))+
+  geom_rect(alpha = 0.5) +
+  
+  facet_wrap(~date) +
+  facet_null() +
+  
+  scale_x_continuous(
+    limits = c(0,40000),breaks = seq(0, 40000, 5000),
+    labels = function(x) paste0(x/1000, "k"),
+    expand = expansion(c(0.05, 0.02)))+
+
+  geom_image(aes(x=price, image = images), x= 0, size = 0.1)+
+  geom_text(aes(label = paste("Time:", format(date, "%Y %b"))),
+             x = 32000, y = 1.5, size = 6, color = "tomato4")+
+  
+  
+  geom_label(aes(x = price, label = as.character(price)), colour = "white")+
+  
+  labs(title = t2, 
+       subtitle = "DataSource: ©Агентство статистики при Президенте Республики Узбекистан",
+       caption = social_caption_map,
+       x = "цены в тысячах (k = 1000)", y = "продукты", 
+       fill = p2)+   # legend title
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 16, color = "steelblue4", hjust = 0.5),
+    plot.subtitle = element_text(size = 14, color = "tomato4", hjust = 0.5),
+    plot.caption = element_textbox_simple(
+      size = 12,
+      lineheight = 1,
+      padding = margin(5.5, 5.5, 5.5, 5.5),
+      margin = margin(0, 0, 5.5, 0),
+      hjust = -0.5,
+      fill = "cornsilk"), #
+    axis.ticks.y = element_blank(), 
+    axis.text.y = element_blank(),
+    # panel.grid.major.y = element_blank(),
+    # panel.grid.minor.y = element_blank(),
+    legend.position = "top",
+    legend.box.background =element_rect("floralwhite")) +
+  
+  transition_reveal(date)+
+  enter_fade() +
+  exit_fade()
+
+p1_df2
+
+# anim_2 <- p1_df2 |>
+#   animate(
+#     duration = 20,
+#     fps = 10,
+#     start_pause = 5,
+#     end_pause = 5,
+#     # height = 530, #530
+#     #width = 844, #633
+#     #rewind = TRUE,
+#     renderer = av_renderer()
+#   )
+# anim_2
+```
+
+
+## Saved as Video
+
+<!-- {{< video plots/price_bar.mp4 title="Test" aspect-ratio="16x9" >}} -->
+
+
+![](plots/price_bar.mp4)
+
+
+

@@ -1,0 +1,367 @@
+---
+title: "animated lineplot"
+description: "#part_1: an *animated lineplot* for the price development of of meat products in Uzbekistan over year and months using `ggplot2` and `gganimate`"
+author: "Fazliddin Sultonov"
+date: "2025-02-08"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [lineplot, R, ggplot2, gganimate, geom_image]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/line_meat.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # dataclean, ggplot
+  "knitr",       # knitter
+  "fontawesome", # icons
+    #> Loading required package: sysfonts
+    #> Loading required package: showtextdb
+  "showtext",    # show icons
+  "ggpubr",      # add backgrounf image to ggplot
+  "ggtext",      # texte ins plot
+  "glue",        # für md texte
+  "png",         # read png
+  "ggimage",     # pictures to the plot
+  "gganimate",   # animate plot
+  "av"           # render/animate plot
+  )     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+#use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Variable =====================================================================
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+yt_icon <- "&#xf431" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+yt_username <- "@hw_sultanov"
+ins_username <- "@sultanof.uzb"
+tg_username <- "@R4Pythonistas"
+
+# Caption for the plot
+cap <- glue::glue(
+  "Plot by:
+  <span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username} |</span>|
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username} |</span>|
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username} |</span>|</br></p>"
+)
+
+
+# variable ---------------------------
+runame <- c("Рис",	"Ячмень",	"Пшеница",	"Кукуруза",	"Отруби",	"Шрот",	"Шелуха",	"Комбикорм",	"Мука(высшего)",
+           "Мука(первого сорта)",	"Хлеб",	"Говядина",	"Баранина",	"Курица",	"Рыбавсякая",	"Молоко",	
+           "Яйца(10 штук)",	"Масло(хлопковое)",	"Масло(подсолнечное)",	"Масло сливочное",	"Лимоны",	"Яблоки",
+           "Груши",	"Виноград",	"Арбуз",	"Дыня",	"Кишмиш",	"Капуста",	"Огурцы",	"Помидоры",	"Баклажаны",
+           "Перец болгарский",	"Тыква",	"Морковь",	"Чеснок",	"Лук",	"Картофель",	"Фасоль",	
+           "Горох",	"Маш",	"Сахар")
+gosht <- c("Qoy goshti", "Tovuq goshti", "Mol goshti")    # Мясо
+sabzavot <- c("Kartoshka", "Sabzi", "Sarimsoq", "Piyoz")  # Овощи
+oziqovqat <- c("Guruch", "Shakar", "Bugdoy", "Non")       # Питание
+yog <- c("Yog(kungaboqar)", "Yog(paxta)", "Sariyog")      # Mасло
+filtermap <- c("Qoy goshti", "Tovuq goshti", "Mol goshti", "Kartoshka", "Sabzi", "Sarimsoq", "Piyoz",
+               "Guruch", "Shakar", "Bugdoy", "Non", "Yog(kungaboqar)", "Yog(paxta)", "Sariyog")
+
+img_path <- "gallery_img/products/"
+
+```
+
+
+:::: {.column-screen}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+Datasource: [Statistics Agency under the President of the Republic of Uzbekistan](https://stat.uz/en/) |
+Datastorage: [{{< fa brands square-github >}}GitHub](https://github.com/sultanovf/my_datasets/blob/main/priceuz_202101-202411.csv)
+
+
+## data
+
+```{r}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+data_raw <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/priceuz_202101-202411.csv")
+
+  
+price_uz <-
+  data_raw |> 
+  select(-runame) |> 
+  add_column(runame, .after = "enname" )
+
+datseq <- as.character(seq(as.Date("2021-01-01"),as.Date("2024-11-01"), by = "month"))
+new_colnames <- c("uzname", "enname", "runame", unlist(strsplit(datseq, ",")))
+colnames(price_uz) <- new_colnames
+
+
+rmarkdown::paged_table(sample_n(price_uz, 10)) # show sample 10 rows
+# oder {r, df_print = "paged"}
+# sample_n(data_raw, 10
+
+```
+
+
+
+## dataclean
+
+```{r}
+#| results: hold
+#| warning: false
+
+# add column catecory
+df_data <- price_uz |> 
+  select(-enname) |> 
+  filter(uzname %in% filtermap) |> 
+  mutate(
+    category = case_when(
+      uzname %in% gosht ~ "Мясо",
+      uzname %in% sabzavot ~ "Овощи",
+      uzname %in% oziqovqat ~ "Питание",
+      uzname %in% yog ~ "Mасло",
+      TRUE ~ "Другой"
+    )
+  )
+
+# pivot data
+df_piv <-
+  df_data |> 
+  pivot_longer(
+    cols = !c(uzname, runame, category),
+    names_to = "date",
+    values_to = "price"
+  ) |> 
+  mutate(
+    date = as.Date(date)
+  )
+
+df_piv |> 
+  sample_n(7)
+```
+
+
+## prepare data for plot
+
+```{r}
+#| results: hold
+#| warning: false
+
+
+
+df1 <- 
+  df_piv |>
+  filter(
+    runame %in% c("Баранина", "Говядина", "Масло сливочное", "Курица")
+  ) |> 
+  mutate(
+    images = case_when(
+      runame == "Баранина" ~ paste0(img_path,uzname,".png"),
+      runame == "Говядина" ~ paste0(img_path,uzname,".png"),
+      runame == "Масло сливочное" ~ paste0(img_path,uzname,".png"),
+      runame == "Курица" ~ paste0(img_path,uzname,".png"),
+      TRUE ~ uzname
+      
+    ),
+    frame = row_number()
+  )
+
+head(df1)
+
+
+
+
+```
+
+
+## plot
+
+```{r}
+#| results: hold
+#| warning: false
+
+# Title/subtitle/legendtitle
+t <- paste("Динамика цен на мясо")
+st <- paste("Январь 2021 - Ноябрь 2024")
+p <- paste("продукты")
+pp <- 
+  df1 |> 
+  ggplot(aes(x = date, y = price, color = runame)) +
+  geom_line()+
+  geom_point()+
+  scale_y_continuous(limits = c(20000,95000),breaks = seq(20000, 95000, 5000),
+                     labels = function(x) paste(x/1000)) +
+  scale_x_date(date_labels = "%Y") +
+  #guides(fill = guide_legend(title = "Produkt"))+ #change legen title not worked
+  labs(
+    #fill = p,     #change legen title not worked
+    title = t, 
+    subtitle = st,
+    caption = cap,
+    y = "Цена в тысячах сумов",
+    x = NULL)+
+  
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 12, color = "steelblue4", face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size=11, color = "tomato3", face = "bold", hjust = 0.5),
+    plot.caption = ggtext::element_markdown(size = 11, hjust = 0.5),
+    legend.position = "bottom",
+    legend.box.background =element_rect("floralwhite"))
+
+mol <- "gallery_img/products/Mol goshti1.png"
+
+pp$labels$colour = "продукты" #change legen title
+
+p1 <- ggbackground(pp, mol, alpha = .5, color = "gray")
+
+p1
+
+```
+
+## plot animated
+
+```{r}
+#| results: hold
+#| warning: false
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+p2 <- 
+  df1 |> 
+  ggplot(aes(x = date, y = price, fill = runame)) +
+  geom_line()+
+  geom_point()+
+  geom_image(aes(image=images),  size=0.12)+
+  geom_label(aes(label = as.character(price)), size = 3.5 ,hjust = 1.2, colour= "white")+
+  # scales
+  scale_y_continuous(limits = c(20000,95000),breaks = seq(20000, 95000, 5000),
+                     labels = function(x) paste(x/1000)) +
+  scale_x_date(date_labels = "%Y") +
+  # Labs/titles
+  labs(
+    title = t, 
+    subtitle = "{format(frame_along, '%Y - %B')}",
+    caption = cap,
+    y = "Цена в тысячах сумов",
+    x = NULL,
+    fill = p)+   # funktioniert wenn aes oben fill, wenn color nicht
+  # Theme format
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 14, color = "steelblue4", face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size=12, color = "tomato3", face = "bold", hjust = 0.5),
+    plot.caption = ggtext::element_markdown(size = 12, hjust = 0.5),
+    #legend.title = element_markdown(p), #change legen title not worked
+    legend.position = "bottom",   #c(0.90, 0.13)
+    
+    legend.box.background =element_rect("floralwhite"))+
+  # animate
+  # transition_time(date) # keine Linie
+  transition_reveal(date)
+p2
+
+## render and Save
+# anim_p <- 
+#   p2 |>
+#   animate(
+#     duration = 20,
+#     fps = 10,
+#     start_pause = 5,
+#     end_pause = 10,
+#     height = 533,
+#     width = 833,
+#     renderer = av_renderer()
+#   )
+# 
+# anim_p
+
+#anim_save("C:/Users/sultanov/YandexDisk/f-sultan/temp/r/gganimate/plots/price_5.mp4", price_5 = a1)
+
+```
+
+
+## Saved as Video
+
+
+![](plots/price_line.mp4)
+
+
+
+
+

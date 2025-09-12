@@ -1,0 +1,210 @@
+---
+title: |
+  R & Python: Functions\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"Qorni ochga baliq bersang bir marta qorni to'yadi, unga bir marta baliq tutishni o'rgatsang, hech qachon och qolmaydi.\"  <br> ~ Laotse.
+author: "Fazliddin Sultonov"
+date: "2024-06-30"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  desc-position: top
+
+page-layout: full
+# reference-location: margin
+categories: [Function, Uzbek, R, Python]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # Sections
+    toc: true
+  # codeb block
+    code-line-numbers: true
+    code-block-border-left: true
+    code-overflow: scroll
+    link-external-newwindow: true
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+# bibliography
+bibliography: reference.bib
+nocite: |
+  @*
+---
+
+
+![](pic/func.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+## Intro
+
+Ba'zan biror bir yechim ustida ishlanganda bir xil amalni yoki ifodani ko'p joylarda takroran qo'llashga to'g'ri keladi. Shunaqa hollarda funksiyalar qo'l keladi. ***Funksiya*** -- bu dastur davomida bir yoki bir necha marta bajarilishi zarur yoki mumkin bo'lgan ko'rsatmalarning (kodlardan iborat qatorlaningr) nomlangan ketma-ketligidir. Funksiya faqat chaqirilganda ishlaydi va ma'lum bir vazifani bajarishda ishlatiladi. 
+
+Funksiyagaga uning nomi bilan murojat qilinadi. Uning ortida bir qator yoki bir necha qatordan iborat kod bo'lishi mumkin. Dastur davomida ma'lum bir kodlarni qayta-qayta yozmaslik uchun biz ularni jamlab, bitta funksiya ichiga joylashimiz va dastur davomida bu kodlarga funksiya nomi orqali murojat qilishimiz mumkin [@py_sardev]. 
+
+## Writing function
+
+Dastur davomida tayyor fuksiyalarni ham ishlatishimiz mumkin, bular ***built-in-functions*** ham deyiladi. Bunaqa tayyor funksiyalar  Pythonda masalan *print*, *sum*, *len*, *min*, *max*, *mean*, *upper*, *round* va hokozalar. R da bularga *sum*, *round*, *toupper*, *mean*, *nchar*, *lenght* va boshqalarni misol qilib keltirish mumkin. Bundan tashqari, qoyilgan vazifa va yechimga qarab, biz o'zimiz ham funksiyalar, ya'ni ***custom functions*** yaratishimiz mumkin. Python va R da funksiya yozishda yozish uslubi biroz farq qilaydi:
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| echo: true
+#| eval: false
+#| classes: code-output
+
+def func_name(parameters/arguments):
+  """description of function"""
+  statements/actions
+  return expressions/output
+```
+:::
+
+::: {.code-r}
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| echo: true
+#| eval: false
+#| classes: code-input
+
+func_name <- function(arguments,parameters){
+  actions/statements
+  return(output/expression)
+}
+```
+:::
+
+### Function in Python
+
+Pythonda funksiya `def` kalit so'zi yordamida yaratiladi. Kalit so'zidan keyin funksiya nomi yozilib, agar argument qabul qiladigan funksiya bo'lsa, qavs ichiga argumentlar beriladi va tinish belgis (ikki nuqta) qo'yiladi va yangi qatordan to'rta bo'sh joy (probel) tashlab bajarilishi kerak bo'lgan kod (statement) yoziladi va oxirida *return*
+yordamida natija qaytariladi. Quyidagi grafikda Python da funksiyaning yaratilishi va uning tuzilmalari va aklit so'zlari izohlar bilan keltirilgan. Screenshot [@py_visPy] dan olingan.
+
+![Function in Python](pic/func_py.png){fig-alt="Click for zooming"}
+
+Misol uchun bizga sonlardan iborat ro'yxat berilgan. Bu ro'yxatdagi sonlar uchun o'rtacha arifmetik qiymatni hisoblaydigan funksiya tuzamiz.
+
+```{python}
+#| code-fold: false
+#| collapse: true
+#| classes: code-output
+
+# imort random mudul
+from numpy import random
+# create a random list len = 15
+lst = list(random.randint(1,50, size = 15)); lst
+# write a function
+def my_average(x):
+  average = round(sum(x)/len(x), 2)
+  return average
+# call the function
+my_average(lst)
+```
+
+ 
+### Function in R
+
+R dasturlash tilida funksiyalar ham object sifatida qaraladi. Boshqa dasturlash tilllaridagi kabi R da ham funksiyaga nom (name) beriladi va unga argument yoki argumentlar (arguments) uzatiladi. Funksiyani tana, ya'ni body qismida bajarilishi kerak bo'lgan harakatlar (actions) amalga oshiriladi va natija (output) qaytariladi. 
+
+
+
+Quyidagi grafikda R da funksiyaning yaratilishi va uning tuzilmalari va aklit so’zlari keltirilgan. Screenshot [@r_forecology] dan olingan.
+
+![Function in R](pic/func_r.png){fig-alt="Click for zooming"}
+
+Quyida yuqoridagi Python orqali yaratilgan ro'yxatdagi sonlar uchun o'rtacha arifmetik qiymatni hisoblaydigan funksiyani R dasturlash tilida tuzamiz.
+
+```{r}
+#| code-fold: false
+#| collapse: true
+#| classes: code-intput
+
+# convert in Python created list to the R-Vector
+vec <- unlist(py$lst)
+# write a function
+my_average <- function(x){
+  output <- round(sum(vec)/length(vec), 2)
+  return(output)
+}
+# call the function
+my_average(vec)
+```
+
+## Anonymous Functions
+
+Yuqorida keltirilganidek, agar biz biror funksiya yaratib olsak, funksiyamizdan hamma joyda, yani qayerda funksiyamiz bajara oladigan amllarni qo'llash kerak bo'lgan joylayrda qo'llasak bo'ladi. Ba'zan funksiyalarni bir marta ham ishlatish mumkin. Bunda yuqoridagidek o'zimizni funksiyamizni yaratib olishimiz va keyin kerakli joyda chaqirishimiz shart emas. Bunday holllarda ko'pincha *nomsiz funksiyalardan (anonymous functions)* foydalaniladi. Bu funksiyalar faqat vaqtinchalik yaratiladi va oʻzgaruvchiga nom berilmasdan foydalaniladi. Nomsiz funksiyalar nomli funksiyalar kabi chaqirish mumkin. Python da *def* kalit so'zi o'rniga `lambda` kalit so'zi ishlatiladi. Shuning uchun ham Python da nomsiz funksiyalar *lambda funksiyalar* deb ham ataladi. Lambda funksiyalari istalgan miqdordagi argumentlarga ega bo'lishi mumkin, ammo funksiya badanida faqat bitta ifoda mavjud bo'ladi. Ifoda bajariladi va qaytariladi (return operatori shart emas)[@py_sardev].
+
+Aytaylik, yana ro'yxat berilgan bo'lsin. Ro'yxatdagi sonlarni misol uchun ikkinchi darajaga oshirish kerak. Pythonda lambda funksiasidan quyidagicha foydalanishimiz mumkin[^1]:
+
+[^1]: Lambda funksiyasini ko'pincha `map`, `filter` va `reduce` funksiyalarini ishlatganda qo'llash maqasadga muvofiqrog bo'ladi. Bunday funksiyalari uchun alohida mavzu [bu yerda](/posts/mapping/apply_uz.qmd){target="_blank"}.
+<!-- (/posts/mapping/apply_uz.qmd){target="_blank"} -->
+
+```{python}
+#| code-fold: false
+#| collapse: true
+
+# imort random mudul
+from numpy import random
+# create a random list len = 15
+lst2 = list(random.randint(1, 15, size = 7)); lst2
+# Squaring the numbers using lambda
+sqrt = list(map(lambda num: num**2, lst2)); sqrt
+
+```
+
+R da asosan `apply funksiyalar turkumi`[^2] nomsiz funksiyalardan foydalanadi. Yuqoridagi misolni R da `sapply`-funksiyasi yordamida quyidagicha yozishimiz mumkin:
+
+[^2]: Bunday funksiyalari uchun alohida mavzu [bu yerda](/posts/mapping/apply_uz.qmd){target="_blank"}.
+
+```{r}
+#| code-fold: false
+#| collapse: true
+
+# convert in Python created list to the R-Vector
+vec2 <- unlist(py$lst2)
+vec2
+sapply(vec2, function(num) num**2)
+
+```
+
+
+

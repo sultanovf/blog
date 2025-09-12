@@ -1,0 +1,14 @@
+{
+  "hash": "eb17023f4fb36240bc969c95b556a3d9",
+  "result": {
+    "markdown": "---\ntitle: |\n  mean or median\\\n  {{< fa language >}} in Uzbek\ndescription: | \n  \\\"Черепахи могут рассказать о тропе больше, чем кролики.\\\"  <br> ~ китайская мудрость.\nauthor: \"Fazliddin Sultonov\"\ndate: \"2024-05-28\"\ndate-format: \"MMM D, YYYY\"\n\nfilters:\n  - lightbox\nlightbox: \n  match: auto\n  effect: none\n  desc-position: top\n\npage-layout: full\nreference-location: margin\ncategories: [Statistics, Uzbek, Mean, Median, Modal]\n# Code execute options\nexecute: \n  echo: true    # Input anzeigen\n  eval: true    # Code ausführen\n  freeze: true  # never re-render during project render\n# Output\nformat: \n  html:\n    theme: cosmo\n  # Sections\n    toc: true\n  # codeb block\n    code-line-numbers: true\n    code-block-border-left: true\n    code-overflow: scroll\n    engine: knitr\n    css: /posts/style.css\n\n# Chunk Options\nknitr:\n  opts_chunk:\n    comment: \"#>\" \n\n  opts_knit: \n    warning: false\n    error: false\n    \n# bibliography\n#bibliography: reference.bib\n#  nocite: \n#    @* \n---\n\n\n\n![](pictures/medium.png){.nolightbox}\n\n::: {.cell}\n\n:::\n\n\nBu galgi mavzuda o'rta qiymatlar haqida gap boradi\n\n![Tez kunda...](pictures/soon.png){fig-alt=\"Click for zooming\"}\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

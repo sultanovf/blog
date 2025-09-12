@@ -1,0 +1,309 @@
+---
+title: "gt table"
+description: "`{gt}` package allows to make beautiful tables using the **R** programming language"
+author: "Fazliddin Sultonov"
+date: "2024-06-09"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [gt table, R, DT]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+![](gallery_img/gt.png)
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "here",        # String
+  "knitr",       # tables
+  "gt",          # gtTable
+  "gtExtras",    # extras
+  "DT"           # data table
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312") # für Python
+
+```
+
+## Load data from GitHub
+
+
+```{r}
+#| echo: true            # R-Input anzeigen      
+#| output: true         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen 
+
+df <- read.csv2("https://raw.githubusercontent.com/sultanovf/my_datasets/main/nikohuz_2010_2023.csv")
+# Original link: https://github.com/sultanovf/my_datasets/blob/main/nikohuz_2010_2023.csv
+# To change: https://github.com -> https://raw.githubusercontent.com/
+# and skip blob/
+years <- paste(2010:2023) #, sep=",", collapse= ","
+years <- unlist(strsplit(years, ","))
+new_cnames <- c("region", "status", "area", years)
+colnames(df) <- new_cnames
+df |> 
+  kable() |> 
+  head()
+```
+
+## Show the table via `DT`- Package:
+
+```{r}
+#| results: hold
+
+datatable(
+  df,
+  extensions = 'Buttons', options = list(
+    dom = 'Bfrtip',
+    buttons = 
+      list('copy', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel'),
+        text = 'Download'
+      )),
+  pageLength = 5  
+  )
+)
+```
+
+## Calculate mean for marriage and devorce by arreas (city, village) for the year 2023
+
+```{r}
+#| results: hold
+
+df_2023 <-
+  df |> 
+  select(
+    region,
+    status,
+    area,
+    `2023`
+  )
+## Median
+mar_vil_med <- median(
+  sort(
+  as.vector(unlist(as.vector(df_2023[df$status == "marriage" & df$area == "village", "2023"]))), 
+  decreasing = FALSE)
+  )
+mar_cit_med <- median(
+  sort(
+  as.vector(unlist(as.vector(df_2023[df$status == "marriage" & df$area == "city", "2023"]))), 
+  decreasing = FALSE)
+  )
+div_cit_med <- median(
+  sort(
+  as.vector(unlist(as.vector(df_2023[df$status == "divorce" & df$area == "city", "2023"]))), 
+  decreasing = FALSE)
+  )
+div_vil_med <- median(
+  sort(
+  as.vector(unlist(as.vector(df_2023[df$status == "divorce" & df$area == "village", "2023"]))), 
+  decreasing = FALSE)
+  )
+
+df_mean <- data.frame(
+  city <- c(mar_cit_med, div_cit_med),
+  village <- c(mar_vil_med, div_vil_med),
+  row.names = c("marriage", "divorce")
+  )
+names(df_mean) <- c("city", "village")
+cat("Mean by status (marriage, divorce) for area(city, village)\n")
+df_mean
+```
+
+## Pivot table and create new total columns
+
+```{r}
+#| results: hold 
+
+df |> 
+  pivot_longer(
+    cols = !c(region, status, area),
+    names_to = "year",
+    values_to = "counts"
+  ) |> 
+  pivot_wider(
+    names_from = c(status, area),
+    values_from = counts
+  ) |> 
+  rowwise() |> 
+  mutate(
+    marriage_total = sum(marriage_city, marriage_village),
+    divorce_total = sum(divorce_city, divorce_village)
+  ) -> gt_df
+
+gt_df |> 
+  kable() |> 
+  head()
+```
+
+## Creating beautiful table with `{gt}`
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: true          # R-Output NICHT anzeigen 
+#| eval: true            # R-Code ausführen 
+
+gt_df |>
+  #filter(year %in% c("2021","2022", "2023")) |> 
+  filter(year == "2023") |> 
+  select(-year) |> 
+  # mutate(
+  #   year = as.numeric(year)
+  # ) |> 
+  # gt(
+  #   groupname_col = "region", rowname_col = "year"
+  # ) |>
+  gt() |> 
+  tab_header(
+    title = md("**Number of concluded broken and marriages**"),
+    subtitle = md("*recorded for 2023 in regions by areas(city, village)*")
+  ) |>
+  fmt_number(
+    columns = !"region",
+    sep_mark = ",",
+    decimals = 0
+  ) |> 
+  cols_label(
+    region = "Region",
+    marriage_city = "city",
+    marriage_village = "village",
+    marriage_total = "total",
+    divorce_city = "city",
+    divorce_village = "village",
+    divorce_total = "total"
+  ) |> 
+  tab_spanner(
+    label = md("**concluded**"),
+    columns = c(marriage_city, marriage_village, marriage_total)
+  ) |>
+  tab_spanner(
+    label = md("**broken**"),
+    columns = c(divorce_city, divorce_village, divorce_total)
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#13ff3b"),
+    locations = cells_body(
+      columns = marriage_city,
+      rows = marriage_city >= mar_cit_med 
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color =  "#fde642"),
+    locations = cells_body(
+      columns = marriage_city,
+      rows = marriage_city < mar_cit_med
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#13ff3b"),
+    locations = cells_body(
+      columns = marriage_village,
+      rows = marriage_village >= mar_vil_med 
+    )
+  ) |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#9fc7e1"),
+      cell_text(weight = "bold")
+      ),
+    locations = cells_body(columns = marriage_total)
+  ) |> 
+  tab_style(
+    style = cell_fill(color =  "#fde642"),
+    locations = cells_body(
+      columns = marriage_village,
+      rows = marriage_village < mar_vil_med
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#a5e39f"),
+    locations = cells_body(
+      columns = divorce_city,
+      rows = divorce_city <= div_cit_med 
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color =  "#f4a68a"),
+    locations = cells_body(
+      columns = divorce_city,
+      rows = divorce_city > div_cit_med
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color = "#a5e39f"),
+    locations = cells_body(
+      columns = divorce_village,
+      rows = divorce_village <= div_vil_med 
+    )
+  ) |> 
+  tab_style(
+    style = cell_fill(color =  "#f4a68a"),
+    locations = cells_body(
+      columns = divorce_village,
+      rows = divorce_village > div_vil_med
+    )
+  ) |> 
+  tab_style(
+    style = list(
+      cell_fill(color = "#9fc7e1"),
+      cell_text(weight = "bold")
+      ),
+    locations = cells_body(columns = divorce_total)
+  )
+```
+
+::: {.callout-note appearance="minimal"}
+
+
+[**Explanation:**]{.underline} The table shows the number of new families registered in the Republic of Uzbekistan for the year 2023 (column *concluded*) and divorces (column *broken*) in each region by areas (city and village).
+<br> ***Colors:*** <br>*For concluded columns* -- [green]{style="background-color:#13ff3b;"} - if values greater or equal to the median, [orange]{style="background-color:#fde642;"} - if they are less the mean. <br>*For broken columns* -- [red]{style="background-color:#f4a68a;"} - if the values are greather or equal to median, [green]{style="background-color:#a5e39f;"} - if they are less then median. For total columns - [blue]{style="background-color:#9fc7e1;"}.
+<br> ***Data source:*** Data from [Statistics Agency of the Republic of Uzbekistan](https://stat.uz/uz/){target="_blank"} 
+:::

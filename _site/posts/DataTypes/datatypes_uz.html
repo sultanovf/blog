@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fazliddin Sultonov">
+<meta name="description" content="&quot;Data is like garbage. You’d better know what you are going to do with it before you collect it.&quot;   ~ Mark Twain.">
+
+<title>R &amp; Python: Types of Data  in Uzbek – Fazliddin Sultanov</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-234273d1456647dabc34a594ac50e507.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-3c15c6be4c36dd99056bdff0b4ad6298.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="customs/styles.css">
+<link rel="stylesheet" href="../../customs/style.css">
+<meta name="twitter:title" content="R &amp; Python: Types of Data
+ in Uzbek – Fazliddin Sultanov">
+<meta name="twitter:description" content="&quot;Data is like garbage. You’d better know what you are going to do with it before you collect it.&quot;  ~ Mark Twain.">
+<meta name="twitter:image" content="https://sultanov.quarto.pub/blog/posts/DataTypes/datatype_uz.png">
+<meta name="twitter:image-height" content="672">
+<meta name="twitter:image-width" content="1137">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Fazliddin Sultanov</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-person-bounding-box" role="img">
+</i> 
+<span class="menu-text">me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text"><i class="fa-solid fa-blog" aria-label="blog"></i> blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><i class="fa-solid fa-code" aria-label="code"></i> practice</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://sultanov.quarto.pub/cv/" target="_blank"> 
+<span class="menu-text"><i class="fa-solid fa-user-tie" aria-label="user-tie"></i> CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-square-share-nodes-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-square-share-nodes" aria-label="square-share-nodes"></i></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-fa-square-share-nodes-">    
+        <li>
+    <a class="dropdown-item" href="mailto:fazliddin@sultonov.ru">
+ <span class="dropdown-text"><i class="fa-solid fa-envelope fa-lg" aria-label="envelope"></i> <span class="math inline">\(~\)</span> Email</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://t.me/R4Pythonistas" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-telegram fa-lg" aria-label="telegram"></i> <span class="math inline">\(~\)</span> Telegram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.instagram.com/sultanof.uzb/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/in/fazliddinsultonov/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-linkedin fa-lg" aria-label="linkedin"></i> <span class="math inline">\(~\)</span> Linkedin</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://xing.com/profile/Fazliddin_Sultonov3" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-xing fa-lg" aria-label="square-xing"></i> <span class="math inline">\(~\)</span> Xing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sultanovf" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><p>R &amp; Python: Types of Data<br>
+<i class="fa-solid fa-language" aria-label="language"></i> in Uzbek</p></h1>
+                  <div>
+        <div class="description">
+          <p>"Data is like garbage. You’d better know what you are going to do with it before you collect it." <br> ~ Mark Twain.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Data Types</div>
+                <div class="quarto-category">Uzbek</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Fazliddin Sultonov </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Jan 13, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#struktur" id="toc-struktur" class="nav-link active" data-scroll-target="#struktur">Struktur</a></li>
+  <li><a href="#what-is-it-about" id="toc-what-is-it-about" class="nav-link" data-scroll-target="#what-is-it-about">What is it about</a></li>
+  <li><a href="#what-the-data-types-are" id="toc-what-the-data-types-are" class="nav-link" data-scroll-target="#what-the-data-types-are">What the data types are</a></li>
+  <li><a href="#frequently-used-basic-data-types-in-python-and-r" id="toc-frequently-used-basic-data-types-in-python-and-r" class="nav-link" data-scroll-target="#frequently-used-basic-data-types-in-python-and-r">Frequently used basic data types in Python and R</a>
+  <ul class="collapse">
+  <li><a href="#integerint" id="toc-integerint" class="nav-link" data-scroll-target="#integerint">integer/int</a></li>
+  <li><a href="#numericfloat" id="toc-numericfloat" class="nav-link" data-scroll-target="#numericfloat">numeric/float</a></li>
+  <li><a href="#characterstr" id="toc-characterstr" class="nav-link" data-scroll-target="#characterstr">character/str</a></li>
+  <li><a href="#logicalbool" id="toc-logicalbool" class="nav-link" data-scroll-target="#logicalbool">logical/bool</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p>subcribe.html</p>
+</div></div>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+<p><img src="datatype_uz.png" class="img-fluid"></p>
+<hr>
+<p>Bu yerda ma’lumotlar turi (Data Type) hamda ular bilan R va Python da ishlash haqida o’qigan/o’rgangan/tushunganlarimni qisqacha tushuntirishga harakat qilaman, demak bu kontentni mani konspektim desayam boladi;). Avvalo, bu artikelning tuzilishi, <code>Input(Codeblock)</code>, <code>Output(Natija)</code>, eslatma va shunga o’hshash narsalar qanday kurinishdaligi haqida qisqacha tushunchadan boshlamoqchiman, yan’i yozilmaning tuzilishi,</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Input(Codeblock)</strong>- Quyida shunchaki <em>Input</em> deb ketilade va konsolga kiritilgan R yoki Python kodlari nazarda tutiladi, <strong>Output(Result)</strong>- Quyida shunchaki <em>Output</em> deb ketiladi va kiritlgan kodning konsoldagi natijasi nazarda tutiladi.</p>
+</div></div><section id="struktur" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="struktur">Struktur</h2>
+<p>R va Python uchun kiritilgan kod yonma-yon yoki tabsetlarda ko’rsatilishi mumkin. <span style="background-color: lightcyan">R-Sourse ochiq ko’k</span> rangda va <span style="background-color: yellow">Python-Sourse sariq</span> rangda ko’rsatiladi. Output natijalarining satrlari <code>#&gt;</code> belgisi bilan boshlanadi. Quyida R va Pythonda oddiy textni ekranga chiqarish kodining natijasi tabset sifadida ko’rsatilgan:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-r">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hallo R Lover!"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo R Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-py">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo Python Lover!"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo Python Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Muhim narsalar rang bilan ajratib ko’rsatilgan va mos ravishda belgilangan:</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Batafsil ma’lumot uchun bu yerga bosing
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>R va Pythondagi Input va Output taqqoslanmagan hollarda, masalan faqat o’zgaruvchi yaratilsa va uni ustida qandaydir amallar bajarilsa kod blocklari, ya’ni yuqorida aytilganidek, Pyton sariq va R och ko’k rangda alohida ranglarda ajratib kursatilmaydi:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python engine</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a va b o'zgaruvchilariga 42, 13 qiymatlarini biriktirish va ularni yigindisini hisoblash</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; 55</code></pre>
+</div>
+</div>
+<p><code>reticulate</code> paketi yoki bibliotekasi Python da yaratilgan o’zgaruvchilar bilan R da ishlashni davom etishni taminlaydi, ya’ni man R da bu o’zgaruvchini boshqatdan yaratishim shart emas.</p>
+
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R engine</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a und b o'zgaruvchilari qiymatlarini ko'paytirish </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (R da, o'zgaruvchilar yuqorida Pythonda yaratilgan)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>a <span class="sc">*</span> py<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; [1] 546</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div class="callout-1-contents callout-collapse collapse callout-margin-content">
+<p><code>reticulate</code>- paketi (R da malum funksiyalarga ega bo’lgan to’plam yoki biblioteka, Pythonda modul deyiladi), R va Python o’rtasida o’zaro ishlashni taminlaydigan vosita. Bu paket orqali Pythonni R da chaqirish, Python modullarini import qilish va R da Python-dan interaktiv foydalanish imkonini beradi. Buning uchun avval u ishhga tushirilishi kerak ya’ni yuklab olishi kerak. Masalan Pythonda pandas modulidan foydalanish uchun yuklash y’ani import qilisch kerak: <code>mport pandas as pd</code>, keyin esa modul ichidagi funksiyalarni ishlatisch imkoniyati boladi, R da ham shunday, ular Paket engl. <em>Package</em> deyiladi, ulardan foydalanish uchun, avval kerakli paketni yuklash kerak, R da esa masalan retikulate paketi <code>library(retikulate)</code> tarzda yuklanadi yani ishga tushiriladi, undan oldin esa paketni tushirib olish kerak: <code>install.packages("reticulate")</code>. Ko’proq malumotni reticulate <a href="https://rstudio.github.io/reticulate/">saytidan</a> olish mumkin.</p>
+</div></div><p>Biror bir ifodaning tushunchasi yoki eslatmalar yon tomonda (o’ngda) izoh kabi keltiriladi. Masalan tekst davomida Variable ishlatilsa, u haqdagi ma’lumotni o’ng tomonda keltirilgan izohdan olish mumkin</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Variable</strong> - o’zgaruvchi bo’lib, bunda har xil ko’rinishdagi qiymatlarga, ma’lumotlarga, data frame yani jadvallarga berilgan nom nazarda tutiladi.</p>
+</div></div><p>Yuqorida ta’kidlanganidek, biror narsa o’qish va o’rganish jarayonida o’zimga konspekt qilib olaman, shunda tushunishim osonrog’, bu mandagi ko’nikma, lekin hammada har xil. Bu yerda es shu jarayonda o’rgangan va tushunganlarimni baham ko’rmoqchiman va umid qilamanki, bu R yoki Python tillarini manga o’xshab boshidan o’rganmoqchi bo’lhganlar uchun qiziqarli va foydali boladi. Grammatik, imloviy va/yoki orfografik xatolar uchun oldindan uzr so’raladi;). Birinchi navbatda gap nima qadilagi to’g’risida ikki og’iz:</p>
+</section>
+<section id="what-is-it-about" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-it-about">What is it about</h2>
+<p>Bu konspektda ma’lumotlarning turlari engl. <strong>Data Types</strong>, ularning nima uchun va qanday farqlanishi undan tashqari R va Pythonda ular bilan ishlash haqida gap boradi. Bunda e’tibor ko’proq muhim bolgan ya’ni kundalik hayotda biz ko’p duch keladigan, ishlatadigan va ko’pincha ular bilan shug’ullanishimiz mumkin bo’lgan ma’lumotlar turlarini yoritishga harakat qilinadi.Birinchi marta o’qib turgan yoki eshitgan kalajakda karak bolmasligi mumkin bolgan m’lumot turlariga fokus qaratilmaydi, masalan murakkab ma’lumot turlari (Complex Data Types) yoki shunga o’xshagan R-dagi Raw Data Types, Python-dagi Bytes Data Types. Aytilgandek fokus kerakli deb hisoblangan ma’lumot turlariga qaratiladi. </p>
+<p>Avvaliga shuni oydinlashtirmoqchimanki,</p>
+</section>
+<section id="what-the-data-types-are" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-the-data-types-are">What the data types are</h2>
+<p>Har xil turdagi ma’lumotlar o’rtasida qanday farqlar mavjudligi va nima uchun ma’lumotlar turlari umuman farqlanishi haqida gap ketganda hayolimizga ma’lumotlar bilan ishlashda kundalik hayotda eng ko’p duch keladigan raqamlar va matnlar o’rtasidagi farq kelishi mumkin. Biz ma’lumotlar bilan ishlashni davom ettirmoqchi bo’lganda va ular ustida qandaydir amallarni bajarmoqchi, hisob-kitoblarni amalga oshirmoqchi bo’lganda, ular o’rtasidagi farqning ham muhimligi kelib chiqadi. Bunda ma’lumotlar o’zgaruvchilarda saqlanadi, shunda dastur ushbu ma’lumotlarga murojaat qilishi mumkin. Demak kompyuter ham birinchi navbatda tushunishi kerak, masalan ma’lumot raqammi yoki matnmi, ayniqsa u bu ma’lumot ustida qandaydir amal bajarishi kerak bolsa. Bu o’zgaruvchilarni biz R yoki Python-da <strong><code>object</code></strong>lar deb atashimiz mumkin. Eslab qolish kerak bolgan muhim narsa shuki, aynan ushbu <em>objektlarning turi ma’lumotlar qay tarzda saqlanishi va taqdim etilishini belgilaydi.</em> Masalan, <em>Integer</em> turi butun son 42 ni misol uchun <em>var_son</em> sifatida saqlashga imkon beradi, va bu raqam <em>var_son</em> objekti bilan ifodalanadi. Ko’p dasturlash tillaridan farqli ravishda, Python va R o’zgaruvchi yaratislishida turni ko’rsatishni yoki aniq tur bilan belgilashni talab qilmaydi. Ob’ektni yaratishda ular avtomatik ravishda uning turini aniqlaydi. Shuning uchun ular <strong>OOP</strong>(<em>Object Oriented Programming</em>)-Dasturlash tillariga kiradilar.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Object</strong> - R yoki Python-da biz ma’lumotlarni object sifatida saqlashimiz mumkin, masalan bir yoki bir necha qiymatlarni, jadvallarni, modellarni, biror bir amalning natijalarini, funksiyalar etc.</p>
+</div></div><p>Umid qilamanki, ma’lumotlar turi nima ekanligi haqida kengroq tasavvurga ega boldik <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:indianred;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm165.8 21.7c-7.6 8.1-20.2 8.5-28.3 .9s-8.5-20.2-.9-28.3c14.5-15.5 35.2-22.3 54.6-22.3s40.1 6.8 54.6 22.3c7.6 8.1 7.1 20.7-.9 28.3s-20.7 7.1-28.3-.9c-5.5-5.8-14.8-9.7-25.4-9.7s-19.9 3.8-25.4 9.7z"></path></svg>. Quyida R va Python-da ko’p ishlatiladigan asosiy ma’lumot turlarini ko’rib chiqamiz:</p>
+</section>
+<section id="frequently-used-basic-data-types-in-python-and-r" class="level2">
+<h2 class="anchored" data-anchor-id="frequently-used-basic-data-types-in-python-and-r">Frequently used basic data types in Python and R</h2>
+<p>Yuqorida aytilganidek, ma’lumotlar R va Python-da ob’ektlar sifatida saqlanadi. Har bir ob’ekt shu nomga qiymat berish orqali nom oladi. Masalan, 42 raqamini <em>var_numb</em> nomi bilan yoki “world” so’zini <em>var_txt</em> nomi bilan saqlashim mumkin. R yoki Python masalan 42 ni son ya’ni raqam sifatida qabul qiladi. Ammo bu raqamni saqlashda Python va R boshqacha yo’l tutadi, R uni <em>numeric</em> ya’ni o’nlink son sifatida saqlaydi. Agar raqam butun son sifatida bo’lishi kerak bolsa, R ni bu sonni butun son sifatida saqlashiga majburlash kerak boladi. Python buning aksini qiladi, bu raqamni <em>int</em> sifatida saqlaydi, agar men uni o’nlik son (engl. float) sifatida xohlasam, turni belgilashim yoki shu turga aylantirishim kerak.<br>
+</p>
+<p>Bu erda R va Python-da umumiy asosiy ma’lumotlar turlarining umumiy ko’rinishi <span class="citation" data-cites="WouterCo">(<a href="#ref-WouterCo" role="doc-biblioref">Wouter van Atteveldt 2022</a> ga asoslangan)</span> qisqcha jadval sifatida tasvirlangan:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: right;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: blue;">integer</span></td>
+<td style="text-align: left;"><span style="color: red;">42L</span></td>
+<td style="text-align: left;"><span style="color: blue;">int</span></td>
+<td style="text-align: left;"><span style="color: red;">42</span></td>
+<td style="text-align: right;">Butun Sonlar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: blue;">double</span></td>
+<td style="text-align: left;"><span style="color: red;">42.33</span></td>
+<td style="text-align: left;"><span style="color: blue;">float</span></td>
+<td style="text-align: left;"><span style="color: red;">42.33</span></td>
+<td style="text-align: right;">Real/O’nlik sonlar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: blue;">character</span></td>
+<td style="text-align: left;"><span style="color: red;">“Text”</span></td>
+<td style="text-align: left;"><span style="color: blue;">str</span></td>
+<td style="text-align: left;"><span style="color: red;">“Text”</span></td>
+<td style="text-align: right;">Satrlar, Matnlar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: blue;">logical</span></td>
+<td style="text-align: left;"><span style="color: red;">TRUE, FALSE</span></td>
+<td style="text-align: left;"><span style="color: blue;">bool</span></td>
+<td style="text-align: left;"><span style="color: red;">True, False</span></td>
+<td style="text-align: right;">Mantiqiy qiymatlar</td>
+</tr>
+</tbody>
+</table>
+<p>R dasturida <em>integer</em> va <em>double</em> ko’pincha <strong>numeric</strong> sifatida umumlashtirilib tasvirlanadi. Jadvaldan kelib chiqb aytish mumkinki, bizga R va Pythond-da eng kup kerak boladigan va biz ular bilan eng kup ishlaydigan 3 ta asosiy ma’lumotlar turi bor. Bular: <strong>numeric</strong> - ya’ni butun (<em>integer</em>) va o’nlik (<em>float</em>) sonlaridan tashkil topgan raqamli ma’lumot turlari, <strong>logical</strong> - ya’ni mantiqiy ma’lumot turlari va <strong>textual</strong> - ya’ni matnli (<em>strings</em>) malumot turlaridan tashkil topgan.</p>
+<p>Endi alohida turlarni ko’rib chiqamiz.</p>
+<section id="integerint" class="level3">
+<h3 class="anchored" data-anchor-id="integerint">integer/int</h3>
+<p>Integer - butun sonni ifodalaydi masalan, 7, -7. R da orqasida <code>L</code> qoyilgan raqamlar butun son sifatida ifodalanadi. Nima uchun “L” turishi kerakligini man ham aniq bilmayman;). Ma’lumki R bu C dasturlash tiliga asoslanib yaratilgan dastur. C dasturlash tilida L <em>long integer</em> ma’nosini bergani uchun, R-da ham shunchaki o’zlashtirib olingan bolsa kerak. Python-da butun sonlar odatdagidek <em>integer</em> sifatida saqlanadi.</p>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ri1 <span class="ot">&lt;-</span> <span class="dv">11</span>L</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ri2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">12</span>L</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ri3 <span class="ot">&lt;-</span> <span class="fl">13.0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ri4 <span class="ot">&lt;-</span> <span class="st">"123"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri1))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "integer"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri2))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "integer"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri3))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri4))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pi1 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pi2 <span class="op">=</span> <span class="op">-</span><span class="dv">12</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pi3 <span class="op">=</span> <span class="fl">13.0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pi4 <span class="op">=</span> <span class="st">"123"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi1))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'int'&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi2))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'int'&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi3))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'float'&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi4))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'str'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
+<div class="quarto-layout-row">
+<div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>R</em></strong></p>
+</div>
+<div class="code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>Python</em></strong></p>
+</div>
+</div>
+</div>
+<p>Ob’ektning qaysi turiga ega ekanligini bilish yoki ko’rsatish uchun R-da <strong><em><code>class()</code></em></strong> va Pythonda <strong><em><code>type()</code></em></strong> funksiyasi mavjud. R dasturida obyektlar <strong><code>&lt;-</code></strong> va Python-da <strong><code>=</code></strong> bilan biriktiriladi. Umuman olganda, R <code>=</code> bilan ham ishlaydi, lekin strelka keng tarqalgan, va R-da strelka orqali biriktirish tavsiosa qilinadi.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More about assignment in R: <code>&lt;-</code> or <code>=</code> ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>R-da ob’ektlarni <code>&lt;-</code> bilan belgilash odatiy hol, Pythonda esa <code>=</code> bilan biriktiriladi. Umuman olganda, R ham teng belgisi bilan ishlaydi. Lekin strelkani ishlatish afzalroq va hatodan holiroq boladi. Tenglik belgisi biror bir funksiya ichida biriktirish uchun ishlatiladi. Misol tariqasida kichkina demonstartsiya:<br>
+Bu yerda man 1 dan 15 gacha sonlarga ega bolgan vektorni <em>vec</em> variabliga biriktiraman va vektor (1 dan 15 gacha sonlar) yigindisini hisoblaayman:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="at">vec =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; [1] 120</code></pre>
+</div>
+</div>
+<p>Agar man <em>vec</em> ob’ektini yana chaqirsam hatolik yuz beradi, chunki bu objekt faqat funksiya ichida mavjud :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>#&gt; Error in eval(expr, envir, enclos): Objekt 'vec' nicht gefunden</code></pre>
+</div>
+</div>
+<p>Endi shu narsani <code>&lt;-</code> bilan qilib koraman:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 120</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vec)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Shuning uchun biriktirishda kopincha strelka tavsiya qilinadi va ishlatiladi. Koproq ma’lumotlarni buy erdan: <a href="http://adv-r.had.co.nz/Style.html">Style guide von Hadley Wickham</a> va bu yerdan: <a href="https://google.github.io/styleguide/Rguide.html">Google’s R Style Guide</a> olish mumkin</p>
+</div>
+</div>
+</div>
+<p><strong><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> <span class="math inline">\(~\)</span> – <span class="math inline">\(~\)</span> Check for integer</strong><br>
+R-da <strong><em><code>is.integer()</code></em></strong> yoki <strong><em><code>inherits(object, "type")</code></em></strong> unksiyasidan foydalanib ob’ekt turini tekshirishingiz mumkin.</p>
+<div class="code-r">
+<p><strong><em>R</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in R if a number is integer</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(ri1)            <span class="co"># Is 11L integer?</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(ri2, <span class="st">"integer"</span>)   <span class="co"># Is -12 integer?</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(ri3)            <span class="co"># Is 13.0 integer?</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(ri4)            <span class="co"># Is "123" integer?</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(ri4, <span class="st">"character"</span>) <span class="co"># Is "123"character?</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>– Convert to integer in R</strong><br>
+Aytilganidek, sonlarni orqasida L bolmasa, R bu objektni numeric, ya’ni o’nlik son yoki float <em>(yuqoridagi misoldagi ri3 ob’ektiga qarang)</em>. Men R buyurishim kerakki, u sonni butun son sifatida saqlasin. Buning uchun <strong><em><code>as.integer()</code></em></strong> funksiyasidan foydalanishim mumkin.</p>
+<div class="code-r">
+<p><strong><em>R</em></strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Making R treat the object as an integer</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">print</span>(<span class="fu">class</span>(ri3))              <span class="co"># Type of 13.0</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">print</span>(<span class="fu">class</span>(ri4))              <span class="co"># Type of "123"</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.integer</span>(ri3)))  <span class="co"># Forsing 13.0 to integer</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.integer</span>(ri3)))  <span class="co"># Forsing "123" to integer</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="cn">FALSE</span>))            <span class="co"># Type of FALSE</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="cn">TRUE</span>))             <span class="co"># Type of True</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="fu">print</span>(<span class="fu">as.integer</span>(<span class="cn">FALSE</span>))       <span class="co"># FALSE as Integer</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="fu">print</span>(<span class="fu">as.integer</span>(<span class="cn">TRUE</span>))        <span class="co"># TRUE as Integer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; [1] "numeric"
+#&gt; [1] "character"
+#&gt; [1] "integer"
+#&gt; [1] "integer"
+#&gt; [1] "logical"
+#&gt; [1] "logical"
+#&gt; [1] 0
+#&gt; [1] 1</code></pre>
+</div>
+</div>
+</div>
+<p><strong><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:2em;width:2em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> <span class="math inline">\(~\)</span> – <span class="math inline">\(~\)</span> Check for int</strong><br>
+Python-da tekshirishning bir necha yo’llari mavjud: <strong><em><code>isinstance(ob'ekt, turi)</code></em></strong> funksiyasi orqali huddi, R-dagi <code>inherits(ob'ekt, ""turi")</code> kabi yoki ob’ekt turini ma’lumot turi bilan tenglashtirib ham tekshirish mumkin. , masalan, <strong><em><code>type(object) ==/is int()</code></em></strong>. Shuningdek, <strong><em><code>is_integer()</code></em></strong> funksiyasi ham mavjud. Bu funksiya <em>float</em>-o’nlik nnni <em>int</em>-butun songa tekshirishda ishlaydi, boshqa turlarida ishlamaydi. Boshqa turlari uchun manimcha <em>sumpy</em> moduli kerak. Uni ishlatib kurmadim, chunki yuqorida keltirilgan funksiyalarni uzi ham yetadi, boshqacha aytganda Rimga olib boradigan boshqa yo’llar ham bor. <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:indianred;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm165.8 21.7c-7.6 8.1-20.2 8.5-28.3 .9s-8.5-20.2-.9-28.3c14.5-15.5 35.2-22.3 54.6-22.3s40.1 6.8 54.6 22.3c7.6 8.1 7.1 20.7-.9 28.3s-20.7 7.1-28.3-.9c-5.5-5.8-14.8-9.7-25.4-9.7s-19.9 3.8-25.4 9.7z"></path></svg></p>
+<div class="code-py">
+<p><strong><em>Python</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in Python if a number is integer</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pi1, <span class="bu">int</span>) <span class="co"># Is 11 integer?</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pi2) <span class="op">==</span> <span class="bu">int</span>     <span class="co"># Is -12 integer?</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pi3, <span class="bu">int</span>) <span class="co"># Is 13.0 integer?</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pi4) <span class="kw">is</span> <span class="bu">int</span>     <span class="co"># Is '123' integer?</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>– Convert to int in Python</strong><br>
+Python raqamlarni butun sonlar sifatida saqlaydi. Agar men uni float ya’ni o’nlik son sifatida xohlasam, men float turiga o’tkazishim kerak. Agar menda matn(matn sifatida saqlangan sonlar), Float yoki Logical kabi turdagi ma’lumotlarim bo’lsa, men ob’ektni <strong><em><code>int()</code></em></strong> funksiyasiga o’tkazish orqali uni Python-da Integerga aylantira olaman.</p>
+<div class="code-py">
+<p><strong><em>Python</em></strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(<span class="bu">type</span>(pi3))        <span class="co"># Type of 13.0</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="bu">print</span>(<span class="bu">type</span>(pi4))        <span class="co"># Type of "123"</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">int</span>(pi3)))   <span class="co"># Forsing 13.0 to integer</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">int</span>(pi3)))   <span class="co"># Forsing "123" to integer</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">False</span>))      <span class="co"># Type of FALSE</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">True</span>))       <span class="co"># Type of True</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="va">False</span>))       <span class="co"># FALSE as Integer</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="va">True</span>))        <span class="co"># TRUE as Integer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; &lt;class 'float'&gt;
+#&gt; &lt;class 'str'&gt;
+#&gt; &lt;class 'int'&gt;
+#&gt; &lt;class 'int'&gt;
+#&gt; &lt;class 'bool'&gt;
+#&gt; &lt;class 'bool'&gt;
+#&gt; 0
+#&gt; 1</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="numericfloat" class="level3">
+<h3 class="anchored" data-anchor-id="numericfloat">numeric/float</h3>
+<p>Float bu aniqligi uncha katta bo’lmagan suzuvchi nuqtali sonlar, <em>Floating point numbers</em>, Python-da float sifatida ifodalanadi. R odatda (orqasiga L harfi quo’yilmagan) sonlarni <em>float</em> () sifatida saqlaydi. Umuman olganda R sonlarni <code>numeric</code> sifatida ifodalaydi. Ular integer yoki float bo’lishi mumkin. Misol uchun R 12 sonini float, ya’ni 12.0 sifatida saqlaydi, <code>class()</code> funksiyasi bilan u turni <em><code>numeric</code></em> sifatida ifodalaydi. R-da ma’lumot turni tekshirish uchun ishlatilishi mumkin bo’lgan yana bir funksiya ham mavjud: <strong><em><code>typeof()</code></em></strong>. Bu funksiya orqali 12 sonini <code>double</code> sifatida kursatadi, ehtimol bu C dasturlash tilidan. O’ylaymanki, quyidagi misol nimani nazarda tutayotganimni aniqroq qiladi;).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># class() und typeof()</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">class</span>(<span class="dv">10</span>)    <span class="co"># numeric</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">typeof</span>(<span class="dv">10</span>)   <span class="co"># double</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">class</span>(<span class="dv">10</span>L)   <span class="co"># integer</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">typeof</span>(<span class="dv">10</span>L)  <span class="co"># integer</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">class</span>(<span class="fl">10.0</span>)  <span class="co"># numeric</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">typeof</span>(<span class="fl">10.0</span>) <span class="co"># double</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; [1] "numeric"
+#&gt; [1] "double"
+#&gt; [1] "integer"
+#&gt; [1] "integer"
+#&gt; [1] "numeric"
+#&gt; [1] "double"</code></pre>
+</div>
+</div>
+<p><strong>– Check numeric/float</strong><br>
+Bu yerda ham yuqorida Integer uchun keltirilgan funksiyalardan foydalanish mumkin, R-da <em>is.</em>-dan keyin integerni o’rniga <em>numeric</em> yoku <em>double</em> qoyiladi: <strong><code>is.numeric(*obj*)</code></strong> yoki <strong><code>is.double(*obj*)</code></strong> yoki <strong><code>inherits(*obj*, "numeric")</code></strong>. Python-da ham yuqoridagi integer uchun qollangan funksiyadan foydalanish mumkin: <strong><code>type(*obj*)</code></strong>, yoki mantiqiy taqqoslash orqali: <strong><code>type(*obj*) is float</code></strong> yoki <strong><code>type(*obj*) == float</code></strong> yoki <strong><code>isinstance(*obj*, float)</code></strong>.</p>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf1 <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rf2 <span class="ot">&lt;-</span> <span class="dv">17</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>rf3 <span class="ot">&lt;-</span> <span class="dv">20</span>L</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(rf2))  <span class="co"># class()-Type of 17</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(rf3))  <span class="co"># class()-Type of 20L</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "integer"</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">typeof</span>(rf2)) <span class="co"># typeof()-Type of 17</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "double"</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">typeof</span>(rf3)) <span class="co"># typeof()-Type of 20L</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "integer"</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(rf1)    <span class="co"># Is 3.14 numeric?</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(rf2)     <span class="co"># Is 17 double?</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(rf3)    <span class="co"># Is 20L numeric?</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(rf3)    <span class="co"># Is 20L integer?</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pf1 <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pf2 <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pf3 <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pf1))      <span class="co"># Type of 3.14</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'float'&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pf2))      <span class="co"># Type of 17</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'int'&gt;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pf3))      <span class="co"># Type of 20</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'int'&gt;</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pf1, <span class="bu">float</span>)<span class="co"># Is 3.14 float?</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pf1, <span class="bu">int</span>)  <span class="co"># Is 3.14 int?</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pf2) <span class="kw">is</span> <span class="bu">float</span>    <span class="co"># Is 17 float?</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pf3) <span class="op">==</span> <span class="bu">float</span>    <span class="co"># Is 20 float?</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pf2, <span class="bu">float</span>)<span class="co"># Is 17 float?</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
+<div class="quarto-layout-row">
+<div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>R</em></strong></p>
+</div>
+<div class="code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>Python</em></strong></p>
+</div>
+</div>
+</div>
+<p><strong>– Convert to numeric/float</strong><br>
+O’nlik sonlar, ya’ni R-da numeric yoki float hosil qilish uchun yuqoridagi <em>as.</em> funksiyani bu yerda ham qollaymiz, buning uchun funksiyani shunday yozamiz: <strong><code>as.numeric(*obj*)</code></strong> oder <strong><code>as.double(*obj*)</code></strong>.</p>
+<div class="code-r">
+<p><strong><em>R</em></strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Making R treat the object as an integer</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">print</span>(<span class="fu">class</span>(rf2))              <span class="co"># Type of 17</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">print</span>(<span class="fu">class</span>(rf3))              <span class="co"># Type of 20L</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.numeric</span>(rf2)))  <span class="co"># Forsing 17 to nomeric</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.double</span>(rf3)))   <span class="co"># Forsing 20L to nomeric</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="fu">print</span>(<span class="fu">as.numeric</span>(<span class="cn">FALSE</span>))       <span class="co"># FALSE as numeric</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="fu">print</span>(<span class="fu">as.double</span>(<span class="cn">TRUE</span>))         <span class="co"># TRUE as numeric</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; [1] "numeric"
+#&gt; [1] "integer"
+#&gt; [1] "numeric"
+#&gt; [1] "numeric"
+#&gt; [1] 0
+#&gt; [1] 1</code></pre>
+</div>
+</div>
+</div>
+<p>Pythonda buni <strong><code>float(*obj*)</code></strong> funksiyasi yordamida amalga oshirishim mumkin.</p>
+<div class="code-py">
+<p><strong><em>Python</em></strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(<span class="bu">type</span>(pf2))        <span class="co"># Type of 17</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(<span class="bu">type</span>(pf3))        <span class="co"># Type of 20</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">float</span>(pf2))) <span class="co"># Forsing 17 to float</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">float</span>(pf3))) <span class="co"># Forsing 20 to float</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="va">False</span>))     <span class="co"># FALSE as float</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="va">True</span>))      <span class="co"># TRUE as float</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; &lt;class 'int'&gt;
+#&gt; &lt;class 'int'&gt;
+#&gt; &lt;class 'float'&gt;
+#&gt; &lt;class 'float'&gt;
+#&gt; 0.0
+#&gt; 1.0</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="characterstr" class="level3">
+<h3 class="anchored" data-anchor-id="characterstr">character/str</h3>
+<p>Nomidan ko’rinib turibdiki, bunday ma’lumotlar belgilar, harflarni, satr va matnlarni o’z ichiga olgan ma’lumot turlaridir. R-da ular <code>character</code> va Python-da <code>str</code> sifatida tavsiflanadi. Amalda, matnli ma’lumotlar raqamli ma’lumotlar ya’ni sonlar kabi ko’p qo’llaniladigan ma’lumot turlaridandir. Masalan, tahlil qilinadigan ma’lumotlar to’plamida kategorik o’zgaruvchilar misol uchun “erkak’ yoki”ayol” bo’lishi mumkin va hokozo<br>
+</p>
+<p>Wie der Name schon sagt, solche Daten sind Strings, die Zeichen, Buchstaben enthalten. In R werden sie als <code>character</code> und in Python als <code>str</code> charakteresiert. Mit Strings hat man in der Praxis auch wie mit numerischen Daten häufig zu tun. Beispielweise können im zu analysierenden Datensatz auch kategoriale Variablen: “männlich”, “weiblich” vorhanden sein usw.<br>
+Satrlar yoki matn ko’rinishidagi ma’lumotlar R va Python-da qo’sh apostrof ichida <code>'matn'</code> yoki qo’shtirnoq ichida <code>"matn"</code> ko’rsatilishi mumkin. Satr uzunligi funksiyasi R uchun: <strong><em><code>nchar()</code></em></strong> va Python <strong><em><code>len()</code></em></strong> uchun. R-da <em>stringr</em> paketidan <code>str_lenght("matn")</code> funksiyasini ham ishlatisch mumkin.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="code-r">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Examples for Characters</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>rt1 <span class="ot">&lt;-</span> <span class="st">"123"</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>rt2 <span class="ot">&lt;-</span> <span class="st">"Hello"</span> </span>
+<span id="cb28-4"><a href="#cb28-4"></a>rt3 <span class="ot">&lt;-</span> <span class="st">"World"</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"Class of rt1: {class(rt1)}"</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># Adding Strings </span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"glue() funksiyasi orqali: {rt2} {rt3}"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="fu">paste</span>(<span class="st">"paste() funksiyasi orqali:"</span>, rt2, rt3, <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="co"># Compare Strings</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a>rt2 <span class="sc">==</span> <span class="st">"Hello"</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>rt2 <span class="sc">==</span> <span class="st">"HELLO"</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>rt1 <span class="sc">==</span> <span class="dv">123</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a><span class="co"># Length of String</span></span>
+<span id="cb28-14"><a href="#cb28-14"></a><span class="fu">glue</span>(<span class="st">"</span><span class="sc">\"</span><span class="st">123</span><span class="sc">\"</span><span class="st"> satrining uzunligi: {nchar(rt1)}"</span>)</span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="fu">glue</span>(<span class="st">"</span><span class="sc">\"</span><span class="st">Hello</span><span class="sc">\"</span><span class="st"> satrining uzunligi: {nchar(rt2)}"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="fu">length</span>(rt1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; Class of rt1: character
+#&gt; glue() funksiyasi orqali: Hello World
+#&gt; [1] "paste() funksiyasi orqali: Hello World"
+#&gt; [1] TRUE
+#&gt; [1] FALSE
+#&gt; [1] TRUE
+#&gt; "123" satrining uzunligi: 3
+#&gt; "Hello" satrining uzunligi: 5
+#&gt; [1] 1</code></pre>
+</div>
+</div>
+</div>
+<p>Matnlarni bir-biriga qo’shish yoki matnlarni sonla bilan kopaytirish R uchun qiyinchilik tugdiradi</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More about string operations in R
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Agar biz ikkita matnni birga qo’shmoqchi bo’lsak yoki satr yoki matnni raqamga ko’paytirmoqchi bo’lsak, R hatolik qaytaradi. Ehtimol, bunga imkon beradigan ba’zi paketlar bordir, qarab/izlab korish kerak. Shunday qilib, Python-da ikkita matnni bir biriga qoshish yoki matnni songa kopaytirish ishlagani kabi, R da bu ishlamaydi. <em>glue</em> paketidagi <strong><code>glue(*obj*)</code></strong> funksiyasi yoki <code>paste</code> funksiyasi orqali matnlarni bir biriga qoshib korsatish mumkin. Bu funksiya <code>stringr</code> paketida ham mavjud va uni quyidagicha ishlatish mumkin: <code>stringr::str_glue()</code>. <code>glue("The value of text is {text})</code> funksiyasi Python-dagi <code>print(f"The value of text is {text}")</code> funksiyaga o’xshaydi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R engine</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Satrlarni bir biriga qo'shish yoki ularni songa ko'paytirish</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ishlamaydi!</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>satr1 <span class="ot">&lt;-</span> <span class="st">"Assalomu"</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>satr2 <span class="ot">&lt;-</span> <span class="st">"Alaykum"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>satr1 <span class="sc">+</span> satr2</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in satr1 + satr2: nicht-numerisches Argument für binären Operator</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>satr1 <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in satr1 * 3: nicht-numerisches Argument für binären Operator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="code-py">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Python engine</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Examples for Characters</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>pt1 <span class="op">=</span> <span class="st">"123"</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>pt2 <span class="op">=</span> <span class="st">"Hello"</span> </span>
+<span id="cb31-5"><a href="#cb31-5"></a>pt3 <span class="op">=</span> <span class="st">"world"</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="bu">print</span>(<span class="ss">f"Type of pt1: </span><span class="sc">{</span><span class="bu">type</span>(pt1)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co"># Adding Strings / matnlarni qoshish</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="bu">print</span>(pt2 <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> pt3) <span class="co"># or</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>pt2<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>pt3<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co"># Multiply a string by 3 / matnlarni songa kopaytirish</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>pt3<span class="op">*</span><span class="dv">3</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="co"># Compare</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a>pt2 <span class="op">==</span> <span class="st">"Hello"</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a>pt2 <span class="op">==</span> <span class="st">"HELLO"</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a>pt1 <span class="op">==</span> <span class="dv">123</span></span>
+<span id="cb31-16"><a href="#cb31-16"></a><span class="co"># Length of String</span></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="bu">print</span>(<span class="ss">f"Länge von </span><span class="ch">\"</span><span class="ss">123</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(pt1)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="bu">print</span>(<span class="ss">f"Länge von </span><span class="ch">\"</span><span class="ss">Hallo</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(pt2)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre class="code-output"><code>#&gt; Type of pt1: &lt;class 'str'&gt;
+#&gt; Hello world
+#&gt; Hello world
+#&gt; 'worldworldworld'
+#&gt; True
+#&gt; False
+#&gt; False
+#&gt; Länge von "123": 3
+#&gt; Länge von "Hallo": 5</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Strings - bu keng mavzu. Bu erda faqat ma’lumotlar turi bilan bog’liq tomonlari qaraldi. Balki alohida content ham bo’lar <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:indianred;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm165.8 21.7c-7.6 8.1-20.2 8.5-28.3 .9s-8.5-20.2-.9-28.3c14.5-15.5 35.2-22.3 54.6-22.3s40.1 6.8 54.6 22.3c7.6 8.1 7.1 20.7-.9 28.3s-20.7 7.1-28.3-.9c-5.5-5.8-14.8-9.7-25.4-9.7s-19.9 3.8-25.4 9.7z"></path></svg>.</p>
+</section>
+<section id="logicalbool" class="level3">
+<h3 class="anchored" data-anchor-id="logicalbool">logical/bool</h3>
+<p>Mantiqiy turdagi ob’ektlar TRUE/FALSE yoki 1/0 qiymatlarini olishi mumkin. Bular R da <code>logical</code> va Pythonda <code>bool</code> sifatida saqlanadi. Ofodalash tarsi ham R va Python-da farq qiladi: R-da ular katta harflarda yoziladi: <span style="color: red;">TRUE/FALSE</span>, Python-da esa birinchisi katta va qolganlari kichik harflarda boladi:<span style="color: red;">True/False</span>.</p>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R engine</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rt)        <span class="co"># Type of TRUE</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rf)        <span class="co"># Type of FALSE</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(rt)   <span class="co"># Is TRUE logical</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(rt) <span class="co"># TRUE as character</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "TRUE"</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">as.character</span>(rf) <span class="co"># FALSE as character</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "FALSE"</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(rt)   <span class="co"># TRUE as integer</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(rf)   <span class="co"># FALSE as integer</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>rt <span class="sc">&amp;</span> rf          <span class="co"># rt AND rf</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>rt <span class="sc">|</span> rf          <span class="co"># rt OR rf</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>rt              <span class="co"># Is not TRUE</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python engine</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pt)  <span class="co"># Type of True</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'bool'&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pf)  <span class="co"># Type of False</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'bool'&gt;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pt) <span class="kw">is</span> <span class="bu">bool</span> <span class="co"># Is bool</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(pt)   <span class="co"># True as String</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 'True'</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(pf)   <span class="co"># False as String</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 'False'</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(pt)   <span class="co"># True as Integer</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(pf)   <span class="co"># False as Integer</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>pt <span class="kw">and</span> pf <span class="co"># pt AND pf</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>pt <span class="kw">or</span> pf  <span class="co"># pt OR pf</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="kw">not</span> pt    <span class="co"># Is not True</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
+<div class="quarto-layout-row">
+<div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>R</em></strong></p>
+</div>
+<div class="code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>Python</em></strong></p>
+</div>
+</div>
+</div>
+<p>Kimgadir qayerdadir qaysidir manoda qanchadir yordami tegkan bo’lsa, bundan faqat xursand bolaman.<svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:indianred;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm177.6 62.1C192.8 334.5 218.8 352 256 352s63.2-17.5 78.4-33.9c9-9.7 24.2-10.4 33.9-1.4s10.4 24.2 1.4 33.9c-22 23.8-60 49.4-113.6 49.4s-91.7-25.5-113.6-49.4c-9-9.7-8.4-24.9 1.4-33.9s24.9-8.4 33.9 1.4zM144.4 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"></path></svg> Keyingi mavzu ma’lumotlar tuzilmasi haqida bo’ladi.</p>
+</section>
+</section>
+<section id="references" class="level2">
+
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-LearnR" class="csl-entry" role="listitem">
+Aphalo, Pedro J. 2020. <em><span class="nocase">Learn R As a Language</span></em>. CRC Press.
+</div>
+<div id="ref-Braineo" class="csl-entry" role="listitem">
+Aust, Holger. Mar 2020. <span>“<span class="nocase">Datentypen in R – Einfach erklärt</span>.”</span> https://databraineo.com/ki-training-resources/r-programmierung/datentypen-in-r-einfach-erklaert/, [Accessed on 2022-12-11].
+</div>
+<div id="ref-randpy" class="csl-entry" role="listitem">
+Boyan Angelov, Rick J. Scavetta. 2021. <em><span class="nocase">Python and R for the Modern Data Scientist</span></em>. O’Reilly Media, Inc.
+</div>
+<div id="ref-LearnPy" class="csl-entry" role="listitem">
+Dimitrios Xanthidis, Ourania K. Xanthidou, Christos Manolas. 2022. <em>Handbook of Computer Programming with Python</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-AhilanS" class="csl-entry" role="listitem">
+Srivishnumohan, Ahilan. Jun 2020. <span>“<span class="nocase">Bilingual Data Scientist: Python to R (Part 1)</span>.”</span> https://towardsdatascience.com/bilingual-data-scientist-python-to-r-part-1-70438fcdc155, [Accessed on 2022-12-16].
+</div>
+<div id="ref-WangMe" class="csl-entry" role="listitem">
+WANG, Mena Ning. Dec 2021. <span>“R &amp; Python Basics 1: Data Type.”</span> https://rpubs.com/MenaWANG/RnPython_DataType, [Accessed on 2022-12-01].
+</div>
+<div id="ref-WouterCo" class="csl-entry" role="listitem">
+Wouter van Atteveldt, Carlos Arcila Calderon, Damian Trilling. 2022. <em>Computational Analysis of Communication</em>. Wiley-Blackwell.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sultanov\.quarto\.pub\/blog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><i class="fa-regular fa-copyright" aria-label="copyright"></i> 2024, Made with <i class="fa-solid fa-heart" aria-label="heart"></i> in <a href="https://quarto.org/">Quarto</a> by Fazliddin Sultanov</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,98 @@
+---
+title: "Dashboard with Shiny in Quarto"
+description: |
+  A dashboard about Usbeks living in Germany according to their residence status and in comparison over the years, created in Quarto using Shiny. <br> 
+author: "Fazliddin Sultonov"
+date: "2025-09-02"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [quarto, dashboard, R, ggplot2, shiny, ggpol]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+    link-external-newwindow: true  # {target="_blank"} in doc
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](pics/uzdeplot.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  #tidyverse,   # dataclean, ggplot
+  knitr,       # knitter
+  fontawesome  # icons
+
+)     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+#use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+In this project, a dashboard was created using [Quarto](https://quarto.org/). It shows the number of Uzbeks in Germany, according to their residence status and comparison over the years.
+
+:::: {.column-screen}
+![](pics/db_col.png)
+::::
+
+
+<br> **{{< fa solid database >}} Data Source:** *[©Statistisches Bundesamt (Destatis), 2025 | Stand: 31.07.2025](https://www-genesis.destatis.de/datenbank/online/)* 
+<br> **{{< fa brands square-github >}} Code Source:** *[GitHub](https://github.com/sultanovf/uzbinde)*
+<br> **{{< fa solid square-share-nodes >}} Published on:** *[shinyapps.io](https://www.shinyapps.io/)*
+<br> **{{< fa solid chart-simple >}} Link to dashboard:** *[sultanov.shinyapps.io/uzbinde](https://sultanov.shinyapps.io/uzbinde/){target="_blank"}*
+
+
+![](pics/db_gh.gif)
+
+
+
+
+
+
+
+

@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fazliddin Sultonov">
+<meta name="description" content="&quot;Я немного скептически отношусь к статистике. По статистике, и миллионер, и бедняк имеют по полмиллиона каждый.&quot;   ~ Франклин Рузвельт.">
+
+<title>Estimates of Location  in Uzbek – Fazliddin Sultanov</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f95079ce326be7ea20ef25e2401799a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-2beb4ee6fdafbdec48008dadf9194d81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-f95079ce326be7ea20ef25e2401799a0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="customs/styles.css">
+<link rel="stylesheet" href="../../customs/style.css">
+<meta name="twitter:title" content="Estimates of Location
+ in Uzbek – Fazliddin Sultanov">
+<meta name="twitter:description" content="&quot;Я немного скептически отношусь к статистике. По статистике, и миллионер, и бедняк имеют по полмиллиона каждый.&quot;  ~ Франклин Рузвельт.">
+<meta name="twitter:image" content="https://sultanov.quarto.pub/blog/posts/mean/pictures/average.png">
+<meta name="twitter:image-height" content="748">
+<meta name="twitter:image-width" content="1244">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Fazliddin Sultanov</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-person-bounding-box" role="img">
+</i> 
+<span class="menu-text">me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text"><i class="fa-solid fa-blog" aria-label="blog"></i> blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><i class="fa-solid fa-code" aria-label="code"></i> practice</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://sultanov.quarto.pub/cv/" target="_blank"> 
+<span class="menu-text"><i class="fa-solid fa-user-tie" aria-label="user-tie"></i> CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-square-share-nodes-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-square-share-nodes" aria-label="square-share-nodes"></i></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-fa-square-share-nodes-">    
+        <li>
+    <a class="dropdown-item" href="mailto:fazliddin@sultonov.ru">
+ <span class="dropdown-text"><i class="fa-solid fa-envelope fa-lg" aria-label="envelope"></i> <span class="math inline">\(~\)</span> Email</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://t.me/R4Pythonistas" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-telegram fa-lg" aria-label="telegram"></i> <span class="math inline">\(~\)</span> Telegram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.instagram.com/sultanof.uzb/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/in/fazliddinsultonov/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-linkedin fa-lg" aria-label="linkedin"></i> <span class="math inline">\(~\)</span> Linkedin</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://xing.com/profile/Fazliddin_Sultonov3" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-xing fa-lg" aria-label="square-xing"></i> <span class="math inline">\(~\)</span> Xing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sultanovf" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><p>Estimates of Location<br>
+<i class="fa-solid fa-language" aria-label="language"></i> in Uzbek</p></h1>
+                  <div>
+        <div class="description">
+          <p>"Я немного скептически отношусь к статистике. По статистике, и миллионер, и бедняк имеют по полмиллиона каждый." <br> ~ Франклин Рузвельт.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Statistics</div>
+                <div class="quarto-category">Uzbek</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Mean</div>
+                <div class="quarto-category">Median</div>
+                <div class="quarto-category">Modal</div>
+                <div class="quarto-category">Quartil</div>
+                <div class="quarto-category">Box-Plot</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-body">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Fazliddin Sultonov </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Jun 9, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#mean" id="toc-mean" class="nav-link active" data-scroll-target="#mean">Mean</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median">Median</a></li>
+  <li><a href="#modus" id="toc-modus" class="nav-link" data-scroll-target="#modus">Modus</a></li>
+  <li><a href="#outliers-mean-vs-median" id="toc-outliers-mean-vs-median" class="nav-link" data-scroll-target="#outliers-mean-vs-median">Outliers: Mean vs Median</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#quantile-quartile" id="toc-quantile-quartile" class="nav-link" data-scroll-target="#quantile-quartile">Quantile &amp; Quartile</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p>subcribe.html</p>
+</div></div>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+
+
+
+
+
+
+<p><img src="pictures/average.png" class="nolightbox img-fluid"></p>
+<p><em>Tavsiflovchi statistika (descriptive statistics)</em> yordamida ma’lumotlar <em>umumlashtirilgan</em> tarzda taqdim etiladi va tavsiflanadi, ya’ni Tavsiflovchi statistika ko’plab daraxtlar (berilgan ko’p ma’lumotlar) o’rniga o’rmonni (masalan o’rta qiymat) ko’rsatadi <span class="citation" data-cites="r_ModernDA">(<a href="#ref-r_ModernDA" role="doc-biblioref">Sauer 2019</a>)</span>. Demak bunda ma’lumotlar ular haqida birinchi taassurotni olish uchun <em>explorativ</em> tavsiflanadi. Bu narsa Machine Learning sohasida <em>Feature Engineering</em> deb ham ataladi <span class="citation" data-cites="dsPraxis">(<a href="#ref-dsPraxis" role="doc-biblioref">Alby 2022</a>)</span>. Tavsiflovchi statistikada yoki ma’lumotlarni tavsifiy tahlil qilishda maqsadi, <em>ko’rsatgich raqamlar (key figures)</em>, <em>jadvallar</em> va <em>grafiklar</em> yordamida <em>ma’lumotlarni taqsimlashning umumiy ko’rinishda</em> tasvirlab berishga qaratiladi. Tavsiflovchi statistikada asosiy o’lchovlar ma’Lumotlar to’plamini ikki holatda tasvirlaydi: ma’lumotlarni <em>joylashuvi</em> va <em>tarqalishi</em>.</p>
+<p>Ko’p hollarda ma’lumotlar bir markaziy nuqta atrofida to’planadi. Bunda har qanday ma’lumotni tavsiflash uchun ma’lum bir <em>odatiy quymat</em>ni ko’rsatish yetarli bo’ladi. <em>Markaziy tendensiyasi</em> (engl. Estimates of Location) ma’lumotlarni ana shu <em>odatiy quymat</em>ga yaqinlashuvini ifodalaydi, boshqacha aytganda qaysi qiymat ma’lumotlar to’plami taqsimotining markazini eng yaxschi ifodalay oladi. Bularga arifmetik <em>o’rtacha arifmetik qiymat</em>, <em>mediana</em> (engl median) va <em>mode</em> lar kiradi,</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A("Estimates of Location\n(Markaziy tendensiya)")
+  B[["- Mean\n- Median\n- Modus\n- Quantil"]]
+  A --&gt; B
+  style A text-align:center;
+</pre>
+</div>
+<p></p><figcaption> Markaziy tendensiya</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A("Estimates of Variability\n(Variatsiya/tarqalish)")
+  B[["- Standard deviation (standart og'ish)\n- Variance (Dispersiya)\n- Range (Tafovut)\n- Interquartile range, IQR (Kvartillararo tafovut)"]]
+  A:::myClass --&gt; B
+  classDef myClass style: text-align:center
+</pre>
+</div>
+<p></p><figcaption> Variatsiya/Tarqalish</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="mean" class="level2">
+<h2 class="anchored" data-anchor-id="mean">Mean</h2>
+<p>O’rtacha arifmetik qiymat, (engl. mean) analitik o’rta qiymatlar ichida eng ko’p tarqalgan turi hisoblanadi. Arifmetik o’rta qiymat barcha qiymatlarni <span class="math inline">\((x_1, x_2, ..., x_n)\)</span> qo’shish va yig’indini qiymatlar soniga (n) bo’lish yo’li bilan hisoblanadi: <span class="math display">\[
+\bar{x} = \frac{x_1+x_2+x_3+...+x_n}{n}  = \frac{1}{n}\sum_{i = 1}^{n}{x_i}
+\]</span> Aytaylik, biz ko’chada so’rov o’tkazdik va odamlardan ularning kasbi, yoshi, bo’yi va daromadi haqida so’radik.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>interview <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="at">profession =</span> <span class="fu">c</span>(<span class="st">"Doctor"</span>, <span class="st">"Teacher"</span>, <span class="st">"Doctor"</span>, <span class="st">"Pensioner"</span>, <span class="st">"Professor"</span>, <span class="st">"Pensioner"</span>, <span class="st">"Student"</span>, <span class="st">"Student"</span>, <span class="st">"Pensioner"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">47</span>, <span class="dv">39</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">51</span>, <span class="dv">71</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">82</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">tall =</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.72</span>, <span class="fl">1.73</span>, <span class="fl">1.68</span>, <span class="fl">1.75</span>, <span class="fl">1.70</span>, <span class="fl">1.78</span>, <span class="fl">1.77</span>, <span class="fl">1.73</span>),</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">income =</span> <span class="fu">c</span>(<span class="dv">3500</span>,  <span class="dv">2200</span>, <span class="dv">3400</span>, <span class="dv">2050</span>, <span class="dv">2600</span>, <span class="dv">1400</span>, <span class="dv">1050</span>, <span class="dv">950</span>, <span class="dv">1100</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(interview)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">as_tibble</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 9 × 4
+#&gt;   profession   age  tall income
+#&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 Doctor        47  1.75   3500
+#&gt; 2 Teacher       39  1.72   2200
+#&gt; 3 Doctor        55  1.73   3400
+#&gt; 4 Pensioner     68  1.68   2050
+#&gt; 5 Professor     51  1.75   2600
+#&gt; 6 Pensioner     71  1.7    1400
+#&gt; 7 Student       21  1.78   1050
+#&gt; 8 Student       25  1.77    950
+#&gt; 9 Pensioner     82  1.73   1100</code></pre>
+</div>
+</div>
+<p>Arifmetik o’rta qiymatni (yozishga qulay bo’lishi uchun bundan keyin mean deb ketiladi) hisoblash uchun R va Python da <code>mean()</code> funksiyasi bor. Mean hisoblashda etibor berish kerak bolgan narsa, ma’lumotlar <em>metrik</em> bo’lishi kerak. Misoldagi yosh va daromad xarakteristikalari (variable) uchun mean R va Pythonda quyidagicha hisoblanadi:</p>
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell code-input">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>m_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>age); m_inc <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>income)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"mean of age: {m_age}</span><span class="sc">\n</span><span class="st">mean of income: {round(m_inc, 2)}"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; mean of age: 51</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; mean of income: 2027.78</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell code-output">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>age_m <span class="op">=</span> r.df.age.mean()<span class="op">;</span> inc_m <span class="op">=</span> r.df[<span class="st">"income"</span>].mean()</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">print</span>(<span class="ss">f"mean of age: </span><span class="sc">{</span>age_m<span class="sc">}</span><span class="ch">\n</span><span class="ss">mean of income: </span><span class="sc">{</span><span class="bu">round</span>(inc_m, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; mean of age: 51.0</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; mean of income: 2027.78</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretatsiya
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To’qqiz respondentning (ya’ni biz so’ragan insonlar) yoshi bo’yicha o’rtacha arifmetik ko’rsatkich: 51 va daromad uchun: 2161. Demak biz, respondentlar haqidagi ma’lumotlarni bitta odatiy qiymat (bu yerda o’rta qiymat) bilan tasvirlashimisi mumkin, yani ularni <em>o‘rtacha</em> 51 yoshda va oyiga <em>o‘rtacha</em> 2027,78 (evro, dollar, so’m, nima bo’sayam) maosh oladi, deb umumlashtirib aytishimiz mumkin.</p>
+</div>
+</div>
+</section>
+<section id="median" class="level2">
+<h2 class="anchored" data-anchor-id="median">Median</h2>
+<p>Mediana - tartiblangan qiymatlar o’rtasida joylashgan qiymat hisoblanadi. U taqsimotni ikkita teng yarimga ajratadi va taqsimotning birinchi yarmi undan kichikroq (agar taqsimotda takrorlanuvchi sonlar bo’lmasa) va ikkinchi yarmi undan kattaroq bo’ladi.</p>
+<p>Mediana hisoblash uchun R va Pythonda <code>median()</code> funksiyasi mavjud. Mediana <em>metrik va ordinal(tartibli)</em> qiymatlarni talab qiladi. Quyida misoldagi respondentlarning bo’yi va daromadi uchun median hisoblangan.</p>
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell code-input">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>med_tall <span class="ot">&lt;-</span> <span class="fu">median</span>(df<span class="sc">$</span>tall); med_inc <span class="ot">&lt;-</span> <span class="fu">median</span>(df<span class="sc">$</span>income)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"median of tall: {med_tall}</span><span class="sc">\n</span><span class="st">median of income: {med_inc}"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt; median of tall: 1.73</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; median of income: 2050</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell code-output">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2"></a>tall_med <span class="op">=</span> r.df.tall.median()<span class="op">;</span> inc_med <span class="op">=</span> r.df[<span class="st">"income"</span>].median()</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(<span class="ss">f"median of tall: </span><span class="sc">{</span>tall_med<span class="sc">}</span><span class="ch">\n</span><span class="ss">mean of income: </span><span class="sc">{</span>inc_med<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt; median of tall: 1.73</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt; mean of income: 2050.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretatsiya
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To’qqiz respondentning bo’yi bo’yicha o’rtacha ko’rsatkich: 1,73 va daromad uchun: 2050. Korsatgichlardan xulosa qilib shunday deyish mumkin: respondentlarning yarmini (50%) bo’yi 1,73 metrdan pastroq va oyiga 2050 dan kam (evro, dollar, nima bo’sayam) maosh oladi. Yoki aksincha, so’ralganlarning yarmini (50%) bo’yi 1,73 metrdan baland va oyiga 2050 dan ortiq daromad topadi.</p>
+</div>
+</div>
+</section>
+<section id="modus" class="level2">
+<h2 class="anchored" data-anchor-id="modus">Modus</h2>
+<p>ma’lumotlar to’plamida eng ko’p uchraydigan qiymat - mode yoki modal qiymat deyiladi. Mode uchun qiymatni <em>metrik, tartibli va nominal (kategorik)</em> ma’lumotlar uchun hisoblanishi mumkin. Nominal ma’lumotlar uchun modal o’rtacha qiymatni aniqlash uchun yagona usuldir. R da mode uchun bevosita funksiya yo’q, modal qiymatni ko’rsatish uchun <code>table</code> funksiyasidan foydalanish mumkin- Bu funksiya qaysi qiymat nechi marta uchragani qaytaradi. Uchragan sonlari bo’yicha eng kattasi mode hisoblanadi.</p>
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell code-input">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">cat</span>(<span class="st">"Frequence table for variable profession:"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">table</span>(df<span class="sc">$</span>profession)      <span class="co"># Häufigkeitstablle</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Modus-Maximaler Wert von der Freq.Table</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">cat</span>(<span class="st">"Mode for variable profession - Max value of FreqTable: "</span>, <span class="fu">max</span>(<span class="fu">table</span>(df<span class="sc">$</span>profession)))</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Frequence table for variable tall:"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">table</span>(df<span class="sc">$</span>tall)            <span class="co"># Häufigkeitstablle</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="fu">cat</span>(<span class="st">"Mode for variable tall - Max value of FreqTable: "</span>, <span class="fu">max</span>(<span class="fu">table</span>(df<span class="sc">$</span>tall)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Frequence table for variable profession:
+#&gt;    Doctor Pensioner Professor   Student   Teacher 
+#&gt;         2         3         1         2         1 
+#&gt; Mode for variable profession - Max value of FreqTable:  3
+#&gt; 
+#&gt; Frequence table for variable tall:
+#&gt; 1.68  1.7 1.72 1.73 1.75 1.77 1.78 
+#&gt;    1    1    1    2    2    1    1 
+#&gt; Mode for variable tall - Max value of FreqTable:  2</code></pre>
+</div>
+</div>
+</div>
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell code-output">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#from statistics import mode</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># tall_med = r.df.tall.median(); inc_med = r.df["income"].median()</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># print(f"median of tall: {tall_med}\nmean of income: {inc_med}")</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>freq_prof <span class="op">=</span> r.df[<span class="st">"profession"</span>].value_counts()       <span class="co"># FreqTable for var profession</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>modi_prof <span class="op">=</span> r.df[<span class="st">"profession"</span>].value_counts().<span class="bu">max</span>() <span class="co"># Modi for var profession</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>freq_tall <span class="op">=</span> r.df[<span class="st">"tall"</span>].value_counts()             <span class="co"># FreqTable for var tall</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>modi_tall <span class="op">=</span> r.df[<span class="st">"tall"</span>].value_counts().<span class="bu">max</span>()       <span class="co"># Modi for var tall</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="bu">print</span>(<span class="st">"Frequence table for variable profession:"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="bu">print</span>(freq_prof)</span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="bu">print</span>(<span class="ss">f"&gt;&gt; Mode for variable profession - Max value of FreqTable:  </span><span class="sc">{</span>modi_prof<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Frequence table for variable tall:"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="bu">print</span>(freq_tall)</span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="bu">print</span>(<span class="ss">f"&gt;&gt; Mode for variable tall - Max value of FreqTable:  </span><span class="sc">{</span>modi_tall<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Frequence table for variable profession:
+#&gt; profession
+#&gt; Pensioner    3
+#&gt; Doctor       2
+#&gt; Student      2
+#&gt; Teacher      1
+#&gt; Professor    1
+#&gt; Name: count, dtype: int64
+#&gt; &gt;&gt; Mode for variable profession - Max value of FreqTable:  3
+#&gt; 
+#&gt; Frequence table for variable tall:
+#&gt; tall
+#&gt; 1.75    2
+#&gt; 1.73    2
+#&gt; 1.72    1
+#&gt; 1.68    1
+#&gt; 1.70    1
+#&gt; 1.78    1
+#&gt; 1.77    1
+#&gt; Name: count, dtype: int64
+#&gt; &gt;&gt; Mode for variable tall - Max value of FreqTable:  2</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretatsiya
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Modani izohlab beradigan aytarli ko’p narsa yo’q. Misoldagi ksb va bo’y uchun hisoblangan modal qiymatlardan xulosa qilib aytish bo’lgan narsa shuki, respondentlarning aksariyati nafaqaxo’rlar yoki ko’pchilikning bo’yi 1,73 metr.</p>
+</div>
+</div>
+</section>
+<section id="outliers-mean-vs-median" class="level2">
+<h2 class="anchored" data-anchor-id="outliers-mean-vs-median">Outliers: Mean vs Median</h2>
+<p>Ko’p holatlar mavjud bo’lib, bunda mediana o’rtacha arifmetik qiymatdan yaxshiroq o’lchov birligi sifatida o’zini ko’rsata oladi, masalan, ma’lumotlar to’plamida ekstremal qiymatlar (engl. outliers) bo’lsa. Haddan tashqari holatlarda, medianaga natijani buzishi mumkin bo’lgan ekstremallar ta’sir qilmaydi. Misol tariqasida, biz yuqoridagi misolini ekstremal qiymatni qo’shish orqali kengaytiramiz. Tasavvur qilamiz, 9 ta odamdan keyin yana bitta oxirgi odamdan ma’lumotlarini oldik, aytaylik u tiktoker yoki blogger bo’lsin, ya’ni yosh (19), baland bo’yli (1,84) va boshqa respondentlarga qaraganda ancha ko’proq daromad topadi(5600). Bizning malumotlar to’plamida bu ekstremal holatni ifodalaydi. Endi bizning asl o’rtachaa arifmetik qiymatimiz o’zgaradi va yuqoriroq bo’ladi (chunki yana bir respondent qo’shildi).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>v <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Bloger"</span>, <span class="dv">19</span>, <span class="fl">1.84</span>, <span class="dv">5600</span>); <span class="fu">names</span>(v) <span class="ot">&lt;-</span> <span class="fu">names</span>(df)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>extrem <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df,v)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">cat</span>(<span class="st">"New df with outlier:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">tail</span>(extrem, <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># Means</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Without outlier:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"income: mean - {round(mean(df$income),2)}, median - {median(df$income)}</span><span class="sc">\n</span><span class="st">age: mean - {mean(df$age)}, median - {median(df$age)}"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#glue::glue("Median income: {median(df$income)}\nMedian age: {median(df$age)}")</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">With outlier:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10"></a>glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"income: mean - {mean(extrem$income)}, median - {median(extrem$income)}</span><span class="sc">\n</span><span class="st">age:mean - {mean(extrem$age)}, median - {median(extrem$age)}"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#glue::glue("Median income: {median(extrem$income)}\nMedian age: {median(extrem$age)}")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; New df with outlier:
+#&gt;    profession age tall income
+#&gt; 8     Student  25 1.77    950
+#&gt; 9   Pensioner  82 1.73   1100
+#&gt; 10     Bloger  19 1.84   5600
+#&gt; 
+#&gt; Without outlier:
+#&gt; income: mean - 2027.78, median - 2050
+#&gt; age: mean - 51, median - 51
+#&gt; 
+#&gt; With outlier:
+#&gt; income: mean - 2385, median - 2125
+#&gt; age:mean - 47.8, median - 49</code></pre>
+</div>
+</div>
+<p>Yuqorida korinib turganidek, ekstremal holatda o’rtacha arifmetik qiymat daromad uchun 2.027,78 dan 2.385 gacha o’zgardi (o’sdi). A medianada esa o’zgarish uncha katta emas, 2.050 dan 2.125 ga o’zgardi xolos. Bunday holatda arifmetik qiymat hisoblanib, o’rtacha daromad 2.385 deb xulosa qilinsa, ma’lumotlar xato tahlil qilingan bo’ladi. Ushani uchun, <em>agar malumotlar to’plamida ekstremal qiymatlar bo’lsa</em>, o’rtacha qiymatni hisoblash uchun* o’rtacha arifmetik emas medianani ishlatgan afzalroq* bo’ladi.</p>
+</section>
+<section id="usage" class="level2">
+<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<p>O’rtacha qiymat, biz ko’rganimizdek, turli yo’llar bilan aniqlanadi. Shuning uchun vaziyatga qarab (masalan, ma’lumotlarning qaysi turga ega ekanligi) qaysi o’lchovi birligi qaysi vaziyatga (ma’lumotlarga) eng mos kelishini oldindan ko’rib chiqish maqasadga muvofiq bo’ladi. Bunga mani qisqacha xulosam:</p>
+<ul>
+<li><p><strong>nominal</strong> yoki kategorik ma’lumotlar uchun <strong>mode</strong> ishlatiladi, chunki boshqa markaziy tendensiya o’lchovlari bunqa ma’lumot turlariga mos kelmaydi.</p></li>
+<li><p><strong>Mediana</strong> dan foydalanish qachonki <em>oqilona</em> bo’ladi, agar</p>
+<ul>
+<li>ma’lumotlar <strong>ordinal</strong> yoki tartibli bo’lsa.</li>
+<li>taqsimotda <strong>extremal</strong> holatlar borligini bilsak.</li>
+</ul></li>
+<li><p>Agar ma’lumotlar va nosimmetrik taqsimot mavjud bo’lsa, unda arifmetik o’rtacha eng mos keladi <strong>miqdoriy</strong> (количественный) bo’lsa va taqsimot <strong>symmetrik</strong> bo’lsa, unda <strong>o’rtacha arifmetik qiymat</strong> dan foydalanish eng tO’g’ri yo’l hosoblanadi.</p></li>
+</ul>
+</section>
+<section id="quantile-quartile" class="level2">
+<h2 class="anchored" data-anchor-id="quantile-quartile">Quantile &amp; Quartile</h2>
+<p>Ma’lumotni ikkita teng o’lchamga ajratadigan medianadan farqli o’laroq, kvanti <strong>tariblangan</strong> ma’lumotlarni turli o’lchamdagi bo’limlarga ajratadi, ya’ni <em><span class="math inline">\(x_p\)</span> kavntil</em> yoki <em>x% (px100) kvantillar</em>ga bo’ladi. Kvantlarni bo’laklarga ajratilgan bo’limlardeyish mumkin. Misol uchun, 10% kvantil yoki 0,1 kvantil taqsimotdagi ma’lumotlarning 10% bu kvantil ostida, qolganlari esa (1-p, ya’ni 90%) uning ustida joylashganligini aytadi. Agar ma’lumotlarni <strong>to’rtta teng qismga</strong> ajratilsa, bular <em>maxsus kvantillar</em>, ya’ni <strong>kvartillar</strong> hisoblanadi.</p>
+<ul>
+<li><p><strong>0,25/25%-kvantil = quyi/birinchi kvartil = Q1</strong> - n ma’lumotlarning kamida 25% <span class="math inline">\(x_{0,25}\)</span> dan kichik yoki teng ekanligini bildiradi.</p></li>
+<li><p><strong>0,50/50%-kvantil = o’rta/ikkinchi kvartil = Q2</strong> - medianaga teng, n ma’lumotlarning kamida 50% <span class="math inline">\(x_{0,50}\)</span> dan kichik yoki katta.</p></li>
+<li><p><strong>0,75/75%-kvantil = yuqori/uchinchi kvartil = Q3</strong> - n ma’lumotlarning kamida 75% <span class="math inline">\(x_{0,75}\)</span> dan kichik yoki teng ekanligini bildiradi.</p></li>
+</ul>
+<p>Misol tariqasida, tasavvur qilaylik, biz kichik so’rov o’tkazamiz va 10 kishidan kuniga nechi soat vaqtini uyali telefonda o’tkazishini so’raymiz. Aytaylik, javob quyidagicha (raqamlar o’ylab topilgan):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">1.7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">2.5</span>, <span class="fl">3.2</span>, <span class="fl">3.4</span>, <span class="fl">1.5</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">sort</span>(time)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">#&gt;  [1] 1.0 1.5 1.7 2.0 2.3 2.5 3.0 3.2 3.4 4.0</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">median</span>(time)</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">#&gt; [1] 2.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Kvartillarni hisoblash uchun avval ma’lumotlar to’plamlari soni (n) ni p ga (0,25, 0,50, 0,75) ko’paytirish <span class="math inline">\(n*p\)</span> kerak. Natija <em>butun son</em> yoki <em>butun son emas</em>ligiga qarab, keyingi hisoblash uchun ushbu formuladan foydalaniladi: <span class="math display">\[x_p = \begin{cases}
+\frac{1}{n}(x_{(np)} + x_{(np+1)}) &amp; if (p\cdot n) &amp;\text{wholenumbered}\\
+x_{(|np|+1)} &amp; if (p\cdot n)&amp;\text{not wholenumbered}\end{cases}\]</span></p>
+<p>Quyida kvartillarni hisoblashni grafik tarzda tasvirlangani:</p>
+<p><img src="pictures/quartil.png" class="img-fluid" alt="Click for zooming"> Yaxshiyamki, hamma narsani qo’lda hisoblash shart emas. Buning uchun R da <code>quantile()</code> funksiyasi mavjud. Bundan tashqari, <code>summary()</code> <em>(Pythondagi <code>describe()</code> funksiyasi kabi)</em> funktsiyasi o’rtacha arifmetik qiymat, mediana, Q1, Q2 = mediana, Q3, min va max kabi markaziy tendensiya o’lchovlari ko’rsatish orqali ma’lumotlarning birinchi taassurotini beradi.</p>
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell code-input">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">cat</span>(<span class="st">"Vector time: Qauartile: 25%-, 50%-, 75%- Quantile</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">quantile</span>(time)        <span class="co"># Qauartile: 25%-, 50%-, 75%- Quantile</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Vector time: 0,6- Quantil:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">quantile</span>(time, <span class="fl">0.60</span>)  <span class="co"># 60%- Quantil</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Vector time: Summary</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">summary</span>(time)         <span class="co"># Summary for variable income</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Descriptive measures with summary() for df:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="fu">summary</span>(df)</span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="co"># summary(df$age)     # Summary for selected variable (age)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Vector time: Qauartile: 25%-, 50%-, 75%- Quantile
+#&gt;    0%   25%   50%   75%  100% 
+#&gt; 1.000 1.775 2.400 3.150 4.000 
+#&gt; 
+#&gt; Vector time: 0,6- Quantil:
+#&gt; 60% 
+#&gt; 2.7 
+#&gt; 
+#&gt; Vector time: Summary
+#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt;   1.000   1.775   2.400   2.460   3.150   4.000 
+#&gt; 
+#&gt; Descriptive measures with summary() for df:
+#&gt;   profession             age          tall           income    
+#&gt;  Length:9           Min.   :21   Min.   :1.680   Min.   : 950  
+#&gt;  Class :character   1st Qu.:39   1st Qu.:1.720   1st Qu.:1100  
+#&gt;  Mode  :character   Median :51   Median :1.730   Median :2050  
+#&gt;                     Mean   :51   Mean   :1.734   Mean   :2028  
+#&gt;                     3rd Qu.:68   3rd Qu.:1.750   3rd Qu.:2600  
+#&gt;                     Max.   :82   Max.   :1.780   Max.   :3500</code></pre>
+</div>
+</div>
+<p>Pythonda ham <code>quantile()</code> funksiyasi mavjud bo’lib, kerakli kvantil(lar)ni ro’yxat formatida qavs ichiga kiritilishi kerak. Funktsiya Pandas yoki NumPy modullari orqali ishlatiladi.</p>
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell code-output">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">print</span>(<span class="st">"Quartile for one variable (age):"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>r.df[<span class="st">"age"</span>].quantile([<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>])</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Quantile for more variables:"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>r.df[[<span class="st">"age"</span>, <span class="st">"income"</span>, <span class="st">"tall"</span>]].quantile([<span class="fl">.1</span>, <span class="fl">.25</span>, <span class="fl">.5</span>, <span class="fl">.75</span>], axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co"># with describe()</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Descriptive measures with discribe() for df:"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># r.df[["age", "tall"]].describe() # for selected variables</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>r.df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Quartile for one variable (age):
+#&gt; 0.25    39.0
+#&gt; 0.50    51.0
+#&gt; 0.75    68.0
+#&gt; Name: age, dtype: float64
+#&gt; 
+#&gt; Quantile for more variables:
+#&gt;        age  income   tall
+#&gt; 0.10  24.2  1030.0  1.696
+#&gt; 0.25  39.0  1100.0  1.720
+#&gt; 0.50  51.0  2050.0  1.730
+#&gt; 0.75  68.0  2600.0  1.750
+#&gt; 
+#&gt; Descriptive measures with discribe() for df:
+#&gt;              age      tall       income
+#&gt; count   9.000000  9.000000     9.000000
+#&gt; mean   51.000000  1.734444  2027.777778
+#&gt; std    20.621591  0.032059   986.189355
+#&gt; min    21.000000  1.680000   950.000000
+#&gt; 25%    39.000000  1.720000  1100.000000
+#&gt; 50%    51.000000  1.730000  2050.000000
+#&gt; 75%    68.000000  1.750000  2600.000000
+#&gt; max    82.000000  1.780000  3500.000000</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpretatsiya
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Kvantillar yoki kvartillar ma’lumotlarni taqsimlashni tasvirlaydi. Bu umumiy taqsimotning ma’lum bir qismi ma’lum bir kvantil/kvartil ostida yoki undan yuqorida joylashgan degan bayonotni berishga imkon beradi. Bular Quartile oder Quartile gibt einen der ersten Überblick von der Datenverteilung. Dadurch kann man die Aussage treffen, dass eine bestimme Teil der gesamten Verteulung liegt unter oder über ein Quantil/Quartil. Nehmen wir das Beispiel von oben mit dem Handy. Uyali telefon haqidagi yuqoridagi misolni olaylik.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># How many time spent you for handy in a day?</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>handy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">1.7</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="fl">2.5</span>, <span class="fl">3.2</span>, <span class="fl">3.4</span>, <span class="fl">1.5</span>, <span class="dv">4</span>, <span class="dv">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># Quartile</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">quantile</span>(handy)</span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co">#&gt;    0%   25%   50%   75%  100% </span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">#&gt; 1.000 1.775 2.400 3.150 4.000</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># 0.6 Quantil</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="fu">quantile</span>(handy, <span class="fl">0.6</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="co">#&gt; 60% </span></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co">#&gt; 2.7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Bundan ko’rinib turibdiki, 10 respondentning to’rtdan uch qismi (75%) vaqtini 3 soatgacha uyali telefonda o’tkazadi yoki kvartil 0,6 - respondentlarning 60 foizi kuniga 2,7 soatgacha vaqtini uyali telefonda yo’qotadi.</p>
+<section id="box-plot" class="level2">
+<h2 class="anchored" data-anchor-id="box-plot">Box-Plot</h2>
+<p>Tavsiflash tahlilini amalga oshirishda, ma’lumotlarning harakatlari haqida birinchi taassurot olish uchun, ayniqsa ma’lumotlar to’plami katta bo’lsa, ko’pincha grafik usullardan ham foydalananiladi. Eng kop qo’llanaliganlaridan bu box-plot dir. U ma’lumotlarni asosan 5 ta asosiy o’lchamga (<span class="math inline">\(x_{min}\)</span>, <span class="math inline">\(x_{0,25}\)</span>, <span class="math inline">\(x_{0,50}\)</span>, <span class="math inline">\(x_{0,75}\)</span>, <span class="math inline">\(x_{max}\)</span>) jamlaydi va ularni grafik tarzda aks ettiradi. Quyida box-ploti tasvirlangan grafik keltirilgan.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="pictures/boxplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Box-Plot"><img src="pictures/boxplot.png" class="img-fluid figure-img" alt="Box-Plot"></a></p>
+<figcaption>Box-Plot</figcaption>
+</figure>
+</div>
+<p>R da box plot uchun basis funktsiyalar ichida <code>boxplot()</code> funksiyasi ham mavjud. Box-plotni <code>ggplot2</code> paketi orqali ham R da yaratish mumkin. Pythonda ham bu funksiya <code>matplotlib</code> yoki <code>seaborn</code> modullarida mavjud.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-r">
+<div class="cell code-input">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">boxplot</span>(extrem<span class="sc">$</span>age,</span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="at">ylab =</span> <span class="st">"age"</span>,</span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="at">main =</span> <span class="st">"A sample Box-Plot"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="at">col=</span> <span class="st">"azure"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(extrem<span class="sc">$</span>age), <span class="at">col=</span><span class="st">"tomato1"</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="average_uz_files/figure-html/unnamed-chunk-16-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="average_uz_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-py">
+<div class="cell code-output">
+<details class="code-fold">
+<summary>show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co"># Create a boxplot for the desired column</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>plt.boxplot(r.extrem[<span class="st">"age"</span>], showmeans <span class="op">=</span> <span class="va">True</span>, meanline <span class="op">=</span> <span class="va">True</span>, showfliers <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co"># Add labels and title</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>plt.xlabel(<span class="st">""</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>plt.ylabel(<span class="st">"age"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8"></a>plt.title(<span class="st">"A sample Box-Plot"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="co"># Show the plot</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; {'whiskers': [&lt;matplotlib.lines.Line2D object at 0x0000028267B37230&gt;, &lt;matplotlib.lines.Line2D object at 0x0000028267B37500&gt;], 'caps': [&lt;matplotlib.lines.Line2D object at 0x0000028267B37800&gt;, &lt;matplotlib.lines.Line2D object at 0x0000028267B37B00&gt;], 'boxes': [&lt;matplotlib.lines.Line2D object at 0x00000282678E6480&gt;], 'medians': [&lt;matplotlib.lines.Line2D object at 0x0000028267B37DD0&gt;], 'fliers': [], 'means': [&lt;matplotlib.lines.Line2D object at 0x0000028267B7C110&gt;]}</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="average_uz_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="average_uz_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="614"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Yuqoridagi box-plot misoldagi dataframening age(yosh) ustuni(variable) uchun yaratilgan. Grafikda ko’rinib turganidek, ma’lumotlarning yarmi (50%) quti (IQR) ichida joylashgan, 25% quti yuqorisida va 25% quti ostida (grafikdagi quti tashqarisidagi nuqta-nuqta chiziqlar) joylashgan. Biz buni shunday talqin qilishimiz mumkin: respondentlarning/odamlarning 50 foizi 25 yoshdan 68 yoshgacha. O’rtadagi tekis chiziq mediana = 51, kesilgan chiziq esa o’rtacha arifmetik qiymat = taxminan 49 (o’rtacha arifmetik qiymatni grafikga qo’shish mumkin, lekin box-plotning tarkibiy/asosiy tasvirlaydigan o’lchamlariga kirmaydi), bundan kelib chiqib, so’rovda qatnashganlarning o’rtacha yoshi 50 yoshni tashkil qiladi degan xulosaga kelish mumkin. Respondentlarning 25 foizi 25 yoshgacha, 25 foizi 68 yoshdan yuqori, va qayd etilganidek, 50 foizi 25-68 yosh orasida.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+
+
+</section>
+</div>
+</div>
+</div>
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-dsPraxis" class="csl-entry" role="listitem">
+Alby, Tom. 2022. <em>Data Science in Der Praxis : Eine Verständliche Einführung in Alle Wichtigen Verfahren</em>. Rheinwerk Verlag GmbH,.
+</div>
+<div id="ref-ds" class="csl-entry" role="listitem">
+Dr. Sandro Scheid, Prof. Dr. Stefanie. 2021. <em>Data Science - Grundlagen, Methoden Und Modelle Der Statistik</em>. Carl Hanser Verlag München.
+</div>
+<div id="ref-grSchlR" class="csl-entry" role="listitem">
+große Schlarmann, Jörg. 2024. <em><span class="nocase">Statistik mit R und RStudio - Ein Nachschlagewerk für Gesundheitsberufe</span></em>. Krefeld: Hochschule Niederrhein. <a href="https://www.produnis.de/R">https://www.produnis.de/R</a>.
+</div>
+<div id="ref-statRcmdr" class="csl-entry" role="listitem">
+Kronthaler, Franz. 2021. <em><span class="nocase">Statistik angewandt mit dem R Commander</span></em>. 2nd ed. Springer-Verlag GmbH Deutschland.
+</div>
+<div id="ref-rpyStat" class="csl-entry" role="listitem">
+Peter Bruce, Peter Gedeck, Andrew Bruce. 2020. <em>Practical Statistics for Data Scientists</em>. 2nd ed. O’Reilly Media, Inc.,.
+</div>
+<div id="ref-r_ModernDA" class="csl-entry" role="listitem">
+Sauer, Sebastian. 2019. <em><span class="nocase">Moderne Datenanalyse mit R</span></em>. Springer Gabler.
+</div>
+<div id="ref-datatab" class="csl-entry" role="listitem">
+Team, DATAtab. 2022. <span>“Tutorials: Erste Schritte Mit DATAtab.”</span> <a href="https://datatab.net/" class="uri">https://datatab.net/</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sultanov\.quarto\.pub\/blog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><i class="fa-regular fa-copyright" aria-label="copyright"></i> 2024, Made with <i class="fa-solid fa-heart" aria-label="heart"></i> in <a href="https://quarto.org/">Quarto</a> by Fazliddin Sultanov</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"none","descPosition":"top","loop":false,"openEffect":"none","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,149 @@
+---
+title: "plotting image data via ggimg"
+description: "`ggimg` displays images associated with each row of a dataset on the plot."
+author: "Fazliddin Sultonov"
+date: "2024-10-20"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [ggimg, R, ggplot2, ggimage]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+    link-external-newwindow: true
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+![](gallery_img/gg_img.png)
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "ggimg",       # for image plot
+  "reticulate",  # python
+  "ggimage"      # add background foto to ggimg
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312") # für Python
+
+```
+
+
+Data Source: [Daryo.uz](https://daryo.uz/2024/02/01/botir-qodirov-sardor-mamadaliyev-yoki-shohjahon-jorayev-qaysi-xonanda-toshkentdagi-toyga-5-ming-dollar-evaziga-keladi)
+
+```{r}
+#| echo: false     # R-Input anzeigen      
+#| output: false   # R-Output NICHT anzeigen 
+#| eval: true      # Code ausführen 
+
+artists <- c("S.Mamadaliyev", "Z.Jo‘rayev", "J.Piyazov", 
+             "B.Qodirov", "Asilbek", "Sh.Jo‘rayev", "R.G‘oipov")
+img_path <- c("gallery_img/stars/sm.png",
+              "gallery_img/stars/zj.png",
+              "gallery_img/stars/jp.png",
+              "gallery_img/stars/bq.png",
+              "gallery_img/stars/aa.png",
+              "gallery_img/stars/shj.png",
+              "gallery_img/stars/rg.png")
+price <- c(500, 600, 600, 800, 1000, 1000, 5000)
+
+stars <- data.frame(artists, price, img_path)
+
+
+
+
+
+```
+
+## 
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+ggplot(stars) +
+  geom_point_img(aes(
+    x = artists,
+    y = price,
+    img = img_path
+  ), size = 1.3) -> p
+#
+p +
+  geom_text(data = stars, aes(
+    x = artists, 
+    y = price, 
+    label = paste(price, "$")), 
+    size = 4, 
+    vjust = -3.0) +
+  scale_y_continuous(limits = c(0,5500), breaks = seq(0, 5500, by = 500),
+                     labels = function(x) paste0(x, "$")) +
+  labs(title = "Xonandlarning birrovga borish narxi ©СФ",
+       subtitle = "Malumotlar \"Daryo.uz\" ga asoslangan",
+       x = "Sanatkorlar",
+       y = "\"Birrov\" narxi") +
+  theme_minimal()+
+  theme(plot.title = element_text(color = "dodgerblue4", size = 14, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(color = "dodgerblue", size = 13, face = "bold.italic", hjust = 0.5),
+        axis.title.x = element_text(color="indianred4", size = 12, face="bold", vjust = 0.1),
+        axis.title.y = element_text(color="indianred4", size = 12, face="bold", vjust = 1.9),
+        axis.text.x = element_text(colour = "slateblue", size = 10, face = "bold.italic", vjust = 0.5),
+        axis.text.y = element_text(colour = "darkblue", size = 10, face = "plain", vjust = 0.5)
+        ) -> pp
+pp
+```
+
+## 
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+imgg <- "gallery_img/stars/imgsb.png"
+p1 <- ggbackground(pp, imgg)
+p1
+```
+
+

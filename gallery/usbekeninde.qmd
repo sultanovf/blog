@@ -1,0 +1,740 @@
+---
+title: "mapplot"
+description: "create a *mapplot*, *bar chart* and *funnel chart* from a real dataset using `ggplot2` and `plotly`"
+author: "Fazliddin Sultonov"
+date: "2024-12-15"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [barplot, map, R, Python, ggplot2, plotly, pandas, funnel chart]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/map_de.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "stringr",     # strings
+  "giscoR",      # for map
+  "ggtext",      # texte ins plot
+  "glue",        # für md texte
+  "syfonts",     # laden fontawesome
+  "showtext",    # zeigen icons
+  "png",         # read png
+  "ggimage",     # pictures to the plot
+  "knitr"        # show tables in quarto
+  )     
+#if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+#use_condaenv("base") 
+#use_python('/usr/bin/python3')
+```
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Variable =====================================================================
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+yt_icon <- "&#xf431" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+yt_username <- "@hw_sultanov"
+ins_username <- "@sultanof.uzb"
+tg_username <- "@R4Pythonistas"
+
+# Caption for the plot
+social_caption_map <- glue::glue(
+  "<span style = 'color:skyblue3;'><i><strong>DataSource: ©Statistisches Bundesamt (Destatis), 2024<br/>Stand: 09.12.2024 / 19:56:52 | Stichtag: 31.12.2023 <br/></strong></i></span>  Plot by:
+  <span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username}</span> |
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username}</span> |
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username}</span>"
+)
+
+# read image dop
+img <- readPNG("gallery_img/dop.png")
+
+# variable ---------------------------
+legnd <- c("AE_family" = "AE, familiäre Gründe",
+           "Ausbildung" = "Ausbildung",
+           "AE_human" = "AE, human., pol. Gründe", 
+           "Duldung" = "Duldung",
+           "AEgestattung" = "Aufenthaltsgestattung", 
+           "Antrag" = "Antrag gestellt", 
+           "Ausbildung" = "Ausbildung", 
+           "Befristete_AE" = "Befristete AE", 
+           "FreizügG/EU" = "Aufenthaltsrecht nach FreizügG/EU",
+           "NVisa" = "Befristet, bes. Gründe & nationale Visa", 
+           "Niederlassungserlaubnis" = "Unbefristete Niederlassungserlaubnis", 
+           "OhneAT" = "Ohne AE | Duldung oder Gestattung",
+           "Erwerb" = "Befristete AE, Erwerbstätigkeit")
+
+
+```
+
+
+:::: {.column-screen-inset}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+Datasource: [Statistisches Bundesamt](https://www-genesis.destatis.de/datenbank/online/) |
+Datastorage: [{{< fa brands square-github >}}GitHub](https://github.com/sultanovf/my_datasets/blob/main/usbekeninde.csv)
+
+
+
+```{r}
+#| output: false
+#| eval: true
+#| echo: false
+
+data_raw <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/usbekeninde.csv")
+
+```
+
+
+## variables
+
+The long variable names have been abbreviated to simplify editing and plotting. The names in the analysis and the names in the original are shown below:
+
+```{r}
+#| output: true
+#| warning: false
+#| echo: false
+
+vec <- c("AE_family" = "AE, familiäre Gründe",
+           "Ausbildung" = "Ausbildung",
+           "AE_human" = "AE, human., pol. Gründe", 
+           "Duldung" = "Duldung",
+           "AEgestattung" = "Aufenthaltsgestattung", 
+           "Antrag" = "Antrag gestellt", 
+           "Ausbildung" = "Ausbildung", 
+           "Befristete_AE" = "Befristete AE", 
+           "FreizügG/EU" = "Aufenthaltsrecht nach FreizügG/EU",
+           "NVisa" = "Befristet, bes. Gründe & nationale Visa", 
+           "Niederlassungserlaubnis" = "Unbefristete Niederlassungserlaubnis", 
+           "OhneAT" = "Ohne AE | Duldung oder Gestattung",
+           "Erwerb" = "Befristete AE, Erwerbstätigkeit")
+
+
+var <- enframe(vec)
+colnames(var) <- c("abbreviated variable name", "original variable name")
+kable(var)
+
+```
+
+
+### Show some sample rows
+
+:::: {.column-screen-inset}
+::: {.code-r}
+
+```{r}
+#| output: false
+#| eval: true
+#| echo: false
+
+rmarkdown::paged_table(sample_n(data_raw, 10)) # show sample 10 rows
+# oder {r, df_print = "paged"}
+# sample_n(data_raw, 10
+
+```
+
+:::
+::::
+
+
+## dataclean
+
+```{r}
+#| results: hold
+#| warning: false
+
+# pivot data
+piv_data <- 
+  data_raw |> 
+  pivot_longer(
+    cols = !c(Bundesland, Stadt, Kreis...Landkreis),
+    names_to = "status",
+    values_to = "cnt"
+    ) |> 
+  select(c(1,2,4,5))
+
+#library(stringr)  # string replace, dedect
+data <- 
+  piv_data |> 
+  rowwise() |> 
+  mutate(
+    geschlecht = ifelse(
+      endsWith(status, "_m"),  "male",
+        ifelse(
+          endsWith(status, "_w"), "female"
+        )
+      )
+  ) |> 
+  mutate(across("status", str_replace, "_m|_w", "")) |> 
+  rename(
+    "bundesland" = "Bundesland",
+    "kreis" = "Stadt")
+
+data |> 
+  head()
+```
+
+
+
+::: {.callout-important}
+## Diqqat! Achtung! Bнимание! Attention!
+
+Columname **Kreis / Landkreis** mit `/` gespeichert. Normal R liest die Spalte so wie sie in DF gespeichrt ist, muss aber mit dplyr so angesprochen werden, indem man den Spaltennamen innerhalb von zwei Aphostropen eingibt (sie unten dien Spaltennamen <Kreis / Landkreis):
+```{{r}}
+data_raw |> 
+  pivot_longer(
+    cols = !c(Bundesland, Stadt, `Kreis / Landkreis`),
+    ....
+
+```
+
+In Qarto Chunk sieht eingelesener Spaltennamen so aus: **Kreis / Landkreis** -> `Kreis...Landkreis`, also beim Ansprechen dementsprechen den gleichen Namen eingeben!
+
+:::
+
+
+## mapplot via `ggplot`
+*(data grouped by [Bundesländer])*
+
+```{r}
+#| results: hold
+#| warning: false
+
+# libraries:
+# pkg <- c("giscoR", "ggtext", "glue", "syfonts", "png", "ggimage", "fontawesome")
+# lapply(pkg, library, character.only = TRUE)
+
+
+# Group by bundesland ==========================================================
+d_group <-
+  data |> 
+  group_by(bundesland) |> 
+  summarise(pop = sum(cnt))
+
+# Geo data for germany =========================================================
+# library(giscoR)
+ger <- gisco_get_nuts(
+  year = 2024,
+  epsg = 4326,
+  nuts_level = 1,
+  resolution =  "01",
+  country = "Germany"
+)
+
+# Merge both data ==============================================================
+df_de <-
+  ger |> 
+  left_join(d_group, by = c("NUTS_NAME" = "bundesland"))
+
+# new col mit abkurzung to from bundesländer to df
+L_Abk <- c("SH", "MV", "TH", "NI", "BW", "NW", "RP", "SL", "BY", "BE", "SN",
+           "BB", "HB", "HH", "ST", "HE")
+df_de$abk <- L_Abk
+
+
+# read image dop
+img <- readPNG("gallery_img/dop.png")
+
+
+# create mapplot
+map_plt <-
+  ggplot(df_de) +
+  geom_sf(aes(fill = NUTS_NAME))+  #(aes(fill = NUTS_NAME), show.legend = FALSE) # disable legend 
+  geom_sf_label(aes(label = paste(abk, ":", pop)), fill = "aliceblue", col = "dodgerblue4") +
+  geom_text(aes(y = 50.1, x =13.8, label = paste("Gesamt:", sum(pop))),
+            stat = "unique",
+            size = 3.6, size.unit = "mm", col = "dodgerblue4", fontface = "bold") +
+  annotate(
+    'rect',
+    xmin = 12.4,
+    xmax = 15.2,
+    ymin = 49.9,
+    ymax = 50.3,
+    alpha = 0.5,
+    fill = 'aliceblue',
+    col = 'dodgerblue4',
+  )+
+  annotation_raster(img, xmin = 6, xmax = 8, ymin = 54, ymax = 55.5, interpolate = FALSE) +
+  theme_minimal()+
+  labs(
+    title = "**Usbeken in Deutschland**",
+    subtitle = "nach Bundesländern",
+    caption = social_caption_map
+  ) + 
+  guides(fill = guide_legend(title="Bundesland")) +
+  theme(plot.title = ggtext::element_markdown(size = 13, color = "steelblue4", face = "bold"),
+        plot.subtitle = element_markdown(),
+        plot.caption = element_markdown(size = 11), # element_textbox_simple()
+        plot.caption.position = "plot",             #plot, margin, panel,
+        legend.title = element_text(color = "darkgrey", size = 12, face = "bold"),
+        axis.text.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+
+map_plt
+
+```
+
+
+## barplot via `ggplot`
+*(grouped data by [Aufenthaltsstatus])*
+
+```{r}
+#| results: hold
+#| warning: false
+
+
+
+# Group by Status ==============================================================
+group_stat <- 
+  data |> 
+  group_by(status) |> 
+  summarise(n = sum(cnt))
+
+# create plot ------------------------------------------------------------------
+bar_plt <-
+  ggplot(group_stat, aes(x = n, y = reorder(n, status), fill = status))+
+  geom_col()+
+ 
+  geom_text(aes(label = n), 
+            hjust = -0.1, color = "darkgrey", fontface = "bold")+
+  
+  scale_fill_discrete(name = "Aeufenthaltsstatus", labels = legnd) +
+  labs(
+    title = "Usbeken in Deutschlan, nach Aufenthaltsstatus",
+    caption = social_caption_map,
+    x = "Zahl (k = 1000)" ) +
+  scale_x_continuous(
+    labels = function(x) paste0(x/1000, "k"),
+    expand = expansion(c(0.01, 0.05))) +
+  theme_classic() +
+  theme(
+    plot.title = ggtext::element_markdown(
+      size = 13, color = "steelblue4", face = "bold"),
+    plot.caption = ggtext::element_markdown(size = 11),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.line = element_line(colour = "gray"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    legend.position = c(0.8, 0.40)
+  ) 
+
+bar_plt
+```
+
+## funnel chart via `ggplot`
+*(grouped data by [Aufenthaltsstatus])*
+
+```{r}
+#| results: hold
+#| warning: false
+
+
+group_status <-
+  data |> 
+  group_by(status, geschlecht) |> 
+  summarise(cnt = sum(cnt)) |> 
+  mutate(
+    n = case_when(
+      geschlecht == "female" ~ cnt*-1,
+      TRUE ~ cnt
+    )
+  )
+
+brks <- c(seq(-3000, 3000, by = 500))
+lbls = c(seq(30, 0, -5), seq(5, 30, 5))
+p <- group_status |>
+  ggplot(aes(x = reorder(status, n), y =  n, fill = geschlecht))+
+  geom_bar(stat = "identity", width = .6) +
+  scale_y_continuous(breaks = brks, labels = lbls) +
+  scale_x_discrete(labels = legnd) +
+  geom_label(aes(label = abs(n)), colour = "blue", fontface="bold", size=3.5) +
+  guides(fill = guide_legend(
+    title = "Geschlecht:",
+    override.aes = aes(label = ""))) +
+  coord_flip() +
+  labs(title="Usbeken in Deutschland nach Aufenthaltsstatus",
+       caption = social_caption_map
+       ) +
+  theme_minimal() +
+  theme(plot.title = ggtext::element_markdown(
+          size = 13, color = "steelblue4", face = "bold"),
+        plot.caption = ggtext::element_markdown(size = 11),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.background = element_rect(),
+        legend.position = "top")
+p
+```
+
+## funnel chart via `ggplot`
+*(grouped data by [Aufenthaltsstatus])*
+
+```{r}
+#| results: hold
+#| warning: false
+
+
+group_bl <- 
+  data |> 
+  group_by(bundesland, geschlecht) |> 
+  summarise(cnt = sum(cnt)) |> 
+  mutate(                          # einen Teil die Daten musste ich negativ machen,
+    n = case_when(                 # weil sons stacked bar wurde
+      geschlecht == "female" ~ cnt*-1,
+      TRUE ~ cnt
+    )
+  )
+
+group_bl |> 
+  ggplot(aes(x = reorder(bundesland,n), y =  n, fill = geschlecht))+
+  geom_bar(stat = "identity", width = .6) +
+  scale_y_continuous(breaks = brks, labels = lbls) +
+  geom_label(aes(label = abs(n)), colour = "floralwhite", fontface="bold", size=4) +
+  guides(fill = guide_legend(
+    title = "Geschlecht:",
+    override.aes = aes(label = ""))) +
+  coord_flip() +
+  labs(title="Usbeken in Deutschland nach Geschlecht in Bundesländern") +
+  theme_minimal() +
+  theme(plot.title = ggtext::element_markdown(
+          size = 13, color = "steelblue4", face = "bold"),
+        plot.caption = ggtext::element_markdown(size = 11),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.background = element_rect(),
+        legend.position = "top")
+
+```
+
+
+<!-- ```{r} -->
+<!-- library(ggrepel) -->
+<!-- p <- group_stat_sex |> -->
+<!--   ggplot(aes(x = reorder(status, n), y =  n, group = geschlecht))+ -->
+<!--   geom_col(aes(fill = geschlecht), width = 0.8, -->
+<!--            position = position_dodge()) + -->
+<!--   geom_vline(xintercept = 0)+ -->
+<!--   geom_text( -->
+<!--     aes(label = abs(n), hjust = 0.5), size = 3) + -->
+<!--   coord_flip(expand = FALSE) -->
+<!--   theme_minimal() -->
+<!-- p -->
+<!-- ``` -->
+
+
+
+
+:::: {.column-screen-inset}
+::: {.code-py}
+
+# `r fa(name = "python",  height = "2.0em", width = "2.0em",fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+## prepare date (use data from R)
+
+### group by *[status]* in `pandas`
+
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+import numpy as np
+import pandas as pd
+from IPython.display import display, Markdown, HTML
+
+var_name = {"AE_family": "AE, familiäre Gründe",
+           "Ausbildung": "Ausbildung ",
+           "AE_human": "AE, human., pol. Gründe", 
+           "Duldung": "Duldung ",
+           "AEgestattung": "Aufenthaltsgestattung", 
+           "Antrag": "Antrag gestellt", 
+           "Ausbildung": "Ausbildung", 
+           "Befristete_AE": "Befristete AE", 
+           "FreizügG/EU": "Aufenthaltsrecht nach FreizügG/EU",
+           "NVisa": "Befristet, bes. Gründe & nationale Visa", 
+           "Niederlassungserlaubnis": "Unbefristete Niederlassungserlaubnis", 
+           "OhneAT": "Ohne AE oder Duldung oder Gestattung",
+           "Erwerb": "Befristete AE, Erwerbstätigkeit"}
+
+df_r = pd.DataFrame(r.group_status)
+# rename rownames
+def replace_rname(name):
+    return var_name.get(name, name)
+df_r["status"] = df_r["status"].apply(replace_rname)
+# pivot wide
+data = df_r.pivot(index = "status", columns = "geschlecht", values = "cnt").reset_index()
+summa = np.abs(data.female + data.male)
+data["summa"] = summa
+
+df = data.copy()
+df = df.sort_values(
+    "summa",
+    ascending=False,
+    inplace=False,
+    ignore_index=False,
+    key=None
+)
+
+female = df.female
+male = df.male
+labels = df.status
+
+Markdown(df.to_markdown(index = False))
+```
+
+
+## plot by *[status]* with `plotly`
+
+```{python}
+#| eval: false     # do not run code
+#| echo: true     # no iclude code in output
+#| output: false
+#| code-summary: "show the code"
+#| warning: false
+
+from plotly import graph_objects as go
+
+
+fig = go.Figure()
+
+fig.add_trace(go.Funnel(
+    name = 'Male',
+    y = list(labels),
+    x = list(male),
+    textinfo = "value"))
+
+fig.add_trace(go.Funnel(
+    name = 'Female',
+    orientation = "h",
+    y = list(labels),
+    x = list(female),
+    textposition = "inside",
+    textinfo = "value"))
+    
+fig.update_layout(
+    title='<b>Usbeken in Deutschland nach Aufenthaltsstatus bei Geschlecht</b>',
+    title_font=dict(size=18,
+                    color='blue',
+                    family='Arial'),
+    title_x=0.50,  # Title aligned with grid
+    title_y=0.93   # Title positioned near the top vertically
+)
+#fig.show()
+print(fig)
+
+#fig.write_image("gallery/plots/fig1.png")
+#plotly.offline.plot(fig, filename='gallery/plots/fig1.png', image='png')
+```
+
+![](plots/funnel2.png)
+
+
+### group by *[bundesland]*
+
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+import numpy as np
+import pandas as pd
+from IPython.display import display, Markdown, HTML
+
+# load R data
+df_bl_r = pd.DataFrame(r.group_bl)
+
+# pivot wide
+data_bl = df_bl_r.pivot(index = "bundesland", columns = "geschlecht", values = "cnt").reset_index()
+sum_bl = np.abs(data_bl.female + data_bl.male)
+data_bl["summa"] = sum_bl
+
+df_bl = data_bl.copy()
+df_bl = df_bl.sort_values(
+    "summa",
+    ascending=False,
+    inplace=False,
+    ignore_index=False,
+    key=None
+)
+
+# vars for plot
+fem = df_bl.female
+mal = df_bl.male
+lab = df_bl.bundesland
+
+
+Markdown(df_bl.to_markdown(index = False))
+
+```
+
+## plot by *[bundesland]* with `plotly`
+
+```{python}
+#| eval: false     # do not run code
+#| echo: true     # no iclude code in output
+#| output: false
+#| code-summary: "show the code"
+#| warning: false
+
+
+from plotly import graph_objects as go
+import plotly.io as pio
+#import plotly
+# import plotly.io as pio
+# png_renderer = pio.renderers["png"]
+# png_renderer.width = 500
+# png_renderer.height = 500
+# 
+# pio.renderers.default = "png"
+
+
+fig_bl = go.Figure()
+
+fig_bl.add_trace(go.Funnel(
+    name = 'male',
+    y = list(lab),
+    x = list(mal),
+    textinfo = "value"))
+
+fig_bl.add_trace(go.Funnel(
+    name = 'memale',
+    orientation = "h",
+    y = list(lab),
+    x = list(fem),
+    textposition = "inside",
+    textinfo = "value"))
+    
+fig_bl.update_layout(
+    title='<b>Usbeken in Deutschland in Bundesländern nach Geschlecht</b>',
+    title_font=dict(size=18,
+                    color='blue',
+                    family='Arial'),
+    title_x=0.50,  # Title aligned with grid
+    title_y=0.93   # Title positioned near the top vertically
+)
+# # show as static img
+# fig_bl.show(renderer="png")
+# # write as image
+# pio.write_image(fig_bl, "C:/Users/sultanov/Documents/blog/gallery/plots/figname.png") 
+
+```
+
+
+
+![](plots/funnel1.png)
+
+<!-- ```{python} -->
+
+<!-- from IPython.display import Image -->
+<!-- import plotly.io as pio -->
+
+<!-- # img_bytes = fig_bl.to_image(format="png") -->
+<!-- # Image(img_bytes) -->
+<!-- fig_bl.show(renderer="png") -->
+<!-- ``` -->
+
+
+
+<!-- test -->
+
+<!-- ```{python} -->
+
+<!-- # import plotly.io as pio -->
+<!-- # pio.write_image(fig, "C:/Users/sultanov/ocuments/blog/gallery/plots/funnel1.png")  -->
+
+<!-- from IPython.display import display, Image -->
+<!-- display(Image(filename="C:/Users/sultanov/Documents/blog/gallery/plots/funnel1.png")) -->
+
+<!-- ``` -->
+
+
+
+

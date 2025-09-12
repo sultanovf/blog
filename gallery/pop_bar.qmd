@@ -1,0 +1,506 @@
+---
+title: "population in GIS countries"
+description: "population in CIS countries in bar plot, range plot and treemap (animated) using `ggplot2` and `gganimate`"
+author: "Fazliddin Sultonov"
+date: "2025-04-05"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [barplot, R, ggplot2, gganimate, CGPfunctions, rangeplot, slopegraph, treemap]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/pop_gis.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  tidyverse,   # dataclean, ggplot
+  knitr,       # knitter
+  fontawesome, # icons
+    #> Loading required package: sysfonts
+    #> Loading required package: showtextdb
+  showtext,    # show icons
+  ggtext,      # texte ins plot
+  glue,        # für md texte
+  gganimate,   # animate plot
+  ggimage,     # geom_image
+  treemapify   # treemap
+)     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+#use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Variable =====================================================================
+imgpat <- "gallery_img/flags/"  # path for flags
+
+# icon ----------------------------------------
+yt_icon <- "&#xf431" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+yt_username <- "@hw_sultanov"
+ins_username <- "@sultanof.uzb"
+tg_username <- "@R4Pythonistas"
+
+# Caption
+social_caption <- glue::glue(
+  "<p><strong>Plot by:
+  <span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username} |</span> |
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username} |</span> |
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username} |</span> |</strong></p>"
+)
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+```
+
+
+:::: {.column-screen}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+Datasource: [World Bank](https://data.worldbank.org/)
+
+
+
+## raw data
+
+```{r}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+dataraw <- read.csv2("data/pop_cis.csv") # , sep = ";",encoding = "utf-8"
+years <- paste(1960:2024) #, sep=",", collapse= ","
+years <- unlist(strsplit(years, ","))
+new_cnames <- c("country", "ccode",  years)
+colnames(dataraw) <- new_cnames
+
+
+data <- dataraw
+rmarkdown::paged_table(head(data)) # show sample 10 rows
+# oder {r, df_print = "paged"}
+# sample_n(data_raw, 10
+
+```
+
+
+
+## data frame
+
+```{r}
+#| results: hold
+#| warning: false
+
+fmil <- function(x) round(x/1000000, digits = 2) # funk to x/Mill um zu verkürzen
+
+# dataframe
+df <- 
+  data |> 
+  mutate(across(!c(country, ccode), fmil)) |> 
+  pivot_longer(
+    cols = !c(country, ccode),
+    names_to = "year",
+    values_to = "pop"
+  ) |> 
+  mutate(year = as.integer(year)) |> 
+  group_by(year) |> 
+  arrange(year, pop) |> #desc(pop)
+  mutate(rank = 1:n()) |> 
+  ungroup()
+
+head(df)
+```
+
+
+## plot for the year 2024
+
+
+```{r}
+#| results: hold
+#| warning: false
+
+pl24 <- 
+  # data -----------------------------------------------
+  df |> 
+  filter(
+    year==2024
+  ) |>
+  mutate(
+    images = case_when(
+      ccode == "ARM" ~ paste0(imgpat, "AM.png"),
+      ccode == "AZE" ~ paste0(imgpat, "AZ.png"),
+      ccode == "BLR" ~ paste0(imgpat, "BY.png"),
+      ccode == "KAZ" ~ paste0(imgpat, "KZ.png"),
+      ccode == "KGZ" ~ paste0(imgpat, "KG.png"),
+      ccode == "RUS" ~ paste0(imgpat, "RU.png"),
+      ccode == "TJK" ~ paste0(imgpat, "TJ.png"),
+      ccode == "TKM" ~ paste0(imgpat, "TM.png"),
+      ccode == "UZB" ~ paste0(imgpat, "UZ.png"),
+      TRUE ~ ccode)
+  ) |>
+  # plot aes ----------------------------------------------------
+  ggplot(aes(
+  xmin = 0,
+  xmax = pop,
+  y = rank,
+  ymin = rank - 0.45,
+  ymax = rank + 0.45,
+  fill = ccode)) +
+  geom_rect(alpha = 0.5) +
+  # axises, labels
+  scale_x_continuous(
+    limits = c(0,150),
+    breaks = seq(0, 150, 25),
+    labels = function(x) paste0(x, "M"),
+    expand = expansion(c(0.09, 0.0))) +
+  geom_image(aes(y= rank, image = images), 
+             x = -10, size = 0.07, by="height") + 
+  geom_label(aes(x = pop, label = as.character(pop)), 
+             colour = "white", hjust=0.0) +
+  geom_label(aes(label = paste("Year:",year)),
+             x = 125, y = 2, size = 8, fill = "white", col = "gray") +
+  # title, caption ---------------------------------------------
+  labs(
+    x = "Population (in millions)",
+    y = NULL,
+    title = "Population in CIS countries in 2024",
+    caption = social_caption) +
+  # format, theme ----------------------------------------------
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.title = element_text(size=14, face = "bold", color="steelblue4", hjust = 0.5 ),
+        plot.caption = ggtext::element_markdown(size=12, hjust = 0.5),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.line.x =  element_line(colour = "gray"),
+        axis.text.y = element_blank())
+
+# show plot
+pl24
+
+```
+
+
+## Slopegraph in ggplot2
+
+```{r}
+#| results: hold
+#| warning: false
+
+library(CGPfunctions)
+
+gg <-
+  df |> 
+  filter(
+  year==1990 | year==2024
+  ) |> 
+  mutate(year=as.character(year))
+
+# graph
+newggslopegraph(
+  dataframe = gg,
+  Times = year,Measurement = pop, Grouping = country,
+  Title = "Population evolution in CIS countries",
+  SubTitle = "a comparison for the years: 1990-2024",
+  Caption = "Data Source: Worldbank | Plot by: \u00A9ф",
+  XTextSize = 18,    # Size of the times
+  YTextSize = 3,     # Size of the groups
+  TitleTextSize = 14,
+  SubTitleTextSize = 12,
+  CaptionTextSize = 12,
+  TitleJustify = "right",
+  SubTitleJustify = "right",
+  CaptionJustify = "left",
+  DataTextSize = 3.0
+) -> slop
+
+slop
+
+```
+
+
+## range plot
+
+
+```{r}
+#| results: hold
+#| warning: false
+
+
+cflags <- c(
+  "ARM" = "AM", "AZE" = "AZ", "BLR" ="BY", "KAZ" = "KZ", "KGZ" ="KG", 
+  "RUS" = "RU", "TJK" ="TJ", "TKM" = "TM", "UZB" = "UZ")
+# read images
+xlabels <- c()
+for(i in 1:length(cflags)){
+  imgname <- names(cflags[i])
+  xlabels <- c(xlabels, paste0("<img src='", imgpat, cflags[[i]], ".png' width='50' hight ='50'/>"))
+}
+
+# named vector
+xnames <- names(cflags)
+names(xlabels) <- xnames  # zum matchen nachher für plot labels
+
+```
+
+```{r}
+#| results: hold
+#| warning: false
+
+ggtext_st <- "in <span style='color:#CB5416'>1990</span> and 
+<span style='color:#267266'>2024</span> \u00A9ф"
+
+rr <-
+  # data ----------------------------------------------------
+  df |> 
+  filter(
+    year==1990 | year==2024
+  ) |> 
+  select(-c(country, rank)) |> 
+  pivot_wider(
+    names_from = year,
+    values_from = pop
+  ) |> 
+  # plot -----------------------------------------------------
+  ggplot(aes(x = ccode))+
+  geom_linerange(aes(ymin = `1990`, ymax = `2024`, x= ccode),
+                 size = 0.9, alpha = 0.5) +
+  geom_point(aes(y = `1990`), colour = "#CB5416", size=3) +
+  geom_point(aes(y = `2024`), colour = "#267266", size= 3) +
+  scale_x_discrete(name = NULL, labels =  xlabels)+
+  coord_flip()+
+  labs(
+    title =  "Population in CIS countries", 
+    subtitle = ggtext_st,
+    caption = social_caption,
+    x = NULL,
+    y = NULL
+  ) +
+  # format -----------------------------------------------------
+  theme(
+    legend.position = "none",
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_textbox(hjust = 0.5),
+    plot.caption = element_textbox(hjust = 0.5, size = 11),
+    axis.text.y = element_markdown()
+  )
+
+rr
+
+```
+
+
+
+
+
+
+
+## plot animate
+
+### barplot
+
+```{r}
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Title/subtitle/datasource
+
+pl <- 
+  # data -----------------------------------------------
+  df |>
+  # filter(
+  #   year==2024
+  # ) |>
+  mutate(
+    images = case_when(
+      ccode == "ARM" ~ paste0(imgpat, "AM.png"),
+      ccode == "AZE" ~ paste0(imgpat, "AZ.png"),
+      ccode == "BLR" ~ paste0(imgpat, "BY.png"),
+      ccode == "KAZ" ~ paste0(imgpat, "KZ.png"),
+      ccode == "KGZ" ~ paste0(imgpat, "KG.png"),
+      ccode == "RUS" ~ paste0(imgpat, "RU.png"),
+      ccode == "TJK" ~ paste0(imgpat, "TJ.png"),
+      ccode == "TKM" ~ paste0(imgpat, "TM.png"),
+      ccode == "UZB" ~ paste0(imgpat, "UZ.png"),
+      TRUE ~ ccode)
+  ) |>
+  # plot aes ----------------------------------------------------
+  ggplot(aes(
+  xmin = 0,
+  xmax = pop,
+  y = rank,
+  ymin = rank - 0.45,
+  ymax = rank + 0.45,
+  fill = ccode)) +
+  geom_rect(alpha = 0.5) +
+  # axises, labels
+  scale_x_continuous(
+    limits = c(0,150),
+    breaks = seq(0, 150, 25),
+    labels = function(x) paste0(x, "M"),
+    expand = expansion(c(0.09, 0.0))) +
+  geom_image(aes(y= rank, image = images), 
+             x = -10, size = 0.07, by="height") + 
+  geom_label(aes(x = pop, label = as.character(pop)), 
+             colour = "white", hjust=0.0) +
+  geom_label(aes(label = paste("Year:",year)),
+             x = 125, y = 2, size = 8, fill = "white", col = "gray") +
+  # title, caption ---------------------------------------------
+  labs(
+    x = "Population (in millions)",
+    y = NULL,
+    title = "Population evolution in CIS countries in 1960-2024",
+    caption = social_caption) +
+  # format, theme ----------------------------------------------
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.title = element_text(size=14, face = "bold", color="steelblue4", hjust = 0.5 ),
+        plot.caption = ggtext::element_markdown(size=12, hjust = 0.5),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        axis.line.x =  element_line(colour = "gray"),
+        axis.text.y = element_blank())
+
+
+```
+
+
+
+```{r}
+#| warning: false
+#| results: hold
+
+# animate
+pl_anim <-
+  pl +
+  transition_states(year,wrap = FALSE, transition_length = 64) + #, transition_length = 
+  ease_aes("cubic-in-out") +
+  enter_fade()+
+  exit_fade()#+
+  #shadow_mark()
+
+#pl_anim
+
+anim <- animate(
+  pl_anim,
+  duration = 32,
+  start_pause =5,
+  end_pause = 5,
+  renderer = gifski_renderer()
+)
+anim
+
+```
+
+
+### treemap
+
+
+```{r}
+#| warning: false
+#| results: hold
+
+# library(treemapify)
+pl_tm <-
+  df |> 
+  filter(year >= 1990) |> 
+  ggplot(aes(
+    area = pop, fill = country,
+    label = paste(country, paste0(pop, " Mln"), sep = "\n"))) +
+  geom_treemap()+
+  geom_treemap_text(
+    colour = "white",
+    place = "centre",
+    #face = "bold", # ohne grow = TRUE zu benutzen
+    #size = 10,     # ohne grow = TRUE zu benutzen
+    grow = TRUE) +
+  labs(
+    title = "Population in CIS countries for the year: {(frame_time)}",
+    caption = social_caption) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(colour =  "steelblue", size = 15, face = "bold", hjust = 0.5),
+    plot.caption = element_textbox(hjust = 0.5, size = 12)) +
+  transition_time(time = year)
+
+anim_tm <- animate(
+  pl_tm,
+  duration = 30,
+  start_pause =5,
+  end_pause = 5,
+  renderer = gifski_renderer()
+)
+anim_tm
+
+```
+

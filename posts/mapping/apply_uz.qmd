@@ -1,0 +1,88 @@
+---
+title: |
+  R & Python: Functions\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"Qorni ochga baliq bersang bir marta qorni to'yadi, unga bir marta baliq tutishni o'rgatsang, hech qachon och qolmaydi.\"  <br> ~ Laotse.
+author: "Fazliddin Sultonov"
+date: "2024-07-07"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [Function, Uzbek, R, Python, Applay, Map]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # Sections
+    toc: true
+  # codeb block
+    code-line-numbers: true
+    code-block-border-left: true
+    code-overflow: scroll
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+# bibliography
+# bibliography: reference.bib
+# nocite: |
+#   @*
+  
+---
+
+
+![](pic/apply.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+<br><br><br><br>
+
+Kayingi mavzu *apply/mapping* funksiyalari haqida bo'ladi
+
+<br><br>
+
+![Tez kunda...](pic/comingsoon.png){fig-alt="Click for zooming"}
+
+
+

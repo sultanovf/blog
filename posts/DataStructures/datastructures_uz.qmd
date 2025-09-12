@@ -1,0 +1,1425 @@
+---
+title: | 
+  R & Python: Data Structures\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"Bad programmers worry about the code. Good programmers worry about data structures and their relationships.\"      <br> ~ Linus Torvalds.
+
+author: "Fazliddin Sultonov"
+date: "2024-05-05"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [R, Python, Data Structure, Uzbek]
+
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+
+# Output
+format: 
+  html:
+    theme: cosmo
+    # code
+    # code-line-numbers: true
+    code-fold: true
+    # code-summary: "show the code"
+    code-block-border-left: true
+    # Links
+    link-external-icon: false
+    link-external-newwindow: true
+    
+    # Sections
+    toc: true
+    toc-location: left
+    toc-title: "Table of Contents"
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+    #class-output: "code-output"
+    #class-source: "code-input"
+
+  opts_knit: 
+    warning: false
+    error: false
+# bibliography
+bibliography: ref.bib
+nocite: |
+  @*
+---
+
+![](pics/datastructure_uz.png){.nolightbox}
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  "data.table"
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312") # für Python
+```
+
+
+# Set Up
+Ushbu blogda kod bloki ya'ni input [*R da ochiq ko’k *]{style="background-color: lightcyan"} und in [*Python da sariq*]{style="background-color: #FFF68F"} rangda ko’rsatiladi. Output natijalarining satrlari `#>` belgisi bilan boshlanadi.
+
+::::{layout-ncol=2}
+::: {.code-r}
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| collapse: true
+
+cat("I useR!")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| collapse: true
+
+print("I am a Pytonista")
+```
+:::
+::::
+
+Qo'shimcha ma'lumotlar qutiga quyidagi tarzda yozilgan va uni kengaytirish orqali ko'rish mumkin: [Qisqacha tushuncha yoki eslatmalar yon tomonda (o’ngda) izoh kabi keltiriladi.]{.aside}
+
+::: {.callout-caution icon="false" collapse="true"}
+## Expand for more
+
+More Info here!
+:::
+
+# Data Structures
+Ma'lumotlarning asosiy turlari mavjud, ular Basic Data Types yoki Built-in Data Types deb ham ataladi. Ular qiymat belgilash yoki o'zgaruvchi ya'ni objecni yaratishda ushbu yaratilayotgan object/o'zgaruvchi qanaqa **qiymatlarni** qabul qilishi va ushbu objectlarga qaysi **amallar** qo'llanilishi mumkinligini aniqlaydi. Misol uchun *42* raqamini *var_number* nomli o'zgaruvchiga yuklash va uni *integer* turi bilan saqlash mumkin. Keyin bu o'zgaruvchi bilan ko'paytirish, qo'shish va boshqa amallarni bajarish mumkin. Shunday ekan, datalarni ya'ni *ma'lumotlarni real muhit haqidagi tizimli ravishda kodlangan informatsiyasi [@r_DMforSocial]* deb hisoblash mumkin.
+[Basic Data Types haqido to'liqroq: [R & Python: Types of Data](/posts/DataTypes/datatypes_uz.qmd){target="_blank"}.]{.aside} 
+Ma'lumotlar shundagina bizga foydali bulishi mumkin, qachonki ular saqlash, bo'lishish, tahlil qilish va unga har qanday amal va funksiyalarni qo'llash mumkin bo'lgan formatdga ega bo'lsa. Bu narsalarni, demak ma'lumotlarni boshqarish, qayta ishlash, saqlashni va shu kabi jarayonlarni ***Data Dstructure***, ya'ni ma'lumotlar strukturasi belgilaydi. Yuqordiga fikrlarni mohiyatini [@r_DMforSocial]ga asoslangan misol tariqasida batafsilroq tushunish mumkin.
+
+
+```{r}
+#| code-fold: false
+  
+raw_data <- 
+  "Germany is a country with 83.3 million population and its capital is
+Berlin; Russia has 144.1 million population, capital of Russia is Moscow;
+Another country is Uzbekistan with 35.5 million residents, its capital is
+Tashkent.The last country is the USA with 341.2 million residents,
+the capital is Washington, D.C."
+```
+
+[Misolda Germaniya, O'zbekiston, Rossiya va AQSh da 2023 yildagi aholi soni, [@worldpop] web saytidan  olingan.]{.aside}
+
+Biz asosan *raw_data* objectini to'rtta mamlakat, ularning poytaxtlari va aholisi haqida ma'lumotni o'z ichiga olgan ma'lumotlar bazasi sifatida ko'rishimiz mumkin. Inson uchun bu matn shaklida saqlangan ma'lumotdan informatsiya ajratib olishi oson, masalan, qaysi mamlakat aholisi ko'proq, aholi sonlari ichida maximum yoki minimumi qaysi va hokazo. Lekin kompyuterlar uchun uni hisoblash yo'li bilan qayta ishlash tushunarli emas, chunki ma'lumotlar hech qanday *tuzilma*ga, ya'ni *struktura*ga ega emas. Ammo biz aynan shu matnni tarkibini o'zgartirmasdan boshqa shaklda, demak ma'lum bir tuzilishda, masalan *dataframe* shaklida saqlashimiz mumkin. Bunday holda ma'lumotlar kompyuterga tushunarli bo'ladi, ular ustida amallarni bajarib, ularni qayta ishlay oladi.
+
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+df_r <- data.frame(
+  country = c("Germany", "Uzbekistan", "Russia", "USA"),
+  population = c(83.3, 35.5, 144.1, 341.2),
+  capital = c("Berlin", "Tashkent", "Moscow", "Washington")
+)
+df_r
+```
+
+Ikkinchi misolda ma'lumotlar R dagi `data.frame` paketi orqali object (df_r) sifatiqda saqlangan. R da bu, Python dayam buning uchun `pandas` moduli bo'lgani kabi, ma'lumotlarni jadval shaklida saqlaydigan ma'lumotlar tuzilmasi hisoblanadi. Misolda har bir mamlakatda turli xil shakldagi ma'lumotlar mavjud. *County* va *Capital* - matn shaklida (R da character, Python da string), *Population* - real son shaklida (R da numeric/double, Python da float). Birinchi misolda oddiy matn *(raw_data)* sifatida saqlangan ma'lumotlar bilan taqqoslaganda, dataframe yoki jadval *(df_r)* sifatida saqlangan ma'lumotlarni tushunish va qayta ishlash (komputer uchun) osonroq.
+
+::: panel-tabset
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: code-r
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# Sum of population
+glue("Sum of population: {sum(df_r$population)}")
+# Max of Population
+glue("Max of Population: {max(df_r$population)}")
+cat("\n")
+# Summary of Data
+glue("Summary of data:")
+summary(df_r)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+
+::: code-py
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import pandas as pd
+df_py = pd.DataFrame(r.df_r)
+# Sum of population
+print(f"Sum of population: {df_py["population"].sum()}")
+# Sum of population
+print(f"Sum of population: {df_py["population"].max()}\n")
+# Summary of Data
+print("Summary of data:")
+df_py.describe()
+```
+:::
+:::
+
+# How is the data are structured in R and Python
+
+Ma'lumotni qayerda, R yoki Python da, qayta ishlasak ham, u ikkala tilda ham ***Object*** sifatida saqlanadi. Objectlar, masalan, qiymatni (object) o'zgaruvchiga (object nomi) belgilash orqali yaratilishi mumkin. Aytaylik, biz *age* deb nomlangan objectni yaratamiz va unga *35* (yosh) qiymatini beramiz: `age <- 35` (R da) und `age = 35` (Python da). Lekin ko'pincha biz minglab objectlarni birma-bir qo'lda yaratishni (age1, age2, age3, ...) xohlamaymiz, aksincha barcha *yosh (object)*-larni (ya'ni age1, age2, ...), o'z ichiga olgan *ages* deb nomlangan ro'yxat shaklida bo'lsa bizga qulayroq. Ikkinchi usulda bu ***guruhlangan ma'lumotlar strukturasi (grupped data structure)***ga, ya'ni bir nechta alohida objectlardan tashkil topgan objectga aylanadi. Bunaqa strukturaga ega bo'lgan, ***Lists***, ***Vectors***, ***Arrays***, ***Series***, ***Dictionaries*** etc. kabi turli xil objectlar mavjud. Ular formati, tuzilishi, metodi va boshqalar bilan farqlanadi, lekin asosiy mohiyati bir xil: *bir nechta objectlar guruhlangan yoki birlashtirilgan objectda (yuqoridagi ma'lumotlar tuzilmalaridan birning shaklida) saqlanadi*.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+
+ages_r <- c(35, 24, 42, 24, 52, 35, 37)
+names_r <- c("Ali", "Temur", "Ben", "Brandon", "John", "Doe", "Dirk")
+ages_r
+class(ages_r)   # Type of ages_r
+names_r
+class(names_r)  # Type of names_r
+```
+:::
+
+::: {.callout-note collapse="true"}
+## More about `c()` in R
+
+R da ketma-ketliklar `c()` *(c- combine)* yordamida yaratiladi. Python da objectlar yoki ma'lumotlarni `[]` shaklida kiritiladi.
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+ages_py = [35, 24, 42, 24, 52, 35, 37]
+names_py = ["Ali", "Temur", "Ben", "Brandon", "John", "Doe", "Dirk"]
+print(ages_py)
+type(ages_py)    # Type of ages_py
+print(names_py)
+type(names_py)   # Type of names_py
+```
+:::
+::::
+
+Yuqoridagi misol tariqasida yaratilgan ro'yxatlar (ages, names) R va Python da o'xshash, faqat bu objectlar R da  **Vector**, Python da **List** deb ataladi. Lekin R va Python da ro'yxatlardan tashqari boshqa ma'lumotlar tuzilmalari ham mavjudki, ular xususiyatlari jihatidan bir biriga o'xshaydi yoki farq qiladi. Ma'lumotlar tuzilmalarini R va Python da o'xshash yoki farq nuqtai nazaridan solishtirganda, [muhimi narsa bu objectlarning *bir hil (homogeneous)* yoki *har hil (heterogeneous)* bo'lishi]{style="color:red;"}dir, manimcha. 
+[**homogeneous** -- (однородный) objectlar bir xil turda bo'ladi (barcha objectlar faqat raqamlar yoki matnlarddan iborat), masalan R dagi Vector, NumPy dagi arraylar yoki Python dagi faqat *bir xil turdagi ma'lumot turlaridan iborat bo'lgan ro'yxatlar*. Vektoren in R oder NumPy-Arrays oder Liste *mit gleichen Datentypen* in Python\n
+**heterogeneous** -- (неоднородный) objectlar har xil turda bo'ladi, R dagi list, Python dagi list (har xil turdagi objectlaR dan tashkil topgan) yoki dictionary]{.aside}
+
+## Data Structures in R
+
+R dagi muhim ma'lumotlar tuzilmalari ikkita asosiy tamopyil bilan aniqlanishi mumkin. Biri bu **o'lcham (dimension)**, ya'ni objectning qancha o'lchamga ega ekanligi bilan: bitta o'lchovli (vevtor), ikkita o'lchovli (matritsa) va undan ko'p (massivlar). Yana biri bu ularning farqlanish xususiyatlari, ya'ni biror objectning elementlari **bir xil** - masalan faqar matn yoki faqat sonlaR dan iborat, yoki **har xil** - son va matnlaR dan iborat. Ushbu xususiyatlarga asoslanib, markaziy object turlarini R da quyidagicha umumlashtirish mumkin [@r_ModernDA]:
+
+| Dimension | Homogen | Heterogen |
+|:---|:---|:---|
+| 1d | Vector | List |
+| 2d | Matrix | Dataframe |
+| nd | Array |  |
+
+Vektorlar R dagi eng muhim ma'lumotlar tuzilmalaridan biri bo'lib, R objectlarida markaziy elementni ifodalaydi: To'rt turdagi atomik yoki sof vektorlar mavjud: `Logical`, `Integer`, `Double` und `Character` (matndan iborat). R da *integer* va *double* turidagi ma'lumotlar `numeric` sifatida umumlashtirilgan, yani ikkovi ham numeric sifatida ko'rsatiladi.
+Quyida [@r_AdvancedR]ga ko'ra atomar ya'ni sof vektorlarining umumiy ko'rinishi keltirilgan.
+
+![Atomar Vectors](pics/ds_r.png){fig-alt="Click for zooming"}
+
+
+## Data Structures in Python
+
+Demak, ma'lumotlar tuzilmalari ma'lumotlarni turlari bo'yicha tartibga soluvchi va guruhlaydigan "konteynerlar" sifatida qaralsa boladi.
+Python dagi asosiy Python ma'lumotlar tuzilmalari ro'yxat (list), to'plam (set), kortej (tuple) va lug'at (dict) larni o'z ichiga oladi. Bu ma'lumotlar tuzilmalari *Built-in Data Structure* deb ham ataladi va ularning har biri o'ziga xos xususiyatga ega. 
+  <br> - `lists`
+  <br> - `ditionaries`
+  <br> - `tuples`
+  <br> - `sets`
+  
+  
+<br>Bundan tashqari Arrays va Dataframes(Jadvallar) mavjud bo'lib, ular qator va ustunlarga ega. Bunga o'xshash misol qilib, Excel-jadvallari yoki ma'lumotlar bazasini keltirisch mumkin.
+  <br> - `arrays` from NumPy (Numerical Python)
+  <br> - `DataFrame` from Pandas
+  
+
+Quyida malumotlar tuzilmasini R va Python da umumlashtirilgan holatda vizual tarzda grafikda tasvirlangani keltirilgan 
+
+:::: {.column-screen-inset}
+:::{layout-ncol=2}
+Manbaa: [Internet](https://r.qcbs.ca/workshop01/pres-en/workshop01-pres-en.html#100){target="_blank"}
+![Data Structures in R](pics/r_ds.png)
+
+Manbaa: [Internet](https://www.linkedin.com/posts/venkateshpappakrishnan_data-structures-in-python-python-for-aspiring-activity-6447685118260756480-rU36/?trk=public_profile_like_view){target="_blank"}
+![Data Structures in Python](pics/py_ds.png)
+:::
+::::
+
+# Homogeneous data structure
+
+Yuqorida aytib o'tilganidek, bir hil ma'lumotlar tuzilmalari bir xil turdagi ma'lumotlarni (objectlar yoki elementlarni) o'z ichiga oladi. Ko'pincha ma'lumotlar shu tarzda saqlanadi. Bunday turdagi ma'lumotlarga R dagi vektorlarni (Python dagi 1d-NumPy-Massivlar), matrisalarni (Python dagi 2d-NumPy-Massivlar) va massivlarni (Python dagi nd-NumPy-Massivlar) misol qilish mumkin.
+
+## `vector` in R and `arrays` & `Series` in Python
+
+R dagi vektorlar bi xil tudagi ma'lumotlarga ega bo'lgan bir o'lchovli ma'lumot tizilmalaridir. Bu belgilari bilan vektorlar Python dagi 1d-NumPy-Arrays va Pandas-Series lar bilan umumiy xususiyatga ega. R dagi vektorlar ham Python dagi ro'yxatga (list) o'xshaydi, *lekin faqat Python ro'yxatidagi ma'lumotlar bir xil turga ega bo'lsa*.
+
+<!-- [Achrung!]{style="color:red;"} --  -->
+
+### Creating
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+-- with `c()` (like `[]` in Python)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+v1 <- c(1, 7, 2, 4, 5, 8, 2, 9); v1
+class(v1)
+v2 <- c("a", "b", "c", "z", "f"); v2
+class(v2)
+v3 <- vector("logical", 5); v3
+class(v3)
+v4 <- numeric(7); v4
+class(v4)
+```
+:::
+
+-- with `seq(from, to, by)` (like `range(from, to, by)` in Python or `arange()` from NumPy)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+seq1 <- 2:9; seq1                            # from 2 to 9
+seq2 <- (1:5); seq2                          # from 1 to 5
+seq3 <- seq(from = 3, to = 10, by = 3); seq3 # step = 3
+seq4 <- seq(3, 10, length.out = 5); seq4     # count = 5
+seq5 <- seq(11, 17, along.with = seq4); seq5 # seq of same length with seq4
+
+```
+:::
+
+-- with `rep()` (like `np.repeat()` from NumPy or `pd.rep()` from Pandas)
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+rep1 <- rep(1:3, times = 3); rep1 # repeating seq 3 times
+rep2 <- rep(1:3, each = 3); rep2  # repeating each obj 3 times
+```
+:::
+
+
+-- with `sample()` or `runif()` (like `random.choice()` from NumPy) 
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+smp1 <- sample(seq(10), size = 5, replace = FALSE); smp1
+vec <- c("negative","neutral", "positive")
+smp2 <- sample(vec, size = 5, replace = TRUE); smp2
+# vector with 5 elements:
+run1 <- runif(5); run1
+run2 <- runif(3, min = 1, max = 10); run2
+run3 <- floor(runif(15, min=1, max=100)); run3
+# normal distribution
+rn <- rnorm(5); rn
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+-- with `[]` like `c()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import numpy as np
+
+v1_p = [1, 7, 2, 4, 5, 8, 2, 9]; print(v1_p)
+type(v1_p)
+v2_p = np.full((5), False); print(v2_p)
+type(v2_p)
+v3_p = np.zeros((7), int); print(v3_p)
+type(v3_p)
+v4_p = np.ones((7), int); print(v4_p) # rep(1,7) in R
+type(v4_p)
+```
+:::
+
+-- with `arange()` like `seq()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+ar1 = [x for x in range(5)]; ar1                # pythonlist
+ar2 = [x for x in range(2,10)]; ar2             # python list
+ar3 = np.arange(2,10); ar3                      # NumPy 1d array
+ar4 = np.arange(3, 10, 3); ar4                  # step = 3 
+ar5 = np.linspace(3, 10, 5, retstep = True);ar5 # count = 5, with step = 1.75    
+```
+:::
+
+-- with `np.repeat()` or `pd.Series.repeat()` like `rep()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+import pandas as pd
+
+rep1 =  list(range(1,4))*3; rep1             # Python
+rep2 = np.tile(np.arange(1,4), 3); rep2      # NumPy: repeating seq 3 times
+rep3 = np.repeat(np.arange(1,4), 3); rep3    # NumPy: repeating each obj 3 times
+rep4 = pd.Series(range(1,4)).repeat(2); rep4 # Pandas Series: repeating each obj 2 times
+```
+:::
+
+-- with `random()`  like `sample()` or `runif()` in R
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+from numpy import random
+lis = ["negative","neutral", "positive"]
+rd1 = random.choice(lis, size=5, replace = True); print(rd1)
+rd2 = random.rand(5); rd2                 # 5 random numbers
+rd3 = random.randint(100, size=(5)); rd3  # integer random numbers from 0 to 100
+rd4 = random.randn(4); rd4                # standard normal distribution
+```
+:::
+::::
+
+### Slicing
+
+Vektorlar, ro'yxatlar va bir o'lchovli massivlarga qo'llanilishi mumkin bo'lgan eng muhim foydali operatsiyalaR dan biri *indekslash*dir. Bunda biz alohida elementlarni yoki elementlaR dan iborat kichik to'plamlarini joylashuvi *(indeks)* bo'yicha ajratib olishimiz mumkin.
+
+::: {layout-ncol=2}
+[Birinchi Elementning indksi R da -- **` 1 `**,  Python da -- **` 0 `**, ya'ni Elementlar joylashuvi R da biR dan, Python da esa noldan boshlanadi.]{style="background-color:yellow;"} Vektor, ro'yxat yoki 1d - massivning uzunligini R da `length(Obj)` funksiyasi va Python da `len(Obj)` funksiyasi yoR damida aniqlash mumkin.
+
+![Indexes in R and Python](pics/index.png){fig-alt="Click for zooming"}
+:::
+
+::: {layout-ncol=2}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| results: hold
+
+# In Python
+lst = [1,3,5,7]
+lst[0]     # first element
+lst[1]     # second element
+lst[-1]    # last element
+lst[::-1]  # backward
+```
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| results: hold
+
+# In R
+# Used Variable lst created in Python Chunk
+py$lst[1]                # first element
+py$lst[2]                # second element
+py$lst[[length(py$lst)]] # last element
+rev(py$lst)              # backward
+```
+:::
+
+Quyida to'plamlar va mantiqiy indekslashga yana misollar keltirilgan. Mantiqiy indekslashda mantiqiy qiymati TRUE bo'lgan elementlar qaytariladi.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+age <- c(18, 26, 32, 41, 55, 22, 35, 37, 20, 25)
+age[1:5]             # from first until fifth element
+age[3:7]             # from third until seventh element
+age[5:length(age)]   # from fifth until last element
+age[c(2,5,7)]        # second, fifth and seventh element
+age < 30             # logic 
+age[age < 30]        # age under 30
+age[which(age < 30)] # with which()
+```
+:::
+
+Elementlarga nomi bilan ham murojaat qilinishimiz mumkin, lekin faqat ular nomlangan bo'lsa (Chunki R da vektor yoki list elementlari nomlanishi yoki nomlanmasligiyam mumin). Buni Pandas-Series da indeks nomi bo‘yicha elementlarni tanlash orqali ham qilish mumkin:
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+note <- c("best" = 5, "medium" = 4, "good"= 3, "bad" = 2); note
+note["medium"]         # by indexname
+note[c("good", "bad")] # by indexname multiple elements
+note[3]                # by index
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+age = np.array(r.age)    # create array from r vector age
+age[:5]                  # from first until fifth element
+age[2:7]                 # from third until seventh element
+age[4:]                  # from fifth until last element
+[age[2], age[5], age[7]] # second, fifth and seventh elem
+age < 30                 # logic 
+age[age < 30]            # age under 30
+age[np.where(age<30)]    # with np.where()
+```
+:::
+
+Pandas-Series da ham elementlarga ularning joylashuvi yoki nomi bilan murojaat qilish mumkin, R dagi *named vector*dagi kabi.
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+note = pd.Series(range(2,6), index = ["bad", "good", "medium", "best"]); note
+note["good"]  # by indexname
+note[["best", "bad"]] # by indexname multiple elements
+note.iloc[2]          # by index
+note.iloc[[1,2,3]]    # by index multiple elements
+```
+:::
+::::
+
+## `matrix` in R and `2d-Array` in Python
+
+R da matrisalar bu ikki o'lchamli vektorlar bo'lib, sonlaR dan iborat va shu bilan birga bir xil turdagi elementlaR dan tashkil topgan. Ularni `matrix(data, nrow, ncol)` funksiyasi yoR damida yaratish mumkin.\n
+Python da matritsalar yaratish uchun aniq funktsiya yo'q. Python dagi matritsalar asosan *2d-NumPy -massivlaridir*. Elementlarni ajratish uchun vektorlar yoki 1d-NumPy-massivlari ga qo'llanadiga metodlar qo'llaniladi (oldingi bob), demak qator indeksiga qo'shimcha ravishda ustun indeksi ham to'rtburchakli qavsga `[]` kiritiladi.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+matrix_c <- matrix(seq(12), nrow = 3, ncol = 4, byrow = FALSE )
+cat("3x4-Matix filling by columns (matrix_c):\n");print(matrix_c)
+# Dimension of matrix_c
+glue("Dimension of matrix_c: {dim(matrix_c)}")
+# Counts of rows & Cols from matrix_c
+glue("Shape of matrix_c: ({nrow(matrix_c)}, {ncol(matrix_c)})")
+matrix_r <- matrix(seq(12), nrow = 4, ncol = 3, byrow = TRUE )
+cat("\n4x3-Matix filling by rows (matrix_r):\n");print(matrix_r)
+# Dimension of matrix_r
+glue("Dimension of matrix_r: {dim(matrix_r)}")
+# Counts of rows & Cols from matrix_r
+glue("Shape of matrix_r: ({nrow(matrix_r)}, {ncol(matrix_r)})")
+#
+cat("\nSlicing:\n")
+matrix_c[2,3]        # row 2, col 3
+matrix_c[,4]         # column 4
+matrix_c[, c(2, 4)]  # columns 2 and 4
+matrix_r[2,]         # row 2
+# Name cols & rows
+cat('\nname the columns and rows of matrix "matrix_r":\n')
+colnames(matrix_r) <- c("col1", "col2", "col3")
+rownames(matrix_r) <- c("row1", "row2", "row3", "row4")
+matrix_r
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+matriks_c = np.arange(1,13).reshape(3,4, order = "F")
+print(f"3x4-Matix filling by columns (matriks_c):\n{matriks_c}")
+# Dimension of matrix matriks_c
+print(f"Dimension of matrix matriks_c: {matriks_c.ndim}")
+# Counts of rows & Cols from matriks_c
+print(f"Shape of matriks_c: {matriks_c.shape}")
+# np.shape(matriks_c)[0]; np.shape(matriks_c)[1]
+matriks_r = np.arange(1,13).reshape(4,3, order = "C")
+print(f"\n4x3-Matix filling by rows (matriks_r):\n{matriks_r}")
+# Dimension of matrix matriks_r
+print(f"Dimension of matrix matriks_r: {matriks_r.ndim}")
+# Counts of rows & Cols from matriks_r
+print(f"Shape of matriks_r: {matriks_r.shape}")
+# np.shape(matriks_r)[0]; np.shape(matriks_r)[1]
+#
+print("\nSlicing:")
+matriks_c[1,2]      # row 2, col 3
+matriks_c[:, 3]     # column 4
+matriks_c[:, [1,3]] # columns 2 and 4
+matriks_r[1, :]     # row 2
+# Name cols & rows
+print('\nname the columns and rows of matrix "matriks_r":')
+colnames = ["col1", "col2", "col3"]
+rownames = ["row1", "row2", "row3", "row4"]
+pd.DataFrame(matriks_r, columns = colnames, index = rownames)
+```
+:::
+::::
+
+## Multidimensional arrays
+
+R dagi (ko'p o'lchamli) massivlar `array(vector, dim = c(nrow, ncol, nmat))` funksiyasi yoR damida yaratiladi. Bunda *Vektor* - bir xil turdagi ma'lumotlar qatori, *nrow* va *ncol* - satr va ustun raqamlari, *nmat* - o'lchamni, ya'ni massivdagi `nrow*ncol` matritsalar sonini bildiradi.
+
+Python da massivlar yaratish uchun `numpy.arange()`, `numpy.zeros()`, `numpy.ones()` kabi bir nechta funksiyalar mavjud. Quyida R va Python da 3D massiv, shuningdek, elementlarni kesish yoki ajratish (slicing) va qator va ustunlarning yig'indini hisoblash ko'rsatilgan.
+
+Quyida 3D massivda slicing  va ushbu massivda yig'indini hisoblash misoli tariqasida vizual va amaliy ravishda keltirilgan.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+
+
+![3d Array with twice 3x4 2d-Arrays](pics/arr_r.png){fig-alt="Click for zooming"}
+
+**Slicing** <br>
+Vektorlar hamda 1d- yoki 2d- massivlaR da bo'lgani kabi, 3D massivlaR da ham massivdan alohida biror elementni yoki bir necha elementladan iborat biror to'plamni ajratib ya'ni kesib olish mumkin. Bunda element indeksi yoki elementlar indekslari bizga tanish bo'lgan kvadrat qavslar `[]` ichiga kiritiladi. Yuqoridagi rasmda misol qilib keltirilgan massiv shape = (3, 4, 2) shakl yoki formatga ega. Buni R dagi `dim(array)` va Python dagi `array.shape` funksiyalari orqali aniqlash mumkin. Qavs ichidagi sonlar: 3 - qator, 4 - ustun va 3 - o'lchamni bildiradi. Bu degani, misolda keltirilgan massiv 3 ta qator va 4 ta ustundan iborat ikkita matrisadan tashkil topgan. Indekslashda to'g'ri pozitsiyani kiritish kerak bo'ladi, ya'ni (R da) kvadrat qavsga birinchi qator positsiyasi, ikkinchi ustun va uchunchi matrisa positsiyani berish kerak. Masalan, `arr_r[, , 2]` barcha satr va ustunlar bilan ikkinchi matritsani qaytaradi. Matrisalarni arraydagi qatlam deb tasavvur qilsayam bo'ladi, misoldagi array demak 2 ta qatlam yani matrisalaR dan iborat (3 qator 4 ustun bilan).
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# Create 3d-array
+arr_r <- array(c(0:23), dim = c(4,3,2))
+arr_r <- aperm(arr_r, perm = c(2,1,3))
+cat("3d-Array:")
+arr_r
+cat("Shape: ",dim(arr_r), "\n")
+cat("\n1st matrix/2d-Array of the 3d-Array (arr_r):\n")
+arr_r[, , 1]
+cat("\nElement in 2nd row and 1st col of the 2nd matrix from 3d-Array (arr_r):\n")
+arr_r[2, 1, 2]
+cat("\n3rd column elements of the 2nd matrix from 3d-Array (arr_r):\n")
+arr_r[, c(3), 2]
+cat("\n2nd row elements of the 1st matrix from 3d-Array (arr_r):\n")
+arr_r[c(2), , 1]
+cat("\nCheck if elemnt (9) exist in the array:\n")
+9 %in% arr_r
+
+```
+:::
+
+**Operations** <br>
+R dagi massivlar yig'indisini hisoblash uchun `rowSums()` - satrlar yig'indisi, `colSums()` - ustunlar yig'indisi, funksiyalaridan foydalanish mumkin. R da ham Python dagi kabi `sum()` funksiyasi mavjud, lekin bu yeR da buni `apply` funksiyasi bilan birga qo'llash kerak.
+
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+cat("3d-Array:")
+arr_r
+cat("Sum by row-wise with rowSums:\n")
+rowSums(arr_r)
+cat("\nSum by row-wise with apply, same like rowSums:\n")
+apply(arr_r, c(1), sum)
+cat("\nSum by column-wise with colSums:\n")
+colSums(arr_r)
+cat("\nSum by column-wise with apply\n")
+apply(arr_r, c(2), sum)
+```
+:::
+
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+
+
+![3d Array with twice 3x4 2d-Arrays](pics/arr3d.png){fig-alt="Click for zooming"}
+
+**Slicing** <br>
+`array.shape` funksiyasi yuqoridagi misoldagi massivdan = (2, 3, 4) shaklini qaytaradi. Ya'ni, birinchi son - 2, o'lchamni, ikkinchi son - 3, qatorni va uchinchi son - 4, ustunni qaytariyapti. Bu massivda har birida 3 ta satr va 4 ta ustundan iborat 2 ta matritsa borligini bildiradi. Tasavvur qiling, bitta kubik bor. Agar biz shu kubikni o'rtasidan kessak, ikkita matrisa yoki 2d_massivga ajraladi. Har bir matrisani massivning qatlami yoki jadvali (layer/sheet) deb tasavvur qisa bo'ladi. Indekslashda to'g'ri pozitsiyani kiritish kerak bo'ladi, ya'ni (Python da) kvadrat qavsga birinchi matrisa positsiyani, ikkinchi qator va uchunchi ustun positsiyani berish kerak (Shu yeR da ahamiyat berilgan bo'lsa R da boshqacharoq edi: 1chi - qator, 2chi - ustun va 2chi - qatlam, ya'ni matrisa positsiyasi). Masalan, bu yeR da `arr_r[1, :, :]` barcha satr va ustunlar bilan ikkinchi matritsani qaytaradi.
+
+::: {.callout-warning collapse="true"}
+## Shape is displayed differently in R and Python
+
+Etibor berilgan bo'lsa, bir xil massiv uchun *shape* qaytaradigan qiymatlar taridib R bilan Python da farq qilayapti: shape in R = (3, 4, 2), shape in Python = (2, 3, 4). R da birinchi qatorlar soni, ikkinchi ustunlar soni va uchinchi matrisalar soni ko'rsatilayapti. Python da esa birinchi o'lcham ya'ni matrisalar soni, ikkinchi qatorlar soni va uchinchi ustunlar soni kelayapti.
+:::
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+# create 3d-Array
+arr3d = np.arange(24).reshape(2,3,4)
+print("3d-Array")
+arr3d
+print(f"\nShape: {arr3d.shape}")
+print(f"\n1st 2d-Array (sheet,matrix, layer) of the 3d-Array (arr3d):")
+arr3d[0, :, :] # or arrd[0]
+print(f"\n3rd column elements of the 2nd sheet from 3d-Array (arr3d):")
+arr3d[1, :, 2]
+print(f"\n2nd row elements of the 1st sheet from 3d-Array (arr3d):")
+arr3d[0, 1, :]
+print(f"\nElement (20) in 3rd row and 1st col of the 2nd sheet\nfrom 3d-Array (arr3d):")
+arr3d[1, 2, 0]
+print(f"\nElements (22, 23) from 3rd row and columns 3 and 4\nin the 2nd sheet:")
+arr3d[0, 2, 2:]
+print(f"\nElement (9) in 3rd row and 2nd col of the 1st sheet\nfrom 3d-Array (arr3d):")
+arr3d[0, 2, 1]
+print(f"\nElement (11) in 3rd row and last col of the 1st sheet\nfrom 3d-Array (arr3d):")
+arr3d[0, 2, 3]
+
+```
+:::
+
+**Operations** <br>
+Paython da massivlar yig'indisini hisoblash uchun yig'indini qay tarzda hisoblashga qarab, o'qni ya'ni `axis` kiritish kerak bo'ladi. Axis = 0 da, yig'indi massivning n matritsalari bo'yicha hosil bo'ladi. Axis = 1 holatda yig'indi ustunlar bo'ylab va axis = 2 holatda  qatorlar bo'yicha hisoblanadi(Buni yuqorida keltirilgan rasmda ko'rish mumkin).
+
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+print("a 3d-array - arr3d:")
+arr3d
+print("\nShape:")
+arr3d.shape
+print(f"\nSum by sheets (axis =0):")
+np.sum(arr3d, axis = 0) # or arr3d.sum(axis=0)
+print(f"\nSum by column-wise (axis = 1):")
+arr3d.sum(axis=1)
+print(f"\nSum by row-wise (axis = 2):")
+np.sum(arr3d, axis = 2)
+
+```
+:::
+::::
+
+# Heterogeneous data structure
+
+Geterogen ma'lumotlar tuzilmalari elementlari har xil bo'lgan objectlarni anglatadi. Masalan, har xil turdagi ma'lumotlarga ega elementlarni ro'yxat sifatidagi objectda saqlanishi mumkin.
+
+## `list`s in R and `list`s & `dict`s in Python
+
+### `list`s in R
+
+R dagi ro'yxatning vektorga nisbatan farqi shundaki, ro'yxat elementlari bir hil turda bo'lishi shart emas va elementlarning uzunligi har xil bo'lishi mumkin. Ro'yxat yaratish uchun R da `list()` funksiyasi mavjud. Indekslashda R da ro'yxat uchun qo'sh (двойной) kvadrat qavs `[[]]` ishlatiladi (VektoR da bitta kvadrat qavs `[]`).
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create a list
+lst_r <- list(1, c(2, 3), 
+               c(TRUE, FALSE), 
+               c("I", "love", "R"), "Hello R")
+#
+lst_r
+cat("Type: ", class(lst_r), "\n")
+# Atribute of the list:
+str(lst_r)
+#
+# Check element (Hello R) is in the list
+"Hello R" %in% lst_r
+#
+# Change the 1st element (1) to 42
+lst_r[[1]] <- 42
+lst_r[[1]]
+#
+# Remove the last element (Hello R) of the list
+lst_r[[length(lst_r)]] <- NULL
+lst_r
+#
+# Check element (Hello R) is in the list
+"Hello R" %in% lst_r
+#
+# Remove the 1st (42) and 2nd elements ([2, 3]) 
+(lst_r[-c(1,2)]) # Outer bracket for execute code direct
+
+```
+
+R dagi ro'yxatdagi elementlarni ham nomlash mumkin (Python lug'atlarida bo'lgani kabi). Elementlarga `[[]]` yoki `$` operatori (dollar belgisi) yoR damida murojaat qilish mumkin. Yangilanadigan element indeksiga qiymat belgilash orqali ro'yxatni o'zgartirish yoki olib tashlash mumkin.
+
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+lst_named <- list(
+  "age" = 19,
+  "sex" = "m",
+  "it_skills" = c("R", "Python", "Java")
+)
+#
+# 1st element
+lst_named[[1]]
+#
+# 3rd element
+lst_named[[3]]
+#
+# 2nd element of the 3rd element
+lst_named[[3]][2]
+#
+# 2nd element by name
+lst_named[["sex"]]       
+#
+# 3rd element via $
+lst_named$it_skills
+#
+# 2nd element from 3rd element from the list
+lst_named$it_skills[2]
+#
+# Names of the list
+names(lst_named)
+```
+
+`append()` funksiyasi orqali R roʻyxatiga yangi element qoʻshish mumkin. Bundan tashqari ro'yxatni Vector yoki Data Fareme (agar elementlar *nomlangan* bo'lsa) kabi boshqa maʼlumotlar strukturasiga aylantirish mumkin.
+
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Add an element(\"Python\" and \"C++\") into the list(lst_r):
+append(lst_r, c("Python", "C++"))
+#
+# Convert to vector
+unlist(lst_r)
+#
+# Create alist
+emp_list <- list(
+  emp_name = c("Max", "Ali", "Vali"),
+  emp_age = c(45, 34, 27),
+  emp_salary = c(5.300, 3.700, 3.300)
+)
+# 
+# Type of emp_list:
+class(emp_list)
+#
+# Convert to data frame
+emp_df <- data.frame(emp_list); emp_df
+#
+# Type of emp_df
+class(emp_df)
+```
+
+
+### `list`s in Python
+
+R dagi ro'yxatdagi kabi, Python dagi ro'yxatdagi elementlar/objectlar har xil uzunlik va turlarga ega bo'lishi mumkin. Agar Python dagi ro'yxatning barcha elementlari bir xil turga ega bo'lsa, buni R dagi vektor bilan solishtirish mumkin.
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Create a list
+lst_py = [1, [1, 2], True, ["I", "love", "Python"], "Hello Python"]
+print(lst_py)
+print("\nType: ", type(lst_py))
+#
+# Check element (Hello Python) is in the list
+"Hello Python" in lst_py
+#
+# Change the 1st element (1) to 42
+lst_py[0] = 42; lst_py
+#
+# Remove the last element (Hello Python) from the list
+lst_py.pop(); lst_py  # pop() removes the last element in the list!!
+#
+# Remove the 2nd element ([1, 2]) with pop()
+lst_py.pop(1); lst_py
+#
+# Remove the 1st element (42) with del
+del lst_py[-0]
+#
+# Remove by name
+lst_py.remove(True)
+lst_py
+```
+
+Python da ro'yxatga yangi elementni `append()` funktsiyasi (R kabi) orqali qo'shish mumkin. R da bo'lganidek, Python da ham ro'yxatlar boshqa ma'lumotlar tuzilmalariga, NumPy massiviga, Pandas seriyasiga yoki Pandas DataFrame siga aylantirilishi mumkin.
+
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Create a list
+ls1 = ["Ali", "Vali", "Gani"]; ls1
+#
+# Add a new element (Max) into the list
+# append() adds the new item to the end of the list
+ls1.append("Max"); ls1
+#
+# insert() adds an element to the list at the specified index
+ls1.insert(1, "Ivan") # inserted at index 1 (2nd position)
+#
+# Conver to a Pandas Series
+ls_pd = pd.Series(ls1); ls_pd
+type(ls_pd)
+#
+# Conver to a A Numpy 1d-Ayrray
+ls_np = np.array(ls1); ls_np
+type(ls_np)
+#
+# Convert to a Pandas DataFrame
+ls2 = [3, 4, 5, 8, 2]
+ls_df = pd.DataFrame(list(zip(ls1,ls2)), columns = ["ls1", "ls2"])
+ls_df
+```
+
+### `dict`s in Python and `list`s in R
+
+Yuqorida aytib o'tilganidek, vektorlaR dan farqli ravishda, R da ro'yxat elementlari bir xil turdagi bo'lishi shart emas. R dagi ro'yxat elementlarini ham nomlash mumkin, bu *named list* ya'ni elementlari nomlangan roy'yxat deb ham ataladi. Python da esa ro'yxat elementlarini nomlab bo'lmaydi, lekin Python da R dagi elementlari nomlangan roy'yxat bilan bir xil tuzilmaga ega bolgan lug'atlar *(dictionanries)* mavjud. Python tilidagi lug'at `d = {key : value}` tuzilishidan iborat. Lug'atlaR dagi Kalit *unique* va *immutable*, ya'ni unikalniy va o'zgarmasdir. Kalitlar uchun odatda satrlar *(strings)*  ishlatiladi. Agar R dagi vektor elementlari nomlansa Python dagi lug'at strukturasiga ega bo'ladi `d = list(name = value)`. Lug'atdagi elementlarga `d["key"]` orqali, nomlangan vektor/ro'yxatdagi elementlarga `vector["name"]` yoki `vector$name` orqali murojaat qilinadi.
+
+::: {.callout-caution icon="false" collapse="true"}
+## named list vs vector in R
+
+R da elementlar ro'yxatda ham (`l <- list("a" = 1, "b" = b, "c" = c("a", "b", "c"))`), vektoR da ham (`v <- c("a" = 1, "b" = 2, "c" = 3)`) nomlanishi mumkin. Farqi vektoR dagi elementlar bi xil turga ega bo'lishi kerak.
+
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+cat("Named vector with values of the same type:\n")
+v <- c("a" = 1, "b" = 2, "c" = 3); v
+cat("Type: ", class(v))
+cat("\n\nNamed list with values of different types:\n")
+l <- list("a" = 1, "b" = "b", "c" = c("a", "b", "c")); l
+cat("Type: ", class(l))
+```
+
+Misol tariqasida, yuqoridagi vektor "v" ga turli xil turdagi qiymatlar berilsa, masalan satr, son aralsh (1, "b", 3), bu holatda R hamma elementlarni matn sifatida saqlaydi ya'ni qabul qiladi, bu degani 1 va 3 sonlari turi *character*, ya'ni matnga o'zgartiriladi.
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+v1 <- c("a" = 1, "b" = "b", "c" = 3); v1
+class(v1)
+```
+
+Qiziqishga man vektorning 3 ta elementlariga quyidagi qiymatlarni berdim: a = 1, b = b und c = c(1, 2, 3). Demak vektorimiz 5 ta qiymatga ega bo'lgan 3 ta nomlanagna elementdan iborat boladi. Ajablanarlisi shundaki, R avtomatik ravishda c elementni barcha qiymatlar nomlanguncha kengaytirdi va c1, c2, c3 qilib nomladi. Shunaqa paytlada R ni yanayam yaxschi korib ketasanda kishi;).
+
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+v2 <- c("a" = 1, "b" = "b", "c" = c(1, 2, 3)); v2
+```
+:::
+
+Quyida aksiyalar narxlari lug'atlar va nomlangan vektorlarga misol tqariqasida (2024 yil 27 aprel holatiga ko'ra, OnVista'dan) keltirilgan.
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+:::{.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+share_name <- c("AMZN", "AAPL", "MBG", "TSLA", "BYD", "BABA", "SAP")
+share_value <- c(179.62, 169.30, 74.36, 168.29, 25.36, 75.55, 174.00)
+#
+cat("Create a named list from vectors:\n")
+dic_r <- setNames(as.list(share_value), share_name); dic_r
+cat("\nshare price from BYD. slice with [[]]:\n")
+dic_r[["BYD"]]
+cat("\nshare price from Tesla. slice with $\n")
+dic_r$TSLA
+cat("\nTyp from dic_r: ", class(dic_r))
+cat("\nAdd an element (BMW3) to the list(dic_r[['BMW3']] <- 99.15):\n")
+dic_r[["BMW3"]] <- 99.15
+cat("Is BMW3 there?\n")
+dic_r["BMW3"] %in% dic_r
+dic_r[["BMW3"]]
+#
+cat("\nRemove an element (MBG) from the list (dic_r$MBG <- NULL):\n")
+dic_r$MBG <- NULL
+cat("Is MBG there?\n")
+dic_r["MBG"] %in% dic_r
+# convert to python
+cat("\nConvert the list (dic_r) to Python object (dic_py)\n")
+dic_py <- r_to_py(dic_r)
+dic_py
+cat("\nType from dic_py:\n")
+class(dic_py)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+
+print("share price at 27.04.2024:")
+for k,v in r.dic_py.items():
+  print(f"{k} : {v}")
+print("\nKeys:", r.dic_py.keys())
+print("Values:", r.dic_py.values())
+print(f"\nShare of Tesla: {r.dic_py["TSLA"]}")
+print("\nAdd MBG to the dictionary(r.dic_py['MBG'] = 74.36):")
+r.dic_py["MBG"] = 74.36
+print("\nIs MBG in the dictionary?")
+"MBG" in r.dic_py
+print("\nDelete BYD from dictionary(del r.dic_py['BYD']):")
+del r.dic_py["BYD"]
+print("\nIs BYD in the dictionary?")
+"BYD" in r.dic_py
+```
+:::
+::::
+
+
+Python da lug'at elementlariga murojaat qilgandan `dict["key"]` bilan birga `dict.get("key", "default")` metodi ham mavjud. Ikkala usul ham bir xil natija beradi. Farqi shundaki, izlanayotgan kalit lug'atda mavjudmi yoki yo'qmi. Agar Key mavjud bo'lmasa birinchi usul *KeyError* hatoligini beradi. *get()* usuli bu hatolikni oldini oladi. Kalit bmavjud bo'lmagan holatda get odatda *None* qaytaradi, lekin qaytarilishi kerak bulgan qiymatni o'zgartirsa ham bo'ladi, masalan `dict.get("key", "Mavjud emas!")` holatda, agar kalit mavjut bo'lmasa, "Mavjud emas!" qqqaytariladi.
+
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+bsp_dic = {
+  "Ali" : 25,
+  "Max" : 44,
+  "Vali": 33
+}; bsp_dic
+print("With []:")
+print(f"Alini yoshi: {bsp_dic["Ali"]}")
+print("\nWith get():")
+print(f"Alini yoshi: {bsp_dic.get("Ali")}")
+lstName = ["Ali", "Gani", "Max", "Vali", "Brandon"]; lstName
+print("\nIterate with devault value, if key not exis")
+for n in lstName:
+  # for k, v in bsp_dic.items():
+  print(f"{n} - {bsp_dic.get(n, 'Mavjud emas!')}" )
+```
+
+## `set`s and `tuple`s in Python
+
+Python da `set{}` va `tuple()` kabi boshqa ma'lumotlar tuzilmalari ham mavjud.
+
+### `set{}` in Python
+
+Turlari bo'yicha guruhlangan elementlarni Python da *set*, ya'ni to'plam yoR damida ham ifodalash mumkin. Buning uchun elementlarni skobka `{}`ga kiritiladi yoki ularni `set()` funksiyasiga beriladi. Ushbu kontseptsiyaning o'ziga xos xususiyati shundaki, elementlar *unique*dir, ya'ni har bir object to'plamda faqat bir marta uchraydi. R da ham vektoR dagi takroriy elementlarni olib tashlaydigan `unique()` funksiyasi mavjud. Bundan tashqari, elementlar tartiblanmagan va ular indekslarga ega emas. *set* dagi to'plamlar - *mutable*, ya'ni o'zgaruvchan va *frozenset* dagi to'plamlar - *immutable*, ya'ni o'zgarmasdir.
+
+Python da to'plamlar uchun qo'llaniladigan `union`, `intersection` va `difference` metodlar R da ham mavjud, ular vektorlarga qo'llaniladi.
+
+:::: {.panel-tabset}
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# set() - returns the vector without duplicate values
+my_lst = [2, 3, 1, 5, 3, 9, 3, 2, 7]; my_lst
+my_set = set(my_lst); my_set
+#
+# Create a set
+x = {1, 2, 3, 4, 5, 6}; x
+y = set([4, 5, 6, 7, 8, 9]); y
+print(type(x), type(y))
+#
+# union() - combine x and y without duplicates
+x.union(y)
+#
+# intersection() - which obj in both sets
+x.intersection(y)
+#
+# difference() - objects in x, but not in y
+x.difference(y)
+#
+# difference() - objects in y, but not in x
+y.difference(x)
+```
+:::
+
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+:::{.code-r}
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# Typ of python sets
+class(py$x)
+class(py$y)
+#
+# unique() - returns the vector without duplicate values
+my_vec <- c(2, 3, 1, 5, 3, 9, 3, 2, 7); my_vec
+uniq_vec <- unique(my_vec); uniq_vec
+#
+# create vectros
+x_r <- c(1, 2, 3, 4, 5, 6); x_r
+y_r <- c(4, 5, 6, 7, 8, 9); y_r
+#
+# union() - combine x_r and y_r without duplicates
+union(x_r, y_r)
+#
+# intersection() - which obj in both vectors
+intersect(x_r, y_r)
+#
+# setdiff() - objects in x_r, but not in y_r
+setdiff(x_r, y_r)
+#
+# setdiff() - objects in y_r, but not in x_r
+setdiff(y_r, x_r)
+
+
+```
+:::
+::::
+
+### `tuple()` in Python
+
+Tuple yoki kortej bir objectga bir nechta (turli turdagi) elementlarni birlashtiradi. Ularni vergul bilan ajratilgan elementlarni qavslar ichiga `t = (obj1, obj2, ...)` yoki qavslarsiz `t = obj1, obj2, ...` kiritish bilan yoki `tuple(obj)` funksiyasi orqali yaratish mumkin. Ro'yxatlaR dan farqli ravishda, tupellar **immutable** dir, shunga ular o'zgarmas ro'yxat deb ham ataladi. Tupellar yaratilganidan so'ng, elementlarni o'zgartirib bo'lmaydi (qaysi manodaki, elementlariga boshqa qiymat berib bolmaydi, alashtirib bolmaydi, lekin yangi element qo'shsa bo'ladi), agar o'zgartirish zarur bo'lsa, ularni ro'yxatga aylantirib o'zgartirish kiritib, keyin ularni qayta tupelga aylantirib olish mumkin. Tupellarni lug'atlaR da ham ishlatish mumkin.
+
+
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create a tuple
+t1 = 1, 5, 6, 6, 3; print("t1: ", t1)
+t2 = (2, 4, 2, 5, 6); print("t2: ", t2)
+t3 = tuple([3, 4, 5, 6, 1]); print("t3: ", t3)
+#
+# tuples in dict keys
+koordinat = {
+  (0,0) : 100,
+  (1,1) : 200,
+  (0,1) : 75
+}; koordinat
+# add istem
+koordinat[(1,0)] = 125; koordinat
+#
+# tuples in dict values
+greats = {
+  "Navoi" : ("Hirot", 1441),
+  "Bobur" : ("Andijon",1483),
+  "Temur" : ("Shahrisabz", 1336)
+}; greats
+#
+# iterate dict
+for great, (place, year) in greats.items():
+  print(f"{great} - was born in {place} in {year}.")
+```
+
+
+
+## `data.frame`s in R and `pandas.DataFrame` in Python
+
+Dataframelar, ehtimol, R va Python da ma'lumotlarni saqlash, qayta ishlash va tahlil qilishning eng keng tarqalgan usullaridan bo'lsa kerak. DF (DataFrame) ni to'rtta burchakli (satrlar va ustunlar) jadval sifatida tasavvur qilish mumkin, misol tariqasida eng keng tarqalgani Excel tablolarini (sheets) misol qilib keltirish mumkin. Qatorlar holatlar yoki kuzatishlarni (*ingl. observations*), ustunlar esa o'zgaruvchilarni yoki statistika tili bilan aytganda xarakteristikalarni (*ingl. futures*) ifodalaydi. O'ng tomonda Data Frame kichik jadval shaklda misol tariqasida keltirilgan. Jadvalda 10 ta satr (kuzatishlar - bular shaxslar, Navoi, Bobur, ...) va 3 ustun (o'zgaruvchi = ism, tug'ilgan yili va tug'ilgan joyi, bular shaxslarning xarakteristikasi, ya'ni shaxslar haqida ma'lumotlar desayam bo'ladi) mavjud.
+
+```{r}
+#| echo: false          # R-Input NICHT anzeigen      
+#| output: true         # R-Output anzeigen 
+#| eval: true           # Code ausführen
+#| column: margin       # Tabelle in aside
+
+names <- c("Navoi", "Bobur", "Temur", "Cholpon", "Qodiriy", 
+           "Ulugbek", "Xorazmi", "Beruniy", "Termiziy", "Buxoriy")
+byear <- c(1441, 1483, 1336, 1898, 1894, 1394, 783, 1048, 824, 810) 
+bplace <- c("Hirot", "Andijon", "Shahrisabz", "Andijon", "Toshkent",
+            "Samarqand", "Xiva", "Xorazm", "Termiz", "Buxoro")
+
+df <- data.frame(names, byear, bplace)
+kable(df)
+```
+
+R dagi dataframelar boshqacha aytganda bir xill uzunlikka egan bo'lgan nom berilgan vektorlar ro'yxatidir (Paythondagi pandas.Series lar kabi). Bunda har bir vektor (Series) dataframelar ya'ni jadvallarning ustunini ifodalaydi. Python va R dagi dataframelari dataframe talabini qondirishi kerak bo'lgan ko'pchillik umumiy xususiyatlarga [@rp_DA] ega.
+
+  - har bir ustunning uzunligi bir xil bo'lishi kerak
+  - ustundagi barcha elementlar bir xil turga ega bo'lishi kerak
+  - SatR dagi elementlar har xil turlaR da bo'lishi mumkin
+  - Satrlar va ustunlar boshqacha nomlanishi mumkin
+  
+Dataframelar R da `data.frame()` funksiya orqali va Python da pandas modulidagi `pandas.DataFrame()` funksiya yoR damida yaratiladi. 
+
+
+### Create a DF
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}  
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+names <- c("Navoi", "Bobur", "Temur", "Cholpon", "Qodiriy", 
+           "Ulugbek", "Xorazmi", "Beruniy", "Termiziy", "Buxoriy")
+byear <- c(1441, 1483, 1336, 1898, 1894, 1394, 783, 1048, 824, 810) 
+bplace <- c("Hirot", "Andijon", "Shahrisabz", "Andijon", "Toshkent",
+            "Samarqand", "Xiva", "Xorazm", "Termiz", "Buxoro")
+# Create a DataFrame -----------------------------------------
+df <- data.frame(names, byear, bplace)
+# Type -------------------------------------------------------
+class(df)
+# nums of rows and cols --------------------------------------
+dim(df)  # like shape in pandas
+# num of rows ------------------------------------------------
+nrow(df)
+# num of columns ---------------------------------------------
+ncol(df)
+# structur of DataFrame --------------------------------------
+# str(df) or
+pillar::glimpse(df) # like pandas.DataFrame.info()
+# First n lines, default = 6 ---------------------------------
+head(df, n = 3)
+# Last n lines -----------------------------------------------
+tail(df, n=2)
+# colnames ---------------------------------------------------
+colnames(df)
+# rows -------------------------------------------------------
+rownames(df)
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# create pandas DataFrame from created df in r -------
+df_pd = pd.DataFrame(r.df)
+df_pd["byear"] = df_pd["byear"].astype(int)
+# Type -----------------------------------------------
+type(df_pd)
+# nums of rows and cols ------------------------------
+df_pd.shape   # like dim() in r
+# num of rows ----------------------------------------
+len(df_pd)
+# num of columns -------------------------------------
+len(df_pd.columns)
+# structur of DataFrame ------------------------------
+df_pd.info()   # like str() in r
+# First n lines, default = 5 -------------------------
+df_pd.head(n = 3)
+# Last n lines ---------------------------------------
+df_pd.tail(n = 2)
+# colnames -------------------------------------------
+df_pd.columns
+# rows -----------------------------------------------
+df_pd.index
+```
+:::
+::::
+
+### Access a (the) element(s)
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}  
+```{r}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# 1st row, 1st col -------------------------------
+df[1,1]
+# 1-3 rows, all cols -----------------------------
+df[1:3, ]
+# all rows, 1-2 cols -----------------------------
+df[, 1:2]
+# 3 rows, col bplace -----------------------------
+df[1:3, 3]
+# rows where col bplace = "Andijon" --------------
+df[df$bplace == "Andijon", ]
+# rows where col byear < 1000 -------------------
+df[df$byear < 1000, ]
+
+```
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| code-fold: false
+#| collapse: true
+
+# 1st row, 1st col -------------------------------------
+df_pd.iloc[0,0]         # iloc by postion(s)
+# 1-3 rows, all cols -----------------------------------
+df_pd.iloc[:3, ]
+# all rows, 1-2 cols -----------------------------------
+df_pd.iloc[:, :2]
+# 3 rows, col bplace -----------------------------------
+df_pd.loc[:3, "bplace"]  # loc by labels(s)
+# 1-2 rows, cols names and bplace ----------------------
+df_pd.loc[:2, ["names","byear"]] # or df_pd.bplace
+# rows where col bplace = "Andijon" --------------------
+df_pd.loc[df_pd["bplace"] == "Andijon"]
+# rows where col byear < 1000 --------------------------
+df_pd.loc[df_pd.byear < 1000]
+# ------------------------------------------------------
+
+```
+:::
+::::
+
+### Change Row- and Colnames
+
+:::: {.panel-tabset}
+# `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+cat("Rownames:\n", rownames(df))  # rownames 
+cat("\nColnames:", colnames(df)) # colnames
+#
+new_rname <- paste("person",1:10, sep="_", collapse= ",")
+new_rname <- unlist(strsplit(new_rname, ","))
+cat("\n\nNew Rowsname:\n", new_rname)
+
+cat("\nDF with modified rownames:\n")
+# change the rownames
+rownames(df) <- (new_rname)
+head(df, n = 2)
+# change the colnames
+# Method1: colnames(c(names of new columns))
+# Method2: setNames(df, c(names of new columns)) 
+# Here will be used Method2
+# change colname
+df <- setNames(df, c("Ism", "Tug\'ilgan yil", "Tug\'ilgan joy"))
+cat("\n\nDF with modified colnames:\n")
+head(df, n = 2)
+#
+cat("\n\nSet key in DF with data.table:\n")
+dt <- data.table(df)
+setkey(dt, Ism)      # Like Index in pandas
+#call("Key: ", key(dt))
+head(dt, n = 2)
+```
+:::
+
+
+::: {.callout-caution icon="false" collapse="true"}
+## data.frame() vs data.table()
+
+R da dataframelar uchun turli funktsiyalar mavjud. Umumiy olganda, data.frame() va data.table bir xil. Biz `data.table` kengaytirilgan funksiyalarga ega `data.frame` sifatida tasavvur qilishimiz mumkin. *data.frame()* funksiyasi R ning base ya'ni asosiy(bazaviy, fundamental) funksiyalari qatoriga kiradi. Bu degani, R ni komputerga install qilgandan, R ning asosiy funksiyalari sifatida data.frame ham bo'ladi. Buni telefonni zaryadkasiga taqqoslash mumkin, chunki telefon sotib olsak zaryadkasi birga bo'ladi. Ko'pchillik telefonlaR da esa naushniklarini alohida sotib olish kerak. A *data.table* easa naushnik, R da alohida paket hisoblanadi, uni funksiyalarini ishlatish uchun avval yuklab olib keyin R ga o'qish kerak, xuddi Python da pandas modulini import qilish kerak bo'lganidek.  Bundan tashqari R da jadvallarni tahrirlashda ko'proq qulaylik va funksionallikni ta'minlaydigan boshqa paketlar mavjud, masalan, *tibble*, *tidyverse*, *dplyr*  va boshqalar.
+:::
+
+# `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| code-line-numbers: true
+#| results: hold
+#| code-summary: "show the code"
+
+print(f"Rownames(index):\n{list(df_pd.index)}")
+print(f"\nColnames: {list(df_pd.columns)}")
+#
+new_pname = ["user_" + str(idx) for idx in list(df_pd.index)]
+print(f"\nNew Rowsname:\n{new_pname}")
+print("\nDF with modified rownames:")
+df_pd.index = new_pname
+df_pd.head(n = 2)
+print("\nDF with modified colnames:")
+df_pd.columns = ["Ism", "Tug\'ilgan yil", "Tug\'ilgan joy"]
+df_pd.head(n = 2)
+print("\n\nSet a column as index:")
+# like key in data.table in r
+df_pd.set_index("Ism", inplace = True, append = True)
+df_pd.head(n = 2)
+```
+:::
+::::
+
+Dataframelar, yuqorida aytib o'tilganidek, R va Python da eng ko'p ishlatiladigan ma'lumotlar tuzilmalaridandir. Shuning uchun, bu mavzuga am'lumotla tizimini bir qismi sifatida qisqacha yoritildi va diqqat faqat asosiy funktsiyalarga qaratildi. Buning uchun alohida mavzu bo'ladi, xudo xohlasa. 
+
+# References
+
+
+

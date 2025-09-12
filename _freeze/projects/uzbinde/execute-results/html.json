@@ -1,0 +1,15 @@
+{
+  "hash": "f978668b574172d7d1afcd8c776fca76",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Dashboard with Shiny in Quarto\"\ndescription: |\n  A dashboard about Usbeks living in Germany according to their residence status and in comparison over the years, created in Quarto using Shiny. <br> \nauthor: \"Fazliddin Sultonov\"\ndate: \"2025-09-02\"\ndate-format: \"MMM D, YYYY\"\n\nfilters:\n  - lightbox\nlightbox: \n  match: auto\n  effect: none\n  desc-position: top\n\npage-layout: full\nreference-location: margin\ncategories: [quarto, dashboard, R, ggplot2, shiny, ggpol]\n# Code execute options\nexecute: \n  echo: true    # Input anzeigen\n  eval: true    # Code ausführen\n  freeze: true  # never re-render during project render\n# Output\nformat: \n  html:\n    theme: cosmo\n  # codeb block\n    code-fold: true\n    code-line-numbers: true\n    code-block-border-left: true\n    link-external-newwindow: true  # {target=\"_blank\"} in doc\n  # engine\n    engine: knitr\n    css: /customs/style.css\n# engine: knitr\n#jupyter: python3\n\n# Chunk Options\nknitr:\n  opts_chunk:\n    comment: \"#>\" \n\n  opts_knit: \n    warning: false\n    error: false\n    \n---\n\n\n![](pics/uzdeplot.png)\n\n::: {.cell}\n\n:::\n\n\nIn this project, a dashboard was created using [Quarto](https://quarto.org/). It shows the number of Uzbeks in Germany, according to their residence status and comparison over the years.\n\n:::: {.column-screen}\n![](pics/db_col.png)\n::::\n\n\n<br> **{{< fa solid database >}} Data Source:** *[©Statistisches Bundesamt (Destatis), 2025 | Stand: 31.07.2025](https://www-genesis.destatis.de/datenbank/online/)* \n<br> **{{< fa brands square-github >}} Code Source:** *[GitHub](https://github.com/sultanovf/uzbinde)*\n<br> **{{< fa solid square-share-nodes >}} Published on:** *[shinyapps.io](https://www.shinyapps.io/)*\n<br> **{{< fa solid chart-simple >}} Link to dashboard:** *[sultanov.shinyapps.io/uzbinde](https://sultanov.shinyapps.io/uzbinde/){target=\"_blank\"}*\n\n\n![](pics/db_gh.gif)\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

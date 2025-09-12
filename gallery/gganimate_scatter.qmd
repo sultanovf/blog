@@ -1,0 +1,439 @@
+---
+title: "scatterplot"
+description: "(animated) scatterplot with `ggplot` and `plotly` in R and Python using the example of GDP per Capita and Life expectancy for CIS countries"
+author: "Fazliddin Sultonov"
+date: "2024-12-09"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [scatterplot, R, Python, gganimate, ggplot2, plotly]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/plotly.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "ggflags",     # flags
+  "plotly",      # plotly
+  "gganimate"    # animation
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+
+
+:::: {.column-screen-inset}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+## Read and prepare data
+
+```{r}
+#| output: false
+#| eval: true
+
+# gus 
+cfilter <- c("Kyrgyz Republic", "Armenia", "Tajikistan", "Turkmenistan", "Belarus",
+             "Kazakhstan", "Russian Federation","Uzbekistan", "Belarus", "Azerbaijan")
+# read data ################################################################
+gdp <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/GDPperCap_19902024.csv")
+lfe <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/LifeExpectancy_19902024.csv")
+pop <- read.csv2(
+  "https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/pop_gus.csv")
+
+
+# gdp data ======================================================================
+years <- paste(1980:2029) #, sep=",", collapse= ","
+years <- unlist(strsplit(years, ","))
+new_cnames <- c("country", "cc",  years)
+colnames(gdp) <- new_cnames
+# head(gdp)
+# ncol(gdp)
+
+# Formatting, comma to point, na, type from string to numeric ==================
+# "no data" to NA
+data <- 
+  gdp |> 
+  mutate(across(everything(), na_if, "no data")) |> 
+  mutate_at(c(3:52), function(x) as.numeric(gsub(",", ".", x))) |> 
+  mutate_if(is.numeric, function(x) round(x, digits = 1))
+# Show Data
+# glimpse(data)
+
+# Filter =================================================================
+df_gdp <-
+  data |> 
+  filter(country %in% cfilter) |> 
+  select(c(country, cc, "1990":"2024")) |> 
+  mutate(across(where(is.numeric), ~replace_na(., 0))) |> 
+  rowwise() |> 
+  mutate(
+    country = case_when(
+      country == "Kyrgyz Republic" ~ "Kyrgyzstan",
+      country == "Russian Federation" ~ "Russia",
+      TRUE ~ country
+      )
+    ) |> 
+  pivot_longer(
+    cols = !c(country, cc),
+    names_to = "year",
+    values_to = "gdp_per_cap"
+  ) |> 
+  mutate(
+    year = as.integer(year)
+  )
+
+# read LifeExp data ############################################################
+
+yrs <- paste(1990:2024) #, sep=",", collapse= ","
+yrs <- unlist(strsplit(yrs, ","))
+new_cnames <- c("country", "cc",  yrs)
+colnames(lfe) <- new_cnames
+
+# head(gdp)
+# ncol(lfe)
+
+# check if there NA
+# colSums(is.na(lfe))
+# oder
+# na_counts <- lapply(lfe, function(x) sum(is.na(x)))
+
+dat <-
+lfe |> 
+  mutate_at(c(3:37), function(x) as.numeric(gsub(",", ".", x))) |> 
+  mutate_if(is.numeric, function(x) round(x, digits = 1))
+
+df_lfe <- 
+  dat |> 
+  filter(country %in% cfilter) |> 
+  rowwise() |> 
+  mutate(
+    country = case_when(
+      country == "Kyrgyz Republic" ~ "Kyrgyzstan",
+      country == "Russian Federation" ~ "Russia",
+      TRUE ~ country
+    )
+  ) |> 
+  mutate_at(c(3:37), function(x) as.numeric(gsub(",", ".", x))) |> 
+  mutate_if(is.numeric, function(x) round(x, digits = 1)) |> 
+  pivot_longer(
+    cols = !c(country, cc),
+    names_to = "year",
+    values_to = "life_exp"
+  ) |> 
+  mutate(
+    year = as.integer(year)
+  )
+
+# read Pop data ################################################################
+
+#yrs <- paste(1990:2024) #, sep=",", collapse= ","
+#yrs <- unlist(strsplit(yrs, ","))
+new_cnames_pop <- c("country", "iso2", "cc", "year", "pop")
+colnames(pop) <- new_cnames_pop
+
+df_pop <- 
+  pop |> 
+  mutate_at(5, function(x) as.numeric(gsub(",", ".", x))) |> 
+  mutate(
+    pop = round(pop/1000000, digits = 1)
+  ) |> 
+  mutate(
+    iso2 = tolower(iso2)
+  )
+
+# Merge Data Tables ############################################################
+gdp_lfe <- merge(df_gdp, df_lfe, by = c("country", "year", "cc"), all.x = TRUE, all.y = TRUE)
+df <- merge(gdp_lfe, df_pop, by = c("country", "year", "cc"), all = TRUE)
+
+colnames(df) <- c("country", "year",  "cc", "gdp_per_cap", "life_exp", "mdh", "pop")
+
+```
+
+
+### Show some sample rows
+
+
+<!-- ```{r} -->
+<!-- #| results: hold -->
+<!-- #| code-fold: true -->
+<!-- #| warning: false -->
+
+<!-- df |>  -->
+<!--   sample_n(7, replace = FALSE) |>  -->
+<!--   kable() -->
+
+<!-- ``` -->
+
+
+```{r, df_print = "paged"}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# oder  {r, df_print = "paged"} # funktioniert
+# ohne chunk option oben:
+rmarkdown::paged_table(sample_n(df, 10)) # show sample 10 rows
+
+```
+
+
+## Plotting with `ggplot2` & `gganimate`
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# Create Plot
+p <- ggplot(data = df) +
+  geom_flag(aes(
+    x = gdp_per_cap,
+    y = life_exp,
+    size = pop,
+    country = mdh
+  )) +
+  scale_country() +
+  scale_size(range = c(5, 15)) +
+  geom_text(aes(x = 17000, y = 46, label = "plotted by FS/ tg: @R4Pythonistas"),
+            stat = "unique",
+            size = 3, color = "red") +
+  scale_y_continuous(
+    limits = c(45,90),breaks = seq(45, 90, 5),
+    expand = expansion(c(0.02, 0.02))
+  ) +
+  scale_x_continuous(
+    limits = c(0, 20000), breaks = seq(0, 20000, 2000),
+    labels = function(x) paste0(x/1000, "k"),
+    expand = expansion(c(0.02, 0.02))) +
+  guides(size = "none") 
+  
+
+# fOrmat and (animate)
+
+p <- 
+  p +
+  labs(
+    title = "MDH mamlakatlarida o'rtacha umr ko'rish va aholi jon boshiga YaIM, 1990-2024",
+    caption = paste(
+    "DataSources: International Monetary Fund(IMF), World Bank, Our World in Dat, World Population Review\nplotted by Fazliddin Sultonov"),
+    x = "YaIM jon boshiga (k = Ming)",
+    y = "Kutiladigan o'rta yosh") +
+  # geom_label(aes(label = paste("Yil:", year)),
+  #            x = 15000, y = 60, size = 8, fill = "white", col = "gray")+  #
+  theme(
+    plot.title = element_text(
+      color = "tomato", size = 10, face = "bold", hjust = 0.5),
+    plot.caption = element_text(
+      color = "dodgerblue", size = 8, face = "bold.italic"),
+    plot.background = element_rect(fill = "floralwhite"), 
+    panel.background = element_rect(fill = "aliceblue"),
+    legend.background = element_rect(fill = "lightblue")
+  ) #+
+ # transition_reveal(year)
+
+p <- p +
+  transition_reveal(year) +
+  geom_label(aes(label = paste("Yil:", year)),
+             x = 17000, y = 87, size = 8, fill = "floralwhite", col = "lightblue")
+  # labs(title = "Yil: {frame_time}") 
+
+# Animate Plot
+p_anim <- 
+  p |>
+  animate(
+    duration = 20,
+    fps = 10,
+    start_pause = 5,
+    end_pause = 15,
+    hight = 460,
+    with = 860,
+    renderer = av_renderer() # for video ffmpeg_renderer()
+  )
+
+p_anim
+```
+
+
+## Plotting with `ggplot2` & `plotly`
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# plotly with ggplot ===========================================================
+
+plt <- ggplot(data = df,aes(
+  x = gdp_per_cap,
+  y = life_exp,
+  colour = country
+  )) +
+  #geom_rect(alpha = 0.5, frame = year) +
+  geom_point(aes(size = pop, frame = year)) +
+  scale_size(range = c(4, 12)) +
+  scale_y_continuous(
+    limits = c(45,90),breaks = seq(45, 90, 5),
+    expand = expansion(c(0.02, 0.02))
+  ) +
+  scale_x_continuous(
+    limits = c(0, 20000), breaks = seq(0, 20000, 2000),
+    labels = function(x) paste0(x/1000, "k"),
+    expand = expansion(c(0.02, 0.02)))+
+  labs(
+  title = "MDH mamlakatlarida o'rtacha umr ko'rish va\n aholi jon boshiga YaIM, 1990-2024",
+  x = "YaIM jon boshiga (k = Ming)",
+  y = "Kutiladigan o'rta yosh") +
+  theme(
+    plot.title = element_text(
+      color = "tomato", size = 12, face = "bold", hjust = 0.0),
+    plot.caption = element_text(
+      color = "dodgerblue", size = 8, face = "bold.italic"),
+    plot.background = element_rect(fill = "floralwhite"), 
+    panel.background = element_rect(fill = "aliceblue"),
+    legend.background = element_rect(fill = "lightblue")
+  )
+
+# layout
+fig <- 
+  ggplotly(plt) |> 
+  layout(
+    legend=list(title =list(text = " GUS")),
+    margin = list(l = 50, r = 50, b = 100, t = 50),
+    annotations = list(
+      x = 1, y = 0.02, text = "DataSources: International Monetary Fund(IMF), World Bank, Our World in Dat, World Population Review", 
+           showarrow = F, xref='paper', yref='paper', 
+           xanchor='right', yanchor='auto', xshift=0, yshift=0,
+           font=list(size=10, color="red")),
+    images = list(
+      list(source = "gallery_img/cis.png",
+           xref = "x",
+           yref = "y",
+           x = 100,
+           y = 79,
+           sizex = 2,
+           sizey = 2,
+           sizing = "stretch",
+           opacity = 0.4,
+           layer = "below")
+      )
+  )
+
+# animation options
+fig <- 
+  fig |> 
+  animation_opts(
+    easing = "elastic", redraw = FALSE
+  ) |> 
+  animation_slider(
+    currentvalue = list(prefix = "Yil: ", font = list(color="red"))
+  )
+# show plot
+fig
+```
+
+
+
+:::: {.column-screen-inset}
+::: {.code-py}
+
+# `r fa(name = "python",  height = "2.0em", width = "2.0em",fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+import pandas as pd
+from IPython.display import display, Markdown, HTML
+data = pd.DataFrame(r.df)
+
+#data.head(10)
+
+# display(Markdown(data.to_markdown(index = False)))   # jupyter
+# Markdown(pdata.head(10).to_markdown(index = False)) # reticulate
+HTML(data.sample(n = 10).to_html())                   # html
+
+```
+
+
+
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| warning: false
+
+
+import plotly.express as px
+import pandas as pd
+data = pd.DataFrame(r.df)
+
+px.scatter(data, x="gdp_per_cap", y="life_exp", animation_frame="year", 
+  animation_group="country",  size="pop", color="country", hover_name="country",
+  log_x=True, size_max=45, range_x=[100,20000], range_y=[45,90]) 
+
+```
+
+
+

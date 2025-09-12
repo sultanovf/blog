@@ -1,0 +1,19 @@
+---
+title: "Notes to myself"
+title-block-banner: "images/topics.png"
+page-layout: full
+page-navigation: true
+link-external-newwindow: true
+listing:
+  contents: posts
+  page-size: 6        # postanzahl in listing
+  sort: "date desc"
+  type: default # grid max 25 items
+  categories: cloud
+  sort-ui: [title, date]
+  filter-ui: true
+  date-format: "MMMM, YYYY"
+  feed: 
+    categories: [posts, gallery] #true # für RSS feed
+
+---

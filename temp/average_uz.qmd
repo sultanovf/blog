@@ -1,0 +1,84 @@
+---
+title: |
+  mean or median\
+  {{< fa language >}} in Uzbek
+description: | 
+  \"Черепахи могут рассказать о тропе больше, чем кролики.\"  <br> ~ китайская мудрость.
+author: "Fazliddin Sultonov"
+date: "2024-05-28"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [Statistics, Uzbek, Mean, Median, Modal]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # Sections
+    toc: true
+  # codeb block
+    code-line-numbers: true
+    code-block-border-left: true
+    code-overflow: scroll
+    engine: knitr
+    css: /posts/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+# bibliography
+#bibliography: reference.bib
+#  nocite: 
+#    @* 
+---
+
+
+![](pictures/medium.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+Bu galgi mavzuda o'rta qiymatlar haqida gap boradi
+
+![Tez kunda...](pictures/soon.png){fig-alt="Click for zooming"}
+
+
+

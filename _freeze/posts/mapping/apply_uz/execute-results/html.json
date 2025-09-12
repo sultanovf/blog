@@ -1,0 +1,14 @@
+{
+  "hash": "18720e57e017ae1e8d3fb33c2633d740",
+  "result": {
+    "markdown": "---\ntitle: |\n  R & Python: Functions\\\n  {{< fa language >}} in Uzbek\ndescription: | \n  \\\"Qorni ochga baliq bersang bir marta qorni to'yadi, unga bir marta baliq tutishni o'rgatsang, hech qachon och qolmaydi.\\\"  <br> ~ Laotse.\nauthor: \"Fazliddin Sultonov\"\ndate: \"2024-07-07\"\ndate-format: \"MMM D, YYYY\"\n\nfilters:\n  - lightbox\nlightbox: \n  match: auto\n  desc-position: top\n\npage-layout: full\nreference-location: margin\ncategories: [Function, Uzbek, R, Python, Applay, Map]\n# Code execute options\nexecute: \n  echo: true    # Input anzeigen\n  eval: true    # Code ausführen\n  freeze: true  # never re-render during project render\n# Output\nformat: \n  html:\n    theme: cosmo\n  # Sections\n    toc: true\n  # codeb block\n    code-line-numbers: true\n    code-block-border-left: true\n    code-overflow: scroll\n    engine: knitr\n    css: /customs/style.css\n\n# Chunk Options\nknitr:\n  opts_chunk:\n    comment: \"#>\" \n\n  opts_knit: \n    warning: false\n    error: false\n    \n# bibliography\n# bibliography: reference.bib\n# nocite: |\n#   @*\n  \n---\n\n\n\n![](pic/apply.png){.nolightbox}\n\n::: {.cell}\n\n:::\n\n\n<br><br><br><br>\n\nKayingi mavzu *apply/mapping* funksiyalari haqida bo'ladi\n\n<br><br>\n\n![Tez kunda...](pic/comingsoon.png){fig-alt=\"Click for zooming\"}\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

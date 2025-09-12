@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fazliddin Sultonov">
+<meta name="dcterms.date" content="2024-05-09">
+<meta name="description" content="&quot;If you always do what you can already do, you will always remain what you already are.&quot;   ~ Henry Ford.">
+
+<title>R &amp; Python: Control flows and loops  in Uzbek – Fazliddin Sultanov</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="customs/styles.css">
+<link rel="stylesheet" href="../../customs/style.css">
+<meta name="twitter:title" content="R &amp; Python: Control flows and loops
+ in Uzbek – Fazliddin Sultanov">
+<meta name="twitter:description" content="&quot;If you always do what you can already do, you will always remain what you already are.&quot;  ~ Henry Ford.">
+<meta name="twitter:image" content="https://sultanov.quarto.pub/blog/posts/loops/pictures/decide.png">
+<meta name="twitter:image-height" content="600">
+<meta name="twitter:image-width" content="800">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Fazliddin Sultanov</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-person-bounding-box" role="img">
+</i> 
+<span class="menu-text">me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text"><i class="fa-solid fa-blog" aria-label="blog"></i> blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../gallery.html"> 
+<span class="menu-text"><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> gallery</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text"><i class="fa-solid fa-code" aria-label="code"></i> practice</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://sultanov.quarto.pub/cv/" target="_blank"> 
+<span class="menu-text"><i class="fa-solid fa-user-tie" aria-label="user-tie"></i> CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-fa-square-share-nodes-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"><i class="fa-solid fa-square-share-nodes" aria-label="square-share-nodes"></i></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-fa-square-share-nodes-">    
+        <li>
+    <a class="dropdown-item" href="mailto:fazliddin@sultonov.ru">
+ <span class="dropdown-text"><i class="fa-solid fa-envelope fa-lg" aria-label="envelope"></i> <span class="math inline">\(~\)</span> Email</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://t.me/R4Pythonistas" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-telegram fa-lg" aria-label="telegram"></i> <span class="math inline">\(~\)</span> Telegram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.instagram.com/sultanof.uzb/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/in/fazliddinsultonov/" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-linkedin fa-lg" aria-label="linkedin"></i> <span class="math inline">\(~\)</span> Linkedin</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://xing.com/profile/Fazliddin_Sultonov3" target="_blank">
+ <span class="dropdown-text"><i class="fa-brands fa-square-xing fa-lg" aria-label="square-xing"></i> <span class="math inline">\(~\)</span> Xing</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sultanovf" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title"><p>R &amp; Python: Control flows and loops<br>
+<i class="fa-solid fa-language" aria-label="language"></i> in Uzbek</p></h1>
+                  <div>
+        <div class="description">
+          <p>"If you always do what you can already do, you will always remain what you already are." <br> ~ Henry Ford.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Uzbek</div>
+                <div class="quarto-category">Loop</div>
+                <div class="quarto-category">Control flow</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Fazliddin Sultonov </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 9, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+<p>subcribe.html</p>
+</div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#control-flows" id="toc-control-flows" class="nav-link active" data-scroll-target="#control-flows">Control flows</a></li>
+  <li><a href="#if-if-else-else-ifelif" id="toc-if-if-else-else-ifelif" class="nav-link" data-scroll-target="#if-if-else-else-ifelif"><code>if</code> &amp; <code>if-else</code> &amp; <code>else if/elif</code></a></li>
+  <li><a href="#for---loop" id="toc-for---loop" class="nav-link" data-scroll-target="#for---loop"><code>for</code> - loop</a></li>
+  <li><a href="#while---loop" id="toc-while---loop" class="nav-link" data-scroll-target="#while---loop"><code>while</code> - loop</a></li>
+  <li><a href="#break-continue" id="toc-break-continue" class="nav-link" data-scroll-target="#break-continue"><code>break</code> &amp; <code>continue</code></a></li>
+  <li><a href="#repeat---loop-in-r" id="toc-repeat---loop-in-r" class="nav-link" data-scroll-target="#repeat---loop-in-r"><code>repeat</code> - loop in R</a></li>
+  <li><a href="#try-except-in-python" id="toc-try-except-in-python" class="nav-link" data-scroll-target="#try-except-in-python"><code>try:</code> &amp; <code>except</code> in Python</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p><img src="pictures/decide.png" class="nolightbox img-fluid"></p>
+<section id="control-flows" class="level1">
+<h1>Control flows</h1>
+<p><strong>Control flows</strong>, ya’ni Google akani tarjimasi bo’yicha <em>boshqaruv tuzilmalar</em> - ma’lum buyruqlarni ketma-ket tarzda <em>shartli</em> ravishda bajarilishini nazorat qilish imkonini beradi. Boshqacha aytganda biror bir buyruq, ifoda yoki funksiya ishlaydi, qachonki berilgan ma’lum bir shart qanoatlantirilsa. Shartni tekshirish ko’pincha bir nechta elementlardan iborat ma’lumotlar tuzilmasida yoki funksia ichida <strong>sikllar</strong> orqali amalga oshiriladi.</p>
+</section>
+<section id="if-if-else-else-ifelif" class="level1">
+<h1><code>if</code> &amp; <code>if-else</code> &amp; <code>else if/elif</code></h1>
+<p>Faqat bitta shart berilgan bo’lsa <code>if</code> ishlatiladi. Misol uchun biror son, aytaylik baho berilgan: <code>son = 4</code>, (4 - yaxshi baho deb hisoblaymiz). Agar shart bo’yicha bahoni tekshirish kerak bo’lsa if - ni o’zini qo’llaymiz. Agar birinchi shart qanoatlantirilmagan <em>aksincha holat</em> uchun ham shart qo’llasak, else ham ishlatiladi. Misoldagi shart boyicha, <span style="background-color:honeydew;"><em>Agar (if)</em> berilgan <em>son 4 ga teng (son == 4) bo’lsa (shart)</em> ekranga <em>yaxshi (buyruq)</em> deb, <em>aks holda (else)</em> ekranga <em>yaxshi emas (buyruq)</em> deb chiqaramiz</span>.</p>
+<p>Agar bittadan ko’p yani bir necha shartlar tekshirilganda R uchun <code>else if</code> va Python uchun<code>elif</code> ifodasini ishlatishimiz mumkin. Agar <em>if</em>- blok yoki <em>else if/elif</em>- blokda shartlar qanoatlantirilmasa, <em>else</em> - blok har doim bajariladi. Misol tariqasida yuqoridagi misolga bir dan ko’p shartlarini qo’shamiz. Shartlar quyidagicha bo’lishi mumkin: Agar baho == 3 -&gt; qoniqarli, baho == 4 -&gt; yaxshi, baho == 5 -&gt; a’lo, aks holda -&gt; qoniqarsiz (imtihondan o’tilmadi).</p>
+<div class="{column-left}">
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a>baho <span class="ot">&lt;-</span> <span class="dv">4</span>               <span class="co"># berilgan son</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="cf">if</span> (baho <span class="sc">==</span> <span class="dv">3</span>) {        <span class="co"># 1- shart</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">cat</span>(<span class="st">"qoniqarli"</span>)      <span class="co"># bajariladi, agar 1-shart == TRUE</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>} <span class="cf">else</span> <span class="cf">if</span> (baho <span class="sc">==</span> <span class="dv">4</span>) { <span class="co"># 2-shart</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">cat</span>(<span class="st">"yaxshi"</span>)         <span class="co"># bajariladi, agar 2-shart == TRUE</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>} <span class="cf">else</span> <span class="cf">if</span> (baho <span class="sc">==</span> <span class="dv">5</span>) { <span class="co"># 3- shart</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">cat</span>(<span class="st">"a'lo"</span>)           <span class="co"># bajariladi, agar 3-shart == TRUE</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>} <span class="cf">else</span> {                <span class="co"># aks holda</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">cat</span>(<span class="st">"qoniqarsiz"</span>)     <span class="co"># bajariladi, hech qaysi shart qanoatlantirilmasa</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; yaxshi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="{column-right}">
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>baho <span class="op">=</span> <span class="dv">5</span>              <span class="co"># berilgan son</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="cf">if</span> baho <span class="op">==</span> <span class="dv">3</span>:         <span class="co"># 1- shart</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="bu">print</span>(<span class="st">"qoniqarli"</span>)  <span class="co"># bajariladi, agar 1-shart == TRUE</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="cf">elif</span> baho <span class="op">==</span> <span class="dv">4</span>:       <span class="co"># 2-shart</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="bu">print</span>(<span class="st">"yaxshi"</span>)     <span class="co"># bajariladi, agar 2-shart == TRUE</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="cf">elif</span> baho <span class="op">==</span> <span class="dv">5</span>:       <span class="co"># 3- shart</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="bu">print</span>(<span class="st">"a'lo"</span>)       <span class="co"># bajariladi, agar 3-shart == TRUE</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">else</span>:                 <span class="co"># aks holda</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="bu">print</span>(<span class="st">"qoniqarsiz"</span>) <span class="co"># bajariladi, hech qaysi shart qanoatlantirilmasa</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; a'lo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>R da <em>else</em> if-sharti yopuvchi qavsi <code>}</code> bilan bir qatorda turishi kerak ya’ni:</p>
+</div>
+<div class="text-border-frame quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><em>if (shart) {</em> <br> <em>buyruq</em> <br> <em><span style="background-color:lightcyan;">} else</span> {</em> <br> <em>buyruq }</em><br><em>}</em></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Python da if-shartidan keyin ikki nuqta <code>:</code> qo’yiladi va bajariladigan kod yangi qator boshidan (odatda) 4 marta bo’sh o’rin qoldirib yoziladi:</p>
+</div>
+<div class="text-border-frame quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><em>if shart:</em><br><em><span style="background-color:yellow;">….</span> buyruq</em><br><em>else:</em><br> <em><span style="background-color:yellow;">….</span> buyruq</em></p>
+</div>
+</div>
+</div>
+</section>
+<section id="for---loop" class="level1">
+<h1><code>for</code> - loop</h1>
+<p>Sikllar odatda biror bir amalni biror ketma-ketlikda joylashgan elementlar ustidan (masalan ro’yxat, vektor) bir necha marta bajarish uchun ishlatiladi. <code>for</code>- va <code>while</code>- sikldan R va Pythonda yuqoridagi if-shatidagi ko’rinishga ega. Bundan tashqari R da <code>repeat</code>- sikli ham bor.</p>
+<p><code>for</code>- siklini agar ifoda nechi marta bajarilishi kerakligi oldindan aniq bo’lsa ishlatishimiz mumkin, boshqacha aytganda dasturga siklni nechi marta aylanishi kerkaligi oldindan belgilab beriladi. Ko’pincha biror bir ifoda masalan biror ro’yxat ichidagi hamma elementlar uchun qo’llanishilshi kerak bo’lganda for ishlatilsa boladi. Bunda shu to’plam ichida biror bir ifodani/amalni iteratsiya qilib ya’ni, takrorlab chiqiladi. Bunday holllaga hayotimizdanam ko’plab misollar keltirish mumkin.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Takrorlanuvchi shart</th>
+<th style="text-align: left;">Takrorlanuvchi harakat/ifoda</th>
+<th style="text-align: left;">To’plam (masalan ro’yxat)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Lagandagi 5 somsani yeyish kerak</td>
+<td style="text-align: left;">Somsa yeyish</td>
+<td style="text-align: left;">lagandagi 5 somsalar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">To’yga mehmonlaga taklifnoma</td>
+<td style="text-align: left;">taklifnoma yozish</td>
+<td style="text-align: left;">Mehmonlar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1 dan 10 gacha sana</td>
+<td style="text-align: left;">10 gacha bo’lgan har bir sonni nomini aytish</td>
+<td style="text-align: left;">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uch marta “Urraa!” deb qichqirish</td>
+<td style="text-align: left;">“Urraa!” deb qichqirish</td>
+<td style="text-align: left;">[1, 2, 3]</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="text-border-frame quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>R:</em></strong><br> <em>for (element in sequence) {</em> <br> <em><span class="math inline">\(~~~~\)</span> code</em> <br> <em>}</em></p>
+</div>
+<div class="text-border-frame quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong><em>Python:</em></strong><br> <em>for element in sequence:</em> <br> <em><span class="math inline">\(~~~~\)</span> code</em> <br><br></p>
+</div>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>element <span class="ot">&lt;-</span> <span class="dv">7</span>  <span class="co"># vektor uzunligi</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>vec <span class="ot">&lt;-</span> <span class="fu">vector</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">mode =</span> <span class="st">"numeric"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">length =</span> element)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(element)){</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  vec[i] <span class="ot">&lt;-</span>i</span>
+<span id="cb3-7"><a href="#cb3-7"></a>}</span>
+<span id="cb3-8"><a href="#cb3-8"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>uzunlik <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>lst <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, uzunlik <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  lst.append(i)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="section" class="level2 code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.0em;width:1.0em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></h2>
+<div class="cell code-input">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1 2 3 4 5 6 7</code></pre>
+</div>
+</div>
+</section>
+<section id="section-1" class="level2 code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section-1"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.0em;width:1.0em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></h2>
+<div class="cell code-output">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1, 2, 3, 4, 5, 6, 7]</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+<p>For- sikli <em>qiymatlarga</em> yoki <em>indexlarga</em> asoslanib alanishi mumkin. Indexga asoslansa Pythonda <code>range(startIncl, endExl)</code>, R da <code>start:end</code> yoki <code>seq(satrt, end)</code> metodlari qo’llaniladi. Masalan biror ro’yxat elementlari ustida for-siklini qiymat va indeks asosida qo’llab ko’ramiz.</p>
+<div class="code-r">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># qiymat asosisda ----------------------------</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">for</span> (city <span class="cf">in</span> cities){</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(city, <span class="st">", "</span>))</span>
+<span id="cb7-5"><a href="#cb7-5"></a>}</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt; Qarshi, Toshkent, Xiva, Denov, Shahrisabz, Fargona,</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="fu">cat</span>(<span class="st">"tugadi"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt; tugadi</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co"># indeks asosisa -----------------------------</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(cities)){</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">cat</span>(<span class="fu">paste</span>(i, <span class="st">"-nchi ism:"</span>, cities[i], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb7-12"><a href="#cb7-12"></a>}</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 1 -nchi ism: Qarshi </span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 2 -nchi ism: Toshkent </span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; 3 -nchi ism: Xiva </span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt; 4 -nchi ism: Denov </span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; 5 -nchi ism: Shahrisabz </span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt; 6 -nchi ism: Fargona</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="fu">cat</span>(<span class="st">"sikl tugadi"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt; sikl tugadi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="code-py">
+<p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>cities <span class="op">=</span> [<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># qiymat asosisda ----------------------------</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="bu">print</span>(city, end <span class="op">=</span> <span class="st">", "</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; Qarshi, Toshkent, Xiva, Denov, Shahrisabz, Fargona,</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="st">"tugadi"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt; tugadi</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># indeks asosisa -----------------------------</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(cities)):</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">-chi ism: </span><span class="sc">{</span>cities[i]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt; 0-chi ism: Qarshi</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt; 1-chi ism: Toshkent</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt; 2-chi ism: Xiva</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt; 3-chi ism: Denov</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt; 4-chi ism: Shahrisabz</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt; 5-chi ism: Fargona</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="bu">print</span>(<span class="st">"sikl tugadi"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; sikl tugadi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="while---loop" class="level1">
+<h1><code>while</code> - loop</h1>
+<p>For-sikli kabi <em>while</em>- siklida ham biror ifoda siklda takroran bajariladi. For- sikldan farqli ravishda bu yerda siklni nechi marta aylanish kerakligi aniq bo’lmaydi. Toki shart qanoatlantirlgan kean, siklda ifoda takrorlanaveradi, yani qachonki shart bajarilmasa dastur sikl ichidagi amalni bajarishdan toxtaydi. Masalan “To’ymaginimizcha ovqatni yeyaveramiz” - ya’ni toki bu yerdagi shart (hali to’ymadim) qanoatlantrilsa, ovqat yeyishdan toxtamaymiz. Qachonki shart qanoatlantrililmasa (tOydim) ovqat yeyishdan to’xtaymiz. Yoki boshqa misol, chanqog bosilmaguncha suv(bir stakan, ikki stakan,…) suv ichuramiz.</p>
+<p>While siklida nechi marta aylanishi aniq bolmagani uchun, unga qachondir shartni qanoatlantirmaydigan logika qurisch kerak. Bunig uchun boshida, initial (boshlovchi) son belgilanadi, bu son takroryi harakatni ifodalaydi va kupincha <code>i</code> bilan belgilanadi (lekin qanday nomlash ixtiyoriy). Keyin sikl ichida ham shu son oshirilib (yoki kamaytirilib, agar oxiridan boshiga yurish kerak bolsa) boriladi.<br> <em><span style="color:red;">Aks holda, tugallanmaydigan sikga tushib qolinadi, va buni kuch bilan toxtatish kwerak boladi!! Agar shunday hol bo’lib qolsa klaviaturada <code>strg</code> + <code>C</code> tugmalarni bosish dasturni majburiy to’xtadai</span></em></p>
+<p>Quyidagi misolda berilgan songacha bo’lgan raqamlar yigindisini hisoblaymiz. Masalan berilgan son n = 8, Summa = 1+2+3+4+5+6+7+8 = 36.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-r">
+<div class="cell code-input">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">##| classes: code-input</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>n <span class="ot">&lt;-</span> <span class="dv">8</span>                <span class="co"># Berilgan son</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>s <span class="ot">&lt;-</span> <span class="dv">0</span>                <span class="co"># boshlangich yigindi</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span>            <span class="co"># siklni sanash uchun initial son</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span>                <span class="co"># harakat boshlanishi ozgaruvchiga uatiladi</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="cf">while</span>(x <span class="sc">&lt;=</span> n){        <span class="co"># har aylangada shart(i&lt;8) tekshiriladi, false bolsa toxtaydi</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># sikl sanovchi son har aylanganda 1 taga oshiriladi</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  s <span class="ot">&lt;-</span> s <span class="sc">+</span> x          <span class="co"># ayni paytda uzgaruvchi qabul qilgan qiymat yigindiga qoshiladi</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">cat</span>(x,<span class="st">"-nchi aylanish: yigindi ="</span>, s,  <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span><span class="dv">1</span>           <span class="co"># harakatni ifodalovchi son 1 taga oshiriladi</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>}</span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="fu">cat</span>(<span class="st">"1 dan 8 gach bo'lgan raqamlar yigindisi: "</span>, s)</span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sikl"</span>, count, <span class="st">"marta aylandi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 1 -nchi aylanish: yigindi = 1 
+#&gt; 2 -nchi aylanish: yigindi = 3 
+#&gt; 3 -nchi aylanish: yigindi = 6 
+#&gt; 4 -nchi aylanish: yigindi = 10 
+#&gt; 5 -nchi aylanish: yigindi = 15 
+#&gt; 6 -nchi aylanish: yigindi = 21 
+#&gt; 7 -nchi aylanish: yigindi = 28 
+#&gt; 8 -nchi aylanish: yigindi = 36 
+#&gt; 1 dan 8 gach bo'lgan raqamlar yigindisi:  36
+#&gt; Sikl 8 marta aylandi</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-py">
+<div class="cell code-output">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>summa <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>sana <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="cf">while</span> i <span class="op">&lt;=</span> <span class="dv">8</span>:   <span class="co"># har bir aylanganda shart tekshiriladi</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>  sana <span class="op">+=</span> <span class="dv">1</span>     <span class="co"># sana = sana + 1 ning qisqartmasi</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  summa <span class="op">+=</span> i</span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">-chi aylanish: yigindi = </span><span class="sc">{</span>summa<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>  i <span class="op">+=</span> <span class="dv">1</span>        <span class="co"># isteration nummerni bittaga oshirishni unutmaslik kerak!</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="bu">print</span>(<span class="ss">f"1 dan 8 gach bo'lgan raqamlar yigindisi: </span><span class="sc">{</span>summa<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">print</span>((<span class="ss">f"Sikl </span><span class="sc">{</span>sana<span class="sc">}</span><span class="ss"> marta aylandi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; 1-chi aylanish: yigindi = 1
+#&gt; 2-chi aylanish: yigindi = 3
+#&gt; 3-chi aylanish: yigindi = 6
+#&gt; 4-chi aylanish: yigindi = 10
+#&gt; 5-chi aylanish: yigindi = 15
+#&gt; 6-chi aylanish: yigindi = 21
+#&gt; 7-chi aylanish: yigindi = 28
+#&gt; 8-chi aylanish: yigindi = 36
+#&gt; 1 dan 8 gach bo'lgan raqamlar yigindisi: 36
+#&gt; Sikl 8 marta aylandi</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="break-continue" class="level1">
+<h1><code>break</code> &amp; <code>continue</code></h1>
+<p><em>break</em> va <em>continue</em> lar biror bir shart qanoatlantriliganda siklni ertaroq tark etish imkonini beradi. <code>break</code> orqali, agar biror shart qanoatlantirilsa butunlay sikldan chiqib ketiladi. Agar siklda joriy takrorlanish, ya’ni faqat biror qadam tashlab ketilishi kerak bolsa unda <code>continue</code> (Python) yoki <code>next</code> (R) foydalaniladi.</p>
+<p><strong>break</strong> - misol uchun 10 gacha bolgan sonlarni yigindisini faqat yigindi 15 ga teng bolguncha hisoblaymiz, agar yigindi 15 ga yetsa sikldan chiqib ketiladi</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>sonlar <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># for -----------------------------------------</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>y <span class="ot">=</span> <span class="dv">0</span>                  <span class="co"># yigindi (boshlangich)</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="cf">for</span> (son <span class="cf">in</span> sonlar){</span>
+<span id="cb13-5"><a href="#cb13-5"></a>  y <span class="ot">&lt;-</span> y <span class="sc">+</span> son</span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">15</span>){</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="cf">break</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  }</span>
+<span id="cb13-9"><a href="#cb13-9"></a>}</span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="fu">cat</span>(<span class="st">"Yigindi for- siklda: "</span>, y)</span>
+<span id="cb13-11"><a href="#cb13-11"></a></span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="co"># while ---------------------------------------</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>suma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>iter <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="cf">while</span>(iter <span class="sc">&lt;=</span> <span class="fu">length</span>(sonlar)){</span>
+<span id="cb13-16"><a href="#cb13-16"></a>  suma <span class="ot">&lt;-</span> suma <span class="sc">+</span> iter</span>
+<span id="cb13-17"><a href="#cb13-17"></a>  <span class="cf">if</span> (suma <span class="sc">==</span> <span class="dv">15</span>){</span>
+<span id="cb13-18"><a href="#cb13-18"></a>    <span class="cf">break</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  }</span>
+<span id="cb13-20"><a href="#cb13-20"></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>}</span>
+<span id="cb13-22"><a href="#cb13-22"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi while- siklda: "</span>, suma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>numbers <span class="op">=</span> [son <span class="cf">for</span> son <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># for ------------------------------------</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="cf">if</span> total <span class="op">==</span> <span class="dv">15</span>:</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">break</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  total <span class="op">+=</span> num</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="bu">print</span>(<span class="st">"Yigindi for- siklda: "</span>, total)</span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># while ---------------------------------</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>sum_son <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>qadam <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="cf">while</span> qadam <span class="op">&lt;=</span> <span class="bu">len</span>(numbers):</span>
+<span id="cb14-14"><a href="#cb14-14"></a>  <span class="cf">if</span> sum_son <span class="op">==</span> <span class="dv">15</span>:</span>
+<span id="cb14-15"><a href="#cb14-15"></a>    <span class="cf">break</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>  sum_son <span class="op">+=</span> qadam</span>
+<span id="cb14-17"><a href="#cb14-17"></a>  qadam <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="bu">print</span>(<span class="st">"Yigindi while- siklda: "</span>, sum_son)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="section-4" class="level2 code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section-4"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></h2>
+<div class="cell code-input">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Yigindi for- siklda:  15
+#&gt; Yigindi while- siklda:  15</code></pre>
+</div>
+</div>
+</section>
+<section id="section-5" class="level2 code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section-5"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></h2>
+<div class="cell code-output">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Yigindi for- siklda:  15
+#&gt; Yigindi while- siklda:  15</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+<p><strong>continue</strong> - bunga misol qilib yana 10 gacha bolgan sonlar ketma ketligini olamiz, va shu qatordagi rqamalr yigindisini hisoblaymiz. Agar ro’yxatda sonlar <em>mavjud bo’lmasa</em>( R da <code>NA</code>, Pythonda <code>None</code> yoki <code>NaN</code>), bu sonlar uchun siklda aylanayotganda yigindi hisoblash amalni qo’llamaymiz, boshqacha aytganda bu yerdan <em>hakalab</em> utib ketiladi.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>ruyhat_na <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>ruyhat_na[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>, <span class="dv">9</span>)]<span class="ot">&lt;-</span><span class="cn">NA</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>ruyhat_na</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># for ------------------------------------------</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>sum_na <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="cf">for</span> (m <span class="cf">in</span> ruyhat_na){</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(m)) { <span class="co"># is.na(x) Na ni tekshiradi</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="cf">next</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  }</span>
+<span id="cb17-11"><a href="#cb17-11"></a>  sum_na <span class="ot">&lt;-</span> sum_na <span class="sc">+</span> m</span>
+<span id="cb17-12"><a href="#cb17-12"></a>}</span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="fu">cat</span>(<span class="st">"Yigindi by for: "</span>, sum_na)</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="co"># while -----------------------------------------</span></span>
+<span id="cb17-15"><a href="#cb17-15"></a>na_sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb17-16"><a href="#cb17-16"></a>k <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="cf">while</span>(k <span class="sc">&lt;=</span> <span class="fu">length</span>(ruyhat_na)){</span>
+<span id="cb17-18"><a href="#cb17-18"></a>  </span>
+<span id="cb17-19"><a href="#cb17-19"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(ruyhat_na[k])){</span>
+<span id="cb17-20"><a href="#cb17-20"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb17-21"><a href="#cb17-21"></a>    <span class="cf">next</span></span>
+<span id="cb17-22"><a href="#cb17-22"></a>  }</span>
+<span id="cb17-23"><a href="#cb17-23"></a>  na_sum <span class="ot">&lt;-</span> na_sum <span class="sc">+</span> ruyhat_na[k]</span>
+<span id="cb17-24"><a href="#cb17-24"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb17-25"><a href="#cb17-25"></a>}</span>
+<span id="cb17-26"><a href="#cb17-26"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi by while: "</span>, na_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#import math</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>ruyxat <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb18-3"><a href="#cb18-3"></a>pos <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>]<span class="op">;</span> target <span class="op">=</span> [<span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>]</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">zip</span>(pos, target):</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  ruyxat[idx] <span class="op">=</span> val</span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(ruyxat)</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># for -----------------------------------------------</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>tot_sum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="cf">for</span> r <span class="kw">in</span> ruyxat:</span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="cf">if</span> r <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="cf">continue</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>  tot_sum <span class="op">+=</span> r</span>
+<span id="cb18-13"><a href="#cb18-13"></a><span class="bu">print</span>(<span class="ss">f"Yigindi by for: </span><span class="sc">{</span>tot_sum<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-14"><a href="#cb18-14"></a><span class="co"># while ---------------------------------------------</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a>sum_total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>elmt <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a><span class="cf">while</span> elmt <span class="op">&lt;</span> <span class="bu">len</span>(ruyxat):</span>
+<span id="cb18-18"><a href="#cb18-18"></a>  <span class="cf">if</span> ruyxat[elmt] <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb18-19"><a href="#cb18-19"></a>    elmt <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>    <span class="cf">continue</span></span>
+<span id="cb18-21"><a href="#cb18-21"></a>  sum_total <span class="op">+=</span> ruyxat[elmt]</span>
+<span id="cb18-22"><a href="#cb18-22"></a>  elmt <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a><span class="bu">print</span>(<span class="ss">f"Yigindi by while: </span><span class="sc">{</span>sum_total<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="section-6" class="level2 code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section-6"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></h2>
+<div class="cell code-input">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;  [1]  1  2  3  4 NA  6  7 NA NA 10
+#&gt; Yigindi by for:  33
+#&gt; Yigindi by while:  33</code></pre>
+</div>
+</div>
+</section>
+<section id="section-7" class="level2 code-py quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<h2 class="anchored" data-anchor-id="section-7"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></h2>
+<div class="cell code-output">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1, 2, 3, 4, None, 6, 7, None, None, 10]
+#&gt; Yigindi by for: 33
+#&gt; Yigindi by while: 33</code></pre>
+</div>
+</div>
+</section>
+</div>
+</div>
+<p><em>While</em>- siklda etibor berilish kerak bolgan narsa, while da sikl index asosida aylanadi. For-siklda <em>for element in ruyxat</em> qilib shu element ustida sikl ichida biror amal bajarish mumkin, masalan <em>summe = summe + element</em>. Lekin while- siklidigi iteratsiya son, siklni aylanishini taminlovchi yoki sanab boruvchi son hisoblanadi va sikl har bir aylanganda tartibli ravishda o’sib boradi. Ushanchun sikl ichida biror ro’yxat elementiga murojat qilish uchun bu sonni ro’xatni indeksi sifatida qo’llab, shu indeksdagi bo’yicha joylashgan ro’yxat elementiga murojaat qilish mumkin, masalan sikl <em>while element &lt; len(ro’yxat)</em> sharti bo’yicha aylansa, royxatdagfi elementga sikl ichida <em>ro’yxat[element]</em> kurinishda murojaat qilish kerak</p>
+<p>Agar qandaydir muammo for- sikli bilan yoki boshqa funksiya bilan yechiladigan bolsa, while- siklini shaxsan man ko’p ishlatishni tavsiya qilmagan bo’lardim. Chunki while- siklda tez tugallanmas siklga tushib qolish oson, agar bazi narsalar etiborga olinmasa, yoki esdan chiqarilsa, masalan iteratsiya sonini sikl ichida birga oshirish, yoki notugri joyda oshirib quyish va hokozo.</p>
+<p>Quyidagi rasmda for- va while- sikli sexemasi tasvirlangan (Grafik <span class="citation" data-cites="py_Rot">(<a href="#ref-py_Rot" role="doc-biblioref">Sweigart 2020</a>)</span> dan o’zlashtirilgan). <img src="pictures/loop.png" class="img-fluid" alt="Click for zooming"></p>
+</section>
+<section id="repeat---loop-in-r" class="level1">
+<h1><code>repeat</code> - loop in R</h1>
+<p>Biror bir blokni/ifodani bir necha marta sikl orqali takrorlash uchun yuqoridagi sikl turlaridan tashqari R da yana <code>repeat</code>- sikli mavjud. Boshqalardan bu siklni farqi, bunda siklni tugatadiga shartlar bolmaydi. Bu sikl faqat majburiy <em>if</em> va <em>break</em> orqali toxtatiladi. Masalan biz sonlarni kvadrat darajasi to 150 ga teng yoki bo’liguniga qadar uzini o’ziga kupaytirib chiqamiz. Ya’ni 1 dan boshlab sonlarni kvadrat darajaga oshiramiz, daraja 150 dan oshib ketmasligi kerak.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>daraja <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="cf">repeat</span> {</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  </span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="cf">if</span> (daraja <span class="sc">&gt;=</span> <span class="dv">150</span>) {</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    <span class="cf">break</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  }</span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(daraja, <span class="st">" "</span>))</span>
+<span id="cb21-9"><a href="#cb21-9"></a>  daraja <span class="ot">&lt;-</span> d<span class="sc">*</span>d</span>
+<span id="cb21-10"><a href="#cb21-10"></a>  d <span class="ot">&lt;-</span> d<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>}</span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">#&gt; 0 1 4 9 16 25 36 49 64 81 100 121 144</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="try-except-in-python" class="level1">
+<h1><code>try:</code> &amp; <code>except</code> in Python</h1>
+<p>Dastrurlash dunyosida bir gap (qoida deysayam boladi) bor ekan: <code>Kutilmagan narsalarni kutish</code>. Bu bilan qandaydir dastur yozib, orqaga suyanib <em>run</em> qilganda, qayerdandir qandaydir jaloba kelishi nazarda tutilgan. Bunaqa holat, manda ayniqsa endi urganayotgan boshlovchi sifatida deyarli har doim uchraydi;). Objektlar ustida qandaydir ammalr bajarganda hatoliklar (Error) har doim uchrab turadi. Ko’pincha uchraydiganlari masalan:<br> - <code>ValueError</code> – Agar kutilgan qiymat berilmasa, masalan yoshni hisoblash uchun tug’ilgan yil kerak va bu butun son shaklidan bo’lishi kerak. Buni uchun foydalanuvchidan tugilgan yili suralganda, bilmasdan butun son emas, o’nli qilib kiritib qo’ysa, yoki matn shaklida, bu hatolik kelib chiqadi.</p>
+<ul>
+<li><p><code>TypeError</code> – Sonlar sutida amal bajargand, ularni turi bir-biriga mis kelmasa, malasan ikki sonni bo’lganda, ularni biri boshqa turga ega bo’lsa, masalan matn shaklida: x = 40, y = “10” -&gt; x / y.</p></li>
+<li><p><code>KeyError</code> – bu asosan Python lug’atlarida (dictionaries) uchraydi, agar mavjud bo’lmagan kalit chaqirilganda.</p></li>
+<li><p><code>ZeroDivisionError:</code> – Bu hatolik sonni 0 ga bo’lish amali bajarilganda kelib chiqadi, chunki sonni 0 ga bolib bolmaydi.</p></li>
+<li><p><code>NameError:</code> – bu dastur paytida qandaydir mavjud bo’lmagan o’zgaruvchi nomi bilan biror bir o’zgaruvchiga murojaat qilingada kelib chiqadi.</p></li>
+<li><p><em>va hokozo …</em></p></li>
+</ul>
+<p>Bunday hatoliklarda, dastur ishga tushirilganda shu hatoliklar uchragan joygacha kod bajarilada, hatolik yuz bersa u yogiga o’tmaydi, demak dastur to’xtab qoladi. Shunday hatoliklarni oldini olish uchun Python da <code>try:</code> va <code>except</code> lardan foydalaniladi. <code>try</code>- iofasini ishlash prinsipi quyidagicha:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">try</span>:</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="co"># Bu yerda bajarilishi kerak bolgan kod</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  </span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="co"># Bu yerda ZeroDivisionError hatosini tugrilaydigan kod</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="co"># Buy erda TypeError ni haytosini tugrilaydigan kod</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Quyidagi misolda vazifa quyidagicha: ikkita <em>a</em> va <em>b</em> ro’yxat berilgan. Ro’yxat (a) elementlarini ro’yxatdagi (b) elementlaga bo’lish kerak. Buni uchun for- sikldan foydalaniladi. Ro’yxat elementöari ichida 0 va matn shaklidagilari ham bo’lgani sababli yuqoridagi hatoliklar uchrashi aniq. Buni try- va except bilan oldini olish kerak.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">8</span>]   </span>
+<span id="cb23-2"><a href="#cb23-2"></a>b <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="st">"3"</span>, <span class="dv">4</span>]</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(<span class="st">"a: "</span>, a)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="bu">print</span>(<span class="st">"a: "</span>, b)</span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(<span class="st">"----------------------------------"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(a,b):</span>
+<span id="cb23-7"><a href="#cb23-7"></a>  </span>
+<span id="cb23-8"><a href="#cb23-8"></a>  <span class="cf">try</span>:</span>
+<span id="cb23-9"><a href="#cb23-9"></a>    z <span class="op">=</span> x<span class="op">/</span>y</span>
+<span id="cb23-10"><a href="#cb23-10"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>z<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-11"><a href="#cb23-11"></a>  <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb23-12"><a href="#cb23-12"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss"> = ZeroDivisionError: Sonni 0 ga bo'lib bo'lmaydi!"</span>)</span>
+<span id="cb23-13"><a href="#cb23-13"></a>    x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a>    y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a>  <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb23-16"><a href="#cb23-16"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss"> = TypeError: Sonlar bir xil turda (int) bo'lishi kerak!"</span>)</span>
+<span id="cb23-17"><a href="#cb23-17"></a>    x <span class="op">=</span> <span class="bu">int</span>(x)</span>
+<span id="cb23-18"><a href="#cb23-18"></a>    y <span class="op">=</span> <span class="bu">int</span>(y)</span>
+<span id="cb23-19"><a href="#cb23-19"></a>    </span>
+<span id="cb23-20"><a href="#cb23-20"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Tugadi, topshiriq muvaffaqiyatli bajarildi."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; a:  [1, 0, 4, 5, 4, 8]
+#&gt; a:  [2, 1, 3, 0, '3', 4]
+#&gt; ----------------------------------
+#&gt; 1 / 2 = 0.5
+#&gt; 0 / 1 = 0.0
+#&gt; 4 / 3 = 1.3333333333333333
+#&gt; 5 / 0 = ZeroDivisionError: Sonni 0 ga bo'lib bo'lmaydi!
+#&gt; 4 / 3 = TypeError: Sonlar bir xil turda (int) bo'lishi kerak!
+#&gt; 8 / 4 = 2.0
+#&gt; 
+#&gt; Tugadi, topshiriq muvaffaqiyatli bajarildi.</code></pre>
+</div>
+</div>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-py_PyVis" class="csl-entry" role="listitem">
+Guy Hart-Davis, Ted Hart-Davis. 2022. <em><span>Teach Yourself VISUALLY Python</span></em>. John Wiley &amp; Sons, Inc.
+</div>
+<div id="ref-py_EinfachPy" class="csl-entry" role="listitem">
+Inden, Michael. 2022. <em>Einfach Python</em>. dpunkt.verlag GmbH.
+</div>
+<div id="ref-r_SoWi" class="csl-entry" role="listitem">
+Manderscheid, Katharina. 2017. <em><span class="nocase">Sozialwissenschaftliche Datenanalyse mit R</span></em>. Springer Fachmedien Wiesbaden.
+</div>
+<div id="ref-py_daPy" class="csl-entry" role="listitem">
+McKinney, Wes. 2019. <em><span class="nocase">Datenanalyse mit Python</span></em>. dpunkt.verlag GmbH.
+</div>
+<div id="ref-LearnR" class="csl-entry" role="listitem">
+Peng, Roger D. 2020. <em><span class="nocase">R Programming for Data Science</span></em>.
+</div>
+<div id="ref-py_Rot" class="csl-entry" role="listitem">
+Sweigart, Al. 2020. <em>Routineaufgaben Mit Python Automatisieren</em>. 2nd ed. dpunkt.verlag GmbH.
+</div>
+<div id="ref-py_Python3" class="csl-entry" role="listitem">
+Weigend, Michael. 2019. <em><span class="nocase">Python 3 : Lernen und professionell anwenden. Das umfassende Praxisbuch,</span></em>. 8th ed. Springer Gabler.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sultanov\.quarto\.pub\/blog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p><i class="fa-regular fa-copyright" aria-label="copyright"></i> 2024, Made with <i class="fa-solid fa-heart" aria-label="heart"></i> in <a href="https://quarto.org/">Quarto</a> by Fazliddin Sultanov</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

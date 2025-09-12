@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Fazliddin Sultanov</title>
+<link>https://sultanov.quarto.pub/blog/projects.html</link>
+<atom:link href="https://sultanov.quarto.pub/blog/projects.xml" rel="self" type="application/rss+xml"/>
+<description>A sample newbie&#39;s blog</description>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Mon, 01 Sep 2025 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dashboard with Shiny in Quarto</title>
+  <dc:creator>Fazliddin Sultonov</dc:creator>
+  <link>https://sultanov.quarto.pub/blog/projects/uzbinde.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="pics/uzdeplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://sultanov.quarto.pub/blog/projects/pics/uzdeplot.png" class="img-fluid"></a></p>
+<p>In this project, a dashboard was created using <a href="https://quarto.org/">Quarto</a>. It shows the number of Uzbeks in Germany, according to their residence status and comparison over the years.</p>
+<div class="column-screen">
+<p><a href="pics/db_col.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://sultanov.quarto.pub/blog/projects/pics/db_col.png" class="img-fluid"></a></p>
+</div>
+<p><br> <strong><i class="fa-solid fa-database" aria-label="database"></i> Data Source:</strong> <em><a href="https://www-genesis.destatis.de/datenbank/online/">©Statistisches Bundesamt (Destatis), 2025 | Stand: 31.07.2025</a></em> <br> <strong><i class="fa-brands fa-square-github" aria-label="square-github"></i> Code Source:</strong> <em><a href="https://github.com/sultanovf/uzbinde">GitHub</a></em> <br> <strong><i class="fa-solid fa-square-share-nodes" aria-label="square-share-nodes"></i> Published on:</strong> <em><a href="https://www.shinyapps.io/">shinyapps.io</a></em> <br> <strong><i class="fa-solid fa-chart-simple" aria-label="chart-simple"></i> Link to dashboard:</strong> <em><a href="https://sultanov.shinyapps.io/uzbinde/" target="_blank">sultanov.shinyapps.io/uzbinde</a></em></p>
+<p><a href="pics/db_gh.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://sultanov.quarto.pub/blog/projects/pics/db_gh.gif" class="img-fluid"></a></p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>quarto</category>
+  <category>dashboard</category>
+  <category>R</category>
+  <category>ggplot2</category>
+  <category>shiny</category>
+  <category>ggpol</category>
+  <guid>https://sultanov.quarto.pub/blog/projects/uzbinde.html</guid>
+  <pubDate>Mon, 01 Sep 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>A small dynamic report in Excel with Python</title>
+  <dc:creator>Fazliddin Sultonov</dc:creator>
+  <link>https://sultanov.quarto.pub/blog/projects/pyinexcel.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="pics/pyexc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://sultanov.quarto.pub/blog/projects/pics/pyexc.png" class="img-fluid"></a></p>
+<hr>
+<p>Tabellarische Daten werden in Büros weltweit am meisten in Tabellenkalkulationen bearbeitet und gespeichert. Bekannteste Software dafür ist Microsoft Excel. Ich bin neulich darauf gestoßen, dass man Python in Excel (ab Microsoft 365) verwenden kann. Und ich hab mir vorgenommen, etwas damit zu probieren. Ich habe ein kleiner dynamischer Bericht in Excel mit Python erstellt, in dem es sich um die zehn Länder weltweit mit dem höchsten BIP auf Basis der Kaufkraftparität handelt.</p>
+<div class="column-page">
+<p><a href="pics/excpy1.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://sultanov.quarto.pub/blog/projects/pics/excpy1.gif" class="img-fluid"></a></p>
+</div>
+<p><br> <strong><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> File:</strong> <button class="btn btn-primary downloadthis  " id="dnldts16507"><i class="bi bi-database-fill-down"></i> Download the Excel file </button> <img src="https://latex.codecogs.com/png.latex?~~~~~~~~~~~~~"> <strong><i class="fa-solid fa-database" aria-label="database"></i> Data Source:</strong> <em><a href="https://data.worldbank.org/">Worldbank</a></em></p>
+<p>Um Python in Excel zu verwenden bzw. zu aktivieren, muss man eine Zelle auswählen, in die man die Formel mit Python schreiben will und klickt man auf der Registerkarte &gt; Formeln &gt; <code>Python einfügen</code> <strong><em>oder</em></strong> schreibt man in die Zelle <strong><code>=PY</code></strong>. Dann kann man Python - Code direkt in die Zelle schreiben. Im unten aufgeführten einfachen Beispiel werden die Werte in zwei Zellen (A1 und B1) summiert.</p>
+<p><a href="pics/excpy1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://sultanov.quarto.pub/blog/projects/pics/excpy1.png" class="img-fluid"></a></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtige Sachen zur Berücksichtigung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Auf die Zellen werden durch <strong><code>xl</code></strong> verwiesen, beispielweise einen Bezug auf Zellen A1:C10 kann durch <strong><code>xl("A1:C10")</code></strong> eingegeben werden</p></li>
+<li><p>Mehrere Zelle mit Python-Code werden von oben nach unten ausgeführt geschrieben sind.</p></li>
+<li><p>Zu verarbeitende Daten müssen entweder im Excelsheet stehen oder aus Power Query stammen.</p></li>
+<li><p>Daten werden durch die Eingabe der Tabellennamen (oder Power Query Namen) gelesen, in der Beispieldatei (kann heruntergeladen werden, sieh oben) ist beispielweise so eingegeben, mit dem Sheetnamen &lt;<data>&gt;, in dem sich die Daten befinden: <strong><code>df = xl("data[#Alle]", headers=True)</code></strong>. Durch [#All] werden gesamte Tabelle durch Python-Formel analsiert, bei headers = True werden die Spaltennamen berücksichtigt.</data></p></li>
+</ul>
+</div>
+</div>
+<p>Hier die Daten:</p>
+<div class="cell page-columns page-full">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> display, Markdown, HTML</span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># read file</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#"C:/Users/sultanov/Documents/blog/projects/data/topten.csv"</span></span>
+<span id="cb1-6">path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/topten.csv"</span></span>
+<span id="cb1-7">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(path, sep<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>, decimal<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">","</span>)</span>
+<span id="cb1-8">df_show <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.sort_values(by <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2024"</span>, ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, na_position<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"last"</span>).head(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Show the table</span></span>
+<span id="cb1-10">Markdown(df_show.to_markdown(index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display column-screen-inset">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country Name</th>
+<th style="text-align: left;">Country Code</th>
+<th style="text-align: right;">2015</th>
+<th style="text-align: right;">2016</th>
+<th style="text-align: right;">2017</th>
+<th style="text-align: right;">2018</th>
+<th style="text-align: right;">2019</th>
+<th style="text-align: right;">2020</th>
+<th style="text-align: right;">2021</th>
+<th style="text-align: right;">2022</th>
+<th style="text-align: right;">2023</th>
+<th style="text-align: right;">2024</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">China</td>
+<td style="text-align: left;">CHN</td>
+<td style="text-align: right;">1.85775e+13</td>
+<td style="text-align: right;">1.96473e+13</td>
+<td style="text-align: right;">2.09746e+13</td>
+<td style="text-align: right;">2.28625e+13</td>
+<td style="text-align: right;">2.47776e+13</td>
+<td style="text-align: right;">2.57772e+13</td>
+<td style="text-align: right;">2.94382e+13</td>
+<td style="text-align: right;">3.25255e+13</td>
+<td style="text-align: right;">3.55204e+13</td>
+<td style="text-align: right;">3.81901e+13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">USA</td>
+<td style="text-align: right;">1.8295e+13</td>
+<td style="text-align: right;">1.88049e+13</td>
+<td style="text-align: right;">1.96121e+13</td>
+<td style="text-align: right;">2.06565e+13</td>
+<td style="text-align: right;">2.154e+13</td>
+<td style="text-align: right;">2.13541e+13</td>
+<td style="text-align: right;">2.36812e+13</td>
+<td style="text-align: right;">2.60069e+13</td>
+<td style="text-align: right;">2.77207e+13</td>
+<td style="text-align: right;">2.91849e+13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">India</td>
+<td style="text-align: left;">IND</td>
+<td style="text-align: right;">7.20458e+12</td>
+<td style="text-align: right;">7.79552e+12</td>
+<td style="text-align: right;">8.35471e+12</td>
+<td style="text-align: right;">9.23079e+12</td>
+<td style="text-align: right;">9.93285e+12</td>
+<td style="text-align: right;">9.77102e+12</td>
+<td style="text-align: right;">1.13844e+13</td>
+<td style="text-align: right;">1.31241e+13</td>
+<td style="text-align: right;">1.48459e+13</td>
+<td style="text-align: right;">1.61908e+13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Russian Federation</td>
+<td style="text-align: left;">RUS</td>
+<td style="text-align: right;">3.52624e+12</td>
+<td style="text-align: right;">3.53898e+12</td>
+<td style="text-align: right;">3.8071e+12</td>
+<td style="text-align: right;">4.23184e+12</td>
+<td style="text-align: right;">4.57955e+12</td>
+<td style="text-align: right;">4.65143e+12</td>
+<td style="text-align: right;">5.68827e+12</td>
+<td style="text-align: right;">6.00631e+12</td>
+<td style="text-align: right;">6.47648e+12</td>
+<td style="text-align: right;">6.92125e+12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Japan</td>
+<td style="text-align: left;">JPN</td>
+<td style="text-align: right;">5.20091e+12</td>
+<td style="text-align: right;">5.1589e+12</td>
+<td style="text-align: right;">5.26225e+12</td>
+<td style="text-align: right;">5.34406e+12</td>
+<td style="text-align: right;">5.40446e+12</td>
+<td style="text-align: right;">5.35671e+12</td>
+<td style="text-align: right;">5.57465e+12</td>
+<td style="text-align: right;">5.9304e+12</td>
+<td style="text-align: right;">6.21296e+12</td>
+<td style="text-align: right;">6.40767e+12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Germany</td>
+<td style="text-align: left;">DEU</td>
+<td style="text-align: right;">3.96657e+12</td>
+<td style="text-align: right;">4.24671e+12</td>
+<td style="text-align: right;">4.47259e+12</td>
+<td style="text-align: right;">4.66536e+12</td>
+<td style="text-align: right;">4.92498e+12</td>
+<td style="text-align: right;">4.88037e+12</td>
+<td style="text-align: right;">5.20231e+12</td>
+<td style="text-align: right;">5.66389e+12</td>
+<td style="text-align: right;">5.76347e+12</td>
+<td style="text-align: right;">6.03785e+12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brazil</td>
+<td style="text-align: left;">BRA</td>
+<td style="text-align: right;">2.98912e+12</td>
+<td style="text-align: right;">2.90789e+12</td>
+<td style="text-align: right;">2.98029e+12</td>
+<td style="text-align: right;">3.18719e+12</td>
+<td style="text-align: right;">3.33378e+12</td>
+<td style="text-align: right;">3.35978e+12</td>
+<td style="text-align: right;">3.78777e+12</td>
+<td style="text-align: right;">4.18023e+12</td>
+<td style="text-align: right;">4.47104e+12</td>
+<td style="text-align: right;">4.73465e+12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indonesia</td>
+<td style="text-align: left;">IDN</td>
+<td style="text-align: right;">2.6252e+12</td>
+<td style="text-align: right;">2.71576e+12</td>
+<td style="text-align: right;">2.85731e+12</td>
+<td style="text-align: right;">3.06992e+12</td>
+<td style="text-align: right;">3.26619e+12</td>
+<td style="text-align: right;">3.2234e+12</td>
+<td style="text-align: right;">3.53062e+12</td>
+<td style="text-align: right;">3.98307e+12</td>
+<td style="text-align: right;">4.33474e+12</td>
+<td style="text-align: right;">4.66289e+12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">France</td>
+<td style="text-align: left;">FRA</td>
+<td style="text-align: right;">2.7229e+12</td>
+<td style="text-align: right;">2.86115e+12</td>
+<td style="text-align: right;">2.97579e+12</td>
+<td style="text-align: right;">3.11488e+12</td>
+<td style="text-align: right;">3.44528e+12</td>
+<td style="text-align: right;">3.34502e+12</td>
+<td style="text-align: right;">3.56292e+12</td>
+<td style="text-align: right;">3.82396e+12</td>
+<td style="text-align: right;">3.98238e+12</td>
+<td style="text-align: right;">4.20156e+12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: left;">GBR</td>
+<td style="text-align: right;">2.76798e+12</td>
+<td style="text-align: right;">2.8923e+12</td>
+<td style="text-align: right;">3.04189e+12</td>
+<td style="text-align: right;">3.12965e+12</td>
+<td style="text-align: right;">3.33588e+12</td>
+<td style="text-align: right;">3.21907e+12</td>
+<td style="text-align: right;">3.41648e+12</td>
+<td style="text-align: right;">3.95784e+12</td>
+<td style="text-align: right;">3.96675e+12</td>
+<td style="text-align: right;">4.19651e+12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Wie oben geschrieben, werden die Zellen mit Python-Coder von oben nach unten ausgeführt. In der Datei, wurden einzelne Schritte in eine Zelle geschrieben. Im Sheet &lt;<python>&gt; sind diese Shritte beschrieben (Spalte A = step). Objectnamen (Spalte B = object) sind die Opbjekte, die durch Python-Codes (Spalte C = result) erstellt wurden. Wie unte auf dem Bild zu sehen ist, wird als erstes <em>Data Frame erstellt (step) namens &lt;<data>&gt; (object)</data></em> und <em>Python - Code ist in der dementsprechenden Zelle (results)</em>.</python></p>
+<p><a href="pics/excpy2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://sultanov.quarto.pub/blog/projects/pics/excpy2.png" class="img-fluid"></a></p>
+<p>Danach werden die Daten <em>pivotiert</em> und neues Objekt (df_piv) erstellt, um sie weiter zu bearbeiten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb2-2"></span>
+<span id="cb2-3">df_pv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.melt(data, id_vars <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Country Name"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Country Code"</span>], value_vars<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>data.iloc[:,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>:], var_name<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"years"</span>, value_name<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>)</span>
+<span id="cb2-4">df_pv.head(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;          Country Name Country Code years           gdp
+#&gt; 0               China          CHN  2015  1.857751e+13
+#&gt; 1       United States          USA  2015  1.829502e+13
+#&gt; 2               India          IND  2015  7.204581e+12
+#&gt; 3  Russian Federation          RUS  2015  3.526236e+12
+#&gt; 4               Japan          JPN  2015  5.200905e+12
+#&gt; 5             Germany          DEU  2015  3.966575e+12
+#&gt; 6              Brazil          BRA  2015  2.989121e+12
+#&gt; 7           Indonesia          IDN  2015  2.625202e+12
+#&gt; 8              France          FRA  2015  2.722896e+12
+#&gt; 9      United Kingdom          GBR  2015  2.767978e+12</code></pre>
+</div>
+</div>
+<p>Jetzt können wir aus Data Frame <em>Top-Länder nach GDP für jeweiliges Jahr selectieren (object -&gt; df_10 )</em> und <em>Rank-Spalte erstellen (object -&gt; df_rank)</em>.</p>
+<p><strong>Select top ten countries:</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Method #1</span></span>
+<span id="cb4-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># N = 10</span></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># maske = df_pv.groupby("years")["gdp"].rank(method="first", ascending=False) &lt;= N</span></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># df_10 = df_pv[maske]</span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Method #2</span></span>
+<span id="cb4-6">df_10 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_pv.sort_values([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"years"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>], ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>).groupby(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"years"</span>).head(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb4-7">df_10</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;             Country Name Country Code years           gdp
+#&gt; 1701               China          CHN  2024  3.819008e+13
+#&gt; 1702       United States          USA  2024  2.918489e+13
+#&gt; 1703               India          IND  2024  1.619082e+13
+#&gt; 1704  Russian Federation          RUS  2024  6.921249e+12
+#&gt; 1705               Japan          JPN  2024  6.407672e+12
+#&gt; ...                  ...          ...   ...           ...
+#&gt; 3     Russian Federation          RUS  2015  3.526236e+12
+#&gt; 6                 Brazil          BRA  2015  2.989121e+12
+#&gt; 9         United Kingdom          GBR  2015  2.767978e+12
+#&gt; 8                 France          FRA  2015  2.722896e+12
+#&gt; 7              Indonesia          IDN  2015  2.625202e+12
+#&gt; 
+#&gt; [100 rows x 4 columns]</code></pre>
+</div>
+</div>
+<p><strong>Rank column:</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1">df_rank <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_10.copy()</span>
+<span id="cb6-2">df_rank[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rank"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_rank.groupby(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"years"</span>)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>].rank(ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb6-3">df_rank</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;             Country Name Country Code years           gdp  rank
+#&gt; 1701               China          CHN  2024  3.819008e+13   1.0
+#&gt; 1702       United States          USA  2024  2.918489e+13   2.0
+#&gt; 1703               India          IND  2024  1.619082e+13   3.0
+#&gt; 1704  Russian Federation          RUS  2024  6.921249e+12   4.0
+#&gt; 1705               Japan          JPN  2024  6.407672e+12   5.0
+#&gt; ...                  ...          ...   ...           ...   ...
+#&gt; 3     Russian Federation          RUS  2015  3.526236e+12   6.0
+#&gt; 6                 Brazil          BRA  2015  2.989121e+12   7.0
+#&gt; 9         United Kingdom          GBR  2015  2.767978e+12   8.0
+#&gt; 8                 France          FRA  2015  2.722896e+12   9.0
+#&gt; 7              Indonesia          IDN  2015  2.625202e+12  10.0
+#&gt; 
+#&gt; [100 rows x 5 columns]</code></pre>
+</div>
+</div>
+<p><strong>prepare data frame for a plot &amp; create a plot for 2024:</strong></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># prepare df and format column gdp</span></span>
+<span id="cb8-2">df_plt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_rank.copy()</span>
+<span id="cb8-3">df_plt[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_plt[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1_000_000_000_000</span></span>
+<span id="cb8-4">df_plt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_plt.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>({<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span> : <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>})</span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># select year 2024</span></span>
+<span id="cb8-6">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_plt[df_plt[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"years"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2024"</span>].sort_values(by<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rank"</span>, ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create Plot</span></span>
+<span id="cb8-8">plt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df.plot(</span>
+<span id="cb8-9">    kind<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"barh"</span>,</span>
+<span id="cb8-10">    x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Country Name"</span>, y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gdp"</span>,</span>
+<span id="cb8-11">    title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GDP based on PPP in Bil. US Dollar for 2024"</span> ,</span>
+<span id="cb8-12">    xlabel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GDP, PPP in Bil. $"</span>,</span>
+<span id="cb8-13">    ylabel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Top ten countries"</span>,</span>
+<span id="cb8-14">    legend<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span>
+<span id="cb8-15">)</span>
+<span id="cb8-16">plt</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="pyinexcel_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://sultanov.quarto.pub/blog/projects/pyinexcel_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Python</category>
+  <category>dashboard</category>
+  <category>pandas</category>
+  <guid>https://sultanov.quarto.pub/blog/projects/pyinexcel.html</guid>
+  <pubDate>Fri, 01 Aug 2025 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Create Curriculum Vitae with {datadrivencv} in 
+ in Uzbek</title>
+  <dc:creator>Fazliddin Sultonov</dc:creator>
+  <link>https://sultanov.quarto.pub/blog/projects/create_cv/create_cv.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/cv_img.png" class="nolightbox img-fluid"></p>
+<section id="intro" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="intro"><span class="header-section-number">1</span> Intro</h2>
+<p>Resume - lotinchadagi Currilicum Vitae bilan ham aytiladigan, qisqacha CV, ya’ni tarjimai hol, bu ishga ariza topshirishdagi hujjatlardan eng muhimi hisoblanadi. Rimga olib boradiga yo’llar kop bolgani kabi, CV ni ham har xil usullarda yaratish mumkin. Man o’zimni <a href="https://sultanov.quarto.pub/cv/cv_html.html">resume</a> -imni shu paket yordamida yaratdim. Bu yerda Shu proyektchadan, R-dagi <code>datadrivencv</code> yordamida CV yaratishni qisqacha yoritib berishga qilaman. Paket muallifi <a href="https://github.com/nstrayer">Nick Strayer</a> va paket haqida batafsil ma’lumotni <a href="https://github.com/nstrayer/datadrivencv">GitHub</a> saytidan olish mumkin.</p>
+<p>Dastlab <code>datadrivencv</code> paketi haqida qisqacha. Bu R-dagi <em>library</em> ya’ni kutubxonalaridan biri. R dasturida bu <strong>package</strong> deyiladi. Buni Pythondagi <strong>modul</strong>-larga taqqoslash mumkin. Biror bir funksiyani ishlatish imkoniyatiga ega bolish uchun masalan, Paython-da olaylik, <em>pandas</em> mudulini avval installing qilib, ya’ni tushirib olib keyin <em>(import)</em> yuklashimiz kerak bolgani kabi, R-da ham avval paket tushirib olinadi va keyin <em>(library)</em> yuklanadi. Quyida misol tariqasida R-dagi <code>dplyr</code> paketi va Pythondagi <code>pandas</code> modulini tushirib olish va yuklash kursatilgan:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true"></a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false"></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<p><em>Intall</em> Package <code>dplyr</code></p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{r}</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dplyr"</span>)</span>
+<span id="cb1-3"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span></code></pre></div>
+<p><em>Library</em> Package <code>dplyr</code></p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{r}</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dplyr"</span>)</span>
+<span id="cb2-3"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span></code></pre></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<p><em>Install</em> modul <code>pandas</code> (via Prompt)</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{python}</span></span>
+<span id="cb3-2">pip install pandas</span>
+<span id="cb3-3"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span></code></pre></div>
+<p><em>Import</em> modul <code>pandas</code></p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```{python}</span></span>
+<span id="cb4-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb4-3"><span class="in" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">```</span></span></code></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-up" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="set-up"><span class="header-section-number">2</span> Set Up</h2>
+<p>Birinchi bo’lib man <code>datadrivencv</code> paketini tushirib olishim kerak. Bundan tashqari resume yaraishimga kerak bo’ladigan manbaa ya’ni inputni yaratishim kerak. Kerakli ma’lumotlar CSV-faylga (agar komputerda lokal saqlanmoqchi bolsa yok kimgadir Excelda ishlash qulay bolsa) yoki <a href="https://www.google.com/intl/de/sheets/about/">Google Sheets</a>-ga jadval sifatida kiritiladi. Quyida bularni alohida qadam tarzda yoritilgan.</p>
+<section id="sec-download" class="level3 page-columns page-full" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="sec-download"><span class="header-section-number">2.1</span> Download <code>datadrivencv</code></h3>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">R-dapopular yoki asosiy librarylar asosan <a href="https://cran.r-project.org/">CRAN <em>(Comprehensive R Archive Network)</em></a> dan yuklanadi. Bunda bizga ma’lum bolgan oddiy <code>install.pakages()</code> funksiyasi yordamida tushirib olishimiz mumkin. Keyingi R-Paketlari uchun manbaalar bu <strong>GitHub</strong> hisoblanadi. GitHub development versiyasini tushirib olish uchun <code>devtools</code> yoki <code>remotes</code> paketi kerak boladi. Bu paketlarni CRAN-dan tushirib olsa boladi. Keyin esa <code>remotes::install_github("Pakage")</code> orqali tushirib olinadi.</span></div></div>
+<p><code>datadrivencv</code>-Paketini tushirib olishda <code>remotes</code> yoki <code>devtools</code> paketlaridan foydalaniladi. Man <em>remotes</em> paketidan foydalandim. Paketni tushirishda R-Console-ga quyidagi buyruq beriladi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages("remotes") # if not yet installed</span></span>
+<span id="cb5-2">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"nstrayer/datadrivencv"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="sec-input" class="level3 page-columns page-full" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="sec-input"><span class="header-section-number">2.2</span> Prepare data</h3>
+<p>Resumega kerak boladiga asosiy manba bu Input, ya’ni jadval sifatida kiritilgan ma’lumotlar. Bular resumida turishi kerak bolgan asosiy bolimlar, yani kontakt, o’zi haqida qisqacha ma’lumot, kasbiy va akademik yo’llar va hokozo. Man input sifatida Google Sheet-ni tanladim. Jadvalni noldan boshlab yangi yaratish va to’ldirib chiqish o’rniga, <a href="https://nickstrayer.me/datadrivencv/">documentation</a>-da avtor tomonidan aytilganidek, ushbu jadval nusxasini olish va uni ehtiyojga qarab o’zgartirish mumkin.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><a href="img_cv/gsheet_copy.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/gsheet_copy.png" class="img-fluid"></a></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Chapdagi rasmda kurinib turgandek, avtorni <a href="https://docs.google.com/spreadsheets/d/14MQICF2F8-vf8CKPF1m4lyGKO6_thG-4aSwat1e2TWc/edit#gid=917338460">faylidan</a> nusxa ko’chirib olish mumkin. Men nusxa kochirib, o’zimni ma’lumotlarimni berdim. Bu yerda e’tibor berilishi kerak bolgan narsa, jadval nomlari o’zgarmasligi kerak, agar yangi bo’lim, ya’ni section yaratilsihi kerak bolsa, u holda biz keyinchalik Section&nbsp;3.3 da ko’radigan R-Skrip da ham kodni/funksiyani moslashtirish kerak.</p>
+</div>
+</div>
+</div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Google Sheet yaratganda, sozlamasidan uni hamma kurishiga ruxsat qilib o’zgartirib quyish kerak. Sozlamada faqat ko’rish uchun ruxsat qilib, o’zgartirishni boshqala uchun cheklab qo’ysa boladi</span></div></div>
+<p>Google Sheet dagi o’zimga moslashtirilgan jadval final holatda quyidagi ko’rinishda:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/gsheet_fs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Input for resume: Google Sheet"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/gsheet_fs.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>Input for resume: Google Sheet</figcaption>
+</figure>
+</div>
+<p>Rasmda ko’ringanidek, fayldagi har bir jadval resumedagi bir bo’lim yoki section hisoblanadi. Masalan hozirgacha ishlagan joylarimizni har birini alohida qatorga kiritamiz. Bunda birinchi <strong>section</strong> ustuniga Work Experience sectioni uchun kalit so’zi sifatida “work” so’zidan foydalandim, (kalit so’zini ixtiyori o’zgartirisch mumkin). Shun narsani akademik va maktab ta’limi uchun ham takrorlaymiz, faqat har bir section uchun alohida kalit so’zi bolishi kerak, manda maktab ta’limi uchun “school” va akademik ta’lim uchun “education” qilib o’zgartirilgan. Boshqa jadvallarda ham shunday moslashtirishni qilamiz. Quyidagi rasmda inputdagi qaysi jadval resumini qayeriga joylashishi korsatilgan.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/mycv.png" class="nolightbox img-fluid figure-img"></p>
+<figcaption>Sections in resume</figcaption>
+</figure>
+</div>
+<p>Jadvallar haqida, ularning formatlari, ustunlari va ularning vazifalari haqida <a href="https://nickstrayer.me/datadrivencv/">bu yerda</a> batafsil ma’lumot keltirilgan.</p>
+</section>
+</section>
+<section id="go-to-work" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="go-to-work"><span class="header-section-number">3</span> Go to work</h2>
+<p>Section&nbsp;2.1 da aytib o’tilganidek <em>datadrivencv</em>-Paketini tushirib olib va Section&nbsp;2.2 da korsatilgandek inputni tayyorlab bolgandan keyin asosiy qism, ya’ni R da resumeni yaratishni boshlasak boladi.</p>
+<section id="create-a-new-project" class="level3 page-columns page-full" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="create-a-new-project"><span class="header-section-number">3.1</span> Create a new project</h3>
+<div class="page-columns page-full"><p>R-Project lari har xil loihalarda ishlanganda ma’lumotlarni oson o’qishga imkoniyat yaratadi. Har bir loiha ya’ni proyekt uchun R-Project yaratilsa, R shu projektga tegishli bolgan o’qiladigan va yaratiladigan yangi ma’lumotlar, fayllarni shu proyekt joylashgan papkaga joylaydi va shu yerdan o’qiydi. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">R ma’lumotlarni asosan fayllar joylashgan papka qayer qilingan bolsa shu yerdan uqiydi (agar ma’lumot joylashgan papkaning to’liq adresi berilmasa). Bu R da <strong>Working Directory (WD)</strong> deyiladi. Yangi R-Project yaratilganda, R asosiy WD ni shu proyekt joylashgan joy qilib belgilaydi. R da hozirgi aktual WD ni Console ga <code>getwd()</code> funksiyasin berish orqali bilib olsa boladi. Agar ma’lum bir adres asosiy WD qilinmoqchi bolsa <code>setwd("adres/papka/file")</code> funksiyasi orqali istalgan ma’lumotlar joylashgan joyni asosiy WD qilib o’zgartirsa boladi.</span></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/new_pr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Create a new R-Project"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/new_pr.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>Create a new R-Project</figcaption>
+</figure>
+</div>
+</section>
+<section id="use-use_data_driven_cv-function" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="use-use_data_driven_cv-function"><span class="header-section-number">3.2</span> Use <code>use_data_driven_cv()</code> function</h3>
+<p>Yuqorida kursatilganidek, CV uchun R-Project yaratib olganimizdan keyin, birinchi bolib <code>use_data_driven_cv()</code> funksiyasini ishlatishimiz kerak boladi. Funksiya quyidagi ko’rinischda (argumentlar avtorniki, shularni o’zimiznikiga moslashtirishimiz kerak boladi):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/cv_func.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="use_data_driven_cv()-funksiyasi"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/cv_func.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>use_data_driven_cv()-funksiyasi</figcaption>
+</figure>
+</div>
+<p>Funksiya quyidagi parametr va argumentlarni o’z ichiga oladi:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>full_name</code></td>
+<td style="text-align: left;">Sarlavha, ya’ni resumeda eng tepada turadigan title, odatda ism-sharif</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>data_location</code></td>
+<td style="text-align: left;">Barcha ma’lumotlarni o’z ichiga olgan jadvallar joylashgan joy. Bu ma’lumot turlarini o’z ichiga olgan jadvallar joylashgan Google Shett faylining URL manzili yoki yoki shu ma’lumotlar kiritilgan csv-fyallar joylashgan mazil bolishi mumkin</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>pdf_location</code></td>
+<td style="text-align: left;">Yaratiladigan resumening PDF shakli saqlanishi kerak bolgan joy</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>html_location</code></td>
+<td style="text-align: left;">Yaratiladigan resumening HTML shakli saqlanishi kerak bolgan joy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>source_location</code></td>
+<td style="text-align: left;">Resume yaratish kodi joylashgan manzil</td>
+</tr>
+</tbody>
+</table>
+<p>Funksiyani ishlatish uchun, uni o’zimini argumentlar bilan o’zlashtirib R-Consolega beramiz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">datadrivencv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">use_datadriven_cv</span>(</span>
+<span id="cb6-2">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">full_name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Fazliddin Sultanov"</span>,</span>
+<span id="cb6-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data_location =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://docs.google.com/spreadsheets/d/XXXXXX"</span>,</span>
+<span id="cb6-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pdf_location =</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"my-cv.pdf"</span>),</span>
+<span id="cb6-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">html_location =</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(),</span>
+<span id="cb6-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">source_location =</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>()</span>
+<span id="cb6-7">)</span></code></pre></div>
+</div>
+<p>Yuqorida man <em>here</em> paketidagi <code>here()</code> funksiyasidan foydalandim. Yaratiladigan fayllar man yuqorida resume uchun yaratgan yangi <code>my-cv</code> loiha joylashgan <em>my-cv</em> papkasiga avtomatik tarzda joylanadi.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand for more about here::here()
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>here()</code>-funksiyasi <em>here</em> paketi ichida bolib, asosan fayllar joylashgan manzillarni boshqarishni osonlashtiruvchi vazifasini o’taydi. Masalan agar biz R da qandaydir ma’lumotni yuklamoqchi bolsak, bu ma’lumot R-fayli (Misol uchun ma’lumotni yuklash va qayta ishglash yozilgan R-Skript) joylashgan joyda ya’ni papkada bolishi kerak, aks holda biz R-ga ma’lumot joylashgan papkani toliq manzilini berishimiz kerak boladi (Bu esa hatoliklar ehtimolini oshiradi). Aytaylik, man R-da yange R-Project yaratdim va bu loihani <em>myproject</em> deb nomladim. Shu loyiha ichida yana ma’lumotlar uchun <em>mydada</em> nomli quyi papka ayaratdim va bu papka ichida bir nechta excel va csv fayllar joyladim. Agar shu papka ichidan <em>file.csv</em> faylini yuklamoqchi bolsam quyidagicha amallarni bajarishim kerak:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">setwd</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C/users/Documents/myproject/"</span>)</span>
+<span id="cb7-2">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mydata/file.csv"</span>)</span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># yoki</span></span>
+<span id="cb7-4">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C/users/Documents/myproject/mydata/file.csv"</span>)</span></code></pre></div>
+</div>
+<p><code>here()</code> funksiyasi orqali quyidagicha boladi:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(here)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># you may need to install the here package first</span></span>
+<span id="cb8-2">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mydata"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"file.csv"</span>))</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Yuqoridagi <code>use_datadriven_cv()</code> funksiya ishga tushirilgandan keyin (yuqoridagi ammallar to’g’ri bajarilgan bolsa), bizda my-cv papkasida to’rta yangi fayllar yaratiladi. Buni Plots and Files bo’limida, ya’ni RStudioda bu panel deyiladi) ko’rishimiz mumkin.</p>
+<p><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/files.png" class="img-fluid" alt="Click for zooming"> Yaratilgan fayllardan muhimi ya’ni uzgartirish yoki moslashtirilishi kerak bolganlari, bular <em>cv.rmd</em>, <em>cv_printing_functions.r</em> va <em>render_cv.r</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>cv.rmd</code></td>
+<td style="text-align: left;">Bu turli bo’limlari to’ldirilgan va resume tarkibini o’qiydigan RMarkdown fayl. Buni kerakli joyda uzgartirsa boladi. Masalan manda <em>Upskllls</em> bolimi yangi, bundan tashqari maktab ta’limi uchun ham alohda bo’lim <em>School Eductaion</em> qilingan.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>dd_cv.css</code></td>
+<td style="text-align: left;">Bu CSS-fayl, resumega shakl beruvchi (harflar kattaligi, turi, ranglar, va hokozo) qo’shimcha fayl.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>render_cv.r</code></td>
+<td style="text-align: left;">Ushbu fayl ishga tushirilganda rezyumening ham HTL ham PDF shakli yaratiladi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>cv_printing_functions.r</code></td>
+<td style="text-align: left;">Bu rezyumeni yaratish kodini o’z ichiga olgan fayl. Bu kod bir qancha funksiyalardan tashkil topgan. Bu funksiyalar jadvaldagi ma’lumotlarni Markdown/HTML ga o’tkazadi, va ularni PDF ga chop etischni ta’minlaydi. Odaytda fu faylda kop o’zgartirish qilinmaydi.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-custom-rmarkdown" class="level3 page-columns page-full" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="sec-custom-rmarkdown"><span class="header-section-number">3.3</span> Customize the RMarkdown file</h3>
+<div class="page-columns page-full"><p>Biz boshida paket yuklab oldik, o’zimizni ma’lumotlarni ichiga olgan jadvallarga ega Google Shett ya’ni inputni yaratdik va <code>use_datadriven_cv()</code> funksiyasini ishga tushirish bilan yuqoridagi fayllarga ega boldik. Qolgan asosiy ish, fayllarni o’zgartirish va <em>rendering</em> ya’ni rezyumeni yaratish qoldi. Asosiy o’zgartirilishi kerak bolgan fayl bu <code>cv.rmd</code>-faylidir. Man yuqorida Google Sheet da yangi bo’lim <em>IT-Skills</em> ham qushgandim. Shuning uchun bu bo’lim uchun ham kodni/funksiyani qo’shishim kerak. Buni <code>cv_printing_functions.r</code> faylida qilamiz. Buni man Language Skill funksiyasidan kopiya olib, o’zgartirib, IT Skills uchun yangi funksiya sifatida qo’shib qoydim. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Renedring paytda <code>cv_printing_functions.R</code> faylida hatolik yuz berishi mumkin (manda shunday boldi). Chunki bu faylda haliyam <em>googlesheets4</em> paketidagi eski funksiya <code>sheets_deauth()</code> qollanilganidan ekan. Yangi funksiya <code>gs4_deauth()</code> ko’rinishda. Demak faylning 32-qatoridagi <em><span style="color:red;"><del>googlesheets4::sheets_deauth()</del></span></em> ni o’rniga <em><span style="color:green;">googlesheets4::gs4_deauth()</span></em> qilib o’zgartirish kerak.</span></div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/itskill.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Yangi bo’lim/section"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/itskill.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>Yangi bo’lim/section</figcaption>
+</figure>
+</div>
+<p>Biz o’zgartirishimiz kerak bolgan asosiy fay bu <code>cv.rmd</code>. Section&nbsp;2.2 da ko’rsatilganidek, Google Sheetdagi <em>contact_info</em>, <em>language_skills</em> va <em>it_skills</em> jadvallari va ulardagi ma’lumotlar rezyumeni o’ng tomonida joylashadi, cv.rmd-faylda <strong>Aside</strong> qismi. <em>entries</em> jadvali va undagi bo’limlar (work, school, va hokozo) rezyumening asosiy qismi hisoblanib, chap va o’rta qismni egallaydi, cv.rmd-faylda bu <strong>Main</strong> qismida. <em>text_blocks</em> jadvaldagi ma’lumot manda razyumening yuqorida joylashgan. Bu jadvalda bo’lim nomi manda <em>intro</em> deb o’zgartirilgan va Markdownda bu ham <em>Main</em> qismida joylashgan</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/main.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Asosy qism"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/main.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>Asosy qism</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/aside.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="O’ng tomonda turadigan ma’lumotlar"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/aside.png" class="img-fluid figure-img" alt="Click for zooming"></a></p>
+<figcaption>O’ng tomonda turadigan ma’lumotlar</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Rezyumeni bo’limlariga mos ravishda icon joylashtirisch uchun, <a href="https://fontawesome.com/icons">Font Awesome</a> dan foydalaniladi. mAsalan manda <strong>Academic Education</strong> bo’limida <code>graduate</code> iconidan foydalanilgan, buni ham cv.rmd-faylida o’zgartirish kerak.</p>
+<p>Academic Education {data-icon=user-graduate data-concise=true} &gt; ====================================================</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">CV <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print_section</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'adv_educ'</span>)</span></code></pre></div>
+</div>
+<p>Google Sheetda <em>entries</em> jadvalida, <strong>section</strong> ustunida manda akademik ta’lim uchun kalit sozi <code>adv_educ</code> qilib o’zgartirilgan. BU cv.rmd-faylida ham <code>print_section()</code> funksiyasida shunday berilgan. Qolgan o’zgartirishlar ham shunday amalga oshiriladi.</p>
+</section>
+</section>
+<section id="rendering-the-resume" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="rendering-the-resume"><span class="header-section-number">4</span> Rendering the resume</h2>
+<p>Nihoyat yuqoridagi kursatilgan qadamlar togri bajarilgandan keyin, rezyumeni rendering ya’ni R-ga rezyumeni yaratishinga buyruq bersak boladi. Agar biz faqat HTML shaklini o’zini yaratmoqchi bolsak, buning uchun <code>cv.rmd</code> faylini ochib, RStudioda tepada <code>Knit</code> tugmasini bosish kifoya.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img_cv/rendr.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Render the cv.rmd file"><img src="https://sultanov.quarto.pub/blog/projects/create_cv/img_cv/rendr.png" class="img-fluid figure-img" alt="Render the cv.rmd file"></a></p>
+<figcaption>Render the cv.rmd file</figcaption>
+</figure>
+</div>
+<p><code>render_cv.r</code> fayldagi kodni bajarsak (RStudioda STRG+ENTER orqali kodni bajarsa ham boladi yoki yuqorida <em>Run</em> tugmasini bosish orqali), rezyume ham HTML, ham PDF shaklida yaratiladi.</p>
+</section>
+<section id="update-the-resume" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="update-the-resume"><span class="header-section-number">5</span> Update the resume</h2>
+<p>Qachondir rezyumeni yana o’zgartirishga to’ri keladi, masalan boshqa ishga o’tilsa, yoki hayotimizda kasbiy tomondan nimadir o’zgarish ro’y bersa, yanga sertifikat, yangi kusr va hokozo. Bunda rezyumeni yangilash uchun</p>
+<ul>
+<li>Input (manda Google Sheet) o’zgartiriladi</li>
+<li><code>cv.rmd</code> fayli o’zgartiriladi (qachon yangi section qo’shilsa, agar mavjud ma’lumotlar o’zgartirilishi kerak bolsa, bu bosqich shart emas)</li>
+<li>Va <code>render_cv.R</code> faylidagi kodni boshqatdan run qilish</li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>CV</category>
+  <category>Resume</category>
+  <category>Uzbek</category>
+  <category>R</category>
+  <category>datadrivencv</category>
+  <guid>https://sultanov.quarto.pub/blog/projects/create_cv/create_cv.html</guid>
+  <pubDate>Tue, 23 Jan 2024 23:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

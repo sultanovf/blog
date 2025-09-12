@@ -1,0 +1,143 @@
+
+/* Create two unequal columns that floats next to each other ============================ */
+.column {
+	float: center;
+  /*
+  height: 250px;  Should be removed. Only for demonstration
+  */
+}
+
+.left {
+	/*width: 100%; */
+	text-align: left
+}
+
+.right {
+	/*width: 100%; */
+	text-align: right;
+  /*
+  padding: 10px
+  */
+}
+
+.centro {
+	/*width: 100%; */
+	text-align: center;
+  /*
+  padding: 10px
+  */
+}
+
+/* ========================================================================================= */
+.col {
+	float: center;
+}
+
+.cleft {
+	width: 50%;
+	text-align: left;
+}
+
+.cright {
+	width: 50%;
+	text-align: right;
+  /*
+  padding: 10px
+  */
+}
+
+
+/* Code block in and output===================================================================*/
+.code-py {
+	/*color: blue;*/
+	background-color: #FFF68F;/* #FFEC8B #FFF68F */
+  /*
+  lightyellow
+  border: 3px solid red;
+  font-weight: bold;
+  */
+}
+
+.code-r {
+	/*color: blue;*/	
+	background-color: lightcyan;
+  /*
+  border: 3px solid red;
+  font-weight: bold;
+  */
+}
+.code-input .cell-output {
+	/*color: blue;*/
+	background-color: honeydew;
+  /*
+  border: 3px solid red;
+  font-weight: bold;
+  */
+}
+
+.code-output .cell-output {
+	/*color: blue;*/
+	background-color: floralwhite;
+  /*
+  border: 3px solid red;
+  font-weight: bold;
+  */
+}
+
+.column-left{
+  float: left;
+  width: 33%;
+  text-align: left;
+}
+.column-center{
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+.column-right{
+  float: right;
+  width: 33%;
+  text-align: right;
+}
+
+.text-border-frame{
+    display: inline-block;
+    width: 100%;
+    margin-top:0%;
+    margin-bottom:3%;
+    text-align: left;
+    padding: 5px;
+    border: 1px solid gray;
+    background-color: #E8F0EF;
+  
+}
+
+/* 	 */
+/* ========================================================================================= */
+
+
+/* Info Box =================================================================================*/
+div.lith, div.demo {
+    padding: 1em;
+    margin: 1em 0;
+    padding-left: 100px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+    min-height: 120px;
+    color: #1f5386;
+    background-color: #bed3ec;
+    border: solid 5px #dfedff;
+  }
+  
+div.demo {
+	background-image: url("info.png");
+}
+/* https://desiree.rbind.io/post/2019/making-tip-boxes-with-bookdown-and-rmarkdown/ */
+/* ========================================================================================= */
+
+.center-slide {
+    text-align: center;
+}
+
+/* ========================================================================================= */

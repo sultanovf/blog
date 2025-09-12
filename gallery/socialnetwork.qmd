@@ -1,0 +1,342 @@
+---
+title: "social networks in GIS"
+description: "plot of share of social network users population in CIS countries using `ggplot2` and `gganimate`"
+author: "Fazliddin Sultonov"
+date: "2025-03-05"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [barplot, R, ggplot2, gganimate, ggpol]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/socialnetwork.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  tidyverse,   # dataclean, ggplot
+  knitr,       # knitter
+  fontawesome, # icons
+    #> Loading required package: sysfonts
+    #> Loading required package: showtextdb
+  showtext,    # show icons
+  ggtext,      # texte ins plot
+  glue,        # für md texte
+  gganimate,   # animate plot
+  png          # read png
+)     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+#use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Variable =====================================================================
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # social
+
+showtext::showtext_auto()
+
+yt_icon <- "&#xf431" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+yt_username <- "@hw_sultanov"
+ins_username <- "@sultanof.uzb"
+tg_username <- "@R4Pythonistas"
+```
+
+
+:::: {.column-screen}
+::: {.code-r}
+# `r fa(name = "r-project",  height = "2.0em", width = "2.0em", fill = "steelblue")`{.center-slide}
+
+:::
+::::
+
+
+Datasource: [World Population Review](https://worldpopulationreview.com/) | Internet
+
+
+
+## data
+
+```{r}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+data_sng <- data.frame(
+  SN = c("TikTok", "Instagram", "Telegram", "Facebook", "WhatsApp"),
+  ARM = c(NA, 1.4, NA, 2.3, 0.8),
+  AZE = c(6.1, 4.3, 5.0, 5.1, 2.5),
+  BLR = c(5.6, 3.9, 2.4, 4.3, 2.1),
+  KAZ = c(14.1, 12.4, 12.5, 13.2, 8.0),
+  KGZ = c( 4.9, 2.9, NA, 3.3, 1.6),
+  RUS = c(58.2, 63.0, 35.1, 70.6, 66.7),
+  TJK = c(NA, 1.6, NA, 1.8, 1.4),
+  TKM = c(NA, 0.2, NA, 0.2, 0.6),
+  UZB = c(3.1, 9.4, 18.0, 10.1, 5.1)
+)
+
+
+
+rmarkdown::paged_table(data_sng) # show sample 10 rows
+# oder {r, df_print = "paged"}
+# sample_n(data_raw, 10
+
+```
+
+
+
+## fill NAs (with column mean)
+
+```{r}
+#| results: hold
+#| warning: false
+
+## https://cmdlinetips.com/2022/01/how-to-replace-na-with-column-mean-or-row-means-with-tidyverse/
+data <- 
+    data_sng |>
+    mutate(
+        row_nr = row_number()) |> 
+  pivot_longer(-c(SN, row_nr),
+    names_to = "col_id",
+    values_to = "val") |> 
+  group_by(col_id) |> 
+  mutate(val = ifelse(is.na(val), round(mean(val,na.rm = TRUE),1), round(val,1))) |> 
+  pivot_wider(names_from="col_id", values_from = "val") |> 
+  ungroup()
+
+rmarkdown::paged_table(data)
+```
+
+
+## proportion of total population
+
+```{r}
+#| results: hold
+#| warning: false
+
+pop <- c(
+  "ar" = 2.9, "az" = 10.3, "be" = 9.1, "kz" = 20.6, "kg" = 7.2, 
+  "ru" = 144.8, "tj" = 10.6, "tm" = 7.5, "uz" = 36.4)
+
+data_pct <-
+  data |>
+  rowwise() |>
+  mutate(
+    ARM = round((ARM/pop["ar"]) *100, 1),
+    AZE = round((AZE/pop["az"]) *100, 1),
+    BLR = round((BLR/pop["be"]) *100, 1),
+    KAZ = round((KAZ/pop["kz"]) *100, 1),
+    KGZ = round((KGZ/pop["kg"]) *100, 1),
+    RUS = round((RUS/pop["ru"]) *100, 1),
+    TJK = round((TJK/pop["tj"]) *100, 1),
+    TKM = round((TKM/pop["tm"]) *100, 1),
+    UZB = round((UZB/pop["uz"]) *100, 1))
+
+data_pct
+
+```
+
+## prepare data for plotting
+
+```{r}
+#| results: hold
+#| warning: false
+
+## source: https://stackoverflow.com/questions/57599436/how-to-animate-grouped-barplots-with-gganimate
+data_pct$frame <- 1:5
+#data_pct
+for(i in 1:nrow(data_pct)){
+  data_pct$frame[i] <- list(data_pct$frame[i][[1]]:5)
+}
+#data_pct
+data_pct <- unnest(data_pct, frame)
+#data_pct
+
+# Data Frame for Plot
+df_pct <-  gather(data_pct, variable, value, -c(frame, SN, row_nr))
+head(df_pct)
+```
+
+
+## plotting
+
+```{r}
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# Title/subtitle/datasource
+data_source <- "World Population Review | Internet"
+p_title <- "<br>Часть соцсеть пользователей в общей населения в странах СНГ"
+p_subtitle <- ""
+
+# caption
+social_caption <- glue::glue(
+  "<span style = 'color:skyblue3;'><i><strong><br>DataSource: {data_source} <br/></strong></i></span>  Plot by:
+  <span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username}</span> |
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username}</span> |
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username}<br></span>"
+)
+
+# caption
+social_caption_anim <- glue::glue(
+  "<span style='color: #C4302B; font-family:\"Font Awesome 6 Brands\";'>{yt_icon};</span>
+  <span style='color: #C4302B'>{yt_username}</span> |
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username}</span> |
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username}<br></span>"
+)
+
+
+```
+
+
+
+```{r}
+#| results: hold
+#| warning: false
+
+# flag image path
+imgpat <- "gallery_img/flags/"
+cntry <- c(
+  "ARM" = "AM", "AZE" = "AZ", "BLR" ="BY", "KAZ" = "KZ", "KGZ" ="KG", 
+  "RUS" = "RU", "TJK" ="TJ", "TKM" = "TM", "UZB" = "UZ")
+
+# read images
+xlabels <- c()
+for(i in 1:length(cntry)){
+  imgname <- names(cntry[i])
+  xlabels <- c(xlabels, paste0("<img src='", imgpat, cntry[[i]], ".png' width='50' hight ='25'  /><br>**", imgname, "**"))
+}
+
+# custom color
+my_color <- c("TikTok" = "#2AF0EA", "Instagram" = "#E1306C", "Telegram" = "#24A1DE", "Facebook" = "#1877F2", "WhatsApp" = "#25D366")
+
+# plot
+gg_pct <- 
+  ggplot(data = df_pct, aes(x = variable, y = value, fill = SN)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_y_continuous(
+    limits = c(0,80 ),
+    breaks = seq(0, 80, 5),
+    labels = function(x) paste0(x,"%")) +
+  scale_x_discrete(name = NULL, labels = xlabels) +
+  geom_text(aes(label = as.character(" ")), vjust = 1, size = 4)+
+  #titles
+  labs(
+    title = p_title, 
+    #subtitle = data_source,
+    caption = social_caption,
+    x = NULL, y = NULL) +
+  scale_fill_manual(name = "Cоцсеть:", values =  my_color) +
+  # format
+  theme_minimal() +
+  theme(
+    plot.title = element_markdown(size = 16, color = "steelblue4", face = "bold", hjust = 0.5),
+    plot.caption = ggtext::element_markdown(size=14, hjust = 0.5),
+    axis.text.x = element_markdown(), # x-axis flags
+    axis.line = element_blank(),
+    legend.position = "top", legend.direction="horizontal",legend.box = "horizontal",
+    panel.border = element_blank(),
+    plot.background = element_rect(fill = "seashell2"), #paleturquoise "seashell1"
+    panel.background = element_rect(fill = "ghostwhite"), #floralwhite
+    panel.grid.minor = element_blank()
+  )
+
+# Show plot
+gg_pct
+
+```
+
+## animated plot
+
+```{r}
+#| results: hold
+#| warning: false
+
+gganim_pct <-
+  gg_pct +
+  transition_states(frame, wrap = FALSE, transition_length = 6) +
+  enter_fade()
+
+# animate gif
+anim_pct <- animate(
+  gganim_pct,
+  duration = 10,
+  start_pause =5,
+  end_pause = 10,
+  renderer = gifski_renderer()
+)
+
+# show plot
+anim_pct
+
+```
+
+
+
+
+

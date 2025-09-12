@@ -1,0 +1,270 @@
+---
+title: "plotting via `ggimage`"
+description: "`geom_flags` from package **ggimage** enables using flags in ggplot2"
+author: "Fazliddin Sultonov"
+date: "2024-11-16"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+  - social-share
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+  
+social-share:
+  location: "after-body"
+
+page-layout: full
+reference-location: margin
+categories: [geom_flag, R, ggplot2, ggimage]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+    link-external-newwindow: true
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+    
+share:
+  permalink: "https://sultanov.quarto.pub/blog/gallery/ggimg.html"
+  description: "awesome plot"
+  twitter: true
+  facebook: true
+  reddit: true
+  linkedin: true
+  email: true
+  instagram: true
+  xing: true
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+![](gallery_img/gg_flag.png)
+
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "ggimage",     # for flags
+  "rvest",       # web scrape
+  "countrycode"  # country_ code
+  )     
+#
+
+```
+
+
+Data Source: [Wikipedia](https://en.wikipedia.org/wiki/2024_Summer_Olympics_medal_table)
+
+
+## Load & Clean Data
+
+### Wikipediadan jadvaln o'qib olish
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# load table from web
+url_medal <- "https://en.wikipedia.org/wiki/2024_Summer_Olympics_medal_table"
+page_medal <- read_html(url_medal)
+
+# scrape table
+page_medal |> 
+  html_nodes("table") |> 
+  html_table() -> lst_parij24
+
+df_par24 <- lst_parij24[[4]]
+
+head(df_par24) |> 
+  kable()
+
+```
+
+### Jadvalga ishlov berish <br>
+(Ustun nomlarini o'zgartirib davlat nomlaridagi kerakmas string larni olib tashlash)
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+df <- df_par24 |> 
+  select(
+    Numer = Rank,
+    Davlat = NOC,
+    Oltin = Gold,
+    Kumush = Silver,
+    Bronza = Bronze,
+    Jami = Total
+  ) |> 
+  mutate(
+    Davlat = str_remove(Davlat, "[‡*]")
+  ) 
+
+df <- df[-c(47,84, 93), ]
+
+head(df) |> 
+  kable()
+
+```
+
+### Mapping <br>
+(jadvalga `countycode` paketidagi isocodi ustunini qo'shish)
+
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# usul #1
+# df$cc <- countrycode::countrycode(
+#   sourcevar = df$Davlat, 
+#   origin = "country.name",
+#   destination = "iso2c")
+
+# usul #2 dplyr
+data <- df |> 
+  slice_head(n = 20) |> 
+  mutate(
+    cc = countrycode::countrycode(
+      sourcevar = Davlat,
+      origin = "country.name.en",
+      destination = "iso2c")
+      ) |> 
+  select(-Numer)
+
+head(data) |> 
+  kable()
+```
+
+### Preparing <br>
+Jadvalni grafik yasash holatiga ob kelish
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+# povot data
+pv_data <- data |>
+  mutate(
+    cc = base::tolower(cc)
+  ) |> 
+  pivot_longer(
+    cols = c("Oltin", "Kumush", "Bronza"),
+    names_to = "Medal",
+    values_to = "Count"
+  )
+
+# Grafikda umumiy medallar sonini kursatisch uchun
+df_plt <- pv_data |> 
+  group_by(Davlat) |> 
+  summarise(Total = sum(Count)) |> 
+  ungroup()
+
+df_plt |> 
+  kable()
+
+
+
+```
+
+## Plotting
+
+### Create Plot <br>
+(grafik yasash)
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+my_color <- c("Oltin" = "gold", "Bronza" = "#cd7f32", "Kumush" = "#C0C0C0")
+plt <- ggplot(
+  data = pv_data, aes(
+    x = reorder(Davlat, Count), 
+    y = Count, 
+    fill = Medal, 
+    label = Count)) +
+  geom_bar(stat = "identity") +
+  #scale_y_continuous(limits = c(0,130),breaks = seq(0, 130, 10)) +
+  geom_text(size = 2.7, colour = "blue",               # balken ichidagi text
+            position = position_stack(vjust = 0.5))+
+  geom_text(data = df_plt,                             # tashqaridagi text
+            aes(x = reorder(Davlat, Total), 
+                y = Total, label = paste("= ", Total), 
+                fill = NULL), 
+            size = 3.0, family = "serif", fontface = "bold",
+            nudge_y = 5)+
+  scale_fill_manual(values = my_color) +  
+  coord_flip() +                                        # rotatsya axis
+  expand_limits(y = -3) +
+  theme_minimal()
+plt
+
+# to save as png
+# ggsave("plots/p_prefinal.png", plot = plt)
+```
+
+### Improving <br>
+(Grafikka jilov berish, sarlavha, text. rang, etc.)
+
+```{r}
+#| results: hold
+#| code-fold: true
+#| warning: false
+
+plt + 
+  labs(title = "Parij 2024:",
+       subtitle = "Medallar bo'yicha top yigirmata davlatlar",
+       caption = "Data Source: Wikipedia, Plotting by ФС: @sultanof.uzb",
+       x = "",
+       y = "medallar soni") +
+  theme(plot.title = element_text(color = "dodgerblue4", size = 12,
+                                  face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(color = "dodgerblue4", size = 10,
+                                  face = "bold", hjust = 0.5),
+        plot.caption = element_text(color = "dodgerblue", size = 10,
+                                    face = "italic"),
+        plot.background = element_rect(fill = "aliceblue"),
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.position = "top") +
+  ggimage::geom_flag(aes(y = -3, image = cc), size = 0.07) -> p_parij
+p_parij
+```
+
+

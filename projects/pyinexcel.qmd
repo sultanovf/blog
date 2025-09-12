@@ -1,0 +1,197 @@
+---
+title: "A small dynamic report in Excel with Python"
+description: |
+  A smal dynamic report of top ten countries worldwide by GDP based on PPP, created in {{< fa solid file-excel >}} with {{< fa brands python >}} <br> 
+author: "Fazliddin Sultonov"
+date: "2025-08-02"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [Python, dashboard, pandas]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+    link-external-newwindow: true  # {target="_blank"} in doc
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](pics/pyexc.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  #tidyverse,   # dataclean, ggplot
+  knitr,        # knitter
+  fontawesome,  # icons
+  reticulate,   # python
+  downloadthis  # download file button
+)     
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+##
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python313/python.exe") # für Python , required = TRUE
+##use_condaenv("base") 
+##use_python('/usr/bin/python3')
+```
+
+---
+
+Tabellarische Daten werden in Büros weltweit am meisten in Tabellenkalkulationen bearbeitet und gespeichert. Bekannteste Software dafür ist Microsoft Excel. Ich bin neulich darauf gestoßen, dass man Python in Excel (ab Microsoft 365) verwenden kann. Und ich hab mir vorgenommen, etwas damit zu probieren. Ich habe ein kleiner dynamischer Bericht in Excel mit Python erstellt, in dem es sich um die zehn Länder weltweit mit dem höchsten BIP auf Basis der Kaufkraftparität handelt. 
+
+:::{.column-page}
+![](pics/excpy1.gif)
+:::
+
+<br> **{{< fa solid file-excel >}} File:** {{< downloadthis data/top-ten_ex_py.xlsx dname="top-ten_ex_py" label="Download the Excel file" icon="database-fill-down" type="primary" >}} $~~~~~~~~~~~~~$ **{{< fa solid database >}} Data Source:** *[Worldbank](https://data.worldbank.org/)*  
+
+
+Um Python in Excel zu verwenden bzw. zu aktivieren, muss man eine Zelle auswählen, in die man die Formel mit Python schreiben will und klickt man auf der Registerkarte > Formeln > `Python einfügen` ***oder*** schreibt man in die Zelle **`=PY`**. Dann kann man Python - Code direkt in die Zelle schreiben. Im unten aufgeführten einfachen Beispiel  werden die Werte in zwei Zellen (A1 und B1) summiert.
+
+![](pics/excpy1.png)
+
+:::{.callout-tip}
+## Wichtige Sachen zur Berücksichtigung
+
+- Auf die Zellen werden durch **`xl`** verwiesen, beispielweise einen Bezug auf Zellen A1:C10 kann  durch **`xl("A1:C10")`** eingegeben werden
+
+- Mehrere Zelle mit Python-Code werden von oben nach unten ausgeführt geschrieben sind.
+
+- Zu verarbeitende Daten müssen entweder im Excelsheet stehen oder aus Power Query stammen. 
+
+- Daten werden durch die Eingabe der Tabellennamen (oder Power Query Namen) gelesen, in der Beispieldatei (kann heruntergeladen werden, sieh oben) ist beispielweise so eingegeben, mit dem Sheetnamen <<data>>, in dem sich  die Daten befinden: **`df = xl("data[#Alle]", headers=True)`**. Durch [#All] werden gesamte Tabelle durch Python-Formel analsiert, bei headers = True werden die Spaltennamen berücksichtigt.
+:::
+
+Hier die Daten:
+
+```{python}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+
+import pandas as pd
+import numpy as np
+from IPython.display import display, Markdown, HTML
+# read file
+#"C:/Users/sultanov/Documents/blog/projects/data/topten.csv"
+path = "data/topten.csv"
+data = pd.read_csv(path, sep=";", decimal=",")
+df_show = data.sort_values(by = "2024", ascending=False, na_position="last").head(10)
+#Show the table
+Markdown(df_show.to_markdown(index = False))
+
+
+```
+
+
+Wie oben geschrieben, werden die Zellen mit Python-Coder von oben nach unten ausgeführt. In der Datei, wurden einzelne Schritte in eine Zelle geschrieben. Im Sheet <<python>> sind diese Shritte beschrieben (Spalte A = step). Objectnamen (Spalte B = object) sind die Opbjekte, die durch Python-Codes (Spalte C = result) erstellt wurden. Wie unte auf dem Bild zu sehen ist, wird als erstes *Data Frame erstellt (step) namens <<data>> (object)* und *Python - Code ist in der dementsprechenden Zelle (results)*.
+
+![](pics/excpy2.png)
+
+Danach werden die Daten *pivotiert* und neues Objekt (df_piv) erstellt, um sie weiter zu bearbeiten.
+
+```{python}
+#| results: hold
+#| warning: false
+
+import pandas as pd
+
+df_pv = pd.melt(data, id_vars = ["Country Name", "Country Code"], value_vars=data.iloc[:,2:], var_name="years", value_name="gdp")
+df_pv.head(10)
+```
+
+Jetzt können wir aus Data Frame *Top-Länder nach GDP für jeweiliges Jahr selectieren (object -> df_10 )* und *Rank-Spalte erstellen (object -> df_rank)*.
+
+**Select top ten countries:**
+
+```{python}
+#| results: hold
+#| warning: false
+
+# Method #1
+# N = 10
+# maske = df_pv.groupby("years")["gdp"].rank(method="first", ascending=False) <= N
+# df_10 = df_pv[maske]
+# Method #2
+df_10 = df_pv.sort_values(["years", "gdp"], ascending=False).groupby("years").head(10)
+df_10
+```
+
+**Rank column:**
+
+
+```{python}
+#| results: hold
+#| warning: false
+
+df_rank = df_10.copy()
+df_rank["rank"] = df_rank.groupby("years")["gdp"].rank(ascending=False)
+df_rank
+```
+
+**prepare data frame for a plot & create a plot for 2024:**
+
+```{python}
+#| results: hold
+#| warning: false
+
+# prepare df and format column gdp
+df_plt = df_rank.copy()
+df_plt["gdp"] = df_plt["gdp"]/1_000_000_000_000
+df_plt = df_plt.round({"gdp" : 2})
+# select year 2024
+df = df_plt[df_plt["years"] == "2024"].sort_values(by="rank", ascending=False)
+# Create Plot
+plt = df.plot(
+    kind="barh",
+    x="Country Name", y="gdp",
+    title="GDP based on PPP in Bil. US Dollar for 2024" ,
+    xlabel="GDP, PPP in Bil. $",
+    ylabel="Top ten countries",
+    legend=False
+)
+plt
+```
+
+

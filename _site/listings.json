@@ -1,0 +1,42 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/mapping/apply_uz.html",
+      "/posts/function/funksiya_uz.html",
+      "/posts/mean/average_uz.html",
+      "/posts/mean/average_de.html",
+      "/posts/loops/loops_uz.html",
+      "/posts/DataStructures/datastructures_uz.html",
+      "/posts/DataStructures/datastructures_de.html",
+      "/posts/DataTypes/datatypes_uz.html",
+      "/posts/DataTypes/datatypes_de.html"
+    ]
+  },
+  {
+    "listing": "/gallery.html",
+    "items": [
+      "/gallery/pop_bar.html",
+      "/gallery/socialnetwork.html",
+      "/gallery/marriage.html",
+      "/gallery/price_bar.html",
+      "/gallery/price_line.html",
+      "/gallery/usbekeninde.html",
+      "/gallery/gganimate_scatter.html",
+      "/gallery/geom_flag.html",
+      "/gallery/ggimg.html",
+      "/gallery/gganimate_line.html",
+      "/gallery/gganimate_bar.html",
+      "/gallery/boxplot.html",
+      "/gallery/gtTable.html"
+    ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/uzbinde.html",
+      "/projects/pyinexcel.html",
+      "/projects/create_cv/create_cv.html"
+    ]
+  }
+]

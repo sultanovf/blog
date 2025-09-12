@@ -1,0 +1,437 @@
+---
+title: |
+  Estimates of Location\
+  {{< fa language >}} in German
+description: | 
+  \"I am a bit skeptical about statistics. According to statistics, a millionaire and a poor guy each have half a million.\"  <br> ~ Franklin Roosevelt.
+author: "Fazliddin Sultonov"
+date: "2024-05-28"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+  effect: none
+  desc-position: top
+
+page-layout: full
+reference-location: margin
+categories: [Statistics, German, R, Python, Mean, Median, Modal, Quartil, Box-Plot]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # Sections
+    toc: true
+    toc-location: left
+    toc-title: "Table of Contents"
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+# bibliography
+bibliography: reference.bib
+nocite: |
+  @*
+---
+
+
+![](pictures/medium.png){.nolightbox}
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(
+  "tidyverse",   # tidyverse 
+  "knitr",       # knitter
+  "fontawesome", # icons
+  "reticulate",  # python
+  "glue",        # String
+  "knitr",       # tables
+  )     
+#
+use_python("C:/Users/sultanov/AppData/Local/Programs/Python/Python312", required = TRUE) # für Python
+```
+
+Bei der *deskriptiven Statistik* werden die Daten *zusammenfassend* dargestellt und beschrieben, so dass mann den Wald statt viele Bäume sieht [@r_ModernDA]. Die Daten werden also *explorativ* untersucht, um den ersten Eindruck von ihnen zu bekommen. Dies würde man im Bereich Machine Learning als *Feature Engineering* bezeichnen [@dsPraxis]. Die deskriptive Statistik wird auch als *beschreibende Statistik* oder *deskriptive Datenanalyse* bezeichnet und hat das Ziel einen Überblick über die Verteilung der Daten anhand Kennzahlen, Tabellen und Grafik zu verschaffen. 
+
+Lagemaße (engl. Estimates of Location), auch Maße der zentralen Tendenz genannt, gibt Auskunft darüber, wo die Mitte der Verteilung liegt. Anders gesagt, man reduziert mehrere Werte auf einen Wert (Kennzahl), der alle Werte repräsentiert (viele einzelne Bäume -> Wald). Mittelwert, Median und Modalwert gehört dazu.
+
+:::{layout-ncol=2}
+```{mermaid}
+%%| fig-cap: "Lagemaße"
+%%| echo: false 
+
+flowchart LR
+  A("Estimates of Location\n(Lagemaße)")
+  B[["- Mean\n- Median\n- Modus\n- Quantil"]]
+  A --> B
+  style A text-align:center;
+```
+
+```{mermaid}
+%%| fig-cap: "Streuungsmaße"
+%%| echo: false 
+
+flowchart LR
+  A("Estimates of Variability\n(Streuungsmaße)")
+  B[["- Standard deviation (Standardabweichung)\n- Variance (Varianz)\n- Range (Spannweite)\n- Interquartile range, IQR (Interquartilsabstand)"]]
+  A:::myClass --> B
+  classDef myClass style: text-align:center
+```
+:::
+
+## Mean
+
+Das arithmetisches Mittel (engl. mean) häufig als Mittelwert bezeichnet, wird am häufigsten benutzt. Mittelwert wird berechnet, indem man alle Werte addiert $(x_1, x_2, ..., x_n)$ und die Summe durch die Anzahl der Werte (n) dividiert:
+$$
+\bar{x} = \frac{x_1+x_2+x_3+...+x_n}{n}  = \frac{1}{n}\sum_{i = 1}^{n}{x_i}
+$$
+Man möge sich vorstellen, man würde eine Straßenumfrage machen und die Menschen nach ihrem Beruf, Alter und Einkommen fragen. 
+
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+
+interview <- list(
+  profession = c("Doctor", "Teacher", "Doctor", "Pensioner", "Professor", "Pensioner", "Student", "Student", "Pensioner"),
+  age = c(47, 39, 55, 68, 51, 71, 21, 25, 82),
+  tall = c(1.75, 1.72, 1.73, 1.68, 1.75, 1.70, 1.78, 1.77, 1.73),
+  income = c(3500,  2200, 3400, 2050, 2600, 1400, 1050, 950, 1100)
+)
+df <- data.frame(interview)
+as_tibble(df)
+```
+
+Um den Mittelwert zu berechnen gibt es in R und Python die Funktion `mean()`. Zu beachten bei der Berechnung von mean ist, dass der Mittelwert *metrische Daten* voraussetzt. Mean vom Einkommen und Alter ist wie folgt berechnet:
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| code-fold: false
+#| collapse: true
+#| classes: code-input
+
+m_age <- mean(df$age); m_inc <- mean(df$income)
+glue::glue("mean of age: {m_age}\nmean of income: {round(m_inc, 2)}")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| code-fold: false
+#| collapse: true
+#| classes: code-output
+
+age_m = r.df.age.mean(); inc_m = r.df["income"].mean()
+print(f"mean of age: {age_m}\nmean of income: {round(inc_m, 2)}")
+```
+:::
+
+:::{.callout-note}
+### Interpretation
+
+Von neun Befragten ist das arithmetisches Mittel fürs Alter: 51 und fürs Einkommen: 2.161. Also, man kann sagen, die Befragten sind *im Durchschnit* 51 Jahre alt und verdienen durchschnitlich 2.027,78 (in Euro, Dollar, in was auch immer) im Monat. 
+:::
+
+
+## Median
+
+Median ist der Wert, der in der Mitte von den der Größe nach *sortierten/geordneten* Werten ist. Er halbiert die Verteilung und gibt an, dass eine Hälfte der Verteilung von ihm kleiner und andere Hälfte größer ist.
+
+Um Miedian zu berechnen gibt es in R und Python die Funktion `median()`. Zu beachten ist, dass der Median *metrische und ordinale Daten* voraussetzt. Median vom Einkommen und von der Größe ist wie folgt berechnet:
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| code-fold: false
+#| collapse: true
+#| classes: code-input
+
+med_tall <- median(df$tall); med_inc <- median(df$income)
+glue::glue("median of tall: {med_tall}\nmedian of income: {med_inc}")
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| code-fold: false
+#| collapse: true
+#| classes: code-output
+
+import pandas as pd
+tall_med = r.df.tall.median(); inc_med = r.df["income"].median()
+print(f"median of tall: {tall_med}\nmean of income: {inc_med}")
+```
+:::
+
+:::{.callout-note}
+### Interpretation
+
+Von neun Befragten ist der Median für die Größe: 1.73 und fürs Einkommen: 2.050. Also, man kann sagen, die *Hälfte (50%)* der neuen Befragten sind *kleiner als* 1.73 Meter und verdienen *unter* 2.050 (in Euro, Dollar, in was auch immer) im Monat. Oder andersrum, die *Hälfte (50%)* der Befragten sind *größer als* 1.73 Meter und verdienen *über* 2.050 im Monat.
+:::
+
+## Modus
+
+Modalwert, auch Modus genannt, ist der Wert, der *am häufgsten* vorkommt. Der Modus kann für *metrische, ordinale und nominale Daten* berechnet werden. Für nominale Daten ist der Modus der einzige Kennwert, um mittleren Wert zu bestimmen. In R gibt es keine Funktion für Modus, man kann durch die Funktion `table` den Modalwert anzeigen lassen.
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+cat("Frequence table for variable profession:")
+table(df$profession)      # Häufigkeitstablle
+# Modus-Maximaler Wert von der Freq.Table
+cat("Mode for variable profession - Max value of FreqTable: ", max(table(df$profession)))
+cat("\n\nFrequence table for variable tall:")
+table(df$tall)            # Häufigkeitstablle
+cat("Mode for variable tall - Max value of FreqTable: ", max(table(df$tall)))
+```
+:::
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+#from statistics import mode
+# tall_med = r.df.tall.median(); inc_med = r.df["income"].median()
+# print(f"median of tall: {tall_med}\nmean of income: {inc_med}")
+freq_prof = r.df["profession"].value_counts()       # FreqTable for var profession
+modi_prof = r.df["profession"].value_counts().max() # Modi for var profession
+freq_tall = r.df["tall"].value_counts()             # FreqTable for var tall
+modi_tall = r.df["tall"].value_counts().max()       # Modi for var tall
+print("Frequence table for variable profession:")
+print(freq_prof)
+print(f">> Mode for variable profession - Max value of FreqTable:  {modi_prof}")
+print("\nFrequence table for variable tall:")
+print(freq_tall)
+print(f">> Mode for variable tall - Max value of FreqTable:  {modi_tall}\n")
+```
+:::
+
+:::{.callout-note}
+### Interpretation
+
+Für Modus gibt es nicht besonders viel zu interpretieren. Man könnte sagen, unter Befragten sind am meisten die Rentner oder die meisten haben die Größe 1.73 Meter.
+:::
+
+## Outliers: Mean vs Median
+
+Es gibt viele Fälle, wo der Median gegenüber Mean ein besseres Lagemaß darstellt, z.B. wenn es in dem Datensatz extreme Werte (Außreißer, engl. outlier) gibt. Bei Extremfällen wird der Median nicht von *Ausreißern* beeinflusst, die das Ergebnis verfälschen können. Wir erweitern das Beispiel von Umfrage, indem wir einen Ausreißer hinzufügen. Also, wir hätten noch einen Tiktoker oder Blogger befragt, der jung, groß ist und mehr als die anderen Befragten verdient. Da wird unser ursprünglicher Mittelwert ändern und höher ausfallen.
+
+
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+
+v <- data.frame("Bloger", 19, 1.84, 5600); names(v) <- names(df)
+extrem <- rbind(df,v)
+cat("New df with outlier:\n")
+tail(extrem, n = 3)
+# Means
+cat("\nWithout outlier:\n")
+glue::glue("income: mean - {round(mean(df$income),2)}, median - {median(df$income)}\nage: mean - {mean(df$age)}, median - {median(df$age)}")
+#glue::glue("Median income: {median(df$income)}\nMedian age: {median(df$age)}")
+cat("\nWith outlier:\n")
+glue::glue("income: mean - {mean(extrem$income)}, median - {median(extrem$income)}\nage:mean - {mean(extrem$age)}, median - {median(extrem$age)}")
+#glue::glue("Median income: {median(extrem$income)}\nMedian age: {median(extrem$age)}")
+
+```
+
+Wie man oben sieht, durch Ausreißer, hat sich Mittelwert für Einkommen von 2.027,78 auf 2.385 gestiegen und alter von 51 auf 47.8 gesunken. Bei Median hat sich nicht so groß geändert, nämlich von 2.050 auf 2.125 gestiegen und für die Variable alter von 51 auf 49 gesunken.
+
+## Usage
+
+Der mittlere Wert, wie wir gesehen haben auf unterschiedliche Weise ermittelt. Daher ist es sinnvoll, dass man sich überlegt, anhand den Gegebenheiten (wie z.B. Skalenneveau der Daten) welches Lagemaß am besten geeignet ist. Hier ist meine kurze Zusammenfassung:
+
+  - Bei **nominalen** verwendet man den **Modus**, da andere Lagemaße dafür nicht geeignet sind.
+  
+  - Anwenung von **Median** ist dann *sinnvoll*, wenn
+    - die Daten **ordinal** sind.
+    - man weiß, dass man **Außreßer** hat.
+      
+  - Hat man **quantitative** Daten und **symmetrische** Verteilung vorligt, dann ist **arithmetisches Mittel** am besten geeignet.
+
+## Quantile & Quartile
+
+Im Gegensaz zu Median, der die Daten in zwei gleiche Größe aufteilt, wird beim Quantil die ***sortierten*** Daten in unterschiedlich große Abschnitte, nämlich in *$x_p$- Quantile* oder *x% (px100%)- Quantile* aufgeteilt. Diese aufgeteilte abschnitte wären dann Quantile. Zum Beispiel 10%-Quantil oder 0,1-Quantil sagt aus, dass 10% der Daten in der verteilung liegt unter diesem Quantil, und der Rest (1-p, also 90%) liegt darüber. Teilt man die Daten in **vier gleich große Teile**, spricht man von *speziellen Quantilen*, nämlich von **Quartilen**. 
+
+  - **0,25/25%-Quantil = untere/erste Qauartil = Q1** - besagt, dass mindestens 25% der n-Daten kleiner oder gleich $x_{0,25}$ sind.
+  
+  - **0,50/50%-Quantil = mittlere/zweite Qauartil = Q2** - gleich Median, mindestens 50% der n-Daten kleiner oder gleich $x_{0,50}$ sind.
+  
+  - **0,75/75%-Quantil = obere/dritte Qauartil = Q3** - besagt, dass mindestens 75% der n-Daten kleiner oder gleich $x_{0,75}$ sind.
+
+Bei p = 0.1, 0.2, ... spricht man von *Dezilen*, bei 0.01, 0.02, ... von *Perzentilen*.
+
+Als Beispiel, stellen wir wieder vor, wir machen eine kleine Umfrage und fragen wir 10 Leute danach, wie lange sie am Tag ihre Zeit mit Handy verbringen. Sagen wir, die Antwort wie folgt (die Zahlen sind ausgedacht):
+
+```{r}
+#| code-fold: false
+#| collapse: true
+
+time <- c(2.3, 1.7, 3, 2, 2.5, 3.2, 3.4, 1.5, 4, 1)
+sort(time)
+median(time)
+```
+
+Um die Quartile zu berechnen muss man zu erst die Anzahl der Datenmenge (n) mit p (0.25, 0.50, 0.75) multiplizieren $n*p$. Je nachdem, ob das Ergebis *ganzzahlig* oder *nicht ganzzahlig* ist, muss man für die weitere Berechnung diese Formel benutzen:
+$$x_p = \begin{cases}
+\frac{1}{n}(x_{(np)} + x_{(np+1)}) & if (p\cdot n) &\text{wholenumbered}\\
+x_{(|np|+1)} & if (p\cdot n)&\text{not wholenumbered}\end{cases}$$
+Hier ist nochmal die visuelle Darstellung zur Berechnung von Quartilen
+
+![Quartile (25%, 50%, 75%)](pictures/quartil.png){fig-alt="Click for zooming"}
+
+Zum Glück muss man das ganze nicht händisch ausrechnen. Dafür gibt es in R die Funktion `quantile()`. Außerdem gibt die Funktion `summary()` *(wie `describe()` in Python)* den ersten Eindruck über den Daten mit den Lagemaßen wie Mean, Median, Q1, Q2 = Median, Q3, Min und Max.
+
+::: {.code-r} 
+`r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+cat("Vector time: Qauartile: 25%-, 50%-, 75%- Quantile\n")
+quantile(time)        # Qauartile: 25%-, 50%-, 75%- Quantile
+cat("\nVector time: 0,6- Quantil:\n")
+quantile(time, 0.60)  # 60%- Quantil
+cat("\nVector time: Summary\n")
+summary(time)         # Summary for variable income
+cat("\nDescriptive measures with summary() for df:\n")
+summary(df)
+# summary(df$age)     # Summary for selected variable (age)
+```
+:::
+
+In Python gibt es auch die Funktion `quantile()`, man muss in Klammern die gewünschte(n) Quantil(e) in Listenformat eingeben. Die Funktion ist in Pandas oder NumPy.
+
+::: {.code-py}
+`r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+print("Quartile for one variable (age):")
+r.df["age"].quantile([0.25,0.5,0.75])
+print("\nQuantile for more variables:")
+r.df[["age", "income", "tall"]].quantile([.1, .25, .5, .75], axis = 0)
+# with describe()
+print("\nDescriptive measures with discribe() for df:")
+# r.df[["age", "tall"]].describe() # for selected variables
+r.df.describe()
+```
+:::
+
+:::{.callout-note}
+### Interpretation
+
+Quantile oder Quartile gibt einen der ersten Überblick von der Datenverteilung. Dadurch kann man die Aussage treffen, dass eine bestimme Teil der gesamten Verteulung liegt unter oder über ein Quantil/Quartil. Nehmen wir das Beispiel von oben mit dem Handy.
+
+```{r}
+#| code-fold: false
+#| collapse: true
+
+# How many time spent you for handy in a day?
+handy <- c(2.3, 1.7, 3, 2, 2.5, 3.2, 3.4, 1.5, 4, 1)
+# Quartile
+quantile(handy)
+# 0.6 Quantil
+quantile(handy, 0.6)
+```
+
+Daraus kann man ablesen, dass drei Viertel (75%) der 10 Befragten verbringen ihre Zeit bis über 3 Stunden mit dem Handy, oder zweite Zahl, 60% der Befragten verschwinden bis 2.7 Stunden am Tag ihrer Zeit mit dem Handy.
+:::
+
+## Box-Plot
+
+Bei der deskriptiven Analyse greift man oft zu graphischen Methoden, vor allem, wenn man eien ngroßen Datensatz hat, um ersten Eindruck über das Verhalten der Daten zu gewinnen. Box-Plot kommt am häufgsten zur Anwendung. Er setzt hauptsächlich 5 Kennzahlen ($x_{min}$, $x_{0,25}$, $x_{0,50}$, $x_{0,75}$, $x_{max}$) zusammen und stellt sie graphisch dar, zeigt auch Außreißer. Hier noch eine visuelle Darstellung:
+
+![Box-Plot](pictures/boxplot.png)
+
+In R gibt es Basefunktion `boxplot()` für Box-Plot. Außerdem kann man auch durch `ggplot`-Package erstellen. In Python auch diese Funktion in den Modeulen `matplotlib` oder `seaborn`.
+
+:::: {.panel-tabset}
+## `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`
+::: {.code-r}
+```{r}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-input
+
+boxplot(extrem$age,
+  ylab = "age",
+  main = "A sample Box-Plot",
+  col= "azure")
+abline(h=mean(extrem$age), col="tomato1", lwd=1, lty = 2)
+```
+<!-- ## Create a box plot with mean using ggplot2 -->
+<!-- # ggplot(extrem, aes(x="", y=income)) + -->
+<!-- #   geom_boxplot(fill="lightblue", color="cadetblue") + -->
+<!-- #   geom_hline(yintercept = mean(extrem$income), color="tomato", linetype="dashed") + -->
+<!-- #   labs(title="Box Plot with Mean using ggplot2", -->
+<!-- #        y="income") + -->
+<!-- #   theme_minimal() -->
+:::
+
+## `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")`
+::: {.code-py}
+```{python}
+#| results: hold
+#| code-summary: "show the code"
+#| classes: code-output
+
+import matplotlib.pyplot as plt
+
+# Create a boxplot for the desired column
+plt.boxplot(r.extrem["age"], showmeans = True, meanline = True, showfliers = False)
+# Add labels and title
+plt.xlabel("")
+plt.ylabel("age")
+plt.title("A sample Box-Plot")
+# Show the plot
+plt.show()
+```
+:::
+::::
+
+Boxplot von oben ist für die Variable age (Alter) von der Befragten in dem Beispieldataframe erstellt. Wie man im Plot sieht, sind die Hälfte (50%) der Daten liegen in dam Box (IQR), 25% oberhalb und 25% unterhalb des Boxes (gestrichene Linien ausßerhalb des Boxes im Plot). Man kann es so interpretieren: 50% der Befragten/personen sind zwischen 25 und 68 Jahre alt. Durchgezogene Linie in der Mitte ist Median = 51, und die gestrichene Linie ist Mittelwert = ca.49 (kann man zu Plot hinzufügen, ist nicht Bestandteil von Box-Plot), also kann man daraus eine Schlussfolgerung ziehen, dass durchnittliches Alter von befragten Personen um die 50 Jahre ist. 25% der Personen sind unter 25 Jahren, 25% über 68 Jahre und 50%, wie gesagt, zwischen 25-68 Jahre alt.
+
+## References
+
+

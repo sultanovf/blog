@@ -1,0 +1,11 @@
+{
+  "hash": "062edc6ac18e845d103ec667e24b7a8c",
+  "result": {
+    "markdown": "---\nlayout: page\ntitle: CV - Fazliddin Sultonov\nexcerpt: My current CV\nexecute:\n  freeze: true  # never re-render during project render\n  \nformat: \n  html:\n    grid:\n      sidebar-width: 600px\n    theme: Darkly\n    # fontcolor: blue\n    #backgroundcolor: darkcyan\n    #monobackgroundcolor: red\n    #monofont: yellow\n    include-in-header:\n      - text: |\n          <style>\n          .panel-tabset > .nav-tabs,\n          .panel-tabset > .tab-content {\n            border: none;\n            font-size: 20px;\n          }\n          </style>\n---\n\n```{css, echo=false}\n\n.grid {\n  display: grid;\n  grid-template-columns: 300px;\n  background-color: #2196F3;\n  padding: 10px;\n}\n```\n\n\n::: {.panel-sidebar}\n\n![](images/profilecv.png)\n:::\n\n\n::: {.panel-tabset .nav-pills}\n\n# Show the resume here {{< fa brands firefox-browser >}}\n\n\n```{=html}\n\n<iframe\n  width=\"850\"\n  height=\"800\"\n  src=\"./cv/cv.html\">\n</iframe>\n```\n\n\n\n# Show or download the resume in {{< fa file-pdf >}}\n\n\n```{=html}\n\n<iframe\n  width=\"850\"\n  height=\"800\"\n  src=\"./cv/cv.pdf\">\n</iframe>\n```\n\n:::\n\n",
+    "supporting": [
+      "resume_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
