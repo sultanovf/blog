@@ -21,7 +21,7 @@ execute:
 # Output
 format: 
   html:
-    theme: cosmo
+    theme: darkly
   # codeb block
     code-fold: true
     code-line-numbers: true

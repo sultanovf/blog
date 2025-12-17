@@ -9,7 +9,7 @@
 <meta name="author" content="Fazliddin Sultonov">
 <meta name="description" content="top ten countries worldwide in terms of GDP by purchasing power parity (PPP) over the years, shown by animated plot using ggplot2 and gganimate">
 
-<title>Top ten countries by GDP,PPP – Fazliddin Sultanov</title>
+<title>Top ten countries by GDP, PPP – Fazliddin Sultanov</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c55d798c8c4c85ee1a96178836518d0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -146,7 +146,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="customs/styles.css">
 <link rel="stylesheet" href="../customs/style.css">
-<meta name="twitter:title" content="Top ten countries by GDP,PPP – Fazliddin Sultanov">
+<meta name="twitter:title" content="Top ten countries by GDP, PPP – Fazliddin Sultanov">
 <meta name="twitter:description" content="top ten countries worldwide in terms of GDP by purchasing power parity (PPP) over the years, shown by animated plot using ggplot2 and gganimate">
 <meta name="twitter:image" content="https://sultanov.quarto.pub/blog/gallery/gallery_img/topten.png">
 <meta name="twitter:image-height" content="777">
@@ -251,7 +251,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Top ten countries by GDP,PPP</h1>
+      <h1 class="title">Top ten countries by GDP, PPP</h1>
                   <div>
         <div class="description">
           top ten countries worldwide in terms of GDP by purchasing power parity (PPP) over the years, shown by animated plot using <code>ggplot2</code> and <code>gganimate</code>
@@ -366,7 +366,8 @@ Datasource: <a href="https://data.worldbank.org/" data-text-align="center">World
 </div>
 </section>
 <section id="top-10-countries-by-each-year" class="level3">
-<h3 class="anchored" data-anchor-id="top-10-countries-by-each-year">top 10 countries by each year</h3>
+<h3 class="anchored" data-anchor-id="top-10-countries-by-each-year">top 10 countries by each year <br></h3>
+<p>(showing 20 head)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -381,13 +382,13 @@ Datasource: <a href="https://data.worldbank.org/" data-text-align="center">World
 <span id="cb4-9"><a href="#cb4-9"></a></span>
 <span id="cb4-10"><a href="#cb4-10"></a>df_top <span class="sc">|&gt;</span> </span>
 <span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">12</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb4-13"><a href="#cb4-13"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ccode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["gdp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"China","2":"CHN","3":"2024","4":"38.19","5":"1"},{"1":"United States","2":"USA","3":"2024","4":"29.18","5":"2"},{"1":"India","2":"IND","3":"2024","4":"16.19","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2024","4":"6.92","5":"4"},{"1":"Japan","2":"JPN","3":"2024","4":"6.41","5":"5"},{"1":"Germany","2":"DEU","3":"2024","4":"6.04","5":"6"},{"1":"Brazil","2":"BRA","3":"2024","4":"4.73","5":"7"},{"1":"Indonesia","2":"IDN","3":"2024","4":"4.66","5":"8"},{"1":"France","2":"FRA","3":"2024","4":"4.20","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2024","4":"4.20","5":"10"},{"1":"China","2":"CHN","3":"2023","4":"35.52","5":"1"},{"1":"United States","2":"USA","3":"2023","4":"27.72","5":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ccode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["gdp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"China","2":"CHN","3":"2024","4":"38.19","5":"1"},{"1":"United States","2":"USA","3":"2024","4":"29.18","5":"2"},{"1":"India","2":"IND","3":"2024","4":"16.19","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2024","4":"6.92","5":"4"},{"1":"Japan","2":"JPN","3":"2024","4":"6.41","5":"5"},{"1":"Germany","2":"DEU","3":"2024","4":"6.04","5":"6"},{"1":"Brazil","2":"BRA","3":"2024","4":"4.73","5":"7"},{"1":"Indonesia","2":"IDN","3":"2024","4":"4.66","5":"8"},{"1":"France","2":"FRA","3":"2024","4":"4.20","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2024","4":"4.20","5":"10"},{"1":"China","2":"CHN","3":"2023","4":"35.52","5":"1"},{"1":"United States","2":"USA","3":"2023","4":"27.72","5":"2"},{"1":"India","2":"IND","3":"2023","4":"14.85","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2023","4":"6.48","5":"4"},{"1":"Japan","2":"JPN","3":"2023","4":"6.21","5":"5"},{"1":"Germany","2":"DEU","3":"2023","4":"5.76","5":"6"},{"1":"Brazil","2":"BRA","3":"2023","4":"4.47","5":"7"},{"1":"Indonesia","2":"IDN","3":"2023","4":"4.33","5":"8"},{"1":"France","2":"FRA","3":"2023","4":"3.98","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2023","4":"3.97","5":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -416,18 +417,18 @@ Datasource: <a href="https://data.worldbank.org/" data-text-align="center">World
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 10 × 6
-#&gt;    country ccode  year   gdp  rank cflags                    
-#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                     
-#&gt;  1 Brazil  BRA    1997  1.43     6 gallery_img/topten/BRA.png
-#&gt;  2 Japan   JPN    2017  5.26     4 gallery_img/topten/JPN.png
-#&gt;  3 China   CHN    1997  2.83     3 gallery_img/topten/CHN.png
-#&gt;  4 Brazil  BRA    2012  2.99     7 gallery_img/topten/BRA.png
-#&gt;  5 Germany DEU    2006  2.86     5 gallery_img/topten/DEU.png
-#&gt;  6 Italy   ITA    1997  1.36     7 gallery_img/topten/ITA.png
-#&gt;  7 UK      GBR    1995  1.19     9 gallery_img/topten/GBR.png
-#&gt;  8 China   CHN    2006  7.8      2 gallery_img/topten/CHN.png
-#&gt;  9 UK      GBR    2007  2.18     9 gallery_img/topten/GBR.png
-#&gt; 10 France  FRA    1998  1.4      8 gallery_img/topten/FRA.png</code></pre>
+#&gt;    country   ccode  year   gdp  rank cflags                    
+#&gt;    &lt;chr&gt;     &lt;chr&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                     
+#&gt;  1 Japan     JPN    2013  5.02     4 gallery_img/topten/JPN.png
+#&gt;  2 UK        GBR    2002  1.73     7 gallery_img/topten/GBR.png
+#&gt;  3 China     CHN    2019 24.8      1 gallery_img/topten/CHN.png
+#&gt;  4 India     IND    2020  9.77     3 gallery_img/topten/IND.png
+#&gt;  5 Italy     ITA    2006  1.9     10 gallery_img/topten/ITA.png
+#&gt;  6 Russia    RUS    2008  2.88     6 gallery_img/topten/RUS.png
+#&gt;  7 Russia    RUS    2018  4.23     6 gallery_img/topten/RUS.png
+#&gt;  8 France    FRA    1998  1.4      8 gallery_img/topten/FRA.png
+#&gt;  9 Indonesia IDN    1995  0.89    10 gallery_img/topten/IDN.png
+#&gt; 10 Germany   DEU    2001  2.36     5 gallery_img/topten/DEU.png</code></pre>
 </div>
 </div>
 </section>
@@ -1001,7 +1002,7 @@ Datasource: <a href="https://data.worldbank.org/" data-text-align="center">World
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"none","descPosition":"top","loop":false,"openEffect":"none","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

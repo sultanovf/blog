@@ -14,7 +14,7 @@ about:
       href: https://xing.com/profile/Fazliddin_Sultonov3
     - icon: youtube
       text: YouTube
-      href: https://www.youtube.com/@hw_sultanov
+      href: https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ
     - text: "{{< fa brands square-instagram size=sm >}} Instagram"
       # text: Instagram
       href: https://www.instagram.com/sultanof.uzb/
@@ -48,7 +48,7 @@ library(fontawesome)
 ---
 
 ::: {#hero-heading}
-Assalomu alaykum! Kamina Fazliddin Sultonov, I am interested in data analysis, data science and visualization. As tools for this I am passionate about learning `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")` and `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`. While learning I take notes diligently `r fa(name = "face-grin-wink", fill = "indianred")`. The notes to myself I will publish in this little blog. And I hope that might be of interest/use to some newbies like me, who want to learn in R or Python. Suggestions, feedbacks, critiques and compliments I always welcome, so feel free to [contact me](mailto: fazliddin@sultonov.ru). Thanks! 
+Hi! It's nice to have you on my little blog! `Briefly about myself:` My name is Fazliddin Sultonov, I am self-motivated, personable and has a passion for adapting to the new environment, new knowledge and new technologies. I am interested in data analysis, data visualization and topics in data science. As tools for this I am passionate about learning `r fa(name = "python",  height = "1.5em", width = "1.5em",fill = "steelblue")` and `r fa(name = "r-project",  height = "1.5em", width = "1.5em", fill = "steelblue")`. While learning I take notes diligently `r fa(name = "face-grin-wink", fill = "indianred")`. The notes to myself I will publish in this little blog. And I hope that might be of interest/use to some newbies like me, who want to learn in R or Python. Suggestions, feedbacks, critiques and compliments I always welcome, so feel free to [contact me](mailto: fazliddin@sultonov.ru). Thanks! 
 <!-- and enjoy reading! `r fa(name = "readme",  height = "1.5em", width = "1.5em",fill = "darkslategrey")` -->
 :::
 

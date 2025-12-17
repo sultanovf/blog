@@ -12,7 +12,7 @@
 <generator>quarto-1.8.25</generator>
 <lastBuildDate>Sat, 04 Oct 2025 22:00:00 GMT</lastBuildDate>
 <item>
-  <title>Top ten countries by GDP,PPP</title>
+  <title>Top ten countries by GDP, PPP</title>
   <dc:creator>Fazliddin Sultonov</dc:creator>
   <link>https://sultanov.quarto.pub/blog/gallery/topten.html</link>
   <description><![CDATA[ 
@@ -197,7 +197,8 @@ font-style: inherit;">head</span>(df)</span></code></pre></div></div>
 </div>
 </section>
 <section id="top-10-countries-by-each-year" class="level3">
-<h3 class="anchored" data-anchor-id="top-10-countries-by-each-year">top 10 countries by each year</h3>
+<h3 class="anchored" data-anchor-id="top-10-countries-by-each-year">top 10 countries by each year <br></h3>
+<p>(showing 20 head)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -262,7 +263,7 @@ font-style: inherit;">head</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">12</span>) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">20</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb4-13">  rmarkdown<span class="sc" style="color: #5E5E5E;
@@ -274,7 +275,7 @@ font-style: inherit;">paged_table</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ccode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["gdp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"China","2":"CHN","3":"2024","4":"38.19","5":"1"},{"1":"United States","2":"USA","3":"2024","4":"29.18","5":"2"},{"1":"India","2":"IND","3":"2024","4":"16.19","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2024","4":"6.92","5":"4"},{"1":"Japan","2":"JPN","3":"2024","4":"6.41","5":"5"},{"1":"Germany","2":"DEU","3":"2024","4":"6.04","5":"6"},{"1":"Brazil","2":"BRA","3":"2024","4":"4.73","5":"7"},{"1":"Indonesia","2":"IDN","3":"2024","4":"4.66","5":"8"},{"1":"France","2":"FRA","3":"2024","4":"4.20","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2024","4":"4.20","5":"10"},{"1":"China","2":"CHN","3":"2023","4":"35.52","5":"1"},{"1":"United States","2":"USA","3":"2023","4":"27.72","5":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ccode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["gdp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["rank"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"China","2":"CHN","3":"2024","4":"38.19","5":"1"},{"1":"United States","2":"USA","3":"2024","4":"29.18","5":"2"},{"1":"India","2":"IND","3":"2024","4":"16.19","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2024","4":"6.92","5":"4"},{"1":"Japan","2":"JPN","3":"2024","4":"6.41","5":"5"},{"1":"Germany","2":"DEU","3":"2024","4":"6.04","5":"6"},{"1":"Brazil","2":"BRA","3":"2024","4":"4.73","5":"7"},{"1":"Indonesia","2":"IDN","3":"2024","4":"4.66","5":"8"},{"1":"France","2":"FRA","3":"2024","4":"4.20","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2024","4":"4.20","5":"10"},{"1":"China","2":"CHN","3":"2023","4":"35.52","5":"1"},{"1":"United States","2":"USA","3":"2023","4":"27.72","5":"2"},{"1":"India","2":"IND","3":"2023","4":"14.85","5":"3"},{"1":"Russian Federation","2":"RUS","3":"2023","4":"6.48","5":"4"},{"1":"Japan","2":"JPN","3":"2023","4":"6.21","5":"5"},{"1":"Germany","2":"DEU","3":"2023","4":"5.76","5":"6"},{"1":"Brazil","2":"BRA","3":"2023","4":"4.47","5":"7"},{"1":"Indonesia","2":"IDN","3":"2023","4":"4.33","5":"8"},{"1":"France","2":"FRA","3":"2023","4":"3.98","5":"9"},{"1":"United Kingdom","2":"GBR","3":"2023","4":"3.97","5":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -361,18 +362,18 @@ font-style: inherit;">10</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 10 × 6
-#&gt;    country ccode  year   gdp  rank cflags                    
-#&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                     
-#&gt;  1 Brazil  BRA    1997  1.43     6 gallery_img/topten/BRA.png
-#&gt;  2 Japan   JPN    2017  5.26     4 gallery_img/topten/JPN.png
-#&gt;  3 China   CHN    1997  2.83     3 gallery_img/topten/CHN.png
-#&gt;  4 Brazil  BRA    2012  2.99     7 gallery_img/topten/BRA.png
-#&gt;  5 Germany DEU    2006  2.86     5 gallery_img/topten/DEU.png
-#&gt;  6 Italy   ITA    1997  1.36     7 gallery_img/topten/ITA.png
-#&gt;  7 UK      GBR    1995  1.19     9 gallery_img/topten/GBR.png
-#&gt;  8 China   CHN    2006  7.8      2 gallery_img/topten/CHN.png
-#&gt;  9 UK      GBR    2007  2.18     9 gallery_img/topten/GBR.png
-#&gt; 10 France  FRA    1998  1.4      8 gallery_img/topten/FRA.png</code></pre>
+#&gt;    country   ccode  year   gdp  rank cflags                    
+#&gt;    &lt;chr&gt;     &lt;chr&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                     
+#&gt;  1 Japan     JPN    2013  5.02     4 gallery_img/topten/JPN.png
+#&gt;  2 UK        GBR    2002  1.73     7 gallery_img/topten/GBR.png
+#&gt;  3 China     CHN    2019 24.8      1 gallery_img/topten/CHN.png
+#&gt;  4 India     IND    2020  9.77     3 gallery_img/topten/IND.png
+#&gt;  5 Italy     ITA    2006  1.9     10 gallery_img/topten/ITA.png
+#&gt;  6 Russia    RUS    2008  2.88     6 gallery_img/topten/RUS.png
+#&gt;  7 Russia    RUS    2018  4.23     6 gallery_img/topten/RUS.png
+#&gt;  8 France    FRA    1998  1.4      8 gallery_img/topten/FRA.png
+#&gt;  9 Indonesia IDN    1995  0.89    10 gallery_img/topten/IDN.png
+#&gt; 10 Germany   DEU    2001  2.36     5 gallery_img/topten/DEU.png</code></pre>
 </div>
 </div>
 </section>
