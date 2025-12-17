@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -127,7 +128,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -161,7 +162,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/log.png" alt="" class="navbar-logo">
+    <img src="../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -214,7 +216,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -290,7 +292,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
     </div>
@@ -313,7 +316,7 @@ window.Quarto = {
 <div class="cell page-columns page-full">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"https://raw.githubusercontent.com/sultanovf/my_datasets/main/nikohuz_2010_2023.csv"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">"https://raw.githubusercontent.com/sultanovf/my_datasets/main/nikohuz_2010_2023.csv"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a>years <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="dv">2010</span><span class="sc">:</span><span class="dv">2023</span>) <span class="co">#, sep=",", collapse= ","</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>years <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(years, <span class="st">","</span>))</span>
 <span id="cb1-4"><a href="#cb1-4"></a>new_cnames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"region"</span>, <span class="st">"status"</span>, <span class="st">"area"</span>,  years)</span>
@@ -322,7 +325,7 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7"></a></span>
 <span id="cb1-8"><a href="#cb1-8"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(<span class="fu">sample_n</span>(data, <span class="dv">10</span>)) <span class="co"># show sample 10 rows</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a><span class="co"># oder {r, df_print = "paged"}</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># sample_n(data_raw, 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># sample_n(data_raw, 10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display column-screen-inset">
 <div data-pagedtable="false">
@@ -338,7 +341,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df<span class="ot">&lt;-</span> data</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df<span class="ot">&lt;-</span> data</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># pivot data</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>df_pv<span class="ot">&lt;-</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>  df <span class="sc">|&gt;</span> </span>
@@ -349,7 +352,7 @@ window.Quarto = {
 <span id="cb2-9"><a href="#cb2-9"></a>  )  </span>
 <span id="cb2-10"><a href="#cb2-10"></a></span>
 <span id="cb2-11"><a href="#cb2-11"></a>df_pv <span class="sc">|&gt;</span> </span>
-<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">sample_n</span>(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="fu">sample_n</span>(<span class="dv">7</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 7 × 5
@@ -370,7 +373,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_pl <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_pl <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  df<span class="sc">|&gt;</span> </span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">cols =</span> <span class="sc">!</span><span class="fu">c</span>(region, status, area),</span>
@@ -388,7 +391,7 @@ window.Quarto = {
 <span id="cb4-16"><a href="#cb4-16"></a>    ) <span class="sc">|&gt;</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a>  <span class="fu">ungroup</span>()</span>
 <span id="cb4-18"><a href="#cb4-18"></a></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="fu">head</span>(df_pl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="fu">head</span>(df_pl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 6 × 3
@@ -408,7 +411,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Title/subtitle/datasource</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Title/subtitle/datasource</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>data_source <span class="ot">&lt;-</span> <span class="st">"©Statistics Agency under the President of the Republic of Uzbekistan"</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>p_title <span class="ot">&lt;-</span> <span class="st">"&lt;br&gt;Браки и разводы в Узбекистане в 2010-2023 гг."</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>p_subtitle <span class="ot">&lt;-</span> <span class="st">""</span></span>
@@ -439,13 +442,13 @@ window.Quarto = {
 <span id="cb6-29"><a href="#cb6-29"></a>  <span class="at">family =</span> <span class="st">'Font Awesome 6 Brands'</span>, </span>
 <span id="cb6-30"><a href="#cb6-30"></a>  <span class="at">regular =</span> <span class="fu">paste0</span>(f_path, <span class="st">"Font Awesome 6 Brands-Regular-400.otf"</span>))</span>
 <span id="cb6-31"><a href="#cb6-31"></a></span>
-<span id="cb6-32"><a href="#cb6-32"></a>showtext<span class="sc">::</span><span class="fu">showtext_auto</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-32"><a href="#cb6-32"></a>showtext<span class="sc">::</span><span class="fu">showtext_auto</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># create plot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># create plot</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>pl <span class="ot">&lt;-</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggplot</span>(df_pl, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>value, <span class="at">fill=</span>status)) <span class="sc">+</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width=</span><span class="dv">1</span>), <span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
@@ -479,7 +482,7 @@ window.Quarto = {
 <span id="cb7-32"><a href="#cb7-32"></a>  )</span>
 <span id="cb7-33"><a href="#cb7-33"></a></span>
 <span id="cb7-34"><a href="#cb7-34"></a><span class="co"># Show plot</span></span>
-<span id="cb7-35"><a href="#cb7-35"></a>pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-35"><a href="#cb7-35"></a>pl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -495,7 +498,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>pl_2 <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>pl_2 <span class="ot">&lt;-</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> df_pl,</span>
 <span id="cb8-3"><a href="#cb8-3"></a>         <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">fill =</span> status)) <span class="sc">+</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span> <span class="co">#, position = "dodge"</span></span>
@@ -523,7 +526,7 @@ window.Quarto = {
 <span id="cb8-26"><a href="#cb8-26"></a>    <span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>()</span>
 <span id="cb8-27"><a href="#cb8-27"></a>  )</span>
 <span id="cb8-28"><a href="#cb8-28"></a><span class="co"># show plot</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a>pl_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-29"><a href="#cb8-29"></a>pl_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -539,7 +542,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># marriage</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># marriage</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>plt_anim_mar <span class="ot">&lt;-</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  df_pl <span class="sc">|&gt;</span> </span>
 <span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"marriage"</span>) <span class="sc">|&gt;</span> </span>
@@ -583,7 +586,7 @@ window.Quarto = {
 <span id="cb9-42"><a href="#cb9-42"></a>    <span class="at">end_pause =</span> <span class="dv">10</span>,</span>
 <span id="cb9-43"><a href="#cb9-43"></a>    <span class="at">renderer =</span> <span class="fu">gifski_renderer</span>()</span>
 <span id="cb9-44"><a href="#cb9-44"></a>  )</span>
-<span id="cb9-45"><a href="#cb9-45"></a>anim1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-45"><a href="#cb9-45"></a>anim1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -599,7 +602,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># divorce</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># divorce</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>plt_anim_div <span class="ot">&lt;-</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  df_pl <span class="sc">|&gt;</span> </span>
 <span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">filter</span>(status <span class="sc">==</span> <span class="st">"divorce"</span>) <span class="sc">|&gt;</span> </span>
@@ -641,7 +644,7 @@ window.Quarto = {
 <span id="cb10-40"><a href="#cb10-40"></a>    <span class="at">end_pause =</span> <span class="dv">10</span>,</span>
 <span id="cb10-41"><a href="#cb10-41"></a>    <span class="at">renderer =</span> <span class="fu">gifski_renderer</span>()</span>
 <span id="cb10-42"><a href="#cb10-42"></a>  )</span>
-<span id="cb10-43"><a href="#cb10-43"></a>anim2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-43"><a href="#cb10-43"></a>anim2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -707,13 +710,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

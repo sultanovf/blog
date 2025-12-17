@@ -16,6 +16,7 @@
   {
     "listing": "/gallery.html",
     "items": [
+      "/gallery/topten.html",
       "/gallery/pop_bar.html",
       "/gallery/socialnetwork.html",
       "/gallery/marriage.html",

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,14 +90,15 @@ div.csl-indent {
 <link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-236d90495073fb2ac8939117e3e83141.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-95f147d06fdb9f8ce149f95e323965f4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b44eec21213f386861d4083aa051c143.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5ba03f77d2b70fd341905a8b7e13709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -141,7 +142,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -174,7 +175,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/log.png" alt="" class="navbar-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -227,7 +229,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -323,7 +325,8 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
     </div>
 <!-- main -->
@@ -343,21 +346,21 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="struktur">Struktur</h2>
 <p>Der Input und Output für R und Python können nebeneinander oder in Tabsets, wobei <span style="background-color: lightcyan">R-Sourse in hellcyan</span> und <span style="background-color: yellow">Python-Sourse in gelb</span> dargestellt werden. Zeilenanfang im Output ist mit <code>#&gt;</code> belegt.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="code-r">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hallo R Lover!"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo R Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hallo R Lover!"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo R Lover!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="code-py">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo Python Lover!"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo Python Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo Python Lover!"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo Python Lover!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -365,12 +368,12 @@ window.Quarto = {
 </div>
 <p>Wo ich was Wichtiges zusagen habe, habe ich dementsprechend gefärbt und markiert:</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand for more
+<span class="screen-reader-only">Caution</span>Expand for more
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -380,10 +383,10 @@ Expand for more
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Den Variablen a und b die Werte 42, 13 zuweisen und sie zusammen addieren</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Den Variablen a und b die Werte 42, 13 zuweisen und sie zusammen addieren</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">13</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; 55</code></pre>
@@ -393,8 +396,8 @@ Expand for more
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Variablen a und b miteinander multiplizieren</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>a <span class="sc">*</span> py<span class="sc">$</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Variablen a und b miteinander multiplizieren</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>a <span class="sc">*</span> py<span class="sc">$</span>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; [1] 546</code></pre>
@@ -472,7 +475,7 @@ Hier ist ein Überblick über die gängigen Basic Data Types in Python und R <sp
 <section id="integerint" class="level3">
 <h3 class="anchored" data-anchor-id="integerint">integer/int</h3>
 <p>Integer stellt eine ganze Zahl dar, z.B. 7, -7. In R wird die ganze Zahl mit einem <code>L</code> hinter der Zahl gekennzeichnet. Warum L dahinter stehen soll, weiß auch nicht;). R soll ja bekanntlich auf Programmiersprache C aufgebaut sein und da soll L für <em>long integer</em> stehen. In Python werden die ganze Zahlen normal als integer gespeichert.</p>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ri1 <span class="ot">&lt;-</span> <span class="dv">11</span>L</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ri1 <span class="ot">&lt;-</span> <span class="dv">11</span>L</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ri2 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">12</span>L</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ri3 <span class="ot">&lt;-</span> <span class="fl">13.0</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ri4 <span class="ot">&lt;-</span> <span class="st">"123"</span></span>
@@ -483,8 +486,8 @@ Hier ist ein Überblick über die gängigen Basic Data Types in Python und R <sp
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri3))</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "numeric"</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(ri4))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pi1 <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "character"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pi1 <span class="op">=</span> <span class="dv">11</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pi2 <span class="op">=</span> <span class="op">-</span><span class="dv">12</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pi3 <span class="op">=</span> <span class="fl">13.0</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pi4 <span class="op">=</span> <span class="st">"123"</span></span>
@@ -495,7 +498,7 @@ Hier ist ein Überblick über die gängigen Basic Data Types in Python und R <sp
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi3))</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'float'&gt;</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pi4))</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'str'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'str'&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
 <div class="quarto-layout-row">
 <div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -508,12 +511,12 @@ Hier ist ein Überblick über die gängigen Basic Data Types in Python und R <sp
 </div>
 <p>Um herauszufinden oder anzeigen zu lassen, welchen Typ ein Objekt hat, gibt es Funktion <strong><em><code>class()</code></em></strong> in R und <strong><em><code>type()</code></em></strong> in Python. In R werden Objekte mit <strong><code>&lt;-</code></strong> und in Python mit <strong><code>=</code></strong> zugewiesen. Generell geht eas auch in R mit <code>=</code>, aber mit Pfeil ist üblich</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More about assignment in R: <code>&lt;-</code> or <code>=</code> ?
+<span class="screen-reader-only">Note</span>More about assignment in R: <code>&lt;-</code> or <code>=</code> ?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -522,24 +525,24 @@ More about assignment in R: <code>&lt;-</code> or <code>=</code> ?
 <p>In R ist üblich, Objekte mit <code>&lt;-</code> zuzuweisen, während man in Python mit <code>=</code> zuweist. Generell geht auch in R mit Gleichheitszeichen. Aber man bevorzugt Zuweisungspfeil. Gleichheitszeichen wird zur Zuweisung eher innerhalb einer Funktion benutzt. Hier eine kleine Demonstration:<br>
 Den Vektor von 1 bis 15 weise ich <em>vec</em> zu und rechne ich Summe:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="at">vec =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="at">vec =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; [1] 45</code></pre>
 </div>
 </div>
 <p>Wenn ich das Objekt <em>vec</em> abfrage, kommt Fehlermeldung, weil dieses Objekt nur in der Funktion existiert:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>#&gt; Error in eval(expr, envir, enclos): Objekt 'vec' nicht gefunden</code></pre>
 </div>
 </div>
 <p>Das Gleiche mache ich mit <code>&lt;-</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vec)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3 4 5 6 7 8 9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Der Zuweisungspfeil wird aber meistens empfohlen und verwendet. Hier zum Nachlesen: <a href="http://adv-r.had.co.nz/Style.html">Style guide von Hadley Wickham</a> und hier: <a href="https://google.github.io/styleguide/Rguide.html">Google’s R Style Guide</a></p>
 </div>
@@ -550,7 +553,7 @@ In R kann man den Typ des Objekts durch die Funktion <strong><em><code>is.intege
 <div class="code-r">
 <p><strong><em>R</em></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in R if a number is integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in R if a number is integer</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(ri1)            <span class="co"># Is 11L integer?</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(ri2, <span class="st">"integer"</span>)   <span class="co"># Is -12 integer?</span></span>
@@ -560,7 +563,7 @@ In R kann man den Typ des Objekts durch die Funktion <strong><em><code>is.intege
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(ri4)            <span class="co"># Is "123" integer?</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(ri4, <span class="st">"character"</span>) <span class="co"># Is "123"character?</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>– in integer umwandeln</strong><br>
@@ -570,7 +573,7 @@ Wie gesagt, ohne L speichert R die Zahl als numeric, also als Kommazahl bzw. Flo
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Making R treat the object as an integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Making R treat the object as an integer</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="fu">print</span>(<span class="fu">class</span>(ri3))              <span class="co"># Type of 13.0</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="fu">print</span>(<span class="fu">class</span>(ri4))              <span class="co"># Type of "123"</span></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.integer</span>(ri3)))  <span class="co"># Forsing 13.0 to integer</span></span>
@@ -578,7 +581,7 @@ Wie gesagt, ohne L speichert R die Zahl als numeric, also als Kommazahl bzw. Flo
 <span id="cb15-6"><a href="#cb15-6"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="cn">FALSE</span>))            <span class="co"># Type of FALSE</span></span>
 <span id="cb15-7"><a href="#cb15-7"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="cn">TRUE</span>))             <span class="co"># Type of True</span></span>
 <span id="cb15-8"><a href="#cb15-8"></a><span class="fu">print</span>(<span class="fu">as.integer</span>(<span class="cn">FALSE</span>))       <span class="co"># FALSE as Integer</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="fu">print</span>(<span class="fu">as.integer</span>(<span class="cn">TRUE</span>))        <span class="co"># TRUE as Integer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="fu">print</span>(<span class="fu">as.integer</span>(<span class="cn">TRUE</span>))        <span class="co"># TRUE as Integer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; [1] "numeric"
@@ -596,7 +599,7 @@ Wie gesagt, ohne L speichert R die Zahl als numeric, also als Kommazahl bzw. Flo
 <div class="code-py">
 <p><strong><em>Python</em></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in Python if a number is integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check in Python if a number is integer</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pi1, <span class="bu">int</span>) <span class="co"># Is 11 integer?</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pi2) <span class="op">==</span> <span class="bu">int</span>     <span class="co"># Is -12 integer?</span></span>
@@ -604,7 +607,7 @@ Wie gesagt, ohne L speichert R die Zahl als numeric, also als Kommazahl bzw. Flo
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pi3, <span class="bu">int</span>) <span class="co"># Is 13.0 integer?</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pi4) <span class="kw">is</span> <span class="bu">int</span>     <span class="co"># Is '123' integer?</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>– in int umwandeln</strong><br>
@@ -614,7 +617,7 @@ Python speichrt die Zahlen als Integer. Wenn ich sie als Float will, muss ich de
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(<span class="bu">type</span>(pi3))        <span class="co"># Type of 13.0</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="bu">print</span>(<span class="bu">type</span>(pi4))        <span class="co"># Type of "123"</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">int</span>(pi3)))   <span class="co"># Forsing 13.0 to integer</span></span>
@@ -622,7 +625,7 @@ Python speichrt die Zahlen als Integer. Wenn ich sie als Float will, muss ich de
 <span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">False</span>))      <span class="co"># Type of FALSE</span></span>
 <span id="cb18-7"><a href="#cb18-7"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="va">True</span>))       <span class="co"># Type of True</span></span>
 <span id="cb18-8"><a href="#cb18-8"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="va">False</span>))       <span class="co"># FALSE as Integer</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="va">True</span>))        <span class="co"># TRUE as Integer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="va">True</span>))        <span class="co"># TRUE as Integer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; &lt;class 'float'&gt;
@@ -643,13 +646,13 @@ Python speichrt die Zahlen als Integer. Wenn ich sie als Float will, muss ich de
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># class() und typeof()</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># class() und typeof()</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="fu">class</span>(<span class="dv">10</span>)    <span class="co"># numeric</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="fu">typeof</span>(<span class="dv">10</span>)   <span class="co"># double</span></span>
 <span id="cb20-4"><a href="#cb20-4"></a><span class="fu">class</span>(<span class="dv">10</span>L)   <span class="co"># integer</span></span>
 <span id="cb20-5"><a href="#cb20-5"></a><span class="fu">typeof</span>(<span class="dv">10</span>L)  <span class="co"># integer</span></span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="fu">class</span>(<span class="fl">10.0</span>)  <span class="co"># numeric</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">typeof</span>(<span class="fl">10.0</span>) <span class="co"># double</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">typeof</span>(<span class="fl">10.0</span>) <span class="co"># double</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; [1] "numeric"
@@ -662,7 +665,7 @@ Python speichrt die Zahlen als Integer. Wenn ich sie als Float will, muss ich de
 </div>
 <p><strong>– Prüfen, ob der Typ des Objekts numeric/float ist</strong><br>
 Wie beim Integer, kann man hier auch ähnliche Funktionen benutzen <strong><em><code>is.numeric()</code></em></strong> oder <strong><em><code>is.double()</code></em></strong> oder auch <code>inherits(obj, "type")</code> für R, und gleiche wie oben für Python.</p>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf1 <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf1 <span class="ot">&lt;-</span> <span class="fl">3.14</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rf2 <span class="ot">&lt;-</span> <span class="dv">17</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>rf3 <span class="ot">&lt;-</span> <span class="dv">20</span>L</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">class</span>(rf2))  <span class="co"># class()-Type of 17</span></span>
@@ -680,8 +683,8 @@ Wie beim Integer, kann man hier auch ähnliche Funktionen benutzen <strong><em><
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(rf3)    <span class="co"># Is 20L numeric?</span></span>
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
 <span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">is.integer</span>(rf3)    <span class="co"># Is 20L integer?</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pf1 <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pf1 <span class="op">=</span> <span class="fl">3.14</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pf2 <span class="op">=</span> <span class="dv">17</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pf3 <span class="op">=</span> <span class="dv">20</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(pf1))      <span class="co"># Type of 3.14</span></span>
@@ -699,7 +702,7 @@ Wie beim Integer, kann man hier auch ähnliche Funktionen benutzen <strong><em><
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pf3) <span class="op">==</span> <span class="bu">float</span>    <span class="co"># Is 20 float?</span></span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span>
 <span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(pf2, <span class="bu">float</span>)<span class="co"># Is 17 float?</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
 <div class="quarto-layout-row">
 <div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -718,13 +721,13 @@ In R benutze ich dafur die Funktion <strong><em><code>as.numeric()</code></em></
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Making R treat the object as an integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Making R treat the object as an integer</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">print</span>(<span class="fu">class</span>(rf2))              <span class="co"># Type of 17</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="fu">print</span>(<span class="fu">class</span>(rf3))              <span class="co"># Type of 20L</span></span>
 <span id="cb24-4"><a href="#cb24-4"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.numeric</span>(rf2)))  <span class="co"># Forsing 17 to nomeric</span></span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="fu">print</span>(<span class="fu">class</span>(<span class="fu">as.double</span>(rf3)))   <span class="co"># Forsing 20L to nomeric</span></span>
 <span id="cb24-6"><a href="#cb24-6"></a><span class="fu">print</span>(<span class="fu">as.numeric</span>(<span class="cn">FALSE</span>))       <span class="co"># FALSE as numeric</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a><span class="fu">print</span>(<span class="fu">as.double</span>(<span class="cn">TRUE</span>))         <span class="co"># TRUE as numeric</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="fu">print</span>(<span class="fu">as.double</span>(<span class="cn">TRUE</span>))         <span class="co"># TRUE as numeric</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; [1] "numeric"
@@ -742,13 +745,13 @@ In R benutze ich dafur die Funktion <strong><em><code>as.numeric()</code></em></
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Making Python treat the object as an integer</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(<span class="bu">type</span>(pf2))        <span class="co"># Type of 17</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(<span class="bu">type</span>(pf3))        <span class="co"># Type of 20</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">float</span>(pf2))) <span class="co"># Forsing 17 to float</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">float</span>(pf3))) <span class="co"># Forsing 20 to float</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="va">False</span>))     <span class="co"># FALSE as float</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="va">True</span>))      <span class="co"># TRUE as float</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="va">True</span>))      <span class="co"># TRUE as float</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; &lt;class 'int'&gt;
@@ -766,12 +769,12 @@ In R benutze ich dafur die Funktion <strong><em><code>as.numeric()</code></em></
 <p>Wie der Name schon sagt, solche Daten sind Strings, die Zeichen, Buchstaben enthalten. In R werden sie als <code>character</code> und in Python als <code>str</code> charakteresiert. Mit Strings hat man in der Praxis auch wie mit numerischen Daten häufig zu tun. Beispielweise können im zu analysierenden Datensatz auch kategoriale Variablen: “männlich”, “weiblich” vorhanden sein usw.<br>
 Strings können im doppelten Apostroph <code>'text'</code> oder in Anführungszeichen oder Gänsefüßchen <code>"text"</code> angegeben werden/sein in R auch in Python. Die Funktion für die Länge des Strings ist für R: <strong><em><code>nchar()</code></em></strong> und für Python <strong><em><code>len()</code></em></strong>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="code-r">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Examples for Characters</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Examples for Characters</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>rt1 <span class="ot">&lt;-</span> <span class="st">"123"</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a>rt2 <span class="ot">&lt;-</span> <span class="st">"Hello"</span> </span>
 <span id="cb28-4"><a href="#cb28-4"></a>rt3 <span class="ot">&lt;-</span> <span class="st">"World"</span></span>
@@ -785,7 +788,7 @@ Strings können im doppelten Apostroph <code>'text'</code> oder in Anführungsze
 <span id="cb28-12"><a href="#cb28-12"></a>rt1 <span class="sc">==</span> <span class="dv">123</span></span>
 <span id="cb28-13"><a href="#cb28-13"></a><span class="co"># Length of String</span></span>
 <span id="cb28-14"><a href="#cb28-14"></a><span class="fu">glue</span>(<span class="st">"Länge von </span><span class="sc">\"</span><span class="st">123</span><span class="sc">\"</span><span class="st">: {nchar(rt1)}"</span>)</span>
-<span id="cb28-15"><a href="#cb28-15"></a><span class="fu">glue</span>(<span class="st">"Länge von </span><span class="sc">\"</span><span class="st">Hello</span><span class="sc">\"</span><span class="st">: {nchar(rt2)}"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="fu">glue</span>(<span class="st">"Länge von </span><span class="sc">\"</span><span class="st">Hello</span><span class="sc">\"</span><span class="st">: {nchar(rt2)}"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; Class of rt1: character
 #&gt; Mit der Funktion glue(): Hello World
@@ -800,12 +803,12 @@ Strings können im doppelten Apostroph <code>'text'</code> oder in Anführungsze
 </div>
 <p>R hat es schwer mit Zusammenaddieren von Strings und multiplizieren von Strings mit einer Zahl.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More about string operations in R
+<span class="screen-reader-only">Note</span>More about string operations in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -813,10 +816,10 @@ More about string operations in R
 <div class="callout-body-container callout-body">
 <p>Wenn man in R zwei Strings zusammen addieren will oder String mit einer Zahl multiplizieren will, gibt R Error zurück, also kann es nicht. Vielleich gibt es irgendein Paket, das dies ermöglichen, müsste man mal schauen. Also einfach Addieren von zwei Strings wie in Python geht in R nicht. Mit der Funktion <strong><em><code>glue()</code></em></strong> aus dem Paket <code>glue</code> oder mit der Funktion <code>paste</code> konnte ich zwei Strings zusammen addierend anzeigen lassen. Diese Funktion gibt es auch im Paket <code>stringr</code> kann so angewendet werden: <code>stringr::str_glue()</code>. Die Funktion <code>glue("The value of text is {text})</code> ist wie f-String in Python <code>print(f"The value of text is {text}")</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rt1 <span class="sc">+</span> rt2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rt1 <span class="sc">+</span> rt2</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in rt1 + rt2: nicht-numerisches Argument für binären Operator</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>rt3 <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in rt3 * 3: nicht-numerisches Argument für binären Operator</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in rt3 * 3: nicht-numerisches Argument für binären Operator</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -825,7 +828,7 @@ More about string operations in R
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="code-py">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Examples for Characters</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Examples for Characters</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a>pt1 <span class="op">=</span> <span class="st">"123"</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>pt2 <span class="op">=</span> <span class="st">"Hello"</span> </span>
 <span id="cb31-4"><a href="#cb31-4"></a>pt3 <span class="op">=</span> <span class="st">"world"</span></span>
@@ -841,7 +844,7 @@ More about string operations in R
 <span id="cb31-14"><a href="#cb31-14"></a>pt1 <span class="op">==</span> <span class="dv">123</span></span>
 <span id="cb31-15"><a href="#cb31-15"></a><span class="co"># Length of String</span></span>
 <span id="cb31-16"><a href="#cb31-16"></a><span class="bu">print</span>(<span class="ss">f"Länge von </span><span class="ch">\"</span><span class="ss">123</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(pt1)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb31-17"><a href="#cb31-17"></a><span class="bu">print</span>(<span class="ss">f"Länge von </span><span class="ch">\"</span><span class="ss">Hallo</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(pt2)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="bu">print</span>(<span class="ss">f"Länge von </span><span class="ch">\"</span><span class="ss">Hallo</span><span class="ch">\"</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(pt2)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre class="code-output"><code>#&gt; Type of pt1: &lt;class 'str'&gt;
 #&gt; Hello world
@@ -863,7 +866,7 @@ More about string operations in R
 <section id="logicalbool" class="level3">
 <h3 class="anchored" data-anchor-id="logicalbool">logical/bool</h3>
 <p>Die Objekt vom logischen Typ können die Werte WAHR/FALSCH oder 1/0 annehmen. Diese werden in R als <code>logical</code> und in Python als <code>bool</code> gespeichert. Schreibweisen unterscheiden sich auch, geschrieben bzw. dargestellt werden sie in R mit Großbuchstaben: <span style="color: red;">TRUE/FALSE</span> und in Python klein geschrieben mit Großbuchstaben am Anfang: <span style="color: red;">True/False</span>.</p>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>rf <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(rt)        <span class="co"># Type of TRUE</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "logical"</span></span>
@@ -884,8 +887,8 @@ More about string operations in R
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>rt <span class="sc">|</span> rf          <span class="co"># rt OR rf</span></span>
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
 <span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>rt              <span class="co"># Is not TRUE</span></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pt <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>pf <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(pt)  <span class="co"># Type of True</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;class 'bool'&gt;</span></span>
@@ -906,7 +909,7 @@ More about string operations in R
 <span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>pt <span class="kw">or</span> pf  <span class="co"># pt OR pf</span></span>
 <span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; True</span></span>
 <span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="kw">not</span> pt    <span class="co"># Is not True</span></span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout="[[50,50], [100]]">
 <div class="quarto-layout-row">
 <div class="code-r quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -1001,13 +1004,14 @@ Wouter van Atteveldt, Carlos Arcila Calderon, Damian Trilling. 2022. <em>Computa
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

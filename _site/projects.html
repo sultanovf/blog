@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,18 +34,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8f7a41fe82485f2a115c8adfb19aafcd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9daaebcdf4cd9e4f9d1c0dc33f781aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -125,7 +126,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -316,7 +317,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/log.png" alt="" class="navbar-logo">
+    <img src="./images/log.png" alt="" class="navbar-logo light-content">
+    <img src="./images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -369,7 +371,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -421,7 +423,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-cloud"><div class="category" data-category="Q1Y="><span class="quarto-category-count category-cloud-4">CV</span></div><div class="category" data-category="ZGFzaGJvYXJk"><span class="quarto-category-count category-cloud-7">dashboard</span></div><div class="category" data-category="ZGF0YWRyaXZlbmN2"><span class="quarto-category-count category-cloud-4">datadrivencv</span></div><div class="category" data-category="Z2dwbG90Mg=="><span class="quarto-category-count category-cloud-4">ggplot2</span></div><div class="category" data-category="Z2dwb2w="><span class="quarto-category-count category-cloud-4">ggpol</span></div><div class="category" data-category="cGFuZGFz"><span class="quarto-category-count category-cloud-4">pandas</span></div><div class="category" data-category="UHl0aG9u"><span class="quarto-category-count category-cloud-4">Python</span></div><div class="category" data-category="cXVhcnRv"><span class="quarto-category-count category-cloud-4">quarto</span></div><div class="category" data-category="Ug=="><span class="quarto-category-count category-cloud-7">R</span></div><div class="category" data-category="UmVzdW1l"><span class="quarto-category-count category-cloud-4">Resume</span></div><div class="category" data-category="c2hpbnk="><span class="quarto-category-count category-cloud-4">shiny</span></div><div class="category" data-category="VXpiZWs="><span class="quarto-category-count category-cloud-4">Uzbek</span></div></div></div>
@@ -461,7 +464,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cXVhcnRvJTJDZGFzaGJvYXJkJTJDUiUyQ2dncGxvdDIlMkNzaGlueSUyQ2dncG9s" data-listing-date-sort="1756764000000" data-listing-file-modified-sort="1757702502346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
+<div class="quarto-post image-right" data-index="0" data-categories="cXVhcnRvJTJDZGFzaGJvYXJkJTJDUiUyQ2dncGxvdDIlMkNzaGlueSUyQ2dncG9s" data-listing-date-sort="1756764000000" data-listing-file-modified-sort="1766007998405" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
 <div class="thumbnail"><a href="./projects/uzbinde.html" class="no-external">
 
 <p class="card-img-top"><img src="projects\pics\uzdeplot.png"  class="thumbnail-image card-img"/></p>
@@ -501,7 +504,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="UHl0aG9uJTJDZGFzaGJvYXJkJTJDcGFuZGFz" data-listing-date-sort="1754085600000" data-listing-file-modified-sort="1757422411778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
+<div class="quarto-post image-right" data-index="1" data-categories="UHl0aG9uJTJDZGFzaGJvYXJkJTJDcGFuZGFz" data-listing-date-sort="1754085600000" data-listing-file-modified-sort="1766007998404" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
 <div class="thumbnail"><a href="./projects/pyinexcel.html" class="no-external">
 
 <p class="card-img-top"><img src="projects\pics\pyexc.png"  class="thumbnail-image card-img"/></p>
@@ -535,7 +538,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Q1YlMkNSZXN1bWUlMkNVemJlayUyQ1IlMkNkYXRhZHJpdmVuY3Y=" data-listing-date-sort="1706050800000" data-listing-file-modified-sort="1757368528088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1648">
+<div class="quarto-post image-right" data-index="2" data-categories="Q1YlMkNSZXN1bWUlMkNVemJlayUyQ1IlMkNkYXRhZHJpdmVuY3Y=" data-listing-date-sort="1706050800000" data-listing-file-modified-sort="1766007998244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1648">
 <div class="thumbnail"><a href="./projects/create_cv/create_cv.html" class="no-external">
 
 <p class="card-img-top"><img src="projects\create_cv\img_cv\cv_img.png"  class="thumbnail-image card-img"/></p>
@@ -641,13 +644,14 @@ Fazliddin Sultonov
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,14 +89,15 @@ div.csl-indent {
 <link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -143,7 +144,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -178,7 +179,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/log.png" alt="" class="navbar-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -231,7 +233,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -354,7 +356,8 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
     </div>
 <!-- main -->
@@ -370,13 +373,13 @@ window.Quarto = {
 <p>Der Codeblock bzw. Input wird in <span style="background-color: lightcyan"><em>R hellcyan</em></span> und in <span style="background-color: yellow"><em>Python gelb</em></span> dargestellt. Zeilenanfang im Output ist mit <code>#&gt;</code> belegt.</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hallo R Lover!"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo R Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Hallo R Lover!"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo R Lover!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo Python Lover!"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo Python Lover!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo Python Lover!"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hallo Python Lover!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -390,12 +393,12 @@ window.Quarto = {
 </div>
 <div class="page-columns page-full"><p>Eine Zusatzinfo ist im Boxe wie unten geschrieben kann duerch ausklappen angezeigt werden: </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Hinweise oder kleine Infos werden auf der Seite dargestellt</span></div></div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand for more
+<span class="screen-reader-only">Caution</span>Expand for more
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -410,24 +413,24 @@ Expand for more
 <h1>Data Structures</h1>
 <div class="page-columns page-full"><p>Es gibt einmal die Basic Data Types, die bei der Zuweisung eines Werts oder bei der Erzeugung einer Variable bzw. eines Objekts festlegen, welche <strong>Werte</strong> dieses Objekt/Variable annehmen kann und welche <strong>Operationen</strong> auf diese Objekte anzuwenden sind. Z.B. eine Zahl 42 der Variable namens beispielsweise <em>var_zahl</em> zugewiesen und mit dem Typ <em>Integer</em> gespeichert werden. Dann kan weitere Berechnugen mit dieser Variable wie Multioplikation, Addition usw. durchgeführt werden. So können Daten als <em>systematisch kodierte Informationen über die reale Welt definiert <span class="citation" data-cites="r_DMforSocial">(<a href="#ref-r_DMforSocial" role="doc-biblioref">Weidmann 2023</a>)</span></em> werden.  Daten sind für uns dann vom Nutzen, wenn sie in einer Format sind, so dass sie gespeichert, geteilt, analisiert und auf sie irgendwelche Operationen und Fubktionen angewendet werden können. Das bestimmt die <strong><em>Data Dstructure</em></strong>, also <em>Oraganisation</em> und <em>Speicherung</em> von Daten. Was gemeint ist, möchte ich durch ein Beispiel in Anlehnung an <span class="citation" data-cites="r_DMforSocial">(<a href="#ref-r_DMforSocial" role="doc-biblioref">Weidmann 2023</a>)</span> zeigen.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Mehr zu Basic Data Types in <a href="../../posts/DataTypes/datatypes_de.html" target="_blank">R &amp; Python: Types of Data</a>).</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Deutschland ist ein Land mit 83,3 Mln. Einwohnern und sein Hauptstadt</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">  ist Berlin; Russland hat 144,1 Mln. Einwohner, Hauptstadt ist Moskau;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">  Weiteres Land ist Usbekistan mit 35,5 Mln. Einwohnern, sein Hauptstadt</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ist Taschkent. Letztes Land sind USA mit 341,2 Mln. Einwohnern, die</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Hauptstadt ist Washington, D.C."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Hauptstadt ist Washington, D.C."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Im Beispiel sind Populationen in Deutschland, Usbekistan. Russland und den USA in 2023 von <span class="citation" data-cites="worldpop">(<a href="#ref-worldpop" role="doc-biblioref"><span>“World Population Review”</span> Feb 2024</a>)</span>.</span></div></div>
 <p>Man kann das Object <em>raw_data</em> im Grunde als eine Datenbank sehen, welche die Informationen über vier Länder, ihre Hauptstädte und ihre Bevölkerungszahl enthält. Für Menschen ist einfach, aus diesem Text die Informationen zu extrahieren, wie z.B. welches Land hat größere Population, welche Population ist die größte oder kleinste usw. Aber für Komputer ist nicht verständlich, sie rechnerisch zu verarbeiten, weil die Daten keine Struktur haben. Wir könnten aber diese Daten mit dem gleichen Inhalt anders speichern, also mit einer bestimmten Struktur z. B. als <em>datafarame</em>. Somit sind Daten dem Komputer verständlich, so dass er rechnerisch verarbeiten kann.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>df_r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Uzbekistan"</span>, <span class="st">"Russia"</span>, <span class="st">"USA"</span>),</span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="at">population =</span> <span class="fu">c</span>(<span class="fl">83.3</span>, <span class="fl">35.5</span>, <span class="fl">144.1</span>, <span class="fl">341.2</span>),</span>
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">capital =</span> <span class="fu">c</span>(<span class="st">"Berlin"</span>, <span class="st">"Tashkent"</span>, <span class="st">"Moscow"</span>, <span class="st">"Washington"</span>)</span>
 <span id="cb4-5"><a href="#cb4-5"></a>)</span>
-<span id="cb4-6"><a href="#cb4-6"></a>df_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6"></a>df_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;      country population    capital
@@ -439,21 +442,21 @@ Expand for more
 </div>
 <p>Um die Daten zu speichern, wurde im zweiten Beispiel <code>data.frame</code> von R verwendet, eine Data Structure von R für Tabellen, wie es in Python dafür <code>pandas</code> gibt. Jedes Land hat verschieden Typen von Informationen (county ist character also string, population ist double also float). Im Verglich zu den im ersten Beispiel als normaler Text (raw_data) gespeicherten Daten sind als dataframe bzw Tabelle gespeicherte (df_r) Daten leichter zu verstehen und zu verarbeiten.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Sum of population</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Sum of population</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">glue</span>(<span class="st">"Sum of population: {sum(df_r$population)}"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co"># Max of Population</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="fu">glue</span>(<span class="st">"Max of Population: {max(df_r$population)}"</span>)</span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="co"># Summary of Data</span></span>
 <span id="cb6-7"><a href="#cb6-7"></a><span class="fu">glue</span>(<span class="st">"Summary of data:"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">summary</span>(df_r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="fu">summary</span>(df_r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Sum of population: 604.1
@@ -476,7 +479,7 @@ Expand for more
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2"></a>df_py <span class="op">=</span> pd.DataFrame(r.df_r)</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co"># Sum of population</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="bu">print</span>(<span class="ss">f"Sum of population: </span><span class="sc">{</span>df_py[<span class="st">"population"</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -484,7 +487,7 @@ Expand for more
 <span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="ss">f"Sum of population: </span><span class="sc">{</span>df_py[<span class="st">"population"</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
 <span id="cb8-7"><a href="#cb8-7"></a><span class="co"># Summary of Data</span></span>
 <span id="cb8-8"><a href="#cb8-8"></a><span class="bu">print</span>(<span class="st">"Summary of data:"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9"></a>df_py.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-9"><a href="#cb8-9"></a>df_py.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Sum of population: 604.0999999999999
@@ -511,19 +514,19 @@ Expand for more
 <h1>How is the data are structured in R and Python</h1>
 <p>Egal, ob wir die Daten in R oder in Python bearbeiten, in beiden Sprachen werden sie als <strong><em>Object</em></strong> gespeichert. Objekte können erstellt werden, indem man z.B einer Variable (Name des Objekts) den Wert (Objekt) zuweist. Sagen wir, wir erzeugen ein Objekt namens <em>age</em> und weiesen ihm den Wert <em>35</em> (Alter): <code>age &lt;- 35</code> (in R) und <code>age = 35</code> (in Python). Aber meistens will man nicht manulell Tausende von Objekten (age1, age2, age3, …) erstellen, sondern eine Liste namens <em>ages</em> haben, die alle Alter (Objekte) enthält. Daraus wird eine <em>gruppierte Datenstruktur</em>, aslo ein Object, das aus mehreren Einzelobjecten zusammengesetzt sind. Davon gibt es unterschiedliche, wie <strong><em>Lists</em></strong>, <strong><em>Vectors</em></strong>, <strong><em>Arrays</em></strong>, <strong><em>Series</em></strong>, <strong><em>Dictionaries</em></strong> etc. Sie unterscheiden sich durch ihre Format, Struktur, Methoden usw., aber Kernpunkt ist gleich: Es werden mehrere Objekte in ein gruppiertes bzw kombiniertes Objekt (in einer von dieser Datenstruktur) gespeichert.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ages_r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">24</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">52</span>, <span class="dv">35</span>, <span class="dv">37</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ages_r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">24</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">52</span>, <span class="dv">35</span>, <span class="dv">37</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>names_r <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Ali"</span>, <span class="st">"Temur"</span>, <span class="st">"Ben"</span>, <span class="st">"Brandon"</span>, <span class="st">"John"</span>, <span class="st">"Doe"</span>, <span class="st">"Dirk"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>ages_r</span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="fu">class</span>(ages_r)   <span class="co"># Type of ages_r</span></span>
 <span id="cb10-5"><a href="#cb10-5"></a>names_r</span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">class</span>(names_r)  <span class="co"># Type of names_r</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">class</span>(names_r)  <span class="co"># Type of names_r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 35 24 42 24 52 35 37
@@ -534,12 +537,12 @@ Expand for more
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More about <code>c()</code> in R
+<span class="screen-reader-only">Note</span>More about <code>c()</code> in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -555,12 +558,12 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>ages_py <span class="op">=</span> [<span class="dv">35</span>, <span class="dv">24</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">52</span>, <span class="dv">35</span>, <span class="dv">37</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>ages_py <span class="op">=</span> [<span class="dv">35</span>, <span class="dv">24</span>, <span class="dv">42</span>, <span class="dv">24</span>, <span class="dv">52</span>, <span class="dv">35</span>, <span class="dv">37</span>]</span>
 <span id="cb12-2"><a href="#cb12-2"></a>names_py <span class="op">=</span> [<span class="st">"Ali"</span>, <span class="st">"Temur"</span>, <span class="st">"Ben"</span>, <span class="st">"Brandon"</span>, <span class="st">"John"</span>, <span class="st">"Doe"</span>, <span class="st">"Dirk"</span>]</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(ages_py)</span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="bu">type</span>(ages_py)    <span class="co"># Type of ages_py</span></span>
 <span id="cb12-5"><a href="#cb12-5"></a><span class="bu">print</span>(names_py)</span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="bu">type</span>(names_py)   <span class="co"># Type of names_py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="bu">type</span>(names_py)   <span class="co"># Type of names_py</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [35, 24, 42, 24, 52, 35, 37]
@@ -641,7 +644,7 @@ More about <code>c()</code> in R
 <section id="creating" class="level3">
 <h3 class="anchored" data-anchor-id="creating">Creating</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>– with <code>c()</code> (like <code>[]</code> in Python)</p>
@@ -649,14 +652,14 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>); v1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>); v1</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="fu">class</span>(v1)</span>
 <span id="cb14-3"><a href="#cb14-3"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"z"</span>, <span class="st">"f"</span>); v2</span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="fu">class</span>(v2)</span>
 <span id="cb14-5"><a href="#cb14-5"></a>v3 <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"logical"</span>, <span class="dv">5</span>); v3</span>
 <span id="cb14-6"><a href="#cb14-6"></a><span class="fu">class</span>(v3)</span>
 <span id="cb14-7"><a href="#cb14-7"></a>v4 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">7</span>); v4</span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="fu">class</span>(v4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="fu">class</span>(v4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 1 7 2 4 5 8 2 9
@@ -675,11 +678,11 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>seq1 <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>; seq1                            <span class="co"># from 2 to 9</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>seq1 <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>; seq1                            <span class="co"># from 2 to 9</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>seq2 <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>); seq2                          <span class="co"># from 1 to 5</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a>seq3 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">3</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">3</span>); seq3 <span class="co"># step = 3</span></span>
 <span id="cb16-4"><a href="#cb16-4"></a>seq4 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">5</span>); seq4     <span class="co"># count = 5</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>seq5 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">11</span>, <span class="dv">17</span>, <span class="at">along.with =</span> seq4); seq5 <span class="co"># seq of same length with seq4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5"></a>seq5 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">11</span>, <span class="dv">17</span>, <span class="at">along.with =</span> seq4); seq5 <span class="co"># seq of same length with seq4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 2 3 4 5 6 7 8 9
@@ -695,8 +698,8 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>rep1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">times =</span> <span class="dv">3</span>); rep1 <span class="co"># repeating seq 3 times</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>rep2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>); rep2  <span class="co"># repeating each obj 3 times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>rep1 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">times =</span> <span class="dv">3</span>); rep1 <span class="co"># repeating seq 3 times</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>rep2 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="dv">3</span>); rep2  <span class="co"># repeating each obj 3 times</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 1 2 3 1 2 3 1 2 3
@@ -709,7 +712,7 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>smp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>); smp1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>smp1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">10</span>), <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>); smp1</span>
 <span id="cb20-2"><a href="#cb20-2"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"negative"</span>,<span class="st">"neutral"</span>, <span class="st">"positive"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>smp2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(vec, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>); smp2</span>
 <span id="cb20-4"><a href="#cb20-4"></a><span class="co"># vector with 5 elements:</span></span>
@@ -717,7 +720,7 @@ More about <code>c()</code> in R
 <span id="cb20-6"><a href="#cb20-6"></a>run2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">10</span>); run2</span>
 <span id="cb20-7"><a href="#cb20-7"></a>run3 <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">15</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">100</span>)); run3</span>
 <span id="cb20-8"><a href="#cb20-8"></a><span class="co"># normal distribution</span></span>
-<span id="cb20-9"><a href="#cb20-9"></a>rn <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>); rn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-9"><a href="#cb20-9"></a>rn <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>); rn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1]  1  8 10  6  9
@@ -736,7 +739,7 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a>v1_p <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>]<span class="op">;</span> <span class="bu">print</span>(v1_p)</span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="bu">type</span>(v1_p)</span>
@@ -745,7 +748,7 @@ More about <code>c()</code> in R
 <span id="cb22-7"><a href="#cb22-7"></a>v3_p <span class="op">=</span> np.zeros((<span class="dv">7</span>), <span class="bu">int</span>)<span class="op">;</span> <span class="bu">print</span>(v3_p)</span>
 <span id="cb22-8"><a href="#cb22-8"></a><span class="bu">type</span>(v3_p)</span>
 <span id="cb22-9"><a href="#cb22-9"></a>v4_p <span class="op">=</span> np.ones((<span class="dv">7</span>), <span class="bu">int</span>)<span class="op">;</span> <span class="bu">print</span>(v4_p) <span class="co"># rep(1,7) in R</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a><span class="bu">type</span>(v4_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="bu">type</span>(v4_p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1, 7, 2, 4, 5, 8, 2, 9]
@@ -764,11 +767,11 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>ar1 <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]<span class="op">;</span> ar1                <span class="co"># pythonlist</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>ar1 <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]<span class="op">;</span> ar1                <span class="co"># pythonlist</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a>ar2 <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">10</span>)]<span class="op">;</span> ar2             <span class="co"># python list</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>ar3 <span class="op">=</span> np.arange(<span class="dv">2</span>,<span class="dv">10</span>)<span class="op">;</span> ar3                      <span class="co"># NumPy 1d array</span></span>
 <span id="cb24-4"><a href="#cb24-4"></a>ar4 <span class="op">=</span> np.arange(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">3</span>)<span class="op">;</span> ar4                  <span class="co"># step = 3 </span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>ar5 <span class="op">=</span> np.linspace(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>, retstep <span class="op">=</span> <span class="va">True</span>)<span class="op">;</span>ar5 <span class="co"># count = 5, with step = 1.75    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5"></a>ar5 <span class="op">=</span> np.linspace(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>, retstep <span class="op">=</span> <span class="va">True</span>)<span class="op">;</span>ar5 <span class="co"># count = 5, with step = 1.75    </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [0, 1, 2, 3, 4]
@@ -784,12 +787,12 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2"></a></span>
 <span id="cb26-3"><a href="#cb26-3"></a>rep1 <span class="op">=</span>  <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>))<span class="op">*</span><span class="dv">3</span><span class="op">;</span> rep1             <span class="co"># Python</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a>rep2 <span class="op">=</span> np.tile(np.arange(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">3</span>)<span class="op">;</span> rep2      <span class="co"># NumPy: repeating seq 3 times</span></span>
 <span id="cb26-5"><a href="#cb26-5"></a>rep3 <span class="op">=</span> np.repeat(np.arange(<span class="dv">1</span>,<span class="dv">4</span>), <span class="dv">3</span>)<span class="op">;</span> rep3    <span class="co"># NumPy: repeating each obj 3 times</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>rep4 <span class="op">=</span> pd.Series(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>)).repeat(<span class="dv">2</span>)<span class="op">;</span> rep4 <span class="co"># Pandas Series: repeating each obj 2 times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a href="#cb26-6"></a>rep4 <span class="op">=</span> pd.Series(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>)).repeat(<span class="dv">2</span>)<span class="op">;</span> rep4 <span class="co"># Pandas Series: repeating each obj 2 times</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1, 2, 3, 1, 2, 3, 1, 2, 3]
@@ -810,12 +813,12 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
 <span id="cb28-2"><a href="#cb28-2"></a>lis <span class="op">=</span> [<span class="st">"negative"</span>,<span class="st">"neutral"</span>, <span class="st">"positive"</span>]</span>
 <span id="cb28-3"><a href="#cb28-3"></a>rd1 <span class="op">=</span> random.choice(lis, size<span class="op">=</span><span class="dv">5</span>, replace <span class="op">=</span> <span class="va">True</span>)<span class="op">;</span> <span class="bu">print</span>(rd1)</span>
 <span id="cb28-4"><a href="#cb28-4"></a>rd2 <span class="op">=</span> random.rand(<span class="dv">5</span>)<span class="op">;</span> rd2                 <span class="co"># 5 random numbers</span></span>
 <span id="cb28-5"><a href="#cb28-5"></a>rd3 <span class="op">=</span> random.randint(<span class="dv">100</span>, size<span class="op">=</span>(<span class="dv">5</span>))<span class="op">;</span> rd3  <span class="co"># integer random numbers from 0 to 100</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a>rd4 <span class="op">=</span> random.randn(<span class="dv">4</span>)<span class="op">;</span> rd4                <span class="co"># standard normal distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-6"><a href="#cb28-6"></a>rd4 <span class="op">=</span> random.randn(<span class="dv">4</span>)<span class="op">;</span> rd4                <span class="co"># standard normal distribution</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; ['neutral' 'neutral' 'neutral' 'neutral' 'negative']
@@ -847,18 +850,18 @@ More about <code>c()</code> in R
 </div>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># In Python</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># In Python</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>lst <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>]</span>
 <span id="cb30-3"><a href="#cb30-3"></a>lst[<span class="dv">0</span>]     <span class="co"># first element</span></span>
 <span id="cb30-4"><a href="#cb30-4"></a>lst[<span class="dv">1</span>]     <span class="co"># second element</span></span>
 <span id="cb30-5"><a href="#cb30-5"></a>lst[<span class="op">-</span><span class="dv">1</span>]    <span class="co"># last element</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>lst[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># backward</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># In R</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>lst[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># backward</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># In R</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Used Variable lst created in Python Chunk</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>py<span class="sc">$</span>lst[<span class="dv">1</span>]                <span class="co"># first element</span></span>
 <span id="cb31-4"><a href="#cb31-4"></a>py<span class="sc">$</span>lst[<span class="dv">2</span>]                <span class="co"># second element</span></span>
 <span id="cb31-5"><a href="#cb31-5"></a>py<span class="sc">$</span>lst[[<span class="fu">length</span>(py<span class="sc">$</span>lst)]] <span class="co"># last element</span></span>
-<span id="cb31-6"><a href="#cb31-6"></a><span class="fu">rev</span>(py<span class="sc">$</span>lst)              <span class="co"># backward</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="fu">rev</span>(py<span class="sc">$</span>lst)              <span class="co"># backward</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -881,21 +884,21 @@ More about <code>c()</code> in R
 </div>
 <p>Hier noch weitere Beispiele für Teilmengen und logisches Indexieren. Bei der logischen Indexierung werden die Elemente zurückgegeben, deren logischer Wert gleich <code>TRUE</code> ist.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">26</span>, <span class="dv">32</span>, <span class="dv">41</span>, <span class="dv">55</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">37</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">26</span>, <span class="dv">32</span>, <span class="dv">41</span>, <span class="dv">55</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">37</span>, <span class="dv">20</span>, <span class="dv">25</span>)</span>
 <span id="cb34-2"><a href="#cb34-2"></a>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]             <span class="co"># from first until fifth element</span></span>
 <span id="cb34-3"><a href="#cb34-3"></a>age[<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>]             <span class="co"># from third until seventh element</span></span>
 <span id="cb34-4"><a href="#cb34-4"></a>age[<span class="dv">5</span><span class="sc">:</span><span class="fu">length</span>(age)]   <span class="co"># from fifth until last element</span></span>
 <span id="cb34-5"><a href="#cb34-5"></a>age[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>)]        <span class="co"># second, fifth and seventh element</span></span>
 <span id="cb34-6"><a href="#cb34-6"></a>age <span class="sc">&lt;</span> <span class="dv">30</span>             <span class="co"># logic </span></span>
 <span id="cb34-7"><a href="#cb34-7"></a>age[age <span class="sc">&lt;</span> <span class="dv">30</span>]        <span class="co"># age under 30</span></span>
-<span id="cb34-8"><a href="#cb34-8"></a>age[<span class="fu">which</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>)] <span class="co"># with which()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-8"><a href="#cb34-8"></a>age[<span class="fu">which</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>)] <span class="co"># with which()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 18 26 32 41 55
@@ -913,10 +916,10 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>note <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"best"</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">"medium"</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">"good"</span><span class="ot">=</span> <span class="dv">3</span>, <span class="st">"bad"</span> <span class="ot">=</span> <span class="dv">2</span>); note</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>note <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"best"</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">"medium"</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">"good"</span><span class="ot">=</span> <span class="dv">3</span>, <span class="st">"bad"</span> <span class="ot">=</span> <span class="dv">2</span>); note</span>
 <span id="cb36-2"><a href="#cb36-2"></a>note[<span class="st">"medium"</span>]         <span class="co"># by indexname</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a>note[<span class="fu">c</span>(<span class="st">"good"</span>, <span class="st">"bad"</span>)] <span class="co"># by indexname multiple elements</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a>note[<span class="dv">3</span>]                <span class="co"># by index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-4"><a href="#cb36-4"></a>note[<span class="dv">3</span>]                <span class="co"># by index</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;   best medium   good    bad 
@@ -936,14 +939,14 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>age <span class="op">=</span> np.array(r.age)    <span class="co"># create array from r vector age</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>age <span class="op">=</span> np.array(r.age)    <span class="co"># create array from r vector age</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>age[:<span class="dv">5</span>]                  <span class="co"># from first until fifth element</span></span>
 <span id="cb38-3"><a href="#cb38-3"></a>age[<span class="dv">2</span>:<span class="dv">7</span>]                 <span class="co"># from third until seventh element</span></span>
 <span id="cb38-4"><a href="#cb38-4"></a>age[<span class="dv">4</span>:]                  <span class="co"># from fifth until last element</span></span>
 <span id="cb38-5"><a href="#cb38-5"></a>[age[<span class="dv">2</span>], age[<span class="dv">5</span>], age[<span class="dv">7</span>]] <span class="co"># second, fifth and seventh elem</span></span>
 <span id="cb38-6"><a href="#cb38-6"></a>age <span class="op">&lt;</span> <span class="dv">30</span>                 <span class="co"># logic </span></span>
 <span id="cb38-7"><a href="#cb38-7"></a>age[age <span class="op">&lt;</span> <span class="dv">30</span>]            <span class="co"># age under 30</span></span>
-<span id="cb38-8"><a href="#cb38-8"></a>age[np.where(age<span class="op">&lt;</span><span class="dv">30</span>)]    <span class="co"># with np.where()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-8"><a href="#cb38-8"></a>age[np.where(age<span class="op">&lt;</span><span class="dv">30</span>)]    <span class="co"># with np.where()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; array([18., 26., 32., 41., 55.])
@@ -962,11 +965,11 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>note <span class="op">=</span> pd.Series(<span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">6</span>), index <span class="op">=</span> [<span class="st">"bad"</span>, <span class="st">"good"</span>, <span class="st">"medium"</span>, <span class="st">"best"</span>])<span class="op">;</span> note</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>note <span class="op">=</span> pd.Series(<span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">6</span>), index <span class="op">=</span> [<span class="st">"bad"</span>, <span class="st">"good"</span>, <span class="st">"medium"</span>, <span class="st">"best"</span>])<span class="op">;</span> note</span>
 <span id="cb40-2"><a href="#cb40-2"></a>note[<span class="st">"good"</span>]  <span class="co"># by indexname</span></span>
 <span id="cb40-3"><a href="#cb40-3"></a>note[[<span class="st">"best"</span>, <span class="st">"bad"</span>]] <span class="co"># by indexname multiple elements</span></span>
 <span id="cb40-4"><a href="#cb40-4"></a>note.iloc[<span class="dv">2</span>]          <span class="co"># by index</span></span>
-<span id="cb40-5"><a href="#cb40-5"></a>note.iloc[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]]    <span class="co"># by index multiple elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-5"><a href="#cb40-5"></a>note.iloc[[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]]    <span class="co"># by index multiple elements</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; bad       2
@@ -995,14 +998,14 @@ More about <code>c()</code> in R
 <h2 class="anchored" data-anchor-id="matrix-in-r-and-2d-array-in-python"><code>matrix</code> in R and <code>2d-Array</code> in Python</h2>
 <p>Matrizen in R sind zweidimensionale Vektoren, deren Elemente numerisch sind, also <em>homogen</em>. Sie werden durch die Funktion <code>matrix(data, nrow, ncol)</code> erstellt. In Python gibt es keine Funktion explizit für die Erstellung von Matrizen. Matrizen in Python sind im Prinzip <em>2d-NumPy-Arrays</em>. Für die Slicing kommen hier auch gleiche Methoden wie bei Vektoren oder 1d-NumPy-Arrys <em>(vorheriges Kapitel)</em> zur Anwenung, eben werden neben Rowindex auch Columnindex in rechteckigen Klammern <code>[]</code> eingegeben.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>matrix_c <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">12</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span> )</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>matrix_c <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">12</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span> )</span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="fu">cat</span>(<span class="st">"3x4-Matix filling by columns (matrix_c):</span><span class="sc">\n</span><span class="st">"</span>);<span class="fu">print</span>(matrix_c)</span>
 <span id="cb42-3"><a href="#cb42-3"></a><span class="co"># Dimension of matrix_c</span></span>
 <span id="cb42-4"><a href="#cb42-4"></a><span class="fu">glue</span>(<span class="st">"Dimension of matrix_c: {dim(matrix_c)}"</span>)</span>
@@ -1024,7 +1027,7 @@ More about <code>c()</code> in R
 <span id="cb42-20"><a href="#cb42-20"></a><span class="fu">cat</span>(<span class="st">'</span><span class="sc">\n</span><span class="st">name the columns and rows of matrix "matrix_r":</span><span class="sc">\n</span><span class="st">'</span>)</span>
 <span id="cb42-21"><a href="#cb42-21"></a><span class="fu">colnames</span>(matrix_r) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col3"</span>)</span>
 <span id="cb42-22"><a href="#cb42-22"></a><span class="fu">rownames</span>(matrix_r) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"row1"</span>, <span class="st">"row2"</span>, <span class="st">"row3"</span>, <span class="st">"row4"</span>)</span>
-<span id="cb42-23"><a href="#cb42-23"></a>matrix_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-23"><a href="#cb42-23"></a>matrix_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 3x4-Matix filling by columns (matrix_c):
@@ -1070,7 +1073,7 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>matriks_c <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">13</span>).reshape(<span class="dv">3</span>,<span class="dv">4</span>, order <span class="op">=</span> <span class="st">"F"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>matriks_c <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">13</span>).reshape(<span class="dv">3</span>,<span class="dv">4</span>, order <span class="op">=</span> <span class="st">"F"</span>)</span>
 <span id="cb44-2"><a href="#cb44-2"></a><span class="bu">print</span>(<span class="ss">f"3x4-Matix filling by columns (matriks_c):</span><span class="ch">\n</span><span class="sc">{</span>matriks_c<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb44-3"><a href="#cb44-3"></a><span class="co"># Dimension of matrix matriks_c</span></span>
 <span id="cb44-4"><a href="#cb44-4"></a><span class="bu">print</span>(<span class="ss">f"Dimension of matrix matriks_c: </span><span class="sc">{</span>matriks_c<span class="sc">.</span>ndim<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1094,7 +1097,7 @@ More about <code>c()</code> in R
 <span id="cb44-22"><a href="#cb44-22"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">name the columns and rows of matrix "matriks_r":'</span>)</span>
 <span id="cb44-23"><a href="#cb44-23"></a>colnames <span class="op">=</span> [<span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col3"</span>]</span>
 <span id="cb44-24"><a href="#cb44-24"></a>rownames <span class="op">=</span> [<span class="st">"row1"</span>, <span class="st">"row2"</span>, <span class="st">"row3"</span>, <span class="st">"row4"</span>]</span>
-<span id="cb44-25"><a href="#cb44-25"></a>pd.DataFrame(matriks_r, columns <span class="op">=</span> colnames, index <span class="op">=</span> rownames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-25"><a href="#cb44-25"></a>pd.DataFrame(matriks_r, columns <span class="op">=</span> colnames, index <span class="op">=</span> rownames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 3x4-Matix filling by columns (matriks_c):
@@ -1139,7 +1142,7 @@ More about <code>c()</code> in R
 <p>Für die Erstellung von Arrays in Python gibt es mehrere Funktionen wie <code>numpy.arange()</code>, <code>numpy.zeros()</code>, <code>numpy.ones()</code>. Im Folgenden wird ein 3d-Array in R und Python sowie Slicing und Summenberechnung dargestellt.</p>
 <p>Im Folgenden wird ein Beispiel für 3d-Array visuell und Slicing und Summenberechnung bei diesem Array praktisch dargestellt.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="quarto-figure quarto-figure-center">
@@ -1153,7 +1156,7 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Create 3d-array</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Create 3d-array</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a>arr_r <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">23</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
 <span id="cb46-3"><a href="#cb46-3"></a>arr_r <span class="ot">&lt;-</span> <span class="fu">aperm</span>(arr_r, <span class="at">perm =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>)); arr_r</span>
 <span id="cb46-4"><a href="#cb46-4"></a><span class="fu">cat</span>(<span class="st">"Shape: "</span>,<span class="fu">dim</span>(arr_r), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -1166,7 +1169,7 @@ More about <code>c()</code> in R
 <span id="cb46-11"><a href="#cb46-11"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">2nd row elements of the 1st matrix from 3d-Array (arr_r):</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb46-12"><a href="#cb46-12"></a>arr_r[<span class="fu">c</span>(<span class="dv">2</span>), , <span class="dv">1</span>]</span>
 <span id="cb46-13"><a href="#cb46-13"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Check if elemnt (9) exist in the array:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb46-14"><a href="#cb46-14"></a><span class="dv">9</span> <span class="sc">%in%</span> arr_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-14"><a href="#cb46-14"></a><span class="dv">9</span> <span class="sc">%in%</span> arr_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; , , 1
@@ -1210,7 +1213,7 @@ More about <code>c()</code> in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>arr_r</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>arr_r</span>
 <span id="cb48-2"><a href="#cb48-2"></a><span class="fu">cat</span>(<span class="st">"Sum by row-wise with rowSums:</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb48-3"><a href="#cb48-3"></a><span class="fu">rowSums</span>(arr_r)</span>
 <span id="cb48-4"><a href="#cb48-4"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sum by row-wise with apply, same like rowSums:</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -1218,7 +1221,7 @@ More about <code>c()</code> in R
 <span id="cb48-6"><a href="#cb48-6"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sum by column-wise with colSums:</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb48-7"><a href="#cb48-7"></a><span class="fu">colSums</span>(arr_r)</span>
 <span id="cb48-8"><a href="#cb48-8"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sum by column-wise with apply</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb48-9"><a href="#cb48-9"></a><span class="fu">apply</span>(arr_r, <span class="fu">c</span>(<span class="dv">2</span>), sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-9"><a href="#cb48-9"></a><span class="fu">apply</span>(arr_r, <span class="fu">c</span>(<span class="dv">2</span>), sum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; , , 1
@@ -1263,12 +1266,12 @@ More about <code>c()</code> in R
 </div>
 <p><strong>Slicing</strong> <br> Die Funktion <code>array.shape</code> geibt shape = (2, 3, 4) von dem Array im Beispiel oben im Bild zurück. D.h., als erstes die Dimension - 2, als zweites Zeilen - 3 und als viertes Spalten - 4 zurückgegeben. D.h., der Array hat 2 Matrizen jeweils mit 3 Zeilen und 4 Spalten. Man möge sich einen Zauberwürfel vorstellen. Wenn man diesen in der Mitte in Scheiben schneidet und in zwei teilt, wäre jeder Teil ein Matrix oder 2d-Array. Man könnte auch diese Teile als Schicht (layer/sheet) vorstellen. Beim Indexieren muss man dementsprechen in richtige Position eingeben. Z.B. <code>arr_r[1, :, :]</code> gibt den zweiten Matrix mit allen Zeilen und Spalten zurück.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Shape is displayed differently in R and Python
+<span class="screen-reader-only">Warning</span>Shape is displayed differently in R and Python
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1282,7 +1285,7 @@ Shape is displayed differently in R and Python
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># create 3d-Array</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># create 3d-Array</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a>arr3d <span class="op">=</span> np.arange(<span class="dv">24</span>).reshape(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)<span class="op">;</span>arr3d</span>
 <span id="cb50-3"><a href="#cb50-3"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Shape: </span><span class="sc">{</span>arr3d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb50-4"><a href="#cb50-4"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">1st 2d-Array (sheet,matrix, layer) of the 3d-Array (arr3d):"</span>)</span>
@@ -1298,7 +1301,7 @@ Shape is displayed differently in R and Python
 <span id="cb50-14"><a href="#cb50-14"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Element (9) in 3rd row and 2nd col of the 1st sheet from 3d-Array (arr3d):"</span>)</span>
 <span id="cb50-15"><a href="#cb50-15"></a>arr3d[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span>
 <span id="cb50-16"><a href="#cb50-16"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Element (11) in 3rd row and last col of the 1st sheet from 3d-Array (arr3d):"</span>)</span>
-<span id="cb50-17"><a href="#cb50-17"></a>arr3d[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-17"><a href="#cb50-17"></a>arr3d[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; array([[[ 0,  1,  2,  3],
@@ -1341,7 +1344,7 @@ Shape is displayed differently in R and Python
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(<span class="st">"a 3d-array - arr3d:"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(<span class="st">"a 3d-array - arr3d:"</span>)</span>
 <span id="cb52-2"><a href="#cb52-2"></a>arr3d</span>
 <span id="cb52-3"><a href="#cb52-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Shape:"</span>)</span>
 <span id="cb52-4"><a href="#cb52-4"></a>arr3d.shape</span>
@@ -1350,7 +1353,7 @@ Shape is displayed differently in R and Python
 <span id="cb52-7"><a href="#cb52-7"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Sum by column-wise (axis = 1):"</span>)</span>
 <span id="cb52-8"><a href="#cb52-8"></a>arr3d.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb52-9"><a href="#cb52-9"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Sum by row-wise (axis = 2):"</span>)</span>
-<span id="cb52-10"><a href="#cb52-10"></a>np.<span class="bu">sum</span>(arr3d, axis <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-10"><a href="#cb52-10"></a>np.<span class="bu">sum</span>(arr3d, axis <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; a 3d-array - arr3d:
@@ -1394,7 +1397,7 @@ Shape is displayed differently in R and Python
 <h3 class="anchored" data-anchor-id="lists-in-r"><code>list</code>s in R</h3>
 <p>Unterschied zwischen der Liste und dem Vektor in R besteht darin, dass sie <em>nicht homogen</em> sein müssen und die Länge der Elemente unterschiedlich sein können. Zur Erstellung gibt es Funktion <code>list()</code> in R. Beim Indexieren werden die doppelte rechteckige Klammer <code>[[]]</code> benutzt (im Vergleich zum Vektor <code>[]</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># create a list</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># create a list</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>lst_r <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), </span>
 <span id="cb54-3"><a href="#cb54-3"></a>               <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), </span>
 <span id="cb54-4"><a href="#cb54-4"></a>               <span class="fu">c</span>(<span class="st">"I"</span>, <span class="st">"love"</span>, <span class="st">"R"</span>), <span class="st">"Hello R"</span>)</span>
@@ -1459,11 +1462,11 @@ Shape is displayed differently in R and Python
 <span id="cb54-63"><a href="#cb54-63"></a><span class="co">#&gt; [1]  TRUE FALSE</span></span>
 <span id="cb54-64"><a href="#cb54-64"></a><span class="co">#&gt; </span></span>
 <span id="cb54-65"><a href="#cb54-65"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb54-66"><a href="#cb54-66"></a><span class="co">#&gt; [1] "I"    "love" "R"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-66"><a href="#cb54-66"></a><span class="co">#&gt; [1] "I"    "love" "R"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Die Elemente von der Liste in R können auch benannt sein (wie in dictionaries in Python). Dabei kann man auf die Elemente durch <code>[[]]</code> oder durch den Operator <code>$</code> (Dollar-Zeichen) zugreifen. In R kann man die Liste ändern oder entfernen, indem man dem Index von dem zu updatenden Element zu ändernde Wert zuweist.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>lst_named <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>lst_named <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb55-2"><a href="#cb55-2"></a>  <span class="st">"age"</span> <span class="ot">=</span> <span class="dv">19</span>,</span>
 <span id="cb55-3"><a href="#cb55-3"></a>  <span class="st">"sex"</span> <span class="ot">=</span> <span class="st">"m"</span>,</span>
 <span id="cb55-4"><a href="#cb55-4"></a>  <span class="st">"it_skills"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
@@ -1495,11 +1498,11 @@ Shape is displayed differently in R and Python
 <span id="cb55-30"><a href="#cb55-30"></a><span class="co">#</span></span>
 <span id="cb55-31"><a href="#cb55-31"></a><span class="co"># Names of the list</span></span>
 <span id="cb55-32"><a href="#cb55-32"></a><span class="fu">names</span>(lst_named)</span>
-<span id="cb55-33"><a href="#cb55-33"></a><span class="co">#&gt; [1] "age"       "sex"       "it_skills"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-33"><a href="#cb55-33"></a><span class="co">#&gt; [1] "age"       "sex"       "it_skills"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Man kann in die Liste in R neues Element durch <code>append()</code> - Funktion hinzufügen oder sie in eine andere Datenstruktur wie Vektor oder Data Fareme (wenn sie ein <em>named list</em> ist) umwandeln.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Add an element(\"Python\" and \"C++\") into the list(lst_r):</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Add an element(\"Python\" and \"C++\") into the list(lst_r):</span></span>
 <span id="cb56-2"><a href="#cb56-2"></a><span class="fu">append</span>(lst_r, <span class="fu">c</span>(<span class="st">"Python"</span>, <span class="st">"C++"</span>))</span>
 <span id="cb56-3"><a href="#cb56-3"></a><span class="co">#&gt; [[1]]</span></span>
 <span id="cb56-4"><a href="#cb56-4"></a><span class="co">#&gt; [1] 42</span></span>
@@ -1543,14 +1546,14 @@ Shape is displayed differently in R and Python
 <span id="cb56-42"><a href="#cb56-42"></a><span class="co">#</span></span>
 <span id="cb56-43"><a href="#cb56-43"></a><span class="co"># Type of emp_df</span></span>
 <span id="cb56-44"><a href="#cb56-44"></a><span class="fu">class</span>(emp_df)</span>
-<span id="cb56-45"><a href="#cb56-45"></a><span class="co">#&gt; [1] "data.frame"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-45"><a href="#cb56-45"></a><span class="co">#&gt; [1] "data.frame"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lists-in-python" class="level3">
 <h3 class="anchored" data-anchor-id="lists-in-python"><code>list</code>s in Python</h3>
 <p>Wie in R können auch die Elemente/Objekte in einer Liste in Python unterschiedliche Länge und Typen haben. Wenn alle Element der Liste in Python den gleichen Type haben, das ist diese vergleichbar mit dem Vektor in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Create a list</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Create a list</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a>lst_py <span class="op">=</span> [<span class="dv">1</span>, [<span class="dv">1</span>, <span class="dv">2</span>], <span class="va">True</span>, [<span class="st">"I"</span>, <span class="st">"love"</span>, <span class="st">"Python"</span>], <span class="st">"Hello Python"</span>]</span>
 <span id="cb57-3"><a href="#cb57-3"></a><span class="bu">print</span>(lst_py)</span>
 <span id="cb57-4"><a href="#cb57-4"></a><span class="co">#&gt; [1, [1, 2], True, ['I', 'love', 'Python'], 'Hello Python']</span></span>
@@ -1582,11 +1585,11 @@ Shape is displayed differently in R and Python
 <span id="cb57-30"><a href="#cb57-30"></a><span class="co"># Remove by name</span></span>
 <span id="cb57-31"><a href="#cb57-31"></a>lst_py.remove(<span class="va">True</span>)</span>
 <span id="cb57-32"><a href="#cb57-32"></a>lst_py</span>
-<span id="cb57-33"><a href="#cb57-33"></a><span class="co">#&gt; [['I', 'love', 'Python']]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-33"><a href="#cb57-33"></a><span class="co">#&gt; [['I', 'love', 'Python']]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Neues Element in die Liste in Python kann durch <code>append()</code>- Funktion (wie in R) hinzugefügt werden. Die Listen kann man auch in Python wie in R in andere Datenstruktur umwandeln, in NumPy-Array, Pndas-Series oder Pandas-DataFrame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Create a list</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Create a list</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a>ls1 <span class="op">=</span> [<span class="st">"Ali"</span>, <span class="st">"Vali"</span>, <span class="st">"Gani"</span>]<span class="op">;</span> ls1</span>
 <span id="cb58-3"><a href="#cb58-3"></a><span class="co">#&gt; ['Ali', 'Vali', 'Gani']</span></span>
 <span id="cb58-4"><a href="#cb58-4"></a><span class="co">#</span></span>
@@ -1624,19 +1627,19 @@ Shape is displayed differently in R and Python
 <span id="cb58-36"><a href="#cb58-36"></a><span class="co">#&gt; 1  Ivan    4</span></span>
 <span id="cb58-37"><a href="#cb58-37"></a><span class="co">#&gt; 2  Vali    5</span></span>
 <span id="cb58-38"><a href="#cb58-38"></a><span class="co">#&gt; 3  Gani    8</span></span>
-<span id="cb58-39"><a href="#cb58-39"></a><span class="co">#&gt; 4   Max    2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-39"><a href="#cb58-39"></a><span class="co">#&gt; 4   Max    2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dicts-in-python-and-lists-in-r" class="level3">
 <h3 class="anchored" data-anchor-id="dicts-in-python-and-lists-in-r"><code>dict</code>s in Python and <code>list</code>s in R</h3>
 <p>Wie oben bereits erwähnt, in R müssen die Elemente einer Liste nicht vom gleichen Typ im Vergleich zu den Vektoren sein. Die Elemente in einer Liste in R können aber auch benannt sein, das nennt man dann <em>named list</em>. In Python dagegen können die Elemente nicht benannt sein, dafür aber gibt es in Python <em>dictionanries</em>, die gleiche Struktur wie named list in R haben. Dictionary in Python besteht aus <code>d = {key : value}</code> Struktur. Der Key bzw Schlüssel ist <em>unique</em> und <em>immutable</em>. Meistens werden für den Schlüssel strings benutzt. Die gleiche Struktur hat man in R, wenn man die Elemente in der Liste benennt: <code>d = list(name = value)</code>. Zugriff auf einzelnes Element erfolgt durch <code>d["key"]</code> in Python und durch <code>d["name"]</code> oder <code>d$name</code> in R.</p>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-named list vs vector in R
+<span class="screen-reader-only">Caution</span>named list vs vector in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1646,12 +1649,12 @@ named list vs vector in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">cat</span>(<span class="st">"Named vector with values of the same type:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">cat</span>(<span class="st">"Named vector with values of the same type:</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb59-2"><a href="#cb59-2"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="dv">3</span>); v</span>
 <span id="cb59-3"><a href="#cb59-3"></a><span class="fu">cat</span>(<span class="st">"Type: "</span>, <span class="fu">class</span>(v))</span>
 <span id="cb59-4"><a href="#cb59-4"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Named list with values of different types:</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb59-5"><a href="#cb59-5"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="st">"b"</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)); l</span>
-<span id="cb59-6"><a href="#cb59-6"></a><span class="fu">cat</span>(<span class="st">"Type: "</span>, <span class="fu">class</span>(l))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-6"><a href="#cb59-6"></a><span class="fu">cat</span>(<span class="st">"Type: "</span>, <span class="fu">class</span>(l))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Named vector with values of the same type:
@@ -1674,31 +1677,31 @@ named list vs vector in R
 </div>
 <p>Wenn ich in den Vektor “v” von oben die Werte mit unterschiedlichen Typen (bsp. 1, b, 3) eingebe, dann speichert bzw. gibt R alle Values als character bzw string zurück, also die 1 und 3 in character umgewandelt</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="st">"b"</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="dv">3</span>); v1</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="st">"b"</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="dv">3</span>); v1</span>
 <span id="cb61-2"><a href="#cb61-2"></a><span class="co">#&gt;   a   b   c </span></span>
 <span id="cb61-3"><a href="#cb61-3"></a><span class="co">#&gt; "1" "b" "3"</span></span>
 <span id="cb61-4"><a href="#cb61-4"></a><span class="fu">class</span>(v1)</span>
-<span id="cb61-5"><a href="#cb61-5"></a><span class="co">#&gt; [1] "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-5"><a href="#cb61-5"></a><span class="co">#&gt; [1] "character"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aus Interesse habe ich den Namen die Werte wie folgt zugewiesen: a = 1, b = b und c = c(1, 2, 3). Also hier haben wir drei Namen und 5 Werte. Erstaunlicherweise hat R den Namen c automatisch erweitert wie c1, c2, c3, bis alle Werte bannt sind. Dafür mag ich ja auch den R ;).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="st">"b"</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)); v2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>v2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"b"</span> <span class="ot">=</span> <span class="st">"b"</span>, <span class="st">"c"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)); v2</span>
 <span id="cb62-2"><a href="#cb62-2"></a><span class="co">#&gt;   a   b  c1  c2  c3 </span></span>
-<span id="cb62-3"><a href="#cb62-3"></a><span class="co">#&gt; "1" "b" "1" "2" "3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-3"><a href="#cb62-3"></a><span class="co">#&gt; "1" "b" "1" "2" "3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>Folgendes Beispiel mit den Aktienkursen (Stand: 27.04.2024, von OnVista) möge es besser zum Ausdruck bringen.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>share_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AMZN"</span>, <span class="st">"AAPL"</span>, <span class="st">"MBG"</span>, <span class="st">"TSLA"</span>, <span class="st">"BYD"</span>, <span class="st">"BABA"</span>, <span class="st">"SAP"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>share_name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AMZN"</span>, <span class="st">"AAPL"</span>, <span class="st">"MBG"</span>, <span class="st">"TSLA"</span>, <span class="st">"BYD"</span>, <span class="st">"BABA"</span>, <span class="st">"SAP"</span>)</span>
 <span id="cb63-2"><a href="#cb63-2"></a>share_value <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">179.62</span>, <span class="fl">169.30</span>, <span class="fl">74.36</span>, <span class="fl">168.29</span>, <span class="fl">25.36</span>, <span class="fl">75.55</span>, <span class="fl">174.00</span>)</span>
 <span id="cb63-3"><a href="#cb63-3"></a><span class="co">#</span></span>
 <span id="cb63-4"><a href="#cb63-4"></a><span class="fu">cat</span>(<span class="st">"Create a named list from vectors:</span><span class="sc">\n</span><span class="st">"</span>)</span>
@@ -1723,7 +1726,7 @@ named list vs vector in R
 <span id="cb63-23"><a href="#cb63-23"></a>dic_py <span class="ot">&lt;-</span> <span class="fu">r_to_py</span>(dic_r)</span>
 <span id="cb63-24"><a href="#cb63-24"></a>dic_py</span>
 <span id="cb63-25"><a href="#cb63-25"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Type from dic_py:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb63-26"><a href="#cb63-26"></a><span class="fu">class</span>(dic_py)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-26"><a href="#cb63-26"></a><span class="fu">class</span>(dic_py)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Create a named list from vectors:
@@ -1779,7 +1782,7 @@ named list vs vector in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="bu">print</span>(<span class="st">"share price at 27.04.2024:"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="bu">print</span>(<span class="st">"share price at 27.04.2024:"</span>)</span>
 <span id="cb65-2"><a href="#cb65-2"></a><span class="cf">for</span> k,v <span class="kw">in</span> r.dic_py.items():</span>
 <span id="cb65-3"><a href="#cb65-3"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss"> : </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb65-4"><a href="#cb65-4"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Keys:"</span>, r.dic_py.keys())</span>
@@ -1792,7 +1795,7 @@ named list vs vector in R
 <span id="cb65-11"><a href="#cb65-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Delete BYD from dictionary(del r.dic_py['BYD']):"</span>)</span>
 <span id="cb65-12"><a href="#cb65-12"></a><span class="kw">del</span> r.dic_py[<span class="st">"BYD"</span>]</span>
 <span id="cb65-13"><a href="#cb65-13"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Is BYD in the dictionary?"</span>)</span>
-<span id="cb65-14"><a href="#cb65-14"></a><span class="co">"BYD"</span> <span class="kw">in</span> r.dic_py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-14"><a href="#cb65-14"></a><span class="co">"BYD"</span> <span class="kw">in</span> r.dic_py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; share price at 27.04.2024:
@@ -1828,7 +1831,7 @@ named list vs vector in R
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>bsp_dic <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>bsp_dic <span class="op">=</span> {</span>
 <span id="cb67-2"><a href="#cb67-2"></a>  <span class="st">"Ali"</span> : <span class="dv">25</span>,</span>
 <span id="cb67-3"><a href="#cb67-3"></a>  <span class="st">"Max"</span> : <span class="dv">44</span>,</span>
 <span id="cb67-4"><a href="#cb67-4"></a>  <span class="st">"Vali"</span>: <span class="dv">33</span></span>
@@ -1841,7 +1844,7 @@ named list vs vector in R
 <span id="cb67-11"><a href="#cb67-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Iterate with devault value, if key not exis"</span>)</span>
 <span id="cb67-12"><a href="#cb67-12"></a><span class="cf">for</span> n <span class="kw">in</span> lstName:</span>
 <span id="cb67-13"><a href="#cb67-13"></a>  <span class="co"># for k, v in bsp_dic.items():</span></span>
-<span id="cb67-14"><a href="#cb67-14"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>bsp_dic<span class="sc">.</span>get(n, <span class="st">'Mavjud emas!'</span>)<span class="sc">}</span><span class="ss">"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-14"><a href="#cb67-14"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>bsp_dic<span class="sc">.</span>get(n, <span class="st">'Mavjud emas!'</span>)<span class="sc">}</span><span class="ss">"</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; {'Ali': 25, 'Max': 44, 'Vali': 33}
@@ -1870,12 +1873,12 @@ named list vs vector in R
 <p>Die gruppierten Elemente lassen sich in Python unter anderem auch durch <em>set</em> darstellen: die Elemente im geschweiften Klammern <code>set{}</code> eingeben oder in <code>set()</code>- Funktion übergeben. Besonderheit in diesem Konzept ist, dass die Elemente <em>unique</em> sind, d.h. ein Objekt kommt in Mengen nur einmal vor. In R gibt es die Funktion <code>unique()</code>, die doppelt vorkommende Elemente in einem Vektor entfernt. Desweiteren sind sie ungeordnet und besitzen keine Indizes, über die man auf Elemente zugreifen kann. Die Menge mit <em>set</em> - <em>mutable</em>, also veränderlich und mit <em>frozenset</em> -<em>immutable</em>, aslo nicht veränderbar.</p>
 <p>Die Methoden in von <em>sets</em> in Python wie <code>union</code>, <code>intersection</code> oder <code>difference</code> gibt es auch in R, die man bei Vektoren anwenden kann.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="code-py">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># set() - returns the vector without duplicate values</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># set() - returns the vector without duplicate values</span></span>
 <span id="cb69-2"><a href="#cb69-2"></a>my_lst <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>]<span class="op">;</span> my_lst</span>
 <span id="cb69-3"><a href="#cb69-3"></a><span class="co">#&gt; [2, 3, 1, 5, 3, 9, 3, 2, 7]</span></span>
 <span id="cb69-4"><a href="#cb69-4"></a>my_set <span class="op">=</span> <span class="bu">set</span>(my_lst)<span class="op">;</span> my_set</span>
@@ -1903,14 +1906,14 @@ named list vs vector in R
 <span id="cb69-26"><a href="#cb69-26"></a><span class="co">#</span></span>
 <span id="cb69-27"><a href="#cb69-27"></a><span class="co"># difference() - objects in y, but not in x</span></span>
 <span id="cb69-28"><a href="#cb69-28"></a>y.difference(x)</span>
-<span id="cb69-29"><a href="#cb69-29"></a><span class="co">#&gt; {8, 9, 7}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb69-29"><a href="#cb69-29"></a><span class="co">#&gt; {8, 9, 7}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="code-r">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># Typ of python sets</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># Typ of python sets</span></span>
 <span id="cb70-2"><a href="#cb70-2"></a><span class="fu">class</span>(py<span class="sc">$</span>x)</span>
 <span id="cb70-3"><a href="#cb70-3"></a><span class="co">#&gt; [1] "python.builtin.set"    "python.builtin.object"</span></span>
 <span id="cb70-4"><a href="#cb70-4"></a><span class="fu">class</span>(py<span class="sc">$</span>y)</span>
@@ -1942,7 +1945,7 @@ named list vs vector in R
 <span id="cb70-30"><a href="#cb70-30"></a><span class="co">#</span></span>
 <span id="cb70-31"><a href="#cb70-31"></a><span class="co"># setdiff() - objects in y_r, but not in x_r</span></span>
 <span id="cb70-32"><a href="#cb70-32"></a><span class="fu">setdiff</span>(y_r, x_r)</span>
-<span id="cb70-33"><a href="#cb70-33"></a><span class="co">#&gt; [1] 7 8 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-33"><a href="#cb70-33"></a><span class="co">#&gt; [1] 7 8 9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1953,7 +1956,7 @@ named list vs vector in R
 <h3 class="anchored" data-anchor-id="tuple-in-python"><code>tuple()</code> in Python</h3>
 <p>Ein Tupel fasst mehrere (mit unterschiedlichen Typen) Elemente zu einem Objekt. Sie werden mit Komma getrennten Elementen in Klammern <code>t = (obj1, obj2, ...)</code>, auch ohne Klammenr <code>t = obj1, obj2, ...</code> oder mit der Funktion <code>tuple(obj)</code> erzeugt. Im Vergleich zu den Listen sind Teuples <strong>immutable</strong>, man sagt auch unveränderbare Liste. Wenn man sie einmal erstellt, lassen sie sich nicht ändern, wenn das Ändern notwendig ist, kann man sie in die Liste umwandeln und nach der Änderung wieder zurück in den Tupel. Sie können auch in/mit Dictionaries verwendet werden.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># create a tuple</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># create a tuple</span></span>
 <span id="cb71-2"><a href="#cb71-2"></a>t1 <span class="op">=</span> <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">3</span><span class="op">;</span> <span class="bu">print</span>(<span class="st">"t1: "</span>, t1)</span>
 <span id="cb71-3"><a href="#cb71-3"></a><span class="co">#&gt; t1:  (1, 5, 6, 6, 3)</span></span>
 <span id="cb71-4"><a href="#cb71-4"></a>t2 <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"t2: "</span>, t2)</span>
@@ -1985,7 +1988,7 @@ named list vs vector in R
 <span id="cb71-30"><a href="#cb71-30"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>great<span class="sc">}</span><span class="ss"> - was born in </span><span class="sc">{</span>place<span class="sc">}</span><span class="ss"> in </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">."</span>)</span>
 <span id="cb71-31"><a href="#cb71-31"></a><span class="co">#&gt; Navoi - was born in Hirot in 1441.</span></span>
 <span id="cb71-32"><a href="#cb71-32"></a><span class="co">#&gt; Bobur - was born in Andijon in 1483.</span></span>
-<span id="cb71-33"><a href="#cb71-33"></a><span class="co">#&gt; Temur - was born in Shahrisabz in 1336.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb71-33"><a href="#cb71-33"></a><span class="co">#&gt; Temur - was born in Shahrisabz in 1336.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -2068,12 +2071,12 @@ named list vs vector in R
 <section id="create-a-df" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-df">Create a DF</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="code-r">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Navoi"</span>, <span class="st">"Bobur"</span>, <span class="st">"Temur"</span>, <span class="st">"Cholpon"</span>, <span class="st">"Qodiriy"</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Navoi"</span>, <span class="st">"Bobur"</span>, <span class="st">"Temur"</span>, <span class="st">"Cholpon"</span>, <span class="st">"Qodiriy"</span>, </span>
 <span id="cb72-2"><a href="#cb72-2"></a>           <span class="st">"Ulugbek"</span>, <span class="st">"Xorazmi"</span>, <span class="st">"Beruniy"</span>, <span class="st">"Termiziy"</span>, <span class="st">"Buxoriy"</span>)</span>
 <span id="cb72-3"><a href="#cb72-3"></a>byear <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1441</span>, <span class="dv">1483</span>, <span class="dv">1336</span>, <span class="dv">1898</span>, <span class="dv">1894</span>, <span class="dv">1394</span>, <span class="dv">783</span>, <span class="dv">1048</span>, <span class="dv">824</span>, <span class="dv">810</span>) </span>
 <span id="cb72-4"><a href="#cb72-4"></a>bplace <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hirot"</span>, <span class="st">"Andijon"</span>, <span class="st">"Shahrisabz"</span>, <span class="st">"Andijon"</span>, <span class="st">"Toshkent"</span>,</span>
@@ -2116,14 +2119,14 @@ named list vs vector in R
 <span id="cb72-41"><a href="#cb72-41"></a><span class="co">#&gt; [1] "names"  "byear"  "bplace"</span></span>
 <span id="cb72-42"><a href="#cb72-42"></a><span class="co"># rows -------------------------------------------------------</span></span>
 <span id="cb72-43"><a href="#cb72-43"></a><span class="fu">rownames</span>(df)</span>
-<span id="cb72-44"><a href="#cb72-44"></a><span class="co">#&gt;  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-44"><a href="#cb72-44"></a><span class="co">#&gt;  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <div class="code-py">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># create pandas DataFrame from created df in r -------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># create pandas DataFrame from created df in r -------</span></span>
 <span id="cb73-2"><a href="#cb73-2"></a>df_pd <span class="op">=</span> pd.DataFrame(r.df)</span>
 <span id="cb73-3"><a href="#cb73-3"></a>df_pd[<span class="st">"byear"</span>] <span class="op">=</span> df_pd[<span class="st">"byear"</span>].astype(<span class="bu">int</span>)</span>
 <span id="cb73-4"><a href="#cb73-4"></a><span class="co"># Type -----------------------------------------------</span></span>
@@ -2166,7 +2169,7 @@ named list vs vector in R
 <span id="cb73-41"><a href="#cb73-41"></a><span class="co">#&gt; Index(['names', 'byear', 'bplace'], dtype='object')</span></span>
 <span id="cb73-42"><a href="#cb73-42"></a><span class="co"># rows -----------------------------------------------</span></span>
 <span id="cb73-43"><a href="#cb73-43"></a>df_pd.index</span>
-<span id="cb73-44"><a href="#cb73-44"></a><span class="co">#&gt; RangeIndex(start=0, stop=10, step=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb73-44"><a href="#cb73-44"></a><span class="co">#&gt; RangeIndex(start=0, stop=10, step=1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2176,12 +2179,12 @@ named list vs vector in R
 <section id="access-a-the-elements" class="level3">
 <h3 class="anchored" data-anchor-id="access-a-the-elements">Access a (the) element(s)</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <div class="code-r">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># 1st row, 1st col -------------------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># 1st row, 1st col -------------------------------</span></span>
 <span id="cb74-2"><a href="#cb74-2"></a>df[<span class="dv">1</span>,<span class="dv">1</span>]</span>
 <span id="cb74-3"><a href="#cb74-3"></a><span class="co">#&gt; [1] "Navoi"</span></span>
 <span id="cb74-4"><a href="#cb74-4"></a><span class="co"># 1-3 rows, all cols -----------------------------</span></span>
@@ -2216,14 +2219,14 @@ named list vs vector in R
 <span id="cb74-33"><a href="#cb74-33"></a><span class="co">#&gt;       names byear bplace</span></span>
 <span id="cb74-34"><a href="#cb74-34"></a><span class="co">#&gt; 7   Xorazmi   783   Xiva</span></span>
 <span id="cb74-35"><a href="#cb74-35"></a><span class="co">#&gt; 9  Termiziy   824 Termiz</span></span>
-<span id="cb74-36"><a href="#cb74-36"></a><span class="co">#&gt; 10  Buxoriy   810 Buxoro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-36"><a href="#cb74-36"></a><span class="co">#&gt; 10  Buxoriy   810 Buxoro</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <div class="code-py">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># 1st row, 1st col -------------------------------------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># 1st row, 1st col -------------------------------------</span></span>
 <span id="cb75-2"><a href="#cb75-2"></a>df_pd.iloc[<span class="dv">0</span>,<span class="dv">0</span>]         <span class="co"># iloc by postion(s)</span></span>
 <span id="cb75-3"><a href="#cb75-3"></a><span class="co">#&gt; 'Navoi'</span></span>
 <span id="cb75-4"><a href="#cb75-4"></a><span class="co"># 1-3 rows, all cols -----------------------------------</span></span>
@@ -2269,7 +2272,7 @@ named list vs vector in R
 <span id="cb75-44"><a href="#cb75-44"></a><span class="co">#&gt; 6   Xorazmi    783    Xiva</span></span>
 <span id="cb75-45"><a href="#cb75-45"></a><span class="co">#&gt; 8  Termiziy    824  Termiz</span></span>
 <span id="cb75-46"><a href="#cb75-46"></a><span class="co">#&gt; 9   Buxoriy    810  Buxoro</span></span>
-<span id="cb75-47"><a href="#cb75-47"></a><span class="co"># ------------------------------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb75-47"><a href="#cb75-47"></a><span class="co"># ------------------------------------------------------</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2279,14 +2282,14 @@ named list vs vector in R
 <section id="change-row--and-colnames" class="level3">
 <h3 class="anchored" data-anchor-id="change-row--and-colnames">Change Row- and Colnames</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="code-r">
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">cat</span>(<span class="st">"Rownames:</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">rownames</span>(df))  <span class="co"># rownames </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">cat</span>(<span class="st">"Rownames:</span><span class="sc">\n</span><span class="st">"</span>, <span class="fu">rownames</span>(df))  <span class="co"># rownames </span></span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Colnames:"</span>, <span class="fu">colnames</span>(df)) <span class="co"># colnames</span></span>
 <span id="cb76-3"><a href="#cb76-3"></a><span class="co">#</span></span>
 <span id="cb76-4"><a href="#cb76-4"></a>new_rname <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"person"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">sep=</span><span class="st">"_"</span>, <span class="at">collapse=</span> <span class="st">","</span>)</span>
@@ -2310,7 +2313,7 @@ named list vs vector in R
 <span id="cb76-22"><a href="#cb76-22"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>(df)</span>
 <span id="cb76-23"><a href="#cb76-23"></a><span class="fu">setkey</span>(dt, Ism)      <span class="co"># Like Index in pandas</span></span>
 <span id="cb76-24"><a href="#cb76-24"></a><span class="co">#call("Key: ", key(dt))</span></span>
-<span id="cb76-25"><a href="#cb76-25"></a><span class="fu">head</span>(dt, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-25"><a href="#cb76-25"></a><span class="fu">head</span>(dt, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Rownames:
@@ -2341,12 +2344,12 @@ named list vs vector in R
 </div>
 </div>
 <div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-data.frame() vs data.table()
+<span class="screen-reader-only">Caution</span>data.frame() vs data.table()
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2362,7 +2365,7 @@ data.frame() vs data.table()
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a><span class="bu">print</span>(<span class="ss">f"Rownames(index):</span><span class="ch">\n</span><span class="sc">{</span><span class="bu">list</span>(df_pd.index)<span class="sc">}</span><span class="ss">"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a><span class="bu">print</span>(<span class="ss">f"Rownames(index):</span><span class="ch">\n</span><span class="sc">{</span><span class="bu">list</span>(df_pd.index)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb78-2"><a href="#cb78-2"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Colnames: </span><span class="sc">{</span><span class="bu">list</span>(df_pd.columns)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb78-3"><a href="#cb78-3"></a><span class="co">#</span></span>
 <span id="cb78-4"><a href="#cb78-4"></a>new_pname <span class="op">=</span> [<span class="st">"user_"</span> <span class="op">+</span> <span class="bu">str</span>(idx) <span class="cf">for</span> idx <span class="kw">in</span> <span class="bu">list</span>(df_pd.index)]</span>
@@ -2376,7 +2379,7 @@ data.frame() vs data.table()
 <span id="cb78-12"><a href="#cb78-12"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n\n</span><span class="st">Set a column as index:"</span>)</span>
 <span id="cb78-13"><a href="#cb78-13"></a><span class="co"># like key in data.table in r</span></span>
 <span id="cb78-14"><a href="#cb78-14"></a>df_pd.set_index(<span class="st">"Ism"</span>, inplace <span class="op">=</span> <span class="va">True</span>, append <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb78-15"><a href="#cb78-15"></a>df_pd.head(n <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb78-15"><a href="#cb78-15"></a>df_pd.head(n <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Rownames(index):
@@ -2503,13 +2506,14 @@ Zhang, Nailong. 2021. <em>A Tour of Data Science</em>. Wiley-Blackwell.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -123,7 +124,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -157,7 +158,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/log.png" alt="" class="navbar-logo">
+    <img src="../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -210,7 +212,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -289,7 +291,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
     </div>
@@ -390,7 +393,7 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># pivot data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># pivot data</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>piv_data <span class="ot">&lt;-</span> </span>
 <span id="cb1-3"><a href="#cb1-3"></a>  data_raw <span class="sc">|&gt;</span> </span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">pivot_longer</span>(</span>
@@ -418,7 +421,7 @@ window.Quarto = {
 <span id="cb1-26"><a href="#cb1-26"></a>    <span class="st">"kreis"</span> <span class="ot">=</span> <span class="st">"Stadt"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27"></a></span>
 <span id="cb1-28"><a href="#cb1-28"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb1-29"><a href="#cb1-29"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-29"><a href="#cb1-29"></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 6 × 5
@@ -439,18 +442,18 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Diqqat! Achtung! Bнимание! Attention!
+<span class="screen-reader-only">Important</span>Diqqat! Achtung! Bнимание! Attention!
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Columname <strong>Kreis / Landkreis</strong> mit <code>/</code> gespeichert. Normal R liest die Spalte so wie sie in DF gespeichrt ist, muss aber mit dplyr so angesprochen werden:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>data_raw <span class="sc">|&gt;</span> </span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">cols =</span> <span class="sc">!</span><span class="fu">c</span>(Bundesland, Stadt, <span class="st">`</span><span class="at">Kreis / Landkreis</span><span class="st">`</span>),</span>
 <span id="cb3-5"><a href="#cb3-5"></a>    ....</span>
 <span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="st">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="st">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In Qarto sieht eingelesene Spaltenname <strong>Kreis / Landkreis</strong> -&gt; <code>Kreis...Landkreis</code></p>
 </div>
 </div>
@@ -461,7 +464,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># libraries:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># libraries:</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co"># pkg &lt;- c("giscoR", "ggtext", "glue", "syfonts", "png", "ggimage", "fontawesome")</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co"># lapply(pkg, library, character.only = TRUE)</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a></span>
@@ -534,7 +537,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb4-71"><a href="#cb4-71"></a>        <span class="at">axis.title.x=</span><span class="fu">element_blank</span>(),</span>
 <span id="cb4-72"><a href="#cb4-72"></a>        <span class="at">axis.title.y=</span><span class="fu">element_blank</span>())</span>
 <span id="cb4-73"><a href="#cb4-73"></a></span>
-<span id="cb4-74"><a href="#cb4-74"></a>map_plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-74"><a href="#cb4-74"></a>map_plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -551,7 +554,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Group by Status ==============================================================</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Group by Status ==============================================================</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>group_stat <span class="ot">&lt;-</span> </span>
 <span id="cb5-3"><a href="#cb5-3"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">group_by</span>(status) <span class="sc">|&gt;</span> </span>
@@ -586,7 +589,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb5-33"><a href="#cb5-33"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.40</span>)</span>
 <span id="cb5-34"><a href="#cb5-34"></a>  ) </span>
 <span id="cb5-35"><a href="#cb5-35"></a></span>
-<span id="cb5-36"><a href="#cb5-36"></a>bar_plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-36"><a href="#cb5-36"></a>bar_plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -603,7 +606,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>group_status <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>group_status <span class="ot">&lt;-</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">group_by</span>(status, geschlecht) <span class="sc">|&gt;</span> </span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">summarise</span>(<span class="at">cnt =</span> <span class="fu">sum</span>(cnt)) <span class="sc">|&gt;</span> </span>
@@ -641,7 +644,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb6-36"><a href="#cb6-36"></a>        <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb6-37"><a href="#cb6-37"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(),</span>
 <span id="cb6-38"><a href="#cb6-38"></a>        <span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
-<span id="cb6-39"><a href="#cb6-39"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-39"><a href="#cb6-39"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -658,7 +661,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>group_bl <span class="ot">&lt;-</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>group_bl <span class="ot">&lt;-</span> </span>
 <span id="cb7-2"><a href="#cb7-2"></a>  data <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(bundesland, geschlecht) <span class="sc">|&gt;</span> </span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">summarise</span>(<span class="at">cnt =</span> <span class="fu">sum</span>(cnt)) <span class="sc">|&gt;</span> </span>
@@ -689,7 +692,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb7-29"><a href="#cb7-29"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb7-30"><a href="#cb7-30"></a>        <span class="at">panel.grid.minor.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb7-31"><a href="#cb7-31"></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(),</span>
-<span id="cb7-32"><a href="#cb7-32"></a>        <span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-32"><a href="#cb7-32"></a>        <span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -725,7 +728,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown, HTML</span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
@@ -766,7 +769,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb8-39"><a href="#cb8-39"></a>male <span class="op">=</span> df.male</span>
 <span id="cb8-40"><a href="#cb8-40"></a>labels <span class="op">=</span> df.status</span>
 <span id="cb8-41"><a href="#cb8-41"></a></span>
-<span id="cb8-42"><a href="#cb8-42"></a>Markdown(df.to_markdown(index <span class="op">=</span> <span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-42"><a href="#cb8-42"></a>Markdown(df.to_markdown(index <span class="op">=</span> <span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -868,7 +871,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> plotly <span class="im">import</span> graph_objects <span class="im">as</span> go</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> plotly <span class="im">import</span> graph_objects <span class="im">as</span> go</span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
 <span id="cb9-4"><a href="#cb9-4"></a>fig <span class="op">=</span> go.Figure()</span>
@@ -899,7 +902,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb9-29"><a href="#cb9-29"></a><span class="bu">print</span>(fig)</span>
 <span id="cb9-30"><a href="#cb9-30"></a></span>
 <span id="cb9-31"><a href="#cb9-31"></a><span class="co">#fig.write_image("gallery/plots/fig1.png")</span></span>
-<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#plotly.offline.plot(fig, filename='gallery/plots/fig1.png', image='png')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#plotly.offline.plot(fig, filename='gallery/plots/fig1.png', image='png')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><a href="plots/funnel2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="plots/funnel2.png" class="img-fluid"></a></p>
@@ -908,7 +911,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown, HTML</span>
 <span id="cb10-4"><a href="#cb10-4"></a></span>
@@ -935,7 +938,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb10-25"><a href="#cb10-25"></a>lab <span class="op">=</span> df_bl.bundesland</span>
 <span id="cb10-26"><a href="#cb10-26"></a></span>
 <span id="cb10-27"><a href="#cb10-27"></a></span>
-<span id="cb10-28"><a href="#cb10-28"></a>Markdown(df_bl.to_markdown(index <span class="op">=</span> <span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-28"><a href="#cb10-28"></a>Markdown(df_bl.to_markdown(index <span class="op">=</span> <span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1055,7 +1058,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <div class="cell">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> plotly <span class="im">import</span> graph_objects <span class="im">as</span> go</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> plotly <span class="im">import</span> graph_objects <span class="im">as</span> go</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co">#import plotly</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="co"># import plotly.io as pio</span></span>
@@ -1093,7 +1096,7 @@ Diqqat! Achtung! Bнимание! Attention!
 <span id="cb11-36"><a href="#cb11-36"></a><span class="co"># # show as static img</span></span>
 <span id="cb11-37"><a href="#cb11-37"></a><span class="co"># fig_bl.show(renderer="png")</span></span>
 <span id="cb11-38"><a href="#cb11-38"></a><span class="co"># # write as image</span></span>
-<span id="cb11-39"><a href="#cb11-39"></a><span class="co"># pio.write_image(fig_bl, "C:/Users/sultanov/Documents/blog/gallery/plots/figname.png") </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-39"><a href="#cb11-39"></a><span class="co"># pio.write_image(fig_bl, "C:/Users/sultanov/Documents/blog/gallery/plots/figname.png") </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p><a href="plots/funnel1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="plots/funnel1.png" class="img-fluid"></a></p>
@@ -1167,13 +1170,14 @@ Diqqat! Achtung! Bнимание! Attention!
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

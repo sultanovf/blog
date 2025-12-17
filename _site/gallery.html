@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,18 +34,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8f7a41fe82485f2a115c8adfb19aafcd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9daaebcdf4cd9e4f9d1c0dc33f781aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -126,7 +127,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -317,7 +318,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/log.png" alt="" class="navbar-logo">
+    <img src="./images/log.png" alt="" class="navbar-logo light-content">
+    <img src="./images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -370,7 +372,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -422,10 +424,11 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-cloud"><div class="category" data-category="YmFycGxvdA=="><span class="quarto-category-count category-cloud-5">barplot</span></div><div class="category" data-category="Ym94YmxvdA=="><span class="quarto-category-count category-cloud-1">boxblot</span></div><div class="category" data-category="Q0dQZnVuY3Rpb25z"><span class="quarto-category-count category-cloud-1">CGPfunctions</span></div><div class="category" data-category="RFQ="><span class="quarto-category-count category-cloud-1">DT</span></div><div class="category" data-category="ZnVubmVsJTIwY2hhcnQ="><span class="quarto-category-count category-cloud-1">funnel chart</span></div><div class="category" data-category="Z2VvbV9mbGFn"><span class="quarto-category-count category-cloud-1">geom_flag</span></div><div class="category" data-category="Z2VvbV9pbWFnZQ=="><span class="quarto-category-count category-cloud-2">geom_image</span></div><div class="category" data-category="Z2dhbmltYXRl"><span class="quarto-category-count category-cloud-7">gganimate</span></div><div class="category" data-category="Z2dpbWFnZQ=="><span class="quarto-category-count category-cloud-2">ggimage</span></div><div class="category" data-category="Z2dpbWc="><span class="quarto-category-count category-cloud-1">ggimg</span></div><div class="category" data-category="Z2dwbG90Mg=="><span class="quarto-category-count category-cloud-9">ggplot2</span></div><div class="category" data-category="Z2dwb2w="><span class="quarto-category-count category-cloud-2">ggpol</span></div><div class="category" data-category="Z3QlMjB0YWJsZQ=="><span class="quarto-category-count category-cloud-1">gt table</span></div><div class="category" data-category="bGluZXBsb3Q="><span class="quarto-category-count category-cloud-2">lineplot</span></div><div class="category" data-category="bWFw"><span class="quarto-category-count category-cloud-1">map</span></div><div class="category" data-category="cGFuZGFz"><span class="quarto-category-count category-cloud-1">pandas</span></div><div class="category" data-category="cGxvdGx5"><span class="quarto-category-count category-cloud-2">plotly</span></div><div class="category" data-category="UHl0aG9u"><span class="quarto-category-count category-cloud-3">Python</span></div><div class="category" data-category="Ug=="><span class="quarto-category-count category-cloud-10">R</span></div><div class="category" data-category="cmFuZ2VwbG90"><span class="quarto-category-count category-cloud-1">rangeplot</span></div><div class="category" data-category="c2NhdHRlcnBsb3Q="><span class="quarto-category-count category-cloud-1">scatterplot</span></div><div class="category" data-category="c2xvcGVncmFwaA=="><span class="quarto-category-count category-cloud-1">slopegraph</span></div><div class="category" data-category="dHJlZW1hcA=="><span class="quarto-category-count category-cloud-1">treemap</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-cloud"><div class="category" data-category="YmFycGxvdA=="><span class="quarto-category-count category-cloud-5">barplot</span></div><div class="category" data-category="Ym94YmxvdA=="><span class="quarto-category-count category-cloud-1">boxblot</span></div><div class="category" data-category="Q0dQZnVuY3Rpb25z"><span class="quarto-category-count category-cloud-1">CGPfunctions</span></div><div class="category" data-category="ZHBseXI="><span class="quarto-category-count category-cloud-1">dplyr</span></div><div class="category" data-category="RFQ="><span class="quarto-category-count category-cloud-1">DT</span></div><div class="category" data-category="ZnVubmVsJTIwY2hhcnQ="><span class="quarto-category-count category-cloud-1">funnel chart</span></div><div class="category" data-category="Z2VvbV9mbGFn"><span class="quarto-category-count category-cloud-1">geom_flag</span></div><div class="category" data-category="Z2VvbV9pbWFnZQ=="><span class="quarto-category-count category-cloud-3">geom_image</span></div><div class="category" data-category="Z2dhbmltYXRl"><span class="quarto-category-count category-cloud-7">gganimate</span></div><div class="category" data-category="Z2dpbWFnZQ=="><span class="quarto-category-count category-cloud-2">ggimage</span></div><div class="category" data-category="Z2dpbWc="><span class="quarto-category-count category-cloud-1">ggimg</span></div><div class="category" data-category="Z2dwbG90Mg=="><span class="quarto-category-count category-cloud-9">ggplot2</span></div><div class="category" data-category="Z2dwb2w="><span class="quarto-category-count category-cloud-2">ggpol</span></div><div class="category" data-category="Z3QlMjB0YWJsZQ=="><span class="quarto-category-count category-cloud-1">gt table</span></div><div class="category" data-category="bGluZXBsb3Q="><span class="quarto-category-count category-cloud-2">lineplot</span></div><div class="category" data-category="bWFw"><span class="quarto-category-count category-cloud-1">map</span></div><div class="category" data-category="cGFuZGFz"><span class="quarto-category-count category-cloud-1">pandas</span></div><div class="category" data-category="cGxvdGx5"><span class="quarto-category-count category-cloud-2">plotly</span></div><div class="category" data-category="UHl0aG9u"><span class="quarto-category-count category-cloud-3">Python</span></div><div class="category" data-category="Ug=="><span class="quarto-category-count category-cloud-10">R</span></div><div class="category" data-category="cmFuZ2VwbG90"><span class="quarto-category-count category-cloud-1">rangeplot</span></div><div class="category" data-category="c2NhdHRlcnBsb3Q="><span class="quarto-category-count category-cloud-1">scatterplot</span></div><div class="category" data-category="c2xvcGVncmFwaA=="><span class="quarto-category-count category-cloud-1">slopegraph</span></div><div class="category" data-category="dHJlZW1hcA=="><span class="quarto-category-count category-cloud-1">treemap</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -462,7 +465,44 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDQ0dQZnVuY3Rpb25zJTJDcmFuZ2VwbG90JTJDc2xvcGVncmFwaCUyQ3RyZWVtYXA=" data-listing-date-sort="1743804000000" data-listing-file-modified-sort="1757419460474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2009">
+<div class="g-col-1" data-index="0" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZHBseXIlMkNnZW9tX2ltYWdl" data-listing-date-sort="1759615200000" data-listing-file-modified-sort="1766011217443" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1663">
+<a href="./gallery/topten.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="gallery\gallery_img\topten.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Top ten countries by GDP,PPP
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmFycGxvdA=='); return false;">barplot</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dhbmltYXRl'); return false;">gganimate</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZHBseXI='); return false;">dplyr</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvbV9pbWFnZQ=='); return false;">geom_image</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>top ten countries worldwide in terms of GDP by purchasing power parity (PPP) over the years, shown by animated plot using <code>ggplot2</code> and <code>gganimate</code></p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Fazliddin Sultonov
+</div>
+<div class="listing-date">
+October, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDQ0dQZnVuY3Rpb25zJTJDcmFuZ2VwbG90JTJDc2xvcGVncmFwaCUyQ3RyZWVtYXA=" data-listing-date-sort="1743804000000" data-listing-file-modified-sort="1766007998167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2009">
 <a href="./gallery/pop_bar.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\pop_gis.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -503,7 +543,7 @@ April, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2dwb2w=" data-listing-date-sort="1741129200000" data-listing-file-modified-sort="1744040133586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1085">
+<div class="g-col-1" data-index="2" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2dwb2w=" data-listing-date-sort="1741129200000" data-listing-file-modified-sort="1766007998167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1085">
 <a href="./gallery/socialnetwork.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\socialnetwork.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -538,7 +578,7 @@ March, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2dwb2w=" data-listing-date-sort="1740870000000" data-listing-file-modified-sort="1756788234421" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1673">
+<div class="g-col-1" data-index="3" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2dwb2w=" data-listing-date-sort="1740870000000" data-listing-file-modified-sort="1766007998044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1673">
 <a href="./gallery/marriage.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\marriage.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -573,7 +613,7 @@ March, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2VvbV9pbWFnZQ==" data-listing-date-sort="1738969200000" data-listing-file-modified-sort="1740988350582" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1855">
+<div class="g-col-1" data-index="4" data-categories="YmFycGxvdCUyQ1IlMkNnZ3Bsb3QyJTJDZ2dhbmltYXRlJTJDZ2VvbV9pbWFnZQ==" data-listing-date-sort="1738969200000" data-listing-file-modified-sort="1766007998167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1855">
 <a href="./gallery/price_bar.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\bar_prod.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -608,7 +648,7 @@ February, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="bGluZXBsb3QlMkNSJTJDZ2dwbG90MiUyQ2dnYW5pbWF0ZSUyQ2dlb21faW1hZ2U=" data-listing-date-sort="1738969200000" data-listing-file-modified-sort="1744042274656" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1349">
+<div class="g-col-1" data-index="5" data-categories="bGluZXBsb3QlMkNSJTJDZ2dwbG90MiUyQ2dnYW5pbWF0ZSUyQ2dlb21faW1hZ2U=" data-listing-date-sort="1738969200000" data-listing-file-modified-sort="1766007998167" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1349">
 <a href="./gallery/price_line.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\line_meat.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -643,7 +683,7 @@ February, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="YmFycGxvdCUyQ21hcCUyQ1IlMkNQeXRob24lMkNnZ3Bsb3QyJTJDcGxvdGx5JTJDcGFuZGFzJTJDZnVubmVsJTIwY2hhcnQ=" data-listing-date-sort="1734217200000" data-listing-file-modified-sort="1757420656263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3180">
+<div class="g-col-1" data-index="6" data-categories="YmFycGxvdCUyQ21hcCUyQ1IlMkNQeXRob24lMkNnZ3Bsb3QyJTJDcGxvdGx5JTJDcGFuZGFzJTJDZnVubmVsJTIwY2hhcnQ=" data-listing-date-sort="1734217200000" data-listing-file-modified-sort="1766007998168" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3180">
 <a href="./gallery/usbekeninde.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\map_de.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -684,7 +724,7 @@ December, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="c2NhdHRlcnBsb3QlMkNSJTJDUHl0aG9uJTJDZ2dhbmltYXRlJTJDZ2dwbG90MiUyQ3Bsb3RseQ==" data-listing-date-sort="1733698800000" data-listing-file-modified-sort="1740912809628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1746">
+<div class="g-col-1" data-index="7" data-categories="c2NhdHRlcnBsb3QlMkNSJTJDUHl0aG9uJTJDZ2dhbmltYXRlJTJDZ2dwbG90MiUyQ3Bsb3RseQ==" data-listing-date-sort="1733698800000" data-listing-file-modified-sort="1766007998043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1746">
 <a href="./gallery/gganimate_scatter.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\plotly.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -721,7 +761,7 @@ December, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="Z2VvbV9mbGFnJTJDUiUyQ2dncGxvdDIlMkNnZ2ltYWdl" data-listing-date-sort="1731711600000" data-listing-file-modified-sort="1753245058196" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="1000">
+<div class="g-col-1" data-index="8" data-categories="Z2VvbV9mbGFnJTJDUiUyQ2dncGxvdDIlMkNnZ2ltYWdl" data-listing-date-sort="1731711600000" data-listing-file-modified-sort="1766007998042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="1000">
 <a href="./gallery/geom_flag.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="gallery\gallery_img\gg_flag.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -754,10 +794,10 @@ November, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="Z2dpbWclMkNSJTJDZ2dwbG90MiUyQ2dnaW1hZ2U=" data-listing-date-sort="1729375200000" data-listing-file-modified-sort="1729452685161" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
+<div class="g-col-1" data-index="9" data-categories="Z2dpbWclMkNSJTJDZ2dwbG90MiUyQ2dnaW1hZ2U=" data-listing-date-sort="1729375200000" data-listing-file-modified-sort="1766007998043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
 <a href="./gallery/ggimg.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="gallery\gallery_img\gg_img.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="gallery\gallery_img\gg_img.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 plotting image data via ggimg
@@ -787,7 +827,7 @@ October, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="Z2dhbmltYXRlJTJDUiUyQ2dncGxvdDIlMkNsaW5lcGxvdA==" data-listing-date-sort="1729202400000" data-listing-file-modified-sort="1731799088222" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1449">
+<div class="g-col-1" data-index="10" data-categories="Z2dhbmltYXRlJTJDUiUyQ2dncGxvdDIlMkNsaW5lcGxvdA==" data-listing-date-sort="1729202400000" data-listing-file-modified-sort="1766007998043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1449">
 <a href="./gallery/gganimate_line.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="gallery\gallery_img\gg_line.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -820,7 +860,7 @@ October, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="Z2dhbmltYXRlJTJDUiUyQ2dncGxvdDIlMkNiYXJwbG90" data-listing-date-sort="1719784800000" data-listing-file-modified-sort="1731203591809" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="833">
+<div class="g-col-1" data-index="11" data-categories="Z2dhbmltYXRlJTJDUiUyQ2dncGxvdDIlMkNiYXJwbG90" data-listing-date-sort="1719784800000" data-listing-file-modified-sort="1766007998043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="833">
 <a href="./gallery/gganimate_bar.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="gallery\gallery_img\gg_bar.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -853,7 +893,7 @@ July, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-categories="Ym94YmxvdCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1729452778189" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
+<div class="g-col-1" data-index="12" data-categories="Ym94YmxvdCUyQ1IlMkNQeXRob24=" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1766007997989" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="410">
 <a href="./gallery/boxplot.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="gallery\gallery_img\boxplot.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -884,7 +924,7 @@ June, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-categories="Z3QlMjB0YWJsZSUyQ1IlMkNEVA==" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1729452333279" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1349">
+<div class="g-col-1" data-index="13" data-categories="Z3QlMjB0YWJsZSUyQ1IlMkNEVA==" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1766007998044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1349">
 <a href="./gallery/gtTable.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="gallery\gallery_img\gt.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -985,13 +1025,14 @@ June, 2024
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

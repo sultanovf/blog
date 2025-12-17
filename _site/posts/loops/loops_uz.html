@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,14 +90,15 @@ div.csl-indent {
 <link href="../../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -141,7 +142,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -176,7 +177,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/log.png" alt="" class="navbar-logo">
+    <img src="../../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -229,7 +231,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -306,7 +308,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
@@ -343,7 +346,7 @@ window.Quarto = {
 <div class="code-r">
 <p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2"></a>baho <span class="ot">&lt;-</span> <span class="dv">4</span>               <span class="co"># berilgan son</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="cf">if</span> (baho <span class="sc">==</span> <span class="dv">3</span>) {        <span class="co"># 1- shart</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">cat</span>(<span class="st">"qoniqarli"</span>)      <span class="co"># bajariladi, agar 1-shart == TRUE</span></span>
@@ -354,7 +357,7 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9"></a>} <span class="cf">else</span> {                <span class="co"># aks holda</span></span>
 <span id="cb1-10"><a href="#cb1-10"></a>  <span class="fu">cat</span>(<span class="st">"qoniqarsiz"</span>)     <span class="co"># bajariladi, hech qaysi shart qanoatlantirilmasa</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a>}</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; yaxshi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; yaxshi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -362,7 +365,7 @@ window.Quarto = {
 <div class="code-py">
 <p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>baho <span class="op">=</span> <span class="dv">5</span>              <span class="co"># berilgan son</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>baho <span class="op">=</span> <span class="dv">5</span>              <span class="co"># berilgan son</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="cf">if</span> baho <span class="op">==</span> <span class="dv">3</span>:         <span class="co"># 1- shart</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="bu">print</span>(<span class="st">"qoniqarli"</span>)  <span class="co"># bajariladi, agar 1-shart == TRUE</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="cf">elif</span> baho <span class="op">==</span> <span class="dv">4</span>:       <span class="co"># 2-shart</span></span>
@@ -371,7 +374,7 @@ window.Quarto = {
 <span id="cb2-7"><a href="#cb2-7"></a>  <span class="bu">print</span>(<span class="st">"a'lo"</span>)       <span class="co"># bajariladi, agar 3-shart == TRUE</span></span>
 <span id="cb2-8"><a href="#cb2-8"></a><span class="cf">else</span>:                 <span class="co"># aks holda</span></span>
 <span id="cb2-9"><a href="#cb2-9"></a>  <span class="bu">print</span>(<span class="st">"qoniqarsiz"</span>) <span class="co"># bajariladi, hech qaysi shart qanoatlantirilmasa</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; a'lo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; a'lo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -446,22 +449,22 @@ window.Quarto = {
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>element <span class="ot">&lt;-</span> <span class="dv">7</span>  <span class="co"># vektor uzunligi</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>element <span class="ot">&lt;-</span> <span class="dv">7</span>  <span class="co"># vektor uzunligi</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>vec <span class="ot">&lt;-</span> <span class="fu">vector</span>(</span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">mode =</span> <span class="st">"numeric"</span>, </span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">length =</span> element)</span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(element)){</span>
 <span id="cb3-6"><a href="#cb3-6"></a>  vec[i] <span class="ot">&lt;-</span>i</span>
 <span id="cb3-7"><a href="#cb3-7"></a>}</span>
-<span id="cb3-8"><a href="#cb3-8"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a>vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>uzunlik <span class="op">=</span> <span class="dv">7</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>uzunlik <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>lst <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, uzunlik <span class="op">+</span> <span class="dv">1</span>):</span>
 <span id="cb4-4"><a href="#cb4-4"></a>  lst.append(i)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5"></a>lst</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -487,7 +490,7 @@ window.Quarto = {
 <div class="code-r">
 <p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co"># qiymat asosisda ----------------------------</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="cf">for</span> (city <span class="cf">in</span> cities){</span>
 <span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">cat</span>(<span class="fu">paste0</span>(city, <span class="st">", "</span>))</span>
@@ -506,13 +509,13 @@ window.Quarto = {
 <span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; 5 -nchi ism: Shahrisabz </span></span>
 <span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt; 6 -nchi ism: Fargona</span></span>
 <span id="cb7-19"><a href="#cb7-19"></a><span class="fu">cat</span>(<span class="st">"sikl tugadi"</span>)</span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt; sikl tugadi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt; sikl tugadi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="code-py">
 <p><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>cities <span class="op">=</span> [<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>cities <span class="op">=</span> [<span class="st">"Qarshi"</span>, <span class="st">"Toshkent"</span>, <span class="st">"Xiva"</span>, <span class="st">"Denov"</span>,<span class="st">"Shahrisabz"</span>, <span class="st">"Fargona"</span>]</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># qiymat asosisda ----------------------------</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="cf">for</span> city <span class="kw">in</span> cities:</span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="bu">print</span>(city, end <span class="op">=</span> <span class="st">", "</span>)</span>
@@ -529,7 +532,7 @@ window.Quarto = {
 <span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt; 4-chi ism: Shahrisabz</span></span>
 <span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt; 5-chi ism: Fargona</span></span>
 <span id="cb8-17"><a href="#cb8-17"></a><span class="bu">print</span>(<span class="st">"sikl tugadi"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; sikl tugadi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; sikl tugadi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -539,14 +542,14 @@ window.Quarto = {
 <p>While siklida nechi marta aylanishi aniq bolmagani uchun, unga qachondir shartni qanoatlantirmaydigan logika qurisch kerak. Bunig uchun boshida, initial (boshlovchi) son belgilanadi, bu son takroryi harakatni ifodalaydi va kupincha <code>i</code> bilan belgilanadi (lekin qanday nomlash ixtiyoriy). Keyin sikl ichida ham shu son oshirilib (yoki kamaytirilib, agar oxiridan boshiga yurish kerak bolsa) boriladi.<br> <em><span style="color:red;">Aks holda, tugallanmaydigan sikga tushib qolinadi, va buni kuch bilan toxtatish kwerak boladi!! Agar shunday hol bo’lib qolsa klaviaturada <code>strg</code> + <code>C</code> tugmalarni bosish dasturni majburiy to’xtadai</span></em></p>
 <p>Quyidagi misolda berilgan songacha bo’lgan raqamlar yigindisini hisoblaymiz. Masalan berilgan son n = 8, Summa = 1+2+3+4+5+6+7+8 = 36.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><svg preserveaspectratio="none" aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1.5em;width:1.5em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="code-r">
 <div class="cell code-input">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">##| classes: code-input</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="do">##| classes: code-input</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>n <span class="ot">&lt;-</span> <span class="dv">8</span>                <span class="co"># Berilgan son</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>s <span class="ot">&lt;-</span> <span class="dv">0</span>                <span class="co"># boshlangich yigindi</span></span>
 <span id="cb9-4"><a href="#cb9-4"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span>            <span class="co"># siklni sanash uchun initial son</span></span>
@@ -558,7 +561,7 @@ window.Quarto = {
 <span id="cb9-10"><a href="#cb9-10"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span><span class="dv">1</span>           <span class="co"># harakatni ifodalovchi son 1 taga oshiriladi</span></span>
 <span id="cb9-11"><a href="#cb9-11"></a>}</span>
 <span id="cb9-12"><a href="#cb9-12"></a><span class="fu">cat</span>(<span class="st">"1 dan 8 gach bo'lgan raqamlar yigindisi: "</span>, s)</span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sikl"</span>, count, <span class="st">"marta aylandi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Sikl"</span>, count, <span class="st">"marta aylandi"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 1 -nchi aylanish: yigindi = 1 
@@ -580,7 +583,7 @@ window.Quarto = {
 <div class="cell code-output">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>n <span class="op">=</span> <span class="dv">8</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>summa <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>sana <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>i <span class="op">=</span> <span class="dv">1</span></span>
@@ -590,7 +593,7 @@ window.Quarto = {
 <span id="cb11-8"><a href="#cb11-8"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">-chi aylanish: yigindi = </span><span class="sc">{</span>summa<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb11-9"><a href="#cb11-9"></a>  i <span class="op">+=</span> <span class="dv">1</span>        <span class="co"># isteration nummerni bittaga oshirishni unutmaslik kerak!</span></span>
 <span id="cb11-10"><a href="#cb11-10"></a><span class="bu">print</span>(<span class="ss">f"1 dan 8 gach bo'lgan raqamlar yigindisi: </span><span class="sc">{</span>summa<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">print</span>((<span class="ss">f"Sikl </span><span class="sc">{</span>sana<span class="sc">}</span><span class="ss"> marta aylandi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">print</span>((<span class="ss">f"Sikl </span><span class="sc">{</span>sana<span class="sc">}</span><span class="ss"> marta aylandi"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; 1-chi aylanish: yigindi = 1
@@ -616,7 +619,7 @@ window.Quarto = {
 <p><strong>break</strong> - misol uchun 10 gacha bolgan sonlarni yigindisini faqat yigindi 15 ga teng bolguncha hisoblaymiz, agar yigindi 15 ga yetsa sikldan chiqib ketiladi</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>sonlar <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>sonlar <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co"># for -----------------------------------------</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>y <span class="ot">=</span> <span class="dv">0</span>                  <span class="co"># yigindi (boshlangich)</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="cf">for</span> (son <span class="cf">in</span> sonlar){</span>
@@ -637,11 +640,11 @@ window.Quarto = {
 <span id="cb13-19"><a href="#cb13-19"></a>  }</span>
 <span id="cb13-20"><a href="#cb13-20"></a>  iter <span class="ot">&lt;-</span> iter <span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb13-21"><a href="#cb13-21"></a>}</span>
-<span id="cb13-22"><a href="#cb13-22"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi while- siklda: "</span>, suma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-22"><a href="#cb13-22"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi while- siklda: "</span>, suma)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>numbers <span class="op">=</span> [son <span class="cf">for</span> son <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>numbers <span class="op">=</span> [son <span class="cf">for</span> son <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co"># for ------------------------------------</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>total <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
@@ -658,7 +661,7 @@ window.Quarto = {
 <span id="cb14-15"><a href="#cb14-15"></a>    <span class="cf">break</span></span>
 <span id="cb14-16"><a href="#cb14-16"></a>  sum_son <span class="op">+=</span> qadam</span>
 <span id="cb14-17"><a href="#cb14-17"></a>  qadam <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a><span class="bu">print</span>(<span class="st">"Yigindi while- siklda: "</span>, sum_son)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-18"><a href="#cb14-18"></a><span class="bu">print</span>(<span class="st">"Yigindi while- siklda: "</span>, sum_son)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -685,7 +688,7 @@ window.Quarto = {
 <p><strong>continue</strong> - bunga misol qilib yana 10 gacha bolgan sonlar ketma ketligini olamiz, va shu qatordagi rqamalr yigindisini hisoblaymiz. Agar ro’yxatda sonlar <em>mavjud bo’lmasa</em>( R da <code>NA</code>, Pythonda <code>None</code> yoki <code>NaN</code>), bu sonlar uchun siklda aylanayotganda yigindi hisoblash amalni qo’llamaymiz, boshqacha aytganda bu yerdan <em>hakalab</em> utib ketiladi.</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>ruyhat_na <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>ruyhat_na <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>ruyhat_na[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>, <span class="dv">9</span>)]<span class="ot">&lt;-</span><span class="cn">NA</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>ruyhat_na</span>
 <span id="cb17-4"><a href="#cb17-4"></a><span class="co"># for ------------------------------------------</span></span>
@@ -710,11 +713,11 @@ window.Quarto = {
 <span id="cb17-23"><a href="#cb17-23"></a>  na_sum <span class="ot">&lt;-</span> na_sum <span class="sc">+</span> ruyhat_na[k]</span>
 <span id="cb17-24"><a href="#cb17-24"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb17-25"><a href="#cb17-25"></a>}</span>
-<span id="cb17-26"><a href="#cb17-26"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi by while: "</span>, na_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-26"><a href="#cb17-26"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Yigindi by while: "</span>, na_sum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#import math</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#import math</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>ruyxat <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span>
 <span id="cb18-3"><a href="#cb18-3"></a>pos <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>]<span class="op">;</span> target <span class="op">=</span> [<span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>]</span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="cf">for</span> idx, val <span class="kw">in</span> <span class="bu">zip</span>(pos, target):</span>
@@ -736,7 +739,7 @@ window.Quarto = {
 <span id="cb18-20"><a href="#cb18-20"></a>    <span class="cf">continue</span></span>
 <span id="cb18-21"><a href="#cb18-21"></a>  sum_total <span class="op">+=</span> ruyxat[elmt]</span>
 <span id="cb18-22"><a href="#cb18-22"></a>  elmt <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb18-23"><a href="#cb18-23"></a><span class="bu">print</span>(<span class="ss">f"Yigindi by while: </span><span class="sc">{</span>sum_total<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-23"><a href="#cb18-23"></a><span class="bu">print</span>(<span class="ss">f"Yigindi by while: </span><span class="sc">{</span>sum_total<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
@@ -770,7 +773,7 @@ window.Quarto = {
 <h1><code>repeat</code> - loop in R</h1>
 <p>Biror bir blokni/ifodani bir necha marta sikl orqali takrorlash uchun yuqoridagi sikl turlaridan tashqari R da yana <code>repeat</code>- sikli mavjud. Boshqalardan bu siklni farqi, bunda siklni tugatadiga shartlar bolmaydi. Bu sikl faqat majburiy <em>if</em> va <em>break</em> orqali toxtatiladi. Masalan biz sonlarni kvadrat darajasi to 150 ga teng yoki bo’liguniga qadar uzini o’ziga kupaytirib chiqamiz. Ya’ni 1 dan boshlab sonlarni kvadrat darajaga oshiramiz, daraja 150 dan oshib ketmasligi kerak.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>d <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>daraja <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="cf">repeat</span> {</span>
 <span id="cb21-4"><a href="#cb21-4"></a>  </span>
@@ -781,7 +784,7 @@ window.Quarto = {
 <span id="cb21-9"><a href="#cb21-9"></a>  daraja <span class="ot">&lt;-</span> d<span class="sc">*</span>d</span>
 <span id="cb21-10"><a href="#cb21-10"></a>  d <span class="ot">&lt;-</span> d<span class="sc">+</span><span class="dv">1</span></span>
 <span id="cb21-11"><a href="#cb21-11"></a>}</span>
-<span id="cb21-12"><a href="#cb21-12"></a><span class="co">#&gt; 0 1 4 9 16 25 36 49 64 81 100 121 144</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="co">#&gt; 0 1 4 9 16 25 36 49 64 81 100 121 144</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="try-except-in-python" class="level1">
@@ -796,7 +799,7 @@ window.Quarto = {
 </ul>
 <p>Bunday hatoliklarda, dastur ishga tushirilganda shu hatoliklar uchragan joygacha kod bajarilada, hatolik yuz bersa u yogiga o’tmaydi, demak dastur to’xtab qoladi. Shunday hatoliklarni oldini olish uchun Python da <code>try:</code> va <code>except</code> lardan foydalaniladi. <code>try</code>- iofasini ishlash prinsipi quyidagicha:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">try</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">try</span>:</span>
 <span id="cb22-2"><a href="#cb22-2"></a>  </span>
 <span id="cb22-3"><a href="#cb22-3"></a>  <span class="co"># Bu yerda bajarilishi kerak bolgan kod</span></span>
 <span id="cb22-4"><a href="#cb22-4"></a>  </span>
@@ -804,11 +807,11 @@ window.Quarto = {
 <span id="cb22-6"><a href="#cb22-6"></a>  <span class="co"># Bu yerda ZeroDivisionError hatosini tugrilaydigan kod</span></span>
 <span id="cb22-7"><a href="#cb22-7"></a></span>
 <span id="cb22-8"><a href="#cb22-8"></a><span class="cf">except</span> <span class="pp">TypeError</span>:</span>
-<span id="cb22-9"><a href="#cb22-9"></a>  <span class="co"># Buy erda TypeError ni haytosini tugrilaydigan kod</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="co"># Buy erda TypeError ni haytosini tugrilaydigan kod</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Quyidagi misolda vazifa quyidagicha: ikkita <em>a</em> va <em>b</em> ro’yxat berilgan. Ro’yxat (a) elementlarini ro’yxatdagi (b) elementlaga bo’lish kerak. Buni uchun for- sikldan foydalaniladi. Ro’yxat elementöari ichida 0 va matn shaklidagilari ham bo’lgani sababli yuqoridagi hatoliklar uchrashi aniq. Buni try- va except bilan oldini olish kerak.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">8</span>]   </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">8</span>]   </span>
 <span id="cb23-2"><a href="#cb23-2"></a>b <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="st">"3"</span>, <span class="dv">4</span>]</span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(<span class="st">"a: "</span>, a)</span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="bu">print</span>(<span class="st">"a: "</span>, b)</span>
@@ -827,7 +830,7 @@ window.Quarto = {
 <span id="cb23-17"><a href="#cb23-17"></a>    x <span class="op">=</span> <span class="bu">int</span>(x)</span>
 <span id="cb23-18"><a href="#cb23-18"></a>    y <span class="op">=</span> <span class="bu">int</span>(y)</span>
 <span id="cb23-19"><a href="#cb23-19"></a>    </span>
-<span id="cb23-20"><a href="#cb23-20"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Tugadi, topshiriq muvaffaqiyatli bajarildi."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-20"><a href="#cb23-20"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Tugadi, topshiriq muvaffaqiyatli bajarildi."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; a:  [1, 0, 4, 5, 4, 8]
 #&gt; a:  [2, 1, 3, 0, '3', 4]
@@ -924,13 +927,14 @@ Weigend, Michael. 2019. <em><span class="nocase">Python 3 : Lernen und professio
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

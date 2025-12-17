@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,18 +34,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8f7a41fe82485f2a115c8adfb19aafcd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-53f4f7dd15df270742bb040d39c3bf6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-9daaebcdf4cd9e4f9d1c0dc33f781aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c30704818f15230f191da4743b715d09.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -126,7 +127,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -317,7 +318,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/log.png" alt="" class="navbar-logo">
+    <img src="./images/log.png" alt="" class="navbar-logo light-content">
+    <img src="./images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -370,7 +372,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -422,7 +424,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-cloud"><div class="category" data-category="QXBwbGF5"><span class="quarto-category-count category-cloud-2">Applay</span></div><div class="category" data-category="Qm94LVBsb3Q="><span class="quarto-category-count category-cloud-3">Box-Plot</span></div><div class="category" data-category="Q29udHJvbCUyMGZsb3c="><span class="quarto-category-count category-cloud-2">Control flow</span></div><div class="category" data-category="RGF0YSUyMFN0cnVjdHVyZQ=="><span class="quarto-category-count category-cloud-3">Data Structure</span></div><div class="category" data-category="RGF0YSUyMFR5cGVz"><span class="quarto-category-count category-cloud-3">Data Types</span></div><div class="category" data-category="RnVuY3Rpb24="><span class="quarto-category-count category-cloud-3">Function</span></div><div class="category" data-category="R2VybWFu"><span class="quarto-category-count category-cloud-4">German</span></div><div class="category" data-category="TG9vcA=="><span class="quarto-category-count category-cloud-2">Loop</span></div><div class="category" data-category="TWFw"><span class="quarto-category-count category-cloud-2">Map</span></div><div class="category" data-category="TWVhbg=="><span class="quarto-category-count category-cloud-3">Mean</span></div><div class="category" data-category="TWVkaWFu"><span class="quarto-category-count category-cloud-3">Median</span></div><div class="category" data-category="TW9kYWw="><span class="quarto-category-count category-cloud-3">Modal</span></div><div class="category" data-category="UHl0aG9u"><span class="quarto-category-count category-cloud-10">Python</span></div><div class="category" data-category="UXVhcnRpbA=="><span class="quarto-category-count category-cloud-3">Quartil</span></div><div class="category" data-category="Ug=="><span class="quarto-category-count category-cloud-10">R</span></div><div class="category" data-category="U3RhdGlzdGljcw=="><span class="quarto-category-count category-cloud-3">Statistics</span></div><div class="category" data-category="VXpiZWs="><span class="quarto-category-count category-cloud-7">Uzbek</span></div></div></div>
@@ -462,7 +465,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="RnVuY3Rpb24lMkNVemJlayUyQ1IlMkNQeXRob24lMkNBcHBsYXklMkNNYXA=" data-listing-date-sort="1720303200000" data-listing-file-modified-sort="1719824933447" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="132">
+<div class="quarto-post image-right" data-index="0" data-categories="RnVuY3Rpb24lMkNVemJlayUyQ1IlMkNQeXRob24lMkNBcHBsYXklMkNNYXA=" data-listing-date-sort="1720303200000" data-listing-file-modified-sort="1766007998229" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="132">
 <div class="thumbnail"><a href="./posts/mapping/apply_uz.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\mapping\pic\apply.png"  class="thumbnail-image card-img"/></p>
@@ -503,7 +506,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="RnVuY3Rpb24lMkNVemJlayUyQ1IlMkNQeXRob24=" data-listing-date-sort="1719698400000" data-listing-file-modified-sort="1719825569607" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="820">
+<div class="quarto-post image-right" data-index="1" data-categories="RnVuY3Rpb24lMkNVemJlayUyQ1IlMkNQeXRob24=" data-listing-date-sort="1719698400000" data-listing-file-modified-sort="1766007998211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="820">
 <div class="thumbnail"><a href="./posts/function/funksiya_uz.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\function\pic\func.png"  class="thumbnail-image card-img"/></p>
@@ -540,7 +543,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="U3RhdGlzdGljcyUyQ1V6YmVrJTJDUiUyQ1B5dGhvbiUyQ01lYW4lMkNNZWRpYW4lMkNNb2RhbCUyQ1F1YXJ0aWwlMkNCb3gtUGxvdA==" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1717947059565" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2223">
+<div class="quarto-post image-right" data-index="2" data-categories="U3RhdGlzdGljcyUyQ1V6YmVrJTJDUiUyQ1B5dGhvbiUyQ01lYW4lMkNNZWRpYW4lMkNNb2RhbCUyQ1F1YXJ0aWwlMkNCb3gtUGxvdA==" data-listing-date-sort="1717884000000" data-listing-file-modified-sort="1766007998238" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2223">
 <div class="thumbnail"><a href="./posts/mean/average_uz.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\mean\pictures\average.png"  class="thumbnail-image card-img"/></p>
@@ -587,7 +590,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="U3RhdGlzdGljcyUyQ0dlcm1hbiUyQ1IlMkNQeXRob24lMkNNZWFuJTJDTWVkaWFuJTJDTW9kYWwlMkNRdWFydGlsJTJDQm94LVBsb3Q=" data-listing-date-sort="1716847200000" data-listing-file-modified-sort="1717947067358" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2264">
+<div class="quarto-post image-right" data-index="3" data-categories="U3RhdGlzdGljcyUyQ0dlcm1hbiUyQ1IlMkNQeXRob24lMkNNZWFuJTJDTWVkaWFuJTJDTW9kYWwlMkNRdWFydGlsJTJDQm94LVBsb3Q=" data-listing-date-sort="1716847200000" data-listing-file-modified-sort="1766007998237" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2264">
 <div class="thumbnail"><a href="./posts/mean/average_de.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\mean\pictures\medium.png"  class="thumbnail-image card-img"/></p>
@@ -634,7 +637,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ1B5dGhvbiUyQ1V6YmVrJTJDTG9vcCUyQ0NvbnRyb2wlMjBmbG93" data-listing-date-sort="1715205600000" data-listing-file-modified-sort="1716239130205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2700">
+<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ1B5dGhvbiUyQ1V6YmVrJTJDTG9vcCUyQ0NvbnRyb2wlMjBmbG93" data-listing-date-sort="1715205600000" data-listing-file-modified-sort="1766007998211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2700">
 <div class="thumbnail"><a href="./posts/loops/loops_uz.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\loops\pictures\decide.png"  class="thumbnail-image card-img"/></p>
@@ -673,7 +676,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBTdHJ1Y3R1cmUlMkNVemJlaw==" data-listing-date-sort="1714860000000" data-listing-file-modified-sort="1757368533189" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6865">
+<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBTdHJ1Y3R1cmUlMkNVemJlaw==" data-listing-date-sort="1714860000000" data-listing-file-modified-sort="1766007998173" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6865">
 <div class="thumbnail"><a href="./posts/DataStructures/datastructures_uz.html" class="no-external">
 
 <p class="card-img-top"><img src="posts\DataStructures\pics\datastructure_uz.png"  class="thumbnail-image card-img"/></p>
@@ -710,7 +713,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBTdHJ1Y3R1cmUlMkNHZXJtYW4=" data-listing-date-sort="1709247600000" data-listing-file-modified-sort="1715273172000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6682">
+<div class="quarto-post image-right" data-index="6" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBTdHJ1Y3R1cmUlMkNHZXJtYW4=" data-listing-date-sort="1709247600000" data-listing-file-modified-sort="1766007998173" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6682">
 <div class="thumbnail"><a href="./posts/DataStructures/datastructures_de.html" class="no-external">
 
 <p class="card-img-top"><img data-src="posts\DataStructures\pics\datastructure_de.png"  class="thumbnail-image card-img"/></p>
@@ -747,7 +750,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBUeXBlcyUyQ1V6YmVr" data-listing-date-sort="1705100400000" data-listing-file-modified-sort="1715271698000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3711">
+<div class="quarto-post image-right" data-index="7" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBUeXBlcyUyQ1V6YmVr" data-listing-date-sort="1705100400000" data-listing-file-modified-sort="1766007998211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3711">
 <div class="thumbnail"><a href="./posts/DataTypes/datatypes_uz.html" class="no-external">
 
 <p class="card-img-top"><img data-src="posts\DataTypes\datatype_uz.png"  class="thumbnail-image card-img"/></p>
@@ -784,7 +787,7 @@ Fazliddin Sultonov
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBUeXBlcyUyQ0dlcm1hbg==" data-listing-date-sort="1670799600000" data-listing-file-modified-sort="1715271264000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3417">
+<div class="quarto-post image-right" data-index="8" data-categories="UiUyQ1B5dGhvbiUyQ0RhdGElMjBUeXBlcyUyQ0dlcm1hbg==" data-listing-date-sort="1670799600000" data-listing-file-modified-sort="1766007998211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3417">
 <div class="thumbnail"><a href="./posts/DataTypes/datatypes_de.html" class="no-external">
 
 <p class="card-img-top"><img data-src="posts\DataTypes\datatype_de.jpg"  class="thumbnail-image card-img"/></p>
@@ -891,13 +894,14 @@ Fazliddin Sultonov
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

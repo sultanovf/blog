@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../images/profil.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-01d8e964731df6233cb166740ac87b49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0b5d793b00641154af40d7c32027385a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -123,7 +124,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -157,7 +158,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/log.png" alt="" class="navbar-logo">
+    <img src="../images/log.png" alt="" class="navbar-logo light-content">
+    <img src="../images/log.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Fazliddin Sultanov</span>
@@ -210,7 +212,7 @@ window.Quarto = {
  <span class="dropdown-text"><i class="fa-brands fa-square-instagram fa-lg" aria-label="square-instagram"></i> <span class="math inline">\(~\)</span> Instagram</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://www.youtube.com/@hw_sultanov" target="_blank">
+    <a class="dropdown-item" href="https://www.youtube.com/channel/UCjdr724RR7MU116oBBg-VlQ" target="_blank">
  <span class="dropdown-text"><i class="fa-brands fa-youtube fa-lg" aria-label="youtube"></i> <span class="math inline">\(~\)</span> YouTube</span></a>
   </li>  
         <li>
@@ -284,7 +286,8 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p>subcribe.html</p>
+<script src="https://static.elfsight.com/platform/platform.js" async=""></script>
+<div class="elfsight-app-52548bc7-f397-4d9d-8fdd-e64d43af2a74" data-elfsight-app-lazy=""></div>
 </div></div>
         
     </div>
@@ -301,7 +304,7 @@ window.Quarto = {
 <div class="cell code-input">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># ==============================================================================</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># ==============================================================================</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="do">## Create Box-Plot in R</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="do">### Library Package</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co"># library("ggplot2")</span></span>
@@ -327,7 +330,7 @@ window.Quarto = {
 <span id="cb1-24"><a href="#cb1-24"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
 <span id="cb1-25"><a href="#cb1-25"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"steelblue4"</span>, <span class="at">size=</span><span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold.italic"</span>),</span>
 <span id="cb1-26"><a href="#cb1-26"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"cadetblue4"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">"bold"</span>),</span>
-<span id="cb1-27"><a href="#cb1-27"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"tomato4"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">"bold"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-27"><a href="#cb1-27"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"tomato4"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">"bold"</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -341,14 +344,14 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>R base boxplot function</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># With R base boxplot function</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># With R base boxplot function</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">boxplot</span>(</span>
 <span id="cb2-3"><a href="#cb2-3"></a>  values <span class="sc">~</span> groups, d,</span>
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">xlab =</span> <span class="st">"Gruppalar"</span>,</span>
 <span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">ylab =</span> <span class="st">"Qiymatlar"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6"></a>  <span class="at">main =</span> <span class="st">"A sample Box-Plot"</span>,</span>
 <span id="cb2-7"><a href="#cb2-7"></a>  <span class="at">col=</span> <span class="st">"azure"</span> )</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">abline</span>(<span class="at">h=</span>means<span class="sc">$</span>values, <span class="at">text =</span> <span class="st">"mean"</span>, <span class="at">col=</span><span class="st">"tomato1"</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">abline</span>(<span class="at">h=</span>means<span class="sc">$</span>values, <span class="at">text =</span> <span class="st">"mean"</span>, <span class="at">col=</span><span class="st">"tomato1"</span>, <span class="at">lwd=</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="section-1" class="level4 code-py">
@@ -356,7 +359,7 @@ window.Quarto = {
 <div class="cell code-output">
 <details class="code-fold">
 <summary>show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">## ============================================================================</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">## ============================================================================</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">## Create Box-Plot in Python</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#### Import module</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -374,7 +377,7 @@ window.Quarto = {
 <span id="cb3-16"><a href="#cb3-16"></a>plt.xlabel(<span class="st">"Gruppalar"</span>)</span>
 <span id="cb3-17"><a href="#cb3-17"></a>plt.ylabel(<span class="st">"Qiymatlar"</span>)</span>
 <span id="cb3-18"><a href="#cb3-18"></a>plt.title(<span class="st">"Sample Box-Plot in Python </span><span class="ch">\u00A9</span><span class="st">ф"</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -440,13 +443,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

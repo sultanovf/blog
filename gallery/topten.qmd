@@ -1,0 +1,411 @@
+---
+title: "Top ten countries by GDP, PPP"
+description: "top ten countries worldwide in terms of GDP by purchasing power parity (PPP) over the years, shown by animated plot using `ggplot2` and `gganimate`"
+author: "Fazliddin Sultonov"
+date: "2025-10-05"
+date-format: "MMM D, YYYY"
+
+filters:
+  - lightbox
+lightbox: 
+  match: auto
+
+page-layout: full
+reference-location: margin
+categories: [barplot, R, ggplot2, gganimate, dplyr, geom_image]
+# Code execute options
+execute: 
+  echo: true    # Input anzeigen
+  eval: true    # Code ausführen
+  freeze: true  # never re-render during project render
+# Output
+format: 
+  html:
+    theme: cosmo
+  # codeb block
+    code-fold: true
+    code-line-numbers: true
+    code-block-border-left: true
+  # engine
+    engine: knitr
+    css: /customs/style.css
+# engine: knitr
+#jupyter: python3
+
+# Chunk Options
+knitr:
+  opts_chunk:
+    comment: "#>" 
+
+  opts_knit: 
+    warning: false
+    error: false
+    
+---
+
+
+![](gallery_img/topten.png)
+```{r}
+#| echo: false           # R-Input NICHT anzeigen      
+#| output: false         # R-Output NICHT anzeigen 
+#| eval: true            # Code ausführen
+#| warning: false
+
+# library pacman to loading and installing packages which are not installed
+if(!require("pacman")){
+    install.packages("pacman")
+    library(pacman)
+}
+# Load Packages
+pacman::p_load(tidyverse, fontawesome, showtext, ggtext, glue, gganimate, ggimage, gifski)
+##if (!require(c("pkg1", "pkg2"))) install.packages(c("pkg1", "pkg2"))
+# variables =====================================================================
+imgpat <- "gallery_img/topten/"  # path for flags
+
+# icon ----------------------------------------
+gt_icon <- "&#xf09b" # 167
+ins_icon <- "&#xe055"
+tg_icon <- "&#xf2c6"
+gt_username <- "@sultanovf  "
+ins_username <- "@sultanof.uzb  "
+tg_username <- "@R4Pythonistas  "
+
+# Caption
+social_caption <- glue::glue(
+  "<p><strong>Plot by:
+  <span style='color: #678079; font-family:\"Font Awesome 6 Brands\";'>{gt_icon};</span>
+  <span style='color: #678079'>{gt_username} |</span> |
+  <span style='color: #e1306c; font-family:\"Font Awesome 6 Brands\";'>{ins_icon};</span>
+  <span style='color: #e1306c'>{ins_username} |</span> |
+  <span style='color: #24A1DE; font-family:\"Font Awesome 6 Brands\";'>{tg_icon};</span>
+  <span style='color: #24A1DE'>{tg_username} |</span> |</strong></p>"
+)
+
+cap <- glue::glue(
+  "<span style='color: #678079; font-family:\"Font Awesome 6 Brands\";'>{gt_icon};</span>
+  <span style='color: #678079'>{gt_username}</span>")
+
+# icon ----------------------------------------
+f_path <- "C:/Users/sultanov/Documents/fontawesome/otfs/"
+font_add('Font Awesome 6 Brands', paste0(f_path, "Font Awesome 6 Brands-Regular-400.otf"))  # 
+
+showtext::showtext_auto()
+```
+
+<center>Datasource: [World Bank](https://data.worldbank.org/){text-align="center"}</center>
+
+
+## Load Data from Github
+
+```{r}
+#| column: screen-inset
+#| results: hold
+#| warning: false
+
+dataraw <- read.csv2("https://raw.githubusercontent.com/sultanovf/my_datasets/refs/heads/main/gdp_ppp.csv", sep = ";",encoding = "utf-8") # , sep = ";",encoding = "utf-8"
+years <- paste(1990:2024) #, sep=",", collapse= ","
+years <- unlist(strsplit(years, ","))
+new_cnames <- c("country", "ccode",  years)
+colnames(dataraw) <- new_cnames
+
+data <- dataraw
+rmarkdown::paged_table(head(data)) # show sample 10 rows
+```
+
+## prepare data
+
+### pivot long
+
+```{r}
+#| results: hold
+#| warning: false
+
+fdec <- function(x) round(x/1000000000000, digits = 2) # trl to mlr
+df <-
+  data |> 
+  mutate(across(!c(country, ccode), fdec)) |> 
+  pivot_longer(
+    cols = !c(country, ccode),
+    names_to = "year",
+    values_to = "gdp"
+  ) |> 
+  mutate(year = as.integer(year))
+
+head(df)
+```
+
+### top 10 countries by each year <br>
+(showing 20 head)
+
+```{r}
+
+df_top <-
+  df |> 
+  #select(-ccode) |> 
+  group_by(year) |> 
+  slice_max(order_by = gdp, n = 10) |> 
+  #arrange(year, desc(gdp)) |> 
+  mutate(rank= 1:n()) |> 
+  ungroup()
+
+df_top |> 
+  arrange(desc(year)) |> 
+  head(n = 20) |> 
+  rmarkdown::paged_table()
+
+```
+
+```{r}
+#| eval: false
+#| echo: false
+
+test <- 
+  df |> 
+  group_by(year) |> 
+  arrange(gdp, .by_group = TRUE) |> 
+  top_n(10) |> 
+  mutate(rank = 1:n()) |> 
+  #mutate(cflags = paste0(ccode, "images/", ccode, ".png")) |>
+  mutate(cflags = paste0(rank,  "- <img src='", imgpat, ccode, ".png' width='50' hight ='25'/>")) |> 
+  ungroup()
+head(test, n=12)
+```
+
+## change some countries names
+
+```{r}
+# df for plot
+df_plt <- 
+  df_top |> 
+  mutate(cflags = paste0("gallery_img/topten/", ccode, ".png")) |>
+  mutate(
+    country = case_when(
+      country == "United States" ~ "USA",
+      country == "United Kingdom" ~ "UK",
+      country == "Russian Federation" ~ "Russia",
+      TRUE ~ country
+    )
+  )
+#rmarkdown::paged_table(sample_n(df_plt, 10)) # show sample 10 rows
+sample_n(df_plt, 10)
+```
+
+# plot for 2024
+
+```{r}
+#| results: hold
+#| warning: false
+
+df_plt |>  
+  filter(year == 2024) |> 
+  ggplot(aes(x = reorder(country, gdp), y = gdp)) +
+    geom_col(fill = "steelblue", alpha = 0.6) +
+    geom_image(aes(image = cflags, y = -2.3),  size = 0.13, by = "width") + 
+    scale_y_continuous(labels = function(y) ifelse(y == 0, paste0(y), paste0(y, "k"))) +
+    geom_text(aes(label = gdp), hjust = -0.1, color = "darkgrey", fontface = "bold") +
+    labs(
+      x = NULL, y = "GDP, PPP in Tsd.(k = 1000) Mlrd. USD", 
+      title = "**Top ten countries by GDP, PPP in 2024**",
+      caption = social_caption) +
+    #geom_label(aes(label = paste("Year:",year)), x = 2, y = 30, size = 10, fill = "white", col = "gray") +
+    coord_flip() +
+    theme_minimal() +
+    theme(
+      plot.title = ggtext::element_markdown(size=14, color="steelblue4", hjust = 0.5),
+      plot.caption = ggtext::element_markdown(size=14, hjust = 0.5),
+      plot.background = element_rect(fill = "ghostwhite"),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      axis.line.x =  element_line(colour = "gray")
+    )
+
+```
+
+## animated plots over the years
+
+### #plot1
+
+```{r}
+#| results: hold
+#| warning: false
+
+plt <-
+  df_plt |>  
+  ggplot(aes(x = reorder(rank, gdp), y = gdp)) +
+    geom_col(fill = "steelblue", alpha = 0.6) +
+    geom_image(aes(image = cflags, y = -0.3),  size = 0.13, by = "width") + 
+    scale_y_continuous(labels = function(y) ifelse(y == 0, paste0(y), paste0(y, "k"))) +
+    geom_text(aes(label = gdp), hjust = -0.1, color = "darkgrey", fontface = "bold") +
+    geom_label(aes(label = paste("Year:",year)), x = 2, y = 30, size = 8, fill = "white", col = "gray") +
+    labs(
+      x = NULL, y = "GDP, PPP in Tsd.(k = 1000) Mlrd.USD",  
+      title = "**Top ten countries by GDP, PPP in 1990-2024**",
+      caption = social_caption) +
+    coord_flip(clip = "off", expand = FALSE) +
+    theme_minimal() +
+    theme(
+      plot.title = element_markdown(size=14, color="steelblue4", hjust = 0.5),
+      plot.caption = ggtext::element_markdown(size=14, hjust = 0.5),
+      plot.background = element_rect(fill = "ghostwhite"),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      axis.line.x =  element_line(colour = "gray")
+    )
+ plt_anim <-
+  plt +
+  transition_states(year, wrap = FALSE, transition_length = 1, state_length = 1) +
+  enter_fade() + 
+  exit_fade()
+
+anim <- animate(
+  plt_anim,
+  duration = 45,
+  start_pause =5,
+  end_pause = 5,
+  renderer = gifski_renderer()
+)
+anim
+```
+
+```{r}
+#| eval: false
+#| echo: false
+
+c_name <- c("USA", "JPN", "DEU", "RUS", "CHN", "ITA", "IND", "BRA", "FRA", "GBR", "IDN", "MEX")
+c_value <- c("USA", "JPN", "DEU", "RUS", "CHN", "ITA", "IND", "BRA", "FRA", "GBR", "IDN", "MEX")
+cntry <- setNames(c_name, c_value)
+#cntry
+
+# read images
+ylabels <- c()
+for(i in 1:length(cntry)){
+  imgname <- names(cntry[i])
+  ylabels <- c(ylabels, paste0(imgname,"<img src='", imgpat, cntry[[i]], ".png' width='50' hight ='25'/>"))
+}
+#ylabels
+plt1 <-
+  df_plt |> 
+  #filter(year == 2024) |> 
+  ggplot(aes(rank, fill = ccode)) +
+  geom_tile(aes(y=gdp/2, height = gdp,width = 0.85)) +
+  scale_x_discrete(name = NULL, labels = ylabels) +
+  #geom_image(aes(image = cflags, y = 0.0),  size = 0.11, by = "width") + 
+  scale_x_reverse() +
+  coord_flip(clip = "off") +
+  
+  theme(
+    axis.text.x = element_markdown()
+  )
+anm <- 
+  plt1 +
+  transition_states(year, transition_length = 1, state_length = 1)+
+  view_follow(fixed_x = TRUE) +
+  #enter_fade() + 
+  exit_fade()
+anm
+```
+
+
+
+
+```{r}
+#| eval: false
+#| echo: false
+
+cap <- glue::glue(
+  "<span style='color: #678079; font-family:\"Font Awesome 6 Brands\";'>{gt_icon};</span>
+  <span style='color: #678079'>{gt_username}</span>")
+pt_anim <-
+  df_plt |> 
+  #filter(year==2024) |> 
+  ggplot(aes(x=rank, y=gdp))+
+  geom_col(alpha= 0.5, width = 0.85, fill = "steelblue") +
+  scale_x_reverse()+
+  scale_y_continuous(labels = function(y) ifelse(y == 0, paste0(y), paste0(y, "k"))) +
+  geom_text(aes(label = as.character(gdp)), hjust = -0.1, color = "darkgrey", fontface = "bold") +
+  geom_image(aes(image = cflags, y = -0.5),  size = 0.12, by = "width")+
+  coord_flip() +
+  labs(
+    x = NULL, y = "GDP, PPP in Tsd.(k = 1000) Mlrd. USD",
+    title = glue::glue("**Top ten countries by GDP, PPP in: {{closest_state}}**"),
+    caption = cap)+
+  theme_minimal()+
+  theme(
+    plot.title = element_markdown(size=14, color="steelblue4", hjust = 0.5),
+    plot.caption = element_textbox_simple(size=12),
+    legend.position = "none",
+    #plot.background = element_rect(fill = "ghostwhite"),
+    #panel.background = element_rect(fill = "ghostwhite"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.text.x = element_text(size = 9, face = "bold")) +
+  transition_states(year, transition_length = 1, state_length = 1, wrap = FALSE)+
+  enter_fade() +
+  exit_fade() +
+  view_follow(fixed_x = TRUE)
+
+anmt <- animate(
+  pt_anim,
+  duration = 35,
+  start_pause =3,
+  end_pause = 5,
+  renderer = gifski_renderer())
+anmt
+```
+
+### #plot2 *(by fixed_y)*
+
+```{r}
+#| results: hold
+#| warning: false
+
+pt_anim1 <-
+  df_plt |> 
+  group_by(year) |> 
+  arrange(gdp, .by_group = TRUE) |>
+  mutate(rank1 = 1:n()) |> 
+  #filter(year==2024) |> 
+  ggplot(aes(
+    xmin=0, xmax=gdp, y=rank1, ymin = rank1 - 0.45, ymax = rank1 + 0.45, group=ccode
+  )) +
+  geom_rect(alpha = 0.5, fill = "steelblue") +
+  facet_wrap(~year) +
+  facet_null() +
+  geom_text(aes(x=gdp, label = as.character(gdp)), hjust = -0.1, color = "slategray", size = 3.7, fontface = "bold") +
+  geom_text(aes(x=gdp, label = as.character(country)), hjust = 1.05, color = "cornsilk1", size = 4.2, fontface = "bold")+
+  scale_x_continuous(labels = function(y) ifelse(y == 0, paste0(y), paste0(y, "k")))+
+  geom_image(aes(x=gdp, image = cflags), x=-0.7, size = 0.12, by = "width") +
+  labs(
+    y = NULL, x = "GDP, PPP in Tsd. (k = 1000) Mlrd. USD",
+    title = glue::glue("**Top ten countries by GDP, PPP in: {{frame_along}}**"),
+    caption = cap)+
+  theme_minimal()+
+  theme(
+    plot.title = element_markdown(size=14, color="steelblue4", hjust = 0.5),
+    plot.caption = element_markdown(size=12),
+    legend.position = "none",
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.y = element_blank(),
+    axis.text.x = element_text(size = 9, face = "bold")) +
+  transition_reveal(year, keep_last = FALSE)+
+  ease_aes("cubic-in-out") +
+  enter_fade() +
+  exit_fade()+
+  view_follow(fixed_y = TRUE)
+
+anmt1 <- animate(
+  pt_anim1,
+  duration = 30,
+  fps = 10,
+  start_pause =3,
+  end_pause = 5,
+  renderer = gifski_renderer())
+anmt1
+```
+

@@ -9,7 +9,7 @@
 <link>https://sultanov.quarto.pub/blog/projects.html</link>
 <atom:link href="https://sultanov.quarto.pub/blog/projects.xml" rel="self" type="application/rss+xml"/>
 <description>A sample newbie&#39;s blog</description>
-<generator>quarto-1.7.32</generator>
+<generator>quarto-1.8.25</generator>
 <lastBuildDate>Mon, 01 Sep 2025 22:00:00 GMT</lastBuildDate>
 <item>
   <title>Dashboard with Shiny in Quarto</title>
@@ -57,7 +57,7 @@
 <div class="column-page">
 <p><a href="pics/excpy1.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://sultanov.quarto.pub/blog/projects/pics/excpy1.gif" class="img-fluid"></a></p>
 </div>
-<p><br> <strong><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> File:</strong> <button class="btn btn-primary downloadthis  " id="dnldts16507"><i class="bi bi-database-fill-down"></i> Download the Excel file </button> <img src="https://latex.codecogs.com/png.latex?~~~~~~~~~~~~~"> <strong><i class="fa-solid fa-database" aria-label="database"></i> Data Source:</strong> <em><a href="https://data.worldbank.org/">Worldbank</a></em></p>
+<p><br> <strong><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> File:</strong> <button class="btn btn-primary downloadthis  " id="dnldts42459"><i class="bi bi-database-fill-down"></i> Download the Excel file </button> <img src="https://latex.codecogs.com/png.latex?~~~~~~~~~~~~~"> <strong><i class="fa-solid fa-database" aria-label="database"></i> Data Source:</strong> <em><a href="https://data.worldbank.org/">Worldbank</a></em></p>
 <p>Um Python in Excel zu verwenden bzw. zu aktivieren, muss man eine Zelle auswählen, in die man die Formel mit Python schreiben will und klickt man auf der Registerkarte &gt; Formeln &gt; <code>Python einfügen</code> <strong><em>oder</em></strong> schreibt man in die Zelle <strong><code>=PY</code></strong>. Dann kann man Python - Code direkt in die Zelle schreiben. Im unten aufgeführten einfachen Beispiel werden die Werte in zwei Zellen (A1 und B1) summiert.</p>
 <p><a href="pics/excpy1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://sultanov.quarto.pub/blog/projects/pics/excpy1.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -66,7 +66,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Wichtige Sachen zur Berücksichtigung
+<span class="screen-reader-only">Tip</span>Wichtige Sachen zur Berücksichtigung
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -82,7 +82,7 @@ Wichtige Sachen zur Berücksichtigung
 <div class="cell page-columns page-full">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
 background-color: null;
@@ -143,7 +143,7 @@ font-style: inherit;">#Show the table</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">False</span>))</span></code></pre></div>
+font-style: inherit;">False</span>))</span></code></pre></div></div>
 </details>
 <div class="cell-output-display column-screen-inset">
 <table class="caption-top table table-sm table-striped small">
@@ -328,7 +328,7 @@ font-style: inherit;">False</span>))</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
 background-color: null;
@@ -357,7 +357,7 @@ background-color: null;
 font-style: inherit;">"gdp"</span>)</span>
 <span id="cb2-4">df_pv.head(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span>)</span></code></pre></div>
+font-style: inherit;">10</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;          Country Name Country Code years           gdp
@@ -378,7 +378,7 @@ font-style: inherit;">10</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Method #1</span></span>
 <span id="cb4-2"><span class="co" style="color: #5E5E5E;
@@ -408,7 +408,7 @@ background-color: null;
 font-style: inherit;">"years"</span>).head(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>)</span>
-<span id="cb4-7">df_10</span></code></pre></div>
+<span id="cb4-7">df_10</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;             Country Name Country Code years           gdp
@@ -431,7 +431,7 @@ font-style: inherit;">10</span>)</span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1">df_rank <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1">df_rank <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> df_10.copy()</span>
 <span id="cb6-2">df_rank[<span class="st" style="color: #20794D;
@@ -447,7 +447,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span>)</span>
-<span id="cb6-3">df_rank</span></code></pre></div>
+<span id="cb6-3">df_rank</span></code></pre></div></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;             Country Name Country Code years           gdp  rank
@@ -470,7 +470,7 @@ font-style: inherit;">False</span>)</span>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># prepare df and format column gdp</span></span>
 <span id="cb8-2">df_plt <span class="op" style="color: #5E5E5E;
@@ -557,7 +557,7 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span></span>
 <span id="cb8-15">)</span>
-<span id="cb8-16">plt</span></code></pre></div>
+<span id="cb8-16">plt</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -594,11 +594,11 @@ font-style: inherit;">False</span></span>
 <p>Resume - lotinchadagi Currilicum Vitae bilan ham aytiladigan, qisqacha CV, ya’ni tarjimai hol, bu ishga ariza topshirishdagi hujjatlardan eng muhimi hisoblanadi. Rimga olib boradiga yo’llar kop bolgani kabi, CV ni ham har xil usullarda yaratish mumkin. Man o’zimni <a href="https://sultanov.quarto.pub/cv/cv_html.html">resume</a> -imni shu paket yordamida yaratdim. Bu yerda Shu proyektchadan, R-dagi <code>datadrivencv</code> yordamida CV yaratishni qisqacha yoritib berishga qilaman. Paket muallifi <a href="https://github.com/nstrayer">Nick Strayer</a> va paket haqida batafsil ma’lumotni <a href="https://github.com/nstrayer/datadrivencv">GitHub</a> saytidan olish mumkin.</p>
 <p>Dastlab <code>datadrivencv</code> paketi haqida qisqacha. Bu R-dagi <em>library</em> ya’ni kutubxonalaridan biri. R dasturida bu <strong>package</strong> deyiladi. Buni Pythondagi <strong>modul</strong>-larga taqqoslash mumkin. Biror bir funksiyani ishlatish imkoniyatiga ega bolish uchun masalan, Paython-da olaylik, <em>pandas</em> mudulini avval installing qilib, ya’ni tushirib olib keyin <em>(import)</em> yuklashimiz kerak bolgani kabi, R-da ham avval paket tushirib olinadi va keyin <em>(library)</em> yuklanadi. Quyida misol tariqasida R-dagi <code>dplyr</code> paketi va Pythondagi <code>pandas</code> modulini tushirib olish va yuklash kursatilgan:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true"></a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false"></a></li></ul>
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true" href=""></a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false" href=""></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
 <p><em>Intall</em> Package <code>dplyr</code></p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="in" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -608,9 +608,9 @@ background-color: null;
 font-style: inherit;">"dplyr"</span>)</span>
 <span id="cb1-3"><span class="in" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">```</span></span></code></pre></div>
+font-style: inherit;">```</span></span></code></pre></div></div>
 <p><em>Library</em> Package <code>dplyr</code></p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="in" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{r}</span></span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;
@@ -620,19 +620,19 @@ background-color: null;
 font-style: inherit;">"dplyr"</span>)</span>
 <span id="cb2-3"><span class="in" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">```</span></span></code></pre></div>
+font-style: inherit;">```</span></span></code></pre></div></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
 <p><em>Install</em> modul <code>pandas</code> (via Prompt)</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{python}</span></span>
 <span id="cb3-2">pip install pandas</span>
 <span id="cb3-3"><span class="in" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">```</span></span></code></pre></div>
+font-style: inherit;">```</span></span></code></pre></div></div>
 <p><em>Import</em> modul <code>pandas</code></p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="in" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="in" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">```{python}</span></span>
 <span id="cb4-2"><span class="im" style="color: #00769E;
@@ -642,7 +642,7 @@ background-color: null;
 font-style: inherit;">as</span> pd</span>
 <span id="cb4-3"><span class="in" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">```</span></span></code></pre></div>
+font-style: inherit;">```</span></span></code></pre></div></div>
 </div>
 </div>
 </div>
@@ -655,7 +655,7 @@ font-style: inherit;">```</span></span></code></pre></div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">R-dapopular yoki asosiy librarylar asosan <a href="https://cran.r-project.org/">CRAN <em>(Comprehensive R Archive Network)</em></a> dan yuklanadi. Bunda bizga ma’lum bolgan oddiy <code>install.pakages()</code> funksiyasi yordamida tushirib olishimiz mumkin. Keyingi R-Paketlari uchun manbaalar bu <strong>GitHub</strong> hisoblanadi. GitHub development versiyasini tushirib olish uchun <code>devtools</code> yoki <code>remotes</code> paketi kerak boladi. Bu paketlarni CRAN-dan tushirib olsa boladi. Keyin esa <code>remotes::install_github("Pakage")</code> orqali tushirib olinadi.</span></div></div>
 <p><code>datadrivencv</code>-Paketini tushirib olishda <code>remotes</code> yoki <code>devtools</code> paketlaridan foydalaniladi. Man <em>remotes</em> paketidan foydalandim. Paketni tushirishda R-Console-ga quyidagi buyruq beriladi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># install.packages("remotes") # if not yet installed</span></span>
 <span id="cb5-2">remotes<span class="sc" style="color: #5E5E5E;
@@ -664,7 +664,7 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"nstrayer/datadrivencv"</span>)</span></code></pre></div>
+font-style: inherit;">"nstrayer/datadrivencv"</span>)</span></code></pre></div></div>
 </div>
 </section>
 <section id="sec-input" class="level3 page-columns page-full" data-number="2.2">
@@ -751,7 +751,7 @@ font-style: inherit;">"nstrayer/datadrivencv"</span>)</span></code></pre></div>
 </table>
 <p>Funksiyani ishlatish uchun, uni o’zimini argumentlar bilan o’zlashtirib R-Consolega beramiz.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">datadrivencv<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">datadrivencv<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -789,16 +789,16 @@ background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">here</span>()</span>
-<span id="cb6-7">)</span></code></pre></div>
+<span id="cb6-7">)</span></code></pre></div></div>
 </div>
 <p>Yuqorida man <em>here</em> paketidagi <code>here()</code> funksiyasidan foydalandim. Yaratiladigan fayllar man yuqorida resume uchun yaratgan yangi <code>my-cv</code> loiha joylashgan <em>my-cv</em> papkasiga avtomatik tarzda joylanadi.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand for more about here::here()
+<span class="screen-reader-only">Note</span>Expand for more about here::here()
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -806,7 +806,7 @@ Expand for more about here::here()
 <div class="callout-body-container callout-body">
 <p><code>here()</code>-funksiyasi <em>here</em> paketi ichida bolib, asosan fayllar joylashgan manzillarni boshqarishni osonlashtiruvchi vazifasini o’taydi. Masalan agar biz R da qandaydir ma’lumotni yuklamoqchi bolsak, bu ma’lumot R-fayli (Misol uchun ma’lumotni yuklash va qayta ishglash yozilgan R-Skript) joylashgan joyda ya’ni papkada bolishi kerak, aks holda biz R-ga ma’lumot joylashgan papkani toliq manzilini berishimiz kerak boladi (Bu esa hatoliklar ehtimolini oshiradi). Aytaylik, man R-da yange R-Project yaratdim va bu loihani <em>myproject</em> deb nomladim. Shu loyiha ichida yana ma’lumotlar uchun <em>mydada</em> nomli quyi papka ayaratdim va bu papka ichida bir nechta excel va csv fayllar joyladim. Agar shu papka ichidan <em>file.csv</em> faylini yuklamoqchi bolsam quyidagicha amallarni bajarishim kerak:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">setwd</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -827,11 +827,11 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"C/users/Documents/myproject/mydata/file.csv"</span>)</span></code></pre></div>
+font-style: inherit;">"C/users/Documents/myproject/mydata/file.csv"</span>)</span></code></pre></div></div>
 </div>
 <p><code>here()</code> funksiyasi orqali quyidagicha boladi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(here)  <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -848,7 +848,7 @@ font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"mydata"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"file.csv"</span>))</span></code></pre></div>
+font-style: inherit;">"file.csv"</span>))</span></code></pre></div></div>
 </div>
 </div>
 </div>
@@ -913,13 +913,13 @@ font-style: inherit;">"file.csv"</span>))</span></code></pre></div>
 <p>Rezyumeni bo’limlariga mos ravishda icon joylashtirisch uchun, <a href="https://fontawesome.com/icons">Font Awesome</a> dan foydalaniladi. mAsalan manda <strong>Academic Education</strong> bo’limida <code>graduate</code> iconidan foydalanilgan, buni ham cv.rmd-faylida o’zgartirish kerak.</p>
 <p>Academic Education {data-icon=user-graduate data-concise=true} &gt; ====================================================</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">CV <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">CV <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&lt;&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">print_section</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'adv_educ'</span>)</span></code></pre></div>
+font-style: inherit;">'adv_educ'</span>)</span></code></pre></div></div>
 </div>
 <p>Google Sheetda <em>entries</em> jadvalida, <strong>section</strong> ustunida manda akademik ta’lim uchun kalit sozi <code>adv_educ</code> qilib o’zgartirilgan. BU cv.rmd-faylida ham <code>print_section()</code> funksiyasida shunday berilgan. Qolgan o’zgartirishlar ham shunday amalga oshiriladi.</p>
 </section>
