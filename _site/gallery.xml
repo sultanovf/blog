@@ -10,7 +10,1990 @@
 <atom:link href="https://sultanov.quarto.pub/blog/gallery.xml" rel="self" type="application/rss+xml"/>
 <description>A sample newbie&#39;s blog</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sat, 04 Oct 2025 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Dec 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Population in Germany by age group and gender</title>
+  <dc:creator>Fazliddin Sultonov</dc:creator>
+  <link>https://sultanov.quarto.pub/blog/gallery/popde.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="gallery_img/popde.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://sultanov.quarto.pub/blog/gallery/gallery_img/popde.png" class="img-fluid"></a></p>
+<center>
+Datasource: <a href="https://www.destatis.de/DE/Home/_inhalt.html" data-text-align="center"><em>© Statistisches Bundesamt (Destatis)</em>, 2025 | Stand: 21.12.2025 / 01:15:24</a>
+</center>
+<div class="column-screen-inset">
+<section id="data-wrangling" class="level1" style="background-color: #FFF68F;text-align: center">
+<h1><span style="color:#EED2EE;">Data Wrangling</span> </h1>
+</section>
+</div>
+<section id="load-data-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-from-github">Load Data from Github</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># load modules</span></span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span></code></pre></div></div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># load data</span></span>
+<span id="cb2-2">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C:/Users/sultanov/Documents/pop_de_2014-2024.csv"</span>, sep<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";"</span>)</span>
+<span id="cb2-3">data.head()</span>
+<span id="cb2-4"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">DataShape: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>data<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>shape<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;      Stichtag         Bundesland   Altersjahre  männlich  weiblich
+#&gt; 0  31.12.2014  Baden-Württemberg  unter 1 Jahr     49584     46727
+#&gt; 1  31.12.2014  Baden-Württemberg     1-Jährige     48446     45680
+#&gt; 2  31.12.2014  Baden-Württemberg     2-Jährige     47685     45359
+#&gt; 3  31.12.2014  Baden-Württemberg     3-Jährige     47055     44985
+#&gt; 4  31.12.2014  Baden-Württemberg     4-Jährige     48725     46044
+#&gt; 
+#&gt; DataShape: (16016, 5)</code></pre>
+</div>
+</div>
+</section>
+<section id="screening-data-and-handle-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="screening-data-and-handle-missing-values">Screening data and handle missing values</h2>
+<section id="show-data-type-and-futures" class="level3">
+<h3 class="anchored" data-anchor-id="show-data-type-and-futures">show data type and futures</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1">data.info()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; &lt;class 'pandas.core.frame.DataFrame'&gt;
+#&gt; RangeIndex: 16016 entries, 0 to 16015
+#&gt; Data columns (total 5 columns):
+#&gt;  #   Column       Non-Null Count  Dtype 
+#&gt; ---  ------       --------------  ----- 
+#&gt;  0   Stichtag     4467 non-null   object
+#&gt;  1   Bundesland   4586 non-null   object
+#&gt;  2   Altersjahre  16016 non-null  object
+#&gt;  3   männlich     16016 non-null  int64 
+#&gt;  4   weiblich     16016 non-null  int64 
+#&gt; dtypes: int64(2), object(3)
+#&gt; memory usage: 625.8+ KB</code></pre>
+</div>
+</div>
+</section>
+<section id="show-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="show-missing-values">show missing values</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1">data.isnull().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Stichtag       11549
+#&gt; Bundesland     11430
+#&gt; Altersjahre        0
+#&gt; männlich           0
+#&gt; weiblich           0
+#&gt; dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="fill-nas" class="level3">
+<h3 class="anchored" data-anchor-id="fill-nas">fill <code>NAs</code></h3>
+<p>We have 2 columns wit missing values and can fill them with the method <code>ffill</code></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1">data[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stichtag"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bundesland"</span>]] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stichtag"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bundesland"</span>]].fillna(method <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ffill"</span>)</span>
+<span id="cb8-2">data.isnull().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; Stichtag       0
+#&gt; Bundesland     0
+#&gt; Altersjahre    0
+#&gt; männlich       0
+#&gt; weiblich       0
+#&gt; dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="unify-the-values-and-rename-the-column-names" class="level3">
+<h3 class="anchored" data-anchor-id="unify-the-values-and-rename-the-column-names">unify the values and rename the column names</h3>
+<p>Colum <code>Stichtag</code>:<br> <em>31.12.2014 -&gt; 2014</em> <br> <em>31.12.2021 -&gt; 2021</em> … <br> Column <code>Altersjahre</code>: <br> <em>unter 1 Jahr -&gt; 1</em> <br> <em>36-Jährige -&gt; 36</em> <br> <em>90 Jahre und mehr -&gt; 90</em> …</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># display data</span></span>
+<span id="cb10-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> display, Markdown, HTML</span>
+<span id="cb10-3"></span>
+<span id="cb10-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># col "Stichtag" = 31.12.2014 -&gt; 2014 ...</span></span>
+<span id="cb10-5">data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stichtag"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stichtag"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">apply</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: x[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>:])</span>
+<span id="cb10-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># col "Altersjahre" = unter 1 Jahr -&gt; 1-Jährige</span></span>
+<span id="cb10-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># col "Altersjahre" = 90 Jahre und mehr -&gt; 90-Jährige</span></span>
+<span id="cb10-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unter 1 Jahr"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1-Jährige"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"90 Jahre und mehr"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"90-Jährige"</span>}</span>
+<span id="cb10-9">data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersjahre"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersjahre"</span>].replace(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>)</span>
+<span id="cb10-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># col "Altersjahre" = split only numbers</span></span>
+<span id="cb10-11">data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersjahre"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersjahre"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>.split(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-"</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span>
+<span id="cb10-12"></span>
+<span id="cb10-13">data.sample(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       Stichtag              Bundesland Altersjahre  männlich  weiblich
+#&gt; 9335      2020                  Hessen          53     51974     51431
+#&gt; 7325      2019       Baden-Württemberg          45     66073     66228
+#&gt; 435       2014                  Bremen          71      3362      3629
+#&gt; 5548      2017                 Sachsen          88      5495     11753
+#&gt; 6799      2018         Rheinland-Pfalz          65     25417     26980
+#&gt; 9536      2020           Niedersachsen          72     38879     42110
+#&gt; 9441      2020  Mecklenburg-Vorpommern          68     11712     12964
+#&gt; 5769      2017               Thüringen          36     14192     12500
+#&gt; 15438     2024     Nordrhein-Westfalen          59    147323    148153
+#&gt; 13561     2023                 Hamburg           2      9773      9265</code></pre>
+</div>
+</div>
+</section>
+<section id="rename-the-column-names" class="level3">
+<h3 class="anchored" data-anchor-id="rename-the-column-names">rename the column names</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># rename columns</span></span>
+<span id="cb12-2">newcols <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb12-3">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stichtag"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bundesland"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bundesland"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersjahre"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"männlich"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"male"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"weiblich"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"female"</span></span>
+<span id="cb12-4">}</span>
+<span id="cb12-5">data.rename(columns <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> newcols, inplace <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb12-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># column year to integer</span></span>
+<span id="cb12-7">data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>].astype(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>)</span>
+<span id="cb12-8">data.head()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    year         bundesland  age   male  female
+#&gt; 0  2014  Baden-Württemberg    1  49584   46727
+#&gt; 1  2014  Baden-Württemberg    1  48446   45680
+#&gt; 2  2014  Baden-Württemberg    2  47685   45359
+#&gt; 3  2014  Baden-Württemberg    3  47055   44985
+#&gt; 4  2014  Baden-Württemberg    4  48725   46044</code></pre>
+</div>
+</div>
+</section>
+<section id="group-data-column-age-into-categories" class="level3">
+<h3 class="anchored" data-anchor-id="group-data-column-age-into-categories">group data (column = age) into categories</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remove column bundesland</span></span>
+<span id="cb14-2">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.drop(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bundesland"</span>, axis <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb14-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># group by year, age, sum by bundesland</span></span>
+<span id="cb14-4">df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df.groupby([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>], as_index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span>
+<span id="cb14-5"></span>
+<span id="cb14-6">bins <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">17</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">59</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">90</span>]</span>
+<span id="cb14-7">lbls_gr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0-17"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"18-59"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"60+"</span> ]</span>
+<span id="cb14-8"></span>
+<span id="cb14-9">age_gr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df.groupby(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>)[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>]].transform(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: pd.cut(x, bins <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> bins, labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> lbls_gr).astype(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>))</span>
+<span id="cb14-10"></span>
+<span id="cb14-11">df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> age_gr</span>
+<span id="cb14-12"></span>
+<span id="cb14-13">df.head()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    year  age    male  female age_grouped
+#&gt; 0  2014    1  724578  687756        0-17
+#&gt; 1  2014    2  356316  338053        0-17
+#&gt; 2  2014    3  349198  331911        0-17
+#&gt; 3  2014    4  357848  340751        0-17
+#&gt; 4  2014    5  353123  334728        0-17</code></pre>
+</div>
+</div>
+</section>
+<section id="new-colum-with-categorical-name-from-grouped-column" class="level3">
+<h3 class="anchored" data-anchor-id="new-colum-with-categorical-name-from-grouped-column">new colum with categorical name from grouped column</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1">lbls_cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0-17"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Kids &amp; Jugend"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"18-59"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Erwachsene"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"60+"</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Senioren"</span>}</span>
+<span id="cb16-2">df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">map</span>(lbls_cat)</span>
+<span id="cb16-3"></span>
+<span id="cb16-4">df.sample(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;      year  age    male  female age_grouped        age_cat
+#&gt; 108  2015   19  458792  413450       18-59     Erwachsene
+#&gt; 595  2020   56  704793  697779       18-59     Erwachsene
+#&gt; 866  2023   57  681024  677785       18-59     Erwachsene
+#&gt; 235  2016   56  646119  647001       18-59     Erwachsene
+#&gt; 11   2014   12  376432  356637        0-17  Kids &amp; Jugend
+#&gt; 587  2020   48  521005  517210       18-59     Erwachsene
+#&gt; 111  2015   22  479967  438088       18-59     Erwachsene
+#&gt; 457  2019    8  372873  352934        0-17  Kids &amp; Jugend
+#&gt; 364  2018    5  380099  359630        0-17  Kids &amp; Jugend
+#&gt; 117  2015   28  559651  517800       18-59     Erwachsene</code></pre>
+</div>
+</div>
+</section>
+<section id="final-data-frame-ready-to-go" class="level3">
+<h3 class="anchored" data-anchor-id="final-data-frame-ready-to-go">final data frame: ready to go!</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1">df_py <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df.drop(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>, axis <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>).groupby([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>], as_index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>()</span>
+<span id="cb18-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># show data frame</span></span>
+<span id="cb18-3">Markdown(df_py.head(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>).to_markdown(index <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>))</span>
+<span id="cb18-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#df_py.head()</span></span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">age_grouped</th>
+<th style="text-align: left;">age_cat</th>
+<th style="text-align: right;">male</th>
+<th style="text-align: right;">female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">0-17</td>
+<td style="text-align: left;">Kids &amp; Jugend</td>
+<td style="text-align: right;">6730760</td>
+<td style="text-align: right;">6381260</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">18-59</td>
+<td style="text-align: left;">Erwachsene</td>
+<td style="text-align: right;">23218843</td>
+<td style="text-align: right;">22624986</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">60+</td>
+<td style="text-align: left;">Senioren</td>
+<td style="text-align: right;">9885854</td>
+<td style="text-align: right;">12355834</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">0-17</td>
+<td style="text-align: left;">Kids &amp; Jugend</td>
+<td style="text-align: right;">6865197</td>
+<td style="text-align: right;">6460480</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">18-59</td>
+<td style="text-align: left;">Erwachsene</td>
+<td style="text-align: right;">23614627</td>
+<td style="text-align: right;">22733146</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">60+</td>
+<td style="text-align: left;">Senioren</td>
+<td style="text-align: right;">10034299</td>
+<td style="text-align: right;">12467935</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">0-17</td>
+<td style="text-align: left;">Kids &amp; Jugend</td>
+<td style="text-align: right;">6943513</td>
+<td style="text-align: right;">6526749</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">18-59</td>
+<td style="text-align: left;">Erwachsene</td>
+<td style="text-align: right;">23562105</td>
+<td style="text-align: right;">22698301</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<div class="column-screen-inset">
+<section id="data-visualizing" class="level1" style="background-color: #FFF68F;text-align: center">
+<h1><span style="color:#EED2EE;">Data Visualizing</span> </h1>
+</section>
+</div>
+<section id="prepare-data" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-data">Prepare data</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pivot to long</span></span>
+<span id="cb19-2">df_py_pv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.melt(</span>
+<span id="cb19-3">  df_py,                                         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data                           </span></span>
+<span id="cb19-4">  id_vars <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>],  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># not to shape</span></span>
+<span id="cb19-5">  value_vars <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"male"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"female"</span>],               <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># to shape</span></span>
+<span id="cb19-6">  var_name <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span>,                           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># colname for reshaped vars</span></span>
+<span id="cb19-7">  value_name <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>                            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># colname for reshaped values</span></span>
+<span id="cb19-8">)</span>
+<span id="cb19-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># round colum cnts</span></span>
+<span id="cb19-10">df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>].<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">map</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> x: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000000</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span>
+<span id="cb19-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remove colum year</span></span>
+<span id="cb19-12">df_py_pv <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_py_pv[df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"2024"</span>].drop(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"year"</span>, axis <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb19-13"></span>
+<span id="cb19-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ordered categories (levels in R)</span></span>
+<span id="cb19-15">agegroup <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0-17"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"18-59"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"60+"</span>]</span>
+<span id="cb19-16">agecat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Kids &amp; Jugend"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Erwachsene"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Senioren"</span>]</span>
+<span id="cb19-17">df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.Categorical(df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>], categories <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> agegroup, ordered <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb19-18">df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.Categorical(df_py_pv[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>], categories <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> agecat, ordered <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb19-19"></span>
+<span id="cb19-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sort</span></span>
+<span id="cb19-21">df_py_pl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_py_pv.sort_values([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>], ascending<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>])</span>
+<span id="cb19-22"></span>
+<span id="cb19-23">df_py_pv.head()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    age_grouped        age_cat  gender   cnts
+#&gt; 30        0-17  Kids &amp; Jugend    male   7.18
+#&gt; 31       18-59     Erwachsene    male  22.47
+#&gt; 32         60+       Senioren    male  11.59
+#&gt; 63        0-17  Kids &amp; Jugend  female   6.79
+#&gt; 64       18-59     Erwachsene  female  21.64</code></pre>
+</div>
+</div>
+</section>
+<section id="plotting-data-frame" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-data-frame">Plotting data frame</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># load moduls</span></span>
+<span id="cb21-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb21-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> highlight_text <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> fig_text</span>
+<span id="cb21-4"></span>
+<span id="cb21-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pivot</span></span>
+<span id="cb21-6">pivot_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_py_pl.pivot(index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>, columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span>, values<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>)</span>
+<span id="cb21-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># totals for eag category</span></span>
+<span id="cb21-8">totals <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pivot_df.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb21-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># for second label (age grouped: 0-17,..)</span></span>
+<span id="cb21-10">d <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> df_py_pl.pivot(index<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_cat"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age_grouped"</span>], columns<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span>, values<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>)</span>
+<span id="cb21-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#d.index[0][1]</span></span>
+<span id="cb21-12"></span>
+<span id="cb21-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># plot</span></span>
+<span id="cb21-14">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span>
+<span id="cb21-15"></span>
+<span id="cb21-16">bar_width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span></span>
+<span id="cb21-17">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.arange(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(pivot_df.index))</span>
+<span id="cb21-18">colors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#E85252"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#6689C6"</span>]</span>
+<span id="cb21-19"></span>
+<span id="cb21-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># total bar</span></span>
+<span id="cb21-21">ax.bar(x, totals, width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>bar_width <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#E0E0E0"</span>, zorder<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb21-22"></span>
+<span id="cb21-23"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, sub_cat <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(pivot_df.columns):</span>
+<span id="cb21-24">    values <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pivot_df[sub_cat]</span>
+<span id="cb21-25">    ax.bar(</span>
+<span id="cb21-26">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> bar_width,</span>
+<span id="cb21-27">        values,</span>
+<span id="cb21-28">        width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>bar_width,</span>
+<span id="cb21-29">        zorder<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb21-30">        color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>colors[i],</span>
+<span id="cb21-31">    )</span>
+<span id="cb21-32">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> j, val <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(values):</span>
+<span id="cb21-33">        ax.text(</span>
+<span id="cb21-34">            x[j] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> bar_width,</span>
+<span id="cb21-35">            val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb21-36">            <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>val<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">M"</span>,</span>
+<span id="cb21-37">            ha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"center"</span>,</span>
+<span id="cb21-38">            va<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>,</span>
+<span id="cb21-39">            fontsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>,</span>
+<span id="cb21-40">        )</span>
+<span id="cb21-41"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i, total <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(totals):</span>
+<span id="cb21-42">    ax.text(</span>
+<span id="cb21-43">        x[i],</span>
+<span id="cb21-44">        total <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb21-45">        <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Altersgruppe (</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>d<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>index[i][<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">)</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>total<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">M"</span>,</span>
+<span id="cb21-46">        ha<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"center"</span>,</span>
+<span id="cb21-47">        va<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>,</span>
+<span id="cb21-48">        fontsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>,</span>
+<span id="cb21-49">        color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#555555"</span>,</span>
+<span id="cb21-50">    )</span>
+<span id="cb21-51">ax.set_xticks(x)</span>
+<span id="cb21-52">ax.set_xticklabels(pivot_df.index)</span>
+<span id="cb21-53">ax.set_yticks(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)))</span>
+<span id="cb21-54">ax.spines[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"right"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>]].set_visible(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb21-55">ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span>, size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, pad<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb21-56">ax.tick_params(axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span>, labelsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>)</span>
+<span id="cb21-57"></span>
+<span id="cb21-58">fig.text(x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.091</span>, y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.91</span>, s<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bevölkerung in Deutschland nach Altersgruppen bei Geschlecht in M=Mln., 2024"</span>, size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>)</span>
+<span id="cb21-59">fig_text(</span>
+<span id="cb21-60">    x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.14</span>,</span>
+<span id="cb21-61">    y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.89</span>,</span>
+<span id="cb21-62">    s<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&lt;female&gt; &lt;male&gt;"</span>,</span>
+<span id="cb21-63">    highlight_textprops<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[</span>
+<span id="cb21-64">        {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"color"</span>: colors[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]},</span>
+<span id="cb21-65">        {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"color"</span>: colors[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]},</span>
+<span id="cb21-66">    ],</span>
+<span id="cb21-67">)</span>
+<span id="cb21-68"></span>
+<span id="cb21-69">plt.show()</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; &lt;highlight_text.htext.HighlightText object at 0x00000253D2CFB0E0&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="popde_files/figure-html/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://sultanov.quarto.pub/blog/gallery/popde_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<div class="column-screen">
+<section id="data-visualizing-1" class="level1" style="background-color: lightcyan;text-align: center">
+<h1><span style="color:#EED2EE;">Data Visualizing</span> </h1>
+</section>
+</div>
+<section id="prepare-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="prepare-data-1">Prepare data</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># use pandas dataframe df</span></span>
+<span id="cb23-2">df_r <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> py<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>df_py</span>
+<span id="cb23-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#unique(df_r$age_cat)</span></span>
+<span id="cb23-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ensure age_grouped and age_cat is a factor with the desired order (0-13,14-17,18-59,60+)</span></span>
+<span id="cb23-5">df_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>age_grouped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(df_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>age_grouped, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0-17"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"18-59"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"60+"</span>))</span>
+<span id="cb23-6">df_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>age_cat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(</span>
+<span id="cb23-7">  df_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>age_cat, </span>
+<span id="cb23-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Kids &amp; Jugend"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Erwachsene"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Senioren"</span>))</span>
+<span id="cb23-9"></span>
+<span id="cb23-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(df_r)</span></code></pre></div></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   year age_grouped       age_cat     male   female
+#&gt; 1 2014        0-17 Kids &amp; Jugend  6730760  6381260
+#&gt; 2 2014       18-59    Erwachsene 23218843 22624986
+#&gt; 3 2014         60+      Senioren  9885854 12355834
+#&gt; 4 2015        0-17 Kids &amp; Jugend  6865197  6460480
+#&gt; 5 2015       18-59    Erwachsene 23614627 22733146
+#&gt; 6 2015         60+      Senioren 10034299 12467935</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pivot long</span></span>
+<span id="cb25-2">mln <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000000</span></span>
+<span id="cb25-3">df_pv <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> </span>
+<span id="cb25-4">  df_r<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb25-5">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#pivot_longer(</span></span>
+<span id="cb25-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  cols = !c(year, age_grouped, age_cat),</span></span>
+<span id="cb25-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  names_to = "gender",</span></span>
+<span id="cb25-8">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  values_to = "cnts"</span></span>
+<span id="cb25-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#) |&gt; </span></span>
+<span id="cb25-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowwise</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb25-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(male, female)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb25-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(year, age_grouped, age_cat, total), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cnts"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb25-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb25-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">total =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(total<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>mln, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>),</span>
+<span id="cb25-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cnts =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(cnts<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>mln, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>),</span>
+<span id="cb25-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.integer</span>(year),</span>
+<span id="cb25-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(gender, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"female"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"male"</span>))</span>
+<span id="cb25-18">  )</span>
+<span id="cb25-19">rmarkdown<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paged_table</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(df_pv, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["int"],"align":["right"]},{"label":["age_grouped"],"name":[2],"type":["fct"],"align":["left"]},{"label":["age_cat"],"name":[3],"type":["fct"],"align":["left"]},{"label":["total"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["gender"],"name":[5],"type":["fct"],"align":["left"]},{"label":["cnts"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"2014","2":"0-17","3":"Kids & Jugend","4":"13.11","5":"male","6":"6.73"},{"1":"2014","2":"0-17","3":"Kids & Jugend","4":"13.11","5":"female","6":"6.38"},{"1":"2014","2":"18-59","3":"Erwachsene","4":"45.84","5":"male","6":"23.22"},{"1":"2014","2":"18-59","3":"Erwachsene","4":"45.84","5":"female","6":"22.62"},{"1":"2014","2":"60+","3":"Senioren","4":"22.24","5":"male","6":"9.89"},{"1":"2014","2":"60+","3":"Senioren","4":"22.24","5":"female","6":"12.36"},{"1":"2015","2":"0-17","3":"Kids & Jugend","4":"13.33","5":"male","6":"6.87"},{"1":"2015","2":"0-17","3":"Kids & Jugend","4":"13.33","5":"female","6":"6.46"},{"1":"2015","2":"18-59","3":"Erwachsene","4":"46.35","5":"male","6":"23.61"},{"1":"2015","2":"18-59","3":"Erwachsene","4":"46.35","5":"female","6":"22.73"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-data-frame-1" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-data-frame-1">Plotting data frame</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1">gg_plt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> </span>
+<span id="cb26-2">  df_pv <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb26-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(year <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2024</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb26-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># BEGINN ============================================================================</span></span>
+<span id="cb26-5">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Layer 1: Grey background with total values per agegroup =====================================</span></span>
+<span id="cb26-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(</span>
+<span id="cb26-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age_cat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> total<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sonst gibt dopplt wert</span></span>
+<span id="cb26-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey85"</span>,</span>
+<span id="cb26-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>,     </span>
+<span id="cb26-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span></span>
+<span id="cb26-11">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Layer 2: Dodged bars for gender =============================================================</span></span>
+<span id="cb26-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(</span>
+<span id="cb26-14">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age_cat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cnts, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> gender),</span>
+<span id="cb26-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">position_dodge</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Dodge bars side-by-side</span></span>
+<span id="cb26-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span></span>
+<span id="cb26-17">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-18">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Layer 3: Labels for individual gender bars (Value M) ========================================</span></span>
+<span id="cb26-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(</span>
+<span id="cb26-20">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age_cat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cnts, </span>
+<span id="cb26-21">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(cnts, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> gender),</span>
+<span id="cb26-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">position_dodge</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Match dodging of bars</span></span>
+<span id="cb26-23">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vjust =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,                           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Position label above the bar</span></span>
+<span id="cb26-24">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.3</span>,                            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Adjust text size</span></span>
+<span id="cb26-25">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sans"</span></span>
+<span id="cb26-26">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-27">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Layer 4: Labels for total age group (Value M) ===============================================</span></span>
+<span id="cb26-28">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(</span>
+<span id="cb26-29">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#data = filter(gender_total, year == 2024),</span></span>
+<span id="cb26-30">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age_cat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> total, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(total, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"M"</span>)),</span>
+<span id="cb26-31">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vjust =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Position above the grey bar, adjust vertical position</span></span>
+<span id="cb26-32">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.7</span>,    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Adjust text size</span></span>
+<span id="cb26-33">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fontface =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bold"</span>,</span>
+<span id="cb26-34">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sans"</span>,</span>
+<span id="cb26-35">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray40"</span></span>
+<span id="cb26-36">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-37">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Layer 5: Labels for agegroup (0-17, ..., 60+) ===============================================</span></span>
+<span id="cb26-38">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(</span>
+<span id="cb26-39">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> age_cat, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> total, </span>
+<span id="cb26-40">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Altersgruppe ("</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(age_grouped), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">")"</span>)), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># label is character</span></span>
+<span id="cb26-41">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vjust =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.9</span>,          </span>
+<span id="cb26-42">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4.0</span>, </span>
+<span id="cb26-43">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># fontface = "bold", </span></span>
+<span id="cb26-44">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sans"</span>,</span>
+<span id="cb26-45">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray45"</span></span>
+<span id="cb26-46">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-47">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot-, Axistitle ----------------------------------------------------------------------------</span></span>
+<span id="cb26-48">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb26-49">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bevölkerung in Deutschland nach Altersgruppen bei Geschlecht in M = Mln., 2024"</span>,</span>
+<span id="cb26-50">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> social_caption,</span>
+<span id="cb26-51">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb26-52">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Adjust y-axis limits to provide space for labels above the bars -----------------------------</span></span>
+<span id="cb26-53">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(</span>
+<span id="cb26-54">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(df_pv<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>total) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ~35% extra space at top</span></span>
+<span id="cb26-55">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">expand =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expansion</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mult =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Start y-axis at 0</span></span>
+<span id="cb26-56">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Customize the theme =========================================================================</span></span>
+<span id="cb26-57">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(</span>
+<span id="cb26-58">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Plot Title / Caption Style --------------------------------------------------------------</span></span>
+<span id="cb26-59">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(</span>
+<span id="cb26-60">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue4"</span>,</span>
+<span id="cb26-61">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Left-align title</span></span>
+<span id="cb26-62">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bold"</span>,            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Bold title text</span></span>
+<span id="cb26-63">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>,                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Title font size</span></span>
+<span id="cb26-64">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">margin</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">t =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Margin below title</span></span>
+<span id="cb26-65">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.caption =</span> ggtext<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_markdown</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>),</span>
+<span id="cb26-66">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Legend Style ----------------------------------------------------------------------------</span></span>
+<span id="cb26-67">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>,               <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Legend at the top</span></span>
+<span id="cb26-68">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.justification =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"left"</span>,         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Left-align legend items</span></span>
+<span id="cb26-69">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No legend title</span></span>
+<span id="cb26-70">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.text =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Legend text size</span></span>
+<span id="cb26-71">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.key.size =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>),     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Size of color keys in legend</span></span>
+<span id="cb26-72">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">margin</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Reduce space below legend</span></span>
+<span id="cb26-73">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.background =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ghostwhite"</span>),</span>
+<span id="cb26-74">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Axis line / plot&amp;panel  background ------------------------------------------------------</span></span>
+<span id="cb26-75">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.background =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ghostwhite"</span>),</span>
+<span id="cb26-76">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.background =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ghostwhite"</span>),</span>
+<span id="cb26-77">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># y axis label blank</span></span>
+<span id="cb26-78">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.ticks.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - in axis blank</span></span>
+<span id="cb26-79">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.ticks.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># - in axis blank</span></span>
+<span id="cb26-80">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">face =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bold"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"darkslategray"</span>), </span>
+<span id="cb26-81">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid.major.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb26-82">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid.minor.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb26-83">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid.minor.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb26-84">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.line.x =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray"</span>)</span>
+<span id="cb26-85">  ) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span><span class="re">END</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> =====================================================================================</span></span>
+<span id="cb26-86">gg_plt</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="popde_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://sultanov.quarto.pub/blog/gallery/popde_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="animated-plot" class="level3">
+<h3 class="anchored" data-anchor-id="animated-plot">Animated plot</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1">g_anm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb27-2">  g_plt <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb27-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">transition_states</span>(year, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">transition_length =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state_length =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">wrap =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb27-4"></span>
+<span id="cb27-5">anmt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">animate</span>(</span>
+<span id="cb27-6">  g_anm,</span>
+<span id="cb27-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">duration =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>,</span>
+<span id="cb27-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start_pause =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb27-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end_pause =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb27-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">renderer =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gifski_renderer</span>())</span>
+<span id="cb27-11">anmt</span></code></pre></div></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="popde_files/figure-html/unnamed-chunk-20-1.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://sultanov.quarto.pub/blog/gallery/popde_files/figure-html/unnamed-chunk-20-1.gif" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>barplot</category>
+  <category>R</category>
+  <category>ggplot2</category>
+  <category>gganimate</category>
+  <category>dplyr</category>
+  <category>pandas</category>
+  <category>python</category>
+  <category>matplotlib</category>
+  <guid>https://sultanov.quarto.pub/blog/gallery/popde.html</guid>
+  <pubDate>Thu, 11 Dec 2025 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Top ten countries by GDP, PPP</title>
   <dc:creator>Fazliddin Sultonov</dc:creator>
