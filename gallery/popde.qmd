@@ -21,7 +21,7 @@ execute:
 # Output
 format: 
   html:
-    theme: quartz
+    theme: flatly
   # Verzeichnes
     toc: true
     toc-title: Contents
